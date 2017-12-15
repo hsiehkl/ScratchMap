@@ -13,6 +13,7 @@
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
+		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		6B30F2F91FE3B1380048F310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
 		F7F4123CBF31FF5FDDC9997A /* Pods-ScratchMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 				6B30F2F41FE3B1380048F310 /* ViewController.swift */,
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
+				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 			);
@@ -153,6 +156,7 @@
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
+				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
