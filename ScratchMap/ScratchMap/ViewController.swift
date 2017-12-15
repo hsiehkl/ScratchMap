@@ -9,30 +9,39 @@
 import UIKit
 import PocketSVG
 
-class ViewController: UIViewController {
+class MainPageController: UIViewController {
     
+    private let scrollView = UIScrollView()
+    private let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         svgWorldMapSetup()
+        
+        scrollViewSetUp()
+        svgWorldMapSetup()
+        tapRecognizerSetup()
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func svgWorldMapSetup() {
         
         let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
+        
         let paths = SVGBezierPath.pathsFromSVG(at: url)
+        
         self.paths = paths
         
         for path in paths {
+            
             // Create a layer for each path
             let layer = CAShapeLayer()
+            
             layer.path = path.cgPath
             layer.fillColor = UIColor.gray.cgColor
             
@@ -43,8 +52,73 @@ class ViewController: UIViewController {
             layer.lineWidth = strokeWidth
             layer.strokeColor = strokeColor
             
-            self.view.layer.addSublayer(layer)
+            self.mapContainerView.layer.addSublayer(layer)
         }
     }
+    
+    func scrollViewSetUp() {
+        
+        scrollView.frame = self.view.bounds
+        
+        scrollView.contentSize = CGSize(width: 1100, height: 800)
+        
+        let scrollViewFrame = scrollView.frame
+        
+        mapContainerView.frame = CGRect(
+            x: scrollViewFrame.minX + 20,
+            y: scrollViewFrame.minY,
+            width: scrollViewFrame.width,
+            height: scrollViewFrame.height
+        )
+        
+        scrollView.bounces = false
+        
+        self.scrollView.addSubview(self.mapContainerView)
+        
+        self.view.addSubview(self.scrollView)
+        
+    }
+    
+    func tapRecognizerSetup() {
+        
+        let tapRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.tapLocationDetected(tapRecognizer:))
+        )
+        
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    
+    @objc public func tapLocationDetected(tapRecognizer: UITapGestureRecognizer) {
+        
+        let tapLocation: CGPoint = tapRecognizer.location(in: self.mapContainerView)
+        
+        self.colorSelectedCountry(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+        
+    }
 
+    private func colorSelectedCountry(tapLocation: CGPoint) {
+        
+        for path in paths {
+            
+            if path.contains(tapLocation) {
+                
+                let layer = CAShapeLayer()
+                layer.path = path.cgPath
+                layer.fillColor = UIColor.red.cgColor
+                
+                let strokeWidth = CGFloat(1.0)
+                let strokeColor = UIColor.blue.cgColor
+                
+                layer.lineWidth = strokeWidth
+                layer.strokeColor = strokeColor
+                self.mapContainerView.layer.addSublayer(layer)
+                
+            } else {
+                
+                print("Not a country")
+            }
+        }
+    }
 }
