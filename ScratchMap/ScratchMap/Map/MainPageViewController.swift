@@ -37,7 +37,6 @@ class MainPageViewController: UIViewController {
         
         let paths = SVGBezierPath.pathsFromSVG(at: url)
         
-        
         self.paths = paths
         
         for path in paths {

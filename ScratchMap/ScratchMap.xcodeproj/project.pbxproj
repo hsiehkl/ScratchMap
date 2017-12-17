@@ -13,6 +13,7 @@
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
+		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
 		6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7641B1FE3D49F00B3708B /* Country.swift */; };
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
@@ -30,6 +31,7 @@
 		6B30F2F91FE3B1380048F310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
 		6BE7641B1FE3D49F00B3708B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
@@ -82,14 +84,23 @@
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
 				6BE7641A1FE3D47100B3708B /* Model */,
 				6BE764191FE3D45200B3708B /* Map */,
-				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
+				6BC5743F1FE66295003C9C8C /* Achievement */,
 				6BF38FD01FE5743F001DB8A8 /* Tab Bar */,
 				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
+				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 			);
 			path = ScratchMap;
+			sourceTree = "<group>";
+		};
+		6BC5743F1FE66295003C9C8C /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */,
+			);
+			path = Achievement;
 			sourceTree = "<group>";
 		};
 		6BE764191FE3D45200B3708B /* Map */ = {
@@ -261,6 +272,7 @@
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,
 				6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */,
+				6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */,
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
 				6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */,
 			);
