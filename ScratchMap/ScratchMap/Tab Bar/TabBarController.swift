@@ -62,7 +62,7 @@ class TabBarController: UITabBarController {
     
     // MARK: Prepare Item Type
     
-    static func prepare(for itemType: TabBarItemType) -> UIViewController {
+    func prepare(for itemType: TabBarItemType) -> UIViewController {
         
         switch itemType {
             
