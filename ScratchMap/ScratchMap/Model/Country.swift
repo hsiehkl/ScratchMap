@@ -7,3 +7,38 @@
 //
 
 import Foundation
+import PocketSVG
+
+// MARK: CountryInfoError
+
+enum CountryInfoError: Error {
+    
+    case notFound
+    
+}
+
+struct Country {
+    
+     // MARK: Property
+    
+    let name: String
+    
+    let id: String
+    
+    let path: SVGBezierPath
+    
+}
+
+extension Country: Equatable {
+    
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        
+        return
+            
+            lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.path == rhs.path
+        
+    }
+}
+
