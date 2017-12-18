@@ -23,12 +23,21 @@ class MainPageViewController: UIViewController {
         scrollViewSetUp()
         svgWorldMapSetup()
         tapRecognizerSetup()
+        fetchBeenToCountries()
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.mapContainerView.layer.layoutIfNeeded()
+        
+        print("Layout: \(self.mapContainerView.frame)")
     }
     
     func svgWorldMapSetup() {
@@ -55,14 +64,16 @@ class MainPageViewController: UIViewController {
             
             self.mapContainerView.layer.addSublayer(layer)
         }
-        
 //        mapContainerView.layer.affineTransform()
-        
+        self.mapContainerView.layer.layoutSublayers()
+        print("mapContainerView : \(self.mapContainerView.layer.bounds.size)")
     }
     
     func scrollViewSetUp() {
         
         scrollView.contentSize = CGSize(width: 1030, height: 500)
+        
+        scrollView.backgroundColor = UIColor.yellow
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -88,7 +99,7 @@ class MainPageViewController: UIViewController {
             multiplier: 1.0,
             constant: 0.0
         )
-        
+
         let top = NSLayoutConstraint(
             item: scrollView,
             attribute: .top,
@@ -98,7 +109,7 @@ class MainPageViewController: UIViewController {
             multiplier: 1.0,
             constant: 30.0
         )
-        
+
         let trailing = NSLayoutConstraint(
             item: scrollView,
             attribute: .trailing,
@@ -108,7 +119,7 @@ class MainPageViewController: UIViewController {
             multiplier: 1.0,
             constant: 0.0
         )
-        
+
         let bottom = NSLayoutConstraint(
             item: scrollView,
             attribute: .bottom,
@@ -116,10 +127,14 @@ class MainPageViewController: UIViewController {
             toItem: view,
             attribute: .bottom,
             multiplier: 1.0,
-            constant: 80.0
+            constant: -80.0
         )
-        
+
         view.addConstraints([ leading, top, trailing, bottom ])
+        
+        view.layoutIfNeeded()
+        
+        print(scrollView.frame)
         
     }
     
@@ -155,7 +170,7 @@ class MainPageViewController: UIViewController {
                 else {
                     
                     let error = CountryInfoError.notFound
-                    
+
                     print(error)
                     
                     return
@@ -175,13 +190,26 @@ class MainPageViewController: UIViewController {
             self.mapContainerView.layer.addSublayer(layer)
             
             var ref: DatabaseReference!
-            ref = Database.database().reference(fromURL: "https://scratchmap-9e02c.firebaseio.com/")
+            ref = Database.database().reference()
+            ref.keepSynced(true)
             let userInfo = ref.child("users").child("user01").child("beenToCountries").child("\(countryId)")
             let value = countryName
             userInfo.setValue(value)
+            
+            for color in self.beenToCountries {
                 
+                print("color1: \(color.id)")
+                
+            }
+
             self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
+            
+            for color in self.beenToCountries {
                 
+                print("color2: \(color.id)")
+                
+            }
+            
             } else {
                 
                 continue
@@ -212,15 +240,87 @@ class MainPageViewController: UIViewController {
                     break
                 }
                 
+                let ref = Database.database().reference()
+                ref.keepSynced(true)
+                let countryRef = ref.child("users").child("user01").child("beenToCountries").child("\(id)")
+                countryRef.removeValue()
+                
                 beenToCountries.remove(at: index)
                 
-                print(beenToCountries.count)
+//                print(beenToCountries.count)
                 
                 return false
             }
         }
         
         return true
+    }
+    
+    func fetchBeenToCountries() {
+
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
+        ref.child("users").child("user01").child("beenToCountries").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            ref.keepSynced(true)
+
+            guard let dataValue = snapshot.value as? [String: String] else { return }
+        
+            for contryKey in dataValue.keys {
+
+                for path in self.paths {
+                    
+                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+                    
+                    guard
+                        let countryName = counrtyInfo["title"],
+                        let countryId = counrtyInfo["id"]
+                        
+                        else {
+                            
+                            let error = CountryInfoError.notFound
+                            
+                            print(error)
+                            
+                            return
+                    }
+                    
+                    if contryKey == countryId {
+                        
+                        // Create a layer for each path
+                        let layer = CAShapeLayer()
+                        layer.path = path.cgPath
+                        layer.fillColor = UIColor.red.cgColor
+                        
+                        // Default Settings
+                        let strokeWidth = CGFloat(1.0)
+                        let strokeColor = UIColor.blue.cgColor
+                        
+                        layer.lineWidth = strokeWidth
+                        layer.strokeColor = strokeColor
+                        
+                        self.mapContainerView.layer.addSublayer(layer)
+                        
+                        self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
+                        
+                        for country in self.beenToCountries {
+                            
+                            print("viewdidload: \(country.id)")
+                            
+                        }
+                    }
+                }
+
+            }
+        })
+        
+    }
+    
+    func colorBeenToCountries() {
+        
+        
+        
     }
     
     func calculateScaleFactor() -> CGFloat {
