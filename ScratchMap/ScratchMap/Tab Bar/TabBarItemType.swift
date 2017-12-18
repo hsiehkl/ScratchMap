@@ -7,39 +7,40 @@
 //
 
 import Foundation
-//
-//enum TabBarItemType {
-//    
-//    // MARK: Case
-//    
-//    case map, achievement
-//    
-//}
-//
-//// MARK: - Title
-//
-//extension TabBarItemType {
-//    
-//    var title: String {
-//        
-//        switch self {
-//            
-//        case .map:
-//            
-//            return "Map"
-//            
-//        case .achievement:
-//            
-//            return "Achievement"
-//        }
-//        
-//    }
-//    
-//}
-//
-//// MARK: - Image
-//
-//extension TabBarItemType {
-//    
-//}
-//
+
+enum TabBarItemType {
+    
+    // MARK: Case
+    
+    case map, achievement
+    
+}
+
+// MARK: - Title
+
+extension TabBarItemType {
+    
+    var title: String {
+        
+        switch self {
+            
+        case .map:
+            
+            return "Map"
+            
+        case .achievement:
+            
+            return "Achievement"
+        }
+        
+    }
+    
+}
+
+// MARK: - Image
+
+extension TabBarItemType {
+    
+}
+
+

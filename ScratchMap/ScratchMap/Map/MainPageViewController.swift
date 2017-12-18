@@ -13,7 +13,6 @@ class MainPageViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     private let mapContainerView = UIView()
-//    private var imageView = UIImage()
     var paths = [SVGBezierPath]()
     var beenToCountries = [Country]()
 
@@ -59,17 +58,6 @@ class MainPageViewController: UIViewController {
 //        mapContainerView.layer.affineTransform()
         
     }
-    
-//    func svgImageViewSetup() {
-//
-//        let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
-//
-//        let svgImageView = SVGImageView.init(contentsOf: url)
-//
-//        svgImageView.frame = mapContainerView.bounds
-//
-//        self.mapContainerView.addSubview(svgImageView)
-//    }
     
     func scrollViewSetUp() {
         

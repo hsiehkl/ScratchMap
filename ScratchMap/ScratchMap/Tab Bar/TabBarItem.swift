@@ -10,30 +10,30 @@ import Foundation
 import UIKit
 
 class TabBarItem: UITabBarItem {
-    
+
     // MARK: Property
-    
+
     var itemType: TabBarItemType?
-    
+
     // MARK: Init
-    
+
     init(itemType: TabBarItemType) {
-        
+
         super .init()
-        
+
         self.itemType = itemType
-        
+
         self.title = itemType.title
-        
+
         // self.image = itemType.tile
         // self.selectedImage = itemType.selectedImage
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-        
+
         super.init(coder: aDecoder)
-        
+
     }
-    
+
 }
 
