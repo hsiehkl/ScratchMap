@@ -13,6 +13,7 @@
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
+		6BAB10211FE777DA00CAE365 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
@@ -32,6 +33,7 @@
 		6B30F2F91FE3B1380048F310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
@@ -89,10 +91,11 @@
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6BC5743F1FE66295003C9C8C /* Achievement */,
 				6BF38FD01FE5743F001DB8A8 /* Tab Bar */,
-				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
+				6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
+				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
 			);
 			path = ScratchMap;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
+				6BAB10211FE777DA00CAE365 /* GoogleService-Info.plist in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
 			);
@@ -238,11 +242,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PocketSVG/PocketSVG.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketSVG.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

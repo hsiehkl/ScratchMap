@@ -9,5 +9,7 @@ target 'ScratchMap' do
 
   pod 'PocketSVG'
   pod 'SwiftLint'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
 end

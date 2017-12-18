@@ -8,6 +8,7 @@
 
 import UIKit
 import PocketSVG
+import Firebase
 
 class MainPageViewController: UIViewController {
     
@@ -172,6 +173,12 @@ class MainPageViewController: UIViewController {
             layer.lineWidth = strokeWidth
             layer.strokeColor = strokeColor
             self.mapContainerView.layer.addSublayer(layer)
+            
+            var ref: DatabaseReference!
+            ref = Database.database().reference(fromURL: "https://scratchmap-9e02c.firebaseio.com/")
+            let userInfo = ref.child("users").child("user01").child("beenToCountries").child("\(countryId)")
+            let value = countryName
+            userInfo.setValue(value)
                 
             self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
                 
