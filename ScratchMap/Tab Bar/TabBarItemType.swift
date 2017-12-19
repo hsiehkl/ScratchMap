@@ -6,7 +6,8 @@
 //  Copyright © 2017年 HsinTing Hsieh. All rights reserved.
 //
 
-import Foundation
+//import Foundation
+import UIKit
 
 enum TabBarItemType {
     
@@ -40,6 +41,22 @@ extension TabBarItemType {
 // MARK: - Image
 
 extension TabBarItemType {
+    
+    var image: UIImage {
+        
+        switch self {
+            
+        case .map:
+            
+            return #imageLiteral(resourceName: "maps-and-flags").withRenderingMode(.alwaysTemplate)
+            
+        case .achievement:
+            
+            return #imageLiteral(resourceName: "mapCheck").withRenderingMode(.alwaysTemplate)
+            
+            
+        }
+    }
     
 }
 

@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
-
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +27,37 @@ class SignupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func signupAction(_ sender: Any) {
+        
+        if
+            let email = emailTextField.text,
+            let password = passwordTextField.text,
+            let userName = userNameTextField.text
+        
+        {
+            
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                if let firebaseError = error {
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                
+                guard let userId = user?.uid else {
+                    // need to handle
+                    return
+                }
+                let ref = Database.database().reference().child("users").child(userId)
+                let value = ["userName": userName]
+                ref.setValue(value)
+                
+                print("signup success!")
+                self.dismiss(animated: true, completion: nil)
+                
+            })
+        }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
 
 }

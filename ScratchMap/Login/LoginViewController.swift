@@ -7,33 +7,64 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     @IBAction func createAccountAction(_ sender: Any) {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let signupViewController = storyboard.instantiateViewController(withIdentifier: "signupViewController") as! SignupViewController
+
+        self.present(signupViewController, animated: true, completion: nil)
+        
     }
     @IBAction func loginAction(_ sender: Any) {
+        
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+                if let firebaseError = error {
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                
+                print("login success")
+            })
+            
+            
+        }
     }
     
-    /*
-    // MARK: - Navigation
+/* log out
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     func logoutAction() {
+     
+     do {
+        try Auth.auth()?.signOut()
+     } catch {
+        print("logout problem")
+     }
+     
+     
+     }
+     
+     
+*/
 }

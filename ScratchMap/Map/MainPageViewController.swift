@@ -10,18 +10,20 @@ import UIKit
 import PocketSVG
 import Firebase
 
-class MainPageViewController: UIViewController {
+class MainPageViewController: UIViewController, UIScrollViewDelegate {
     
     private let scrollView = UIScrollView()
-    private let mapContainerView = UIView()
+//    private let mapContainerView = UIView()
+    private let mapContainerView = UIImageView()
     var paths = [SVGBezierPath]()
     var beenToCountries = [Country]()
+    var pictureSize = CGSize.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollViewSetUp()
         svgWorldMapSetup()
+        scrollViewSetUp()
         tapRecognizerSetup()
         fetchBeenToCountries()
 
@@ -30,14 +32,6 @@ class MainPageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        self.mapContainerView.layer.layoutIfNeeded()
-        
-        print("Layout: \(self.mapContainerView.frame)")
     }
     
     func svgWorldMapSetup() {
@@ -49,6 +43,8 @@ class MainPageViewController: UIViewController {
         self.paths = paths
         
         for path in paths {
+            
+             self.calculatePictureBounds(rect: path.cgPath.boundingBox)
             
             // Create a layer for each path
             let layer = CAShapeLayer()
@@ -63,21 +59,29 @@ class MainPageViewController: UIViewController {
             layer.strokeColor = strokeColor
             
             self.mapContainerView.layer.addSublayer(layer)
+
         }
-//        mapContainerView.layer.affineTransform()
-        self.mapContainerView.layer.layoutSublayers()
-        print("mapContainerView : \(self.mapContainerView.layer.bounds.size)")
     }
     
     func scrollViewSetUp() {
         
-//        (0.0, 30.0, 320.0, 458.0)
-//        scrollView.contentSize: (1030.0, 500.0)
+        //setupMapContainerView
         
-        //(0.0, 30.0, 414.0, 626.0)
-//        scrollView.contentSize: (1030.0, 500.0)
+        mapContainerView.contentMode = .center
+        mapContainerView.isUserInteractionEnabled = true
         
-        scrollView.contentSize = CGSize(width: 1015, height: 700)
+        mapContainerView.frame = CGRect(
+            x: scrollView.frame.minX + 10,
+            y: scrollView.frame.minY + 100,
+            width: self.pictureSize.width,
+            height: self.pictureSize.height
+        )
+        
+        // setup scrollView
+        
+         scrollView.contentSize = self.pictureSize
+        
+//        scrollView.contentSize = CGSize(width: 1100, height: 680)
         
         scrollView.backgroundColor = UIColor.yellow
         
@@ -85,17 +89,18 @@ class MainPageViewController: UIViewController {
         
         scrollView.bounces = false
         
-        mapContainerView.frame = CGRect(
-            x: scrollView.frame.minX + 10,
-            y: scrollView.frame.minY,
-            width: 1030,
-            height: 500 - 80
-        )
-
+        // add subView
         self.scrollView.addSubview(self.mapContainerView)
         
         self.view.addSubview(self.scrollView)
         
+        // zoom setting
+        scrollView.delegate = self
+        scrollView.zoomScale = 0.8
+        scrollView.minimumZoomScale = 0.5
+        scrollView.maximumZoomScale = 3.0
+        
+        // scrollView constraints
         let leading = NSLayoutConstraint(
             item: scrollView,
             attribute: .leading,
@@ -137,12 +142,48 @@ class MainPageViewController: UIViewController {
         )
 
         view.addConstraints([ leading, top, trailing, bottom ])
-        
-        view.layoutIfNeeded()
+//
+//        view.layoutIfNeeded()
         
         print(scrollView.frame)
         print("scrollView.contentSize: \(scrollView.contentSize)")
         
+    }
+    
+    // 2.加了縮放功能 protocol (UIScrollViewDelegate) 需要implement 的function
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return  mapContainerView
+    }
+    
+    //3. 為了讓圖片縮小填滿且有Aspect Fit
+    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+        let widthScale = size.width /  mapContainerView.bounds.width
+        let heightScale = size.height /  mapContainerView.bounds.height
+        
+        let minScale = min(widthScale, heightScale)
+        scrollView.minimumZoomScale = minScale
+        
+        scrollView.zoomScale = minScale
+        
+    }
+    
+    //3. 呼叫
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        updateMinZoomScaleForSize(view.bounds.size)
+        
+    }
+    
+    //4.讓圖片置中, 每次縮放之後會被呼叫
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let imageViewSize =  mapContainerView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+        
+        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+        
+        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
     }
     
     func tapRecognizerSetup() {
@@ -197,7 +238,7 @@ class MainPageViewController: UIViewController {
             self.mapContainerView.layer.addSublayer(layer)
             
             let ref = Database.database().reference()
-            ref.keepSynced(true)
+//            ref.keepSynced(true)
             let userInfo = ref.child("users").child("user01").child("beenToCountries").child("\(countryId)")
             let value = countryName
             userInfo.setValue(value)
@@ -319,35 +360,15 @@ class MainPageViewController: UIViewController {
     
     func colorBeenToCountries() {
         
-        
-        
     }
     
-    func calculateScaleFactor() -> CGFloat {
+    func calculatePictureBounds(rect: CGRect) {
         
-        let boundingBoxAspectRatio = scrollView.contentSize.width/scrollView.contentSize.height
-        let viewAspectRatio = self.view.bounds.width/(self.view.bounds.height - 110)
+        let maxX = rect.minX + rect.width
+        let maxY = rect.minY + rect.height
         
-        let scaleFactor: CGFloat
-        if (boundingBoxAspectRatio > viewAspectRatio) {
-            // Width is limiting factor
-            scaleFactor = self.view.bounds.width/scrollView.contentSize.width
-        } else {
-            // Height is limiting factor
-            scaleFactor = (self.view.bounds.height - 110)/scrollView.contentSize.height
-        }
-        
-        return scaleFactor
-        
-//        let scaleFactor = transformRatio()
-//
-//        var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
-//
-//        let transformedPath = (path.cgPath).copy(using: &affineTransform)
-//
-//        let layer = CAShapeLayer()
-//        layer.path = transformedPath
-        
+        self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
+        self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
     
 }

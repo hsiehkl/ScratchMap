@@ -68,19 +68,23 @@ class TabBarController: UITabBarController {
             
         case .map:
             
-//            let mainPageViewController =
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") as! MainPageViewController
+            
+            mainPageViewController.tabBarItem = TabBarItem(
+                itemType: itemType
+            )
             
             return mainPageViewController
             
         case .achievement:
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") as! MainPageViewController
+            let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
             
-            return mainPageViewController
+            achievementViewController.tabBarItem = TabBarItem(itemType: itemType)
+            
+            return achievementViewController
 
         }
         

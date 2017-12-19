@@ -19,6 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Database().isPersistenceEnabled = true
         
+        
+        
+        let tabBarController = TabBarController(itemTypes: [.map, .achievement])
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        
+        window.rootViewController = tabBarController
+        
+        window.makeKeyAndVisible()
+        
+        self.window = window
+
+        
         return true
     }
 
