@@ -18,6 +18,7 @@
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
 		6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7641B1FE3D49F00B3708B /* Country.swift */; };
+		6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */; };
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
@@ -38,6 +39,7 @@
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
 		6BE7641B1FE3D49F00B3708B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
 				6BE7641A1FE3D47100B3708B /* Model */,
+				6BEF0E991FE8A3C300EED739 /* Login */,
 				6BE764191FE3D45200B3708B /* Map */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6BC5743F1FE66295003C9C8C /* Achievement */,
@@ -123,6 +126,14 @@
 				6BC574431FE693E5003C9C8C /* CountryList.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6BEF0E991FE8A3C300EED739 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6BF38FD01FE5743F001DB8A8 /* Tab Bar */ = {
@@ -281,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */,
 				6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */,
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,

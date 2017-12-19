@@ -71,7 +71,13 @@ class MainPageViewController: UIViewController {
     
     func scrollViewSetUp() {
         
-        scrollView.contentSize = CGSize(width: 1030, height: 500)
+//        (0.0, 30.0, 320.0, 458.0)
+//        scrollView.contentSize: (1030.0, 500.0)
+        
+        //(0.0, 30.0, 414.0, 626.0)
+//        scrollView.contentSize: (1030.0, 500.0)
+        
+        scrollView.contentSize = CGSize(width: 1015, height: 700)
         
         scrollView.backgroundColor = UIColor.yellow
         
@@ -82,8 +88,8 @@ class MainPageViewController: UIViewController {
         mapContainerView.frame = CGRect(
             x: scrollView.frame.minX + 10,
             y: scrollView.frame.minY,
-            width: self.view.bounds.width,
-            height: self.view.bounds.height - 80
+            width: 1030,
+            height: 500 - 80
         )
 
         self.scrollView.addSubview(self.mapContainerView)
@@ -135,6 +141,7 @@ class MainPageViewController: UIViewController {
         view.layoutIfNeeded()
         
         print(scrollView.frame)
+        print("scrollView.contentSize: \(scrollView.contentSize)")
         
     }
     
@@ -189,8 +196,7 @@ class MainPageViewController: UIViewController {
             layer.strokeColor = strokeColor
             self.mapContainerView.layer.addSublayer(layer)
             
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
+            let ref = Database.database().reference()
             ref.keepSynced(true)
             let userInfo = ref.child("users").child("user01").child("beenToCountries").child("\(countryId)")
             let value = countryName
@@ -247,8 +253,6 @@ class MainPageViewController: UIViewController {
                 
                 beenToCountries.remove(at: index)
                 
-//                print(beenToCountries.count)
-                
                 return false
             }
         }
@@ -258,8 +262,7 @@ class MainPageViewController: UIViewController {
     
     func fetchBeenToCountries() {
 
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
+        let ref = Database.database().reference()
         
         ref.child("users").child("user01").child("beenToCountries").observeSingleEvent(of: .value, with: { (snapshot) in
         
@@ -304,11 +307,8 @@ class MainPageViewController: UIViewController {
                         
                         self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
                         
-                        for country in self.beenToCountries {
-                            
-                            print("viewdidload: \(country.id)")
-                            
-                        }
+                        print(self.beenToCountries.count)
+                        
                     }
                 }
 
