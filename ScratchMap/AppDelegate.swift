@@ -16,17 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Setup Firebase
+        
         FirebaseApp.configure()
-        Database().isPersistenceEnabled = true
+//        Database().isPersistenceEnabled = true
         
+        // Setup TabBarController
         
-        
-        let tabBarController = TabBarController(itemTypes: [.map, .achievement])
+        let entryViewController = makeEntryController()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        
-        window.rootViewController = tabBarController
-        
+
+        window.rootViewController = entryViewController
+
         window.makeKeyAndVisible()
         
         self.window = window
@@ -56,5 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func makeEntryController() -> UIViewController {
+        
+        if Auth.auth().currentUser != nil {
+            
+            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
+            
+            return tabBarController
+            
+        } else {
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+            
+            return loginViewController
+        }
+        
+    }
+
 
 }

@@ -24,8 +24,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
         svgWorldMapSetup()
         scrollViewSetUp()
-        tapRecognizerSetup()
         fetchBeenToCountries()
+        tapRecognizerSetup()
 
     }
 
@@ -44,21 +44,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
         for path in paths {
             
-             self.calculatePictureBounds(rect: path.cgPath.boundingBox)
+            self.calculatePictureBounds(rect: path.cgPath.boundingBox)
             
-            // Create a layer for each path
-            let layer = CAShapeLayer()
-            layer.path = path.cgPath
-            layer.fillColor = UIColor.gray.cgColor
-            
-            // Default Settings
-            let strokeWidth = CGFloat(1.0)
-            let strokeColor = UIColor.white.cgColor
-            
-            layer.lineWidth = strokeWidth
-            layer.strokeColor = strokeColor
-            
-            self.mapContainerView.layer.addSublayer(layer)
+            colorNonSelectedCountry(path: path)
 
         }
     }
@@ -72,14 +60,16 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
         mapContainerView.frame = CGRect(
             x: scrollView.frame.minX + 10,
-            y: scrollView.frame.minY + 100,
-            width: self.pictureSize.width,
+            y: scrollView.frame.minY + 10,
+            width: self.pictureSize.width + 20,
             height: self.pictureSize.height
         )
         
         // setup scrollView
         
-         scrollView.contentSize = self.pictureSize
+         scrollView.contentSize = CGSize(width: self.pictureSize.width + 20, height: self.pictureSize.height)
+            
+        
         
 //        scrollView.contentSize = CGSize(width: 1100, height: 680)
         
@@ -96,8 +86,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
         // zoom setting
         scrollView.delegate = self
-        scrollView.zoomScale = 0.8
-        scrollView.minimumZoomScale = 0.5
+        scrollView.zoomScale = 0.5
+        scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 3.0
         
         // scrollView constraints
@@ -118,7 +108,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             toItem: view,
             attribute: .top,
             multiplier: 1.0,
-            constant: 30.0
+            constant: 20.0
         )
 
         let trailing = NSLayoutConstraint(
@@ -138,15 +128,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             toItem: view,
             attribute: .bottom,
             multiplier: 1.0,
-            constant: -80.0
+            constant: 0.0
         )
 
         view.addConstraints([ leading, top, trailing, bottom ])
-//
-//        view.layoutIfNeeded()
-        
-        print(scrollView.frame)
-        print("scrollView.contentSize: \(scrollView.contentSize)")
         
     }
     
@@ -155,37 +140,37 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         return  mapContainerView
     }
     
-    //3. 為了讓圖片縮小填滿且有Aspect Fit
-    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-        let widthScale = size.width /  mapContainerView.bounds.width
-        let heightScale = size.height /  mapContainerView.bounds.height
-        
-        let minScale = min(widthScale, heightScale)
-        scrollView.minimumZoomScale = minScale
-        
-        scrollView.zoomScale = minScale
-        
-    }
+//    //3. 為了讓圖片縮小填滿且有Aspect Fit
+//    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+//        let widthScale = size.width /  mapContainerView.bounds.width
+//        let heightScale = size.height /  mapContainerView.bounds.height
+//
+//        let minScale = min(widthScale, heightScale)
+//        scrollView.minimumZoomScale = minScale
+//
+//        scrollView.zoomScale = minScale
     
-    //3. 呼叫
-    override func viewWillLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        updateMinZoomScaleForSize(view.bounds.size)
-        
-    }
+//    }
     
-    //4.讓圖片置中, 每次縮放之後會被呼叫
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let imageViewSize =  mapContainerView.frame.size
-        let scrollViewSize = scrollView.bounds.size
-        
-        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
-        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
-        
-        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
-    }
-    
+//    //3. 呼叫
+//    override func viewWillLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//        updateMinZoomScaleForSize(view.bounds.size)
+//
+//    }
+
+//    //4.讓圖片置中, 每次縮放之後會被呼叫
+//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+//        let imageViewSize =  mapContainerView.frame.size
+//        let scrollViewSize = scrollView.bounds.size
+//
+//        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+//        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+//
+//        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+//    }
+
     func tapRecognizerSetup() {
         
         let tapRecognizer = UITapGestureRecognizer(
@@ -226,20 +211,17 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             
         if path.contains(tapLocation) && countryHasNotBeingSelected(id: countryId) {
             
-            let layer = CAShapeLayer()
-            layer.path = path.cgPath
-            layer.fillColor = UIColor.red.cgColor
-                
-            let strokeWidth = CGFloat(1.0)
-            let strokeColor = UIColor.blue.cgColor
-                
-            layer.lineWidth = strokeWidth
-            layer.strokeColor = strokeColor
-            self.mapContainerView.layer.addSublayer(layer)
+            colorSelectedCountry(path: path)
+            
+            let user = Auth.auth().currentUser
+            guard let userId = user?.uid else {
+                // need to handle
+                return
+            }
             
             let ref = Database.database().reference()
 //            ref.keepSynced(true)
-            let userInfo = ref.child("users").child("user01").child("beenToCountries").child("\(countryId)")
+            let userInfo = ref.child("users").child(userId).child("beenToCountries").child("\(countryId)")
             let value = countryName
             userInfo.setValue(value)
             
@@ -270,16 +252,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             
             if beenToCountry.id == id {
                 
-                let layer = CAShapeLayer()
-                layer.path = beenToCountry.path.cgPath
-                layer.fillColor = UIColor.gray.cgColor
-                
-                let strokeWidth = CGFloat(1.0)
-                let strokeColor = UIColor.white.cgColor
-                
-                layer.lineWidth = strokeWidth
-                layer.strokeColor = strokeColor
-                self.mapContainerView.layer.addSublayer(layer)
+                colorNonSelectedCountry(path: beenToCountry.path)
+
                 
                 guard
                     let index = beenToCountries.index(of: beenToCountry)
@@ -287,9 +261,15 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
                     break
                 }
                 
+                let user = Auth.auth().currentUser
+                guard let userId = user?.uid else {
+                    // need to handle
+                    return false
+                }
+                
                 let ref = Database.database().reference()
                 ref.keepSynced(true)
-                let countryRef = ref.child("users").child("user01").child("beenToCountries").child("\(id)")
+                let countryRef = ref.child("users").child(userId).child("beenToCountries").child("\(id)")
                 countryRef.removeValue()
                 
                 beenToCountries.remove(at: index)
@@ -302,12 +282,18 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchBeenToCountries() {
+        
+        let user = Auth.auth().currentUser
+        guard let userId = user?.uid else {
+            // need to handle
+            return
+        }
 
         let ref = Database.database().reference()
         
-        ref.child("users").child("user01").child("beenToCountries").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(userId).child("beenToCountries").observeSingleEvent(of: .value, with: { (snapshot) in
         
-            ref.keepSynced(true)
+//            ref.keepSynced(true)
 
             guard let dataValue = snapshot.value as? [String: String] else { return }
         
@@ -332,19 +318,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
                     
                     if contryKey == countryId {
                         
-                        // Create a layer for each path
-                        let layer = CAShapeLayer()
-                        layer.path = path.cgPath
-                        layer.fillColor = UIColor.red.cgColor
-                        
-                        // Default Settings
-                        let strokeWidth = CGFloat(1.0)
-                        let strokeColor = UIColor.blue.cgColor
-                        
-                        layer.lineWidth = strokeWidth
-                        layer.strokeColor = strokeColor
-                        
-                        self.mapContainerView.layer.addSublayer(layer)
+                        self.colorSelectedCountry(path: path)
                         
                         self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
                         
@@ -358,7 +332,39 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func colorBeenToCountries() {
+    func colorSelectedCountry(path: SVGBezierPath) {
+        
+        // Create a layer for each path
+        let layer = CAShapeLayer()
+        layer.path = path.cgPath
+        layer.fillColor = UIColor.red.cgColor
+        
+        // Default Settings
+        let strokeWidth = CGFloat(0.5)
+        let strokeColor = UIColor.blue.cgColor
+        
+        layer.lineWidth = strokeWidth
+        layer.strokeColor = strokeColor
+        
+        self.mapContainerView.layer.addSublayer(layer)
+        
+    }
+    
+    func colorNonSelectedCountry(path: SVGBezierPath) {
+        
+        // Create a layer for each path
+        let layer = CAShapeLayer()
+        layer.path = path.cgPath
+        layer.fillColor = UIColor.gray.cgColor
+        
+        // Default Settings
+        let strokeWidth = CGFloat(0.5)
+        let strokeColor = UIColor.white.cgColor
+        
+        layer.lineWidth = strokeWidth
+        layer.strokeColor = strokeColor
+        
+        self.mapContainerView.layer.addSublayer(layer)
         
     }
     
