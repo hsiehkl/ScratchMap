@@ -142,15 +142,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eZ-fn-Yct">
+                                <rect key="frame" x="100" y="378.5" width="175" height="30"/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.34901960780000002" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NSx-4y-SJ8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Back to login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToLoginAction:" destination="G8f-ji-SHq" eventType="touchUpInside" id="VN2-a3-qNg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.34901960780000002" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="i5t-en-Ayh" firstAttribute="leading" secondItem="eNC-kq-bha" secondAttribute="leading" constant="40" id="1Zk-WQ-QS1"/>
+                            <constraint firstItem="2eZ-fn-Yct" firstAttribute="top" secondItem="baV-el-Z6H" secondAttribute="bottom" constant="20" id="MPw-zR-zUF"/>
                             <constraint firstItem="xSm-WJ-pDN" firstAttribute="leading" secondItem="eNC-kq-bha" secondAttribute="leading" constant="40" id="NoT-ZH-ux1"/>
                             <constraint firstItem="Y4F-Ci-o93" firstAttribute="leading" secondItem="eNC-kq-bha" secondAttribute="leading" constant="40" id="OOE-nN-sYq"/>
                             <constraint firstItem="baV-el-Z6H" firstAttribute="centerX" secondItem="c0q-Hw-Rdw" secondAttribute="centerX" id="RVo-Do-0fX"/>
                             <constraint firstItem="baV-el-Z6H" firstAttribute="centerY" secondItem="c0q-Hw-Rdw" secondAttribute="centerY" id="Stk-iP-kQ8"/>
                             <constraint firstItem="baV-el-Z6H" firstAttribute="leading" secondItem="eNC-kq-bha" secondAttribute="leading" constant="40" id="Y6u-mI-Nr8"/>
+                            <constraint firstItem="eNC-kq-bha" firstAttribute="trailing" secondItem="2eZ-fn-Yct" secondAttribute="trailing" constant="100" id="Z0f-7e-M0v"/>
+                            <constraint firstItem="2eZ-fn-Yct" firstAttribute="leading" secondItem="eNC-kq-bha" secondAttribute="leading" constant="100" id="dLC-T8-2bS"/>
                             <constraint firstItem="eNC-kq-bha" firstAttribute="trailing" secondItem="xSm-WJ-pDN" secondAttribute="trailing" constant="40" id="eXc-Oq-AXW"/>
                             <constraint firstItem="baV-el-Z6H" firstAttribute="top" secondItem="Y4F-Ci-o93" secondAttribute="bottom" constant="20" id="ked-hs-7nd"/>
                             <constraint firstItem="Y4F-Ci-o93" firstAttribute="top" secondItem="xSm-WJ-pDN" secondAttribute="bottom" constant="10" id="lgz-0X-Jyu"/>
@@ -184,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GN-dV-dS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2383" y="176"/>
+            <point key="canvasLocation" x="-2330" y="89"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="tne-QT-ifu">
