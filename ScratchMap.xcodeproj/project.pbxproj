@@ -14,6 +14,7 @@
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
 		6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */; };
+		6BA0F2171FE9259E00D0F971 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */; };
 		6BAB10211FE777DA00CAE365 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
@@ -37,6 +38,7 @@
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareViewController.swift; sourceTree = "<group>"; };
+		6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
 		6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		6B30F2F11FE3B1380048F310 /* ScratchMap */ = {
 			isa = PBXGroup;
 			children = (
+				6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */,
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
 				6BE7641A1FE3D47100B3708B /* Model */,
 				6BEF0E991FE8A3C300EED739 /* Login */,
@@ -305,6 +308,7 @@
 				6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */,
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,
+				6BA0F2171FE9259E00D0F971 /* UIWindowExtensions.swift in Sources */,
 				6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */,
 				6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */,
 				6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */,

@@ -60,23 +60,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func makeEntryController() -> UIViewController {
-        
+
         if Auth.auth().currentUser != nil {
-            
+
             let tabBarController = TabBarController(itemTypes: [.map, .achievement])
-            
+
             return tabBarController
-            
+
         } else {
-            
+
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            
+
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
-            
+
             return loginViewController
         }
-        
+
     }
 
 
+}
+
+extension AppDelegate {
+    
+    // swiftlint:disable force_cast
+    class var shared: AppDelegate {
+        
+        return UIApplication.shared.delegate as! AppDelegate
+        
+    }
+    // swiftlint:enable force_cast
+    
 }

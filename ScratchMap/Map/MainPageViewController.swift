@@ -22,6 +22,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        checkUserStatus()
         svgWorldMapSetup()
         scrollViewSetUp()
         fetchBeenToCountries()
@@ -376,5 +377,24 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
+    
+//    func checkUserStatus() {
+//
+//        if Auth.auth().currentUser == nil {
+//
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+//
+//            self.present(loginViewController, animated: true, completion: nil)
+//
+//
+//        } else {
+//
+//
+//        }
+//
+//    }
+
     
 }

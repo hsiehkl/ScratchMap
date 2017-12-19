@@ -57,6 +57,24 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
+                let tabBarController = TabBarController(
+                    itemTypes: [ .map, .achievement ]
+                )
+                
+                AppDelegate.shared.window?.updateRoot(
+                    to: tabBarController,
+                    animation: crossDissolve,
+                    completion: nil
+                )
+                
+//                let window = UIWindow(frame: UIScreen.main.bounds)
+//
+//                AppDelegate.shared.window?.rootViewController = tabBarController
+//
+//                window.makeKeyAndVisible()
+//
+//                self.window = window
+
                 print("login success")
             })
             

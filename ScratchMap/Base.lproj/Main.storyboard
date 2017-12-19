@@ -227,15 +227,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gI-eq-Fpk">
-                                <rect key="frame" x="307" y="40" width="48" height="30"/>
+                                <rect key="frame" x="305" y="30" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c1X-Ab-vTi"/>
+                                    <constraint firstAttribute="width" constant="50" id="e71-gU-vJ7"/>
+                                </constraints>
                                 <state key="normal" title="Logout"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="m07-Hl-6q0" firstAttribute="bottom" secondItem="1gI-eq-Fpk" secondAttribute="bottom" constant="597" id="8TA-e0-N6N"/>
-                            <constraint firstItem="1gI-eq-Fpk" firstAttribute="top" secondItem="m07-Hl-6q0" secondAttribute="top" constant="20" id="Qbl-Vd-nxN"/>
-                            <constraint firstItem="1gI-eq-Fpk" firstAttribute="leading" secondItem="m07-Hl-6q0" secondAttribute="leading" constant="307" id="oDX-hA-PPW"/>
+                            <constraint firstItem="1gI-eq-Fpk" firstAttribute="top" secondItem="m07-Hl-6q0" secondAttribute="top" constant="10" id="Qbl-Vd-nxN"/>
                             <constraint firstItem="m07-Hl-6q0" firstAttribute="trailing" secondItem="1gI-eq-Fpk" secondAttribute="trailing" constant="20" id="sSZ-jq-nOo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m07-Hl-6q0"/>
