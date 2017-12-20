@@ -13,7 +13,6 @@ import Firebase
 class MainPageViewController: UIViewController, UIScrollViewDelegate {
     
     private let scrollView = UIScrollView()
-//    private let mapContainerView = UIView()
     private let mapContainerView = UIImageView()
     var paths = [SVGBezierPath]()
     var beenToCountries = [Country]()
@@ -27,6 +26,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         scrollViewSetUp()
         fetchBeenToCountries()
         tapRecognizerSetup()
+        setupNavigationButton()
 
     }
 
@@ -70,8 +70,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         
          scrollView.contentSize = CGSize(width: self.pictureSize.width + 20, height: self.pictureSize.height)
             
-        
-        
 //        scrollView.contentSize = CGSize(width: 1100, height: 680)
         
         scrollView.backgroundColor = UIColor.yellow
@@ -376,6 +374,25 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
     
+    // NavigationBar setup
+    func setupNavigationButton() {
+        
+        let gotToAchievementButton = UIBarButtonItem(image: #imageLiteral(resourceName: "mapCheck"), style: .plain, target: self, action: #selector(gotToAchievement(sender:)))
+
+        self.navigationItem.rightBarButtonItem = gotToAchievementButton
+        
+    }
+    
+    @objc func gotToAchievement(sender: UIButton!) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
+        
+        achievementViewController.beenToCountries = self.beenToCountries
+        
+        self.navigationController?.pushViewController(achievementViewController, animated: true)
+        
+    }
 //    func checkUserStatus() {
 //
 //        if Auth.auth().currentUser == nil {

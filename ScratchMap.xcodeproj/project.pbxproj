@@ -25,6 +25,7 @@
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
 		6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */; };
+		6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7F4123CBF31FF5FDDC9997A /* Pods-ScratchMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */,
+				6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */,
 				6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */,
 				6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */,
+				6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */,
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
 				6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */,
 			);

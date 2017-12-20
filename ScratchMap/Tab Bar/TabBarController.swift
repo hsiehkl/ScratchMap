@@ -71,11 +71,13 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") as! MainPageViewController
             
+            let navigationController = UINavigationController(rootViewController: mainPageViewController)
+            
             mainPageViewController.tabBarItem = TabBarItem(
                 itemType: itemType
             )
             
-            return mainPageViewController
+            return navigationController
             
         case .achievement:
             
@@ -89,6 +91,8 @@ class TabBarController: UITabBarController {
         }
         
     }
+    
+    
     
 
     /*
