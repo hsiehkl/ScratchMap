@@ -353,12 +353,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     
     func colorNonSelectedCountry(path: SVGBezierPath) {
         
-        // Create a layer for each path
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.fillColor = UIColor.gray.cgColor
         
-        // Default Settings
         let strokeWidth = CGFloat(0.5)
         let strokeColor = UIColor.white.cgColor
         

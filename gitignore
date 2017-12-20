@@ -10,6 +10,7 @@
 Icon
 
 # Firebase plist
+ScratchMap/GoogleService-Info.plist
 
 # Thumbnails
 ._*
