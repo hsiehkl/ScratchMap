@@ -15,7 +15,6 @@
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
 		6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */; };
 		6BA0F2171FE9259E00D0F971 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */; };
-		6BAB10211FE777DA00CAE365 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
@@ -25,6 +24,7 @@
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
+		6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareViewController.swift; sourceTree = "<group>"; };
 		6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
-		6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F7F4123CBF31FF5FDDC9997A /* Pods-ScratchMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +103,7 @@
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
-				6BAB10201FE777DA00CAE365 /* GoogleService-Info.plist */,
+				6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
 			);
@@ -228,7 +228,7 @@
 			files = (
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
-				6BAB10211FE777DA00CAE365 /* GoogleService-Info.plist in Resources */,
+				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
 			);
