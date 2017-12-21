@@ -10,23 +10,28 @@ import UIKit
 import PocketSVG
 import Firebase
 
-class MainPageViewController: UIViewController, UIScrollViewDelegate {
+class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelDelegate {
+    
+    private let dataModel = DataModel()
     
     private let scrollView = UIScrollView()
     private let mapContainerView = UIImageView()
     var paths = [SVGBezierPath]()
-    var beenToCountries = [Country]()
+    var visitedCountries = [Country]()
     var pictureSize = CGSize.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        checkUserStatus()
+        dataModel.delegate = self
+        dataModel.requestData()
+        
         svgWorldMapSetup()
         scrollViewSetUp()
-        fetchBeenToCountries()
+//        fetchVisitedCountries()
         tapRecognizerSetup()
-        setupNavigationButton()
+//        setupNavigationButton()
+
 
     }
 
@@ -48,8 +53,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             self.calculatePictureBounds(rect: path.cgPath.boundingBox)
             
             colorNonSelectedCountry(path: path)
-
         }
+        
+        print("svgWorldMapSetup")
     }
     
     func scrollViewSetUp() {
@@ -131,7 +137,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         )
 
         view.addConstraints([ leading, top, trailing, bottom ])
-        
+        print("scrollviewsetup")
     }
     
     // 2.加了縮放功能 protocol (UIScrollViewDelegate) 需要implement 的function
@@ -220,23 +226,13 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             
             let ref = Database.database().reference()
 //            ref.keepSynced(true)
-            let userInfo = ref.child("users").child(userId).child("beenToCountries").child("\(countryId)")
+            let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(countryId)")
             let value = countryName
             userInfo.setValue(value)
-            
-            for color in self.beenToCountries {
-                
-                print("color1: \(color.id)")
-                
-            }
 
-            self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
+            self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
             
-            for color in self.beenToCountries {
-                
-                print("color2: \(color.id)")
-                
-            }
+            print("selected: \(visitedCountries.count)")
             
             } else {
                 
@@ -247,15 +243,15 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     
     func countryHasNotBeingSelected(id: String) -> Bool {
         
-        for beenToCountry in beenToCountries {
+        for visitedCountry in visitedCountries {
             
-            if beenToCountry.id == id {
+            if visitedCountry.id == id {
                 
-                colorNonSelectedCountry(path: beenToCountry.path)
+                colorNonSelectedCountry(path: visitedCountry.path)
 
                 
                 guard
-                    let index = beenToCountries.index(of: beenToCountry)
+                    let index = visitedCountries.index(of: visitedCountry)
                 else {
                     break
                 }
@@ -268,10 +264,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
                 
                 let ref = Database.database().reference()
                 ref.keepSynced(true)
-                let countryRef = ref.child("users").child(userId).child("beenToCountries").child("\(id)")
+                let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
                 countryRef.removeValue()
                 
-                beenToCountries.remove(at: index)
+                visitedCountries.remove(at: index)
                 
                 return false
             }
@@ -280,56 +276,56 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         return true
     }
     
-    func fetchBeenToCountries() {
-        
-        let user = Auth.auth().currentUser
-        guard let userId = user?.uid else {
-            // need to handle
-            return
-        }
-
-        let ref = Database.database().reference()
-        
-        ref.child("users").child(userId).child("beenToCountries").observeSingleEvent(of: .value, with: { (snapshot) in
-        
-//            ref.keepSynced(true)
-
-            guard let dataValue = snapshot.value as? [String: String] else { return }
-        
-            for contryKey in dataValue.keys {
-
-                for path in self.paths {
-                    
-                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
-                    
-                    guard
-                        let countryName = counrtyInfo["title"],
-                        let countryId = counrtyInfo["id"]
-                        
-                        else {
-                            
-                            let error = CountryInfoError.notFound
-                            
-                            print(error)
-                            
-                            return
-                    }
-                    
-                    if contryKey == countryId {
-                        
-                        self.colorSelectedCountry(path: path)
-                        
-                        self.beenToCountries.append(Country(name: countryName, id: countryId, path: path))
-                        
-                        print(self.beenToCountries.count)
-                        
-                    }
-                }
-
-            }
-        })
-        
-    }
+//    func fetchVisitedCountries() {
+//
+//        let user = Auth.auth().currentUser
+//        guard let userId = user?.uid else {
+//            // need to handle
+//            return
+//        }
+//
+//        let ref = Database.database().reference()
+//
+//        ref.child("users").child(userId).child("visitedCountries").observeSingleEvent(of: .value, with: { (snapshot) in
+//
+////            ref.keepSynced(true)
+//
+//            guard let dataValue = snapshot.value as? [String: String] else { return }
+//
+//            for contryKey in dataValue.keys {
+//
+//                for path in self.paths {
+//
+//                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+//
+//                    guard
+//                        let countryName = counrtyInfo["title"],
+//                        let countryId = counrtyInfo["id"]
+//
+//                        else {
+//
+//                            let error = CountryInfoError.notFound
+//
+//                            print(error)
+//
+//                            return
+//                    }
+//
+//                    if contryKey == countryId {
+//
+//                        self.colorSelectedCountry(path: path)
+//
+//                        self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
+//
+////                        print(self.visitedCountries.count)
+//
+//                    }
+//                }
+//
+//            }
+//        })
+//
+//    }
     
     func colorSelectedCountry(path: SVGBezierPath) {
         
@@ -374,6 +370,20 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
     
+    // conform protocol
+    func didReciveCountryData(visitedCountries: [Country]) {
+        
+        self.visitedCountries = visitedCountries
+        
+        for visitedCountry in visitedCountries {
+            
+            colorSelectedCountry(path: visitedCountry.path)
+        }
+        
+        print("visitedCountries: \(self.visitedCountries[0].name, self.visitedCountries[1].name)")
+    }
+
+    
     // NavigationBar setup
     func setupNavigationButton() {
         
@@ -388,28 +398,11 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
         
-        achievementViewController.beenToCountries = self.beenToCountries
+        achievementViewController.visitedCountries = self.visitedCountries
         
         self.navigationController?.pushViewController(achievementViewController, animated: true)
         
     }
-//    func checkUserStatus() {
-//
-//        if Auth.auth().currentUser == nil {
-//
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
-//
-//            self.present(loginViewController, animated: true, completion: nil)
-//
-//
-//        } else {
-//
-//
-//        }
-//
-//    }
 
     
 }

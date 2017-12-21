@@ -8,27 +8,39 @@
 
 import UIKit
 
-class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
     
-    var beenToCountries = [Country]()
+    func didReciveCountryData(visitedCountries: [Country]) {
+
+        self.visitedCountries = visitedCountries
+
+        self.classified()
+  
+        self.collectionView.reloadData()
+    }
+    
+    private let dataModel = DataModel()
+    var visitedCountries = [Country]()
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
-    
-    
+    var counters = ["Europe": 0, "Asia": 0, "Africa": 0, "North America": 0, "South America": 0, "Oceania": 0]
+
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    let europeanCountries = [
-        "AL": "Albania",
-        "AD": "Andorra"
-    ]
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(beenToCountries)
+        dataModel.delegate = self
         setupCollectionViewCells()
+//        classified()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        dataModel.requestData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +54,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-     return 6
+     return continents.count
 
     }
     
@@ -51,7 +63,17 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCollectionViewCell", for: indexPath) as! AchievementCollectionViewCell
             
             cell.continentLabel.text = continents[indexPath.row]
-            
+            cell.continentImageView.image = UIImage(named: continents[indexPath.row])
+        
+            let countryCounts = continentCountryCount()
+        
+            let key = continents[indexPath.row]
+        
+            if let progress = counters[key] {
+
+            cell.progressLabel.text = "\(progress)/\(countryCounts[indexPath.row])"
+            }
+        
             return cell
         
     }
@@ -71,13 +93,47 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         
-        print(layout.itemSize)
-        
         collectionView.collectionViewLayout = layout
         
     }
-
     
-    
+    func classified() {
+        
+        counters = ["Europe": 0, "Asia": 0, "Africa": 0, "North America": 0, "South America": 0, "Oceania": 0]
 
+        for visitedCountry in visitedCountries {
+            
+            let countryId = visitedCountry.id
+            
+            for (key, value) in countryIdClassifiedByContinents {
+                
+                for contry in value {
+                    
+                    if contry == countryId {
+                        
+                        guard var counter = counters[key] else { return }
+
+                        counter += 1
+
+                        counters[key] = counter
+                    }
+                }
+            }
+        }
+    }
+    
+    func continentCountryCount() -> [Int] {
+        
+        var countryAmount: [Int] = []
+        
+        for contient in continents {
+            
+            if let value = countryIdClassifiedByContinents[contient] {
+                countryAmount.append(value.count)
+            }
+        }
+        
+        return countryAmount
+    }
+    
 }

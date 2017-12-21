@@ -1,0 +1,93 @@
+//
+//  DataModel.swift
+//  ScratchMap
+//
+//  Created by Cheng-Shan Hsieh on 2017/12/21.
+//  Copyright © 2017年 HsinTing Hsieh. All rights reserved.
+//
+
+import Foundation
+import Firebase
+import PocketSVG
+
+protocol DataModelDelegate: class {
+    
+    func didReciveCountryData(visitedCountries: [Country])
+//    func didRenderPaths(paths: [SVGBezierPath])
+    
+}
+
+class DataModel {
+    
+    weak var delegate: DataModelDelegate?
+    
+//    var paths = [SVGBezierPath]()
+//
+    var visitedCountries = [Country]()
+    
+    func requestData() {
+        
+        let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
+        
+        let paths = SVGBezierPath.pathsFromSVG(at: url)
+        
+        visitedCountries = []
+        
+//        self.paths = paths
+        
+//        self.delegate?.didRenderPaths(paths: paths)
+        
+        let user = Auth.auth().currentUser
+        guard let userId = user?.uid else {
+            // need to handle
+            return
+        }
+        
+        let ref = Database.database().reference()
+        
+        ref.child("users").child(userId).child("visitedCountries").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //            ref.keepSynced(true)
+            
+            guard let dataValue = snapshot.value as? [String: String] else { return }
+            
+            for contryKey in dataValue.keys {
+                
+                for path in paths {
+                    
+                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+                    
+                    guard
+                        let countryName = counrtyInfo["title"],
+                        let countryId = counrtyInfo["id"]
+                        
+                        else {
+                            
+                            let error = CountryInfoError.notFound
+                            
+                            print(error)
+                            
+                            return
+                    }
+                    
+                    if contryKey == countryId {
+                        
+//                        self.colorSelectedCountry(path: path)
+                        
+                        self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
+                        
+                        //                        print(self.visitedCountries.count)
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+            self.delegate?.didReciveCountryData(visitedCountries: self.visitedCountries)
+        })
+        
+    }
+    
+}
