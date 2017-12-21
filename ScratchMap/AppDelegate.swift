@@ -67,10 +67,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func makeEntryController() -> UIViewController {
 
         if Auth.auth().currentUser != nil {
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let prepareViewController = storyboard.instantiateViewController(withIdentifier: "prepareViewController") as! PrepareViewController
 
-            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
+//            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
 
-            return tabBarController
+            return prepareViewController
 
         } else {
 

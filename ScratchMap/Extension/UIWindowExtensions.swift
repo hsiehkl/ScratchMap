@@ -42,12 +42,10 @@ func crossDissolve(from: UIViewController?, to: UIViewController, completion: Cr
             fromView.removeFromSuperview()
             
             completion?(isComplete)
-            
     }
     )
     
 }
-
 
 extension UIWindow {
     

@@ -65,8 +65,6 @@ class DataModel {
                     
                     if contryKey == countryId {
                         
-//                        self.colorSelectedCountry(path: path)
-                        
                         self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
                         
                     }

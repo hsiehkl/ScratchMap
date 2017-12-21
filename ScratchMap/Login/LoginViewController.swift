@@ -67,20 +67,4 @@ class LoginViewController: UIViewController {
             
         }
     }
-    
-/* log out
-
-     func logoutAction() {
-     
-     do {
-        try Auth.auth()?.signOut()
-     } catch {
-        print("logout problem")
-     }
-     
-     
-     }
-     
-     
-*/
 }
