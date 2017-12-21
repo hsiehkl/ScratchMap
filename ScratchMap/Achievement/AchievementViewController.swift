@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
     
@@ -24,6 +25,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     var counters = ["Europe": 0, "Asia": 0, "Africa": 0, "North America": 0, "South America": 0, "Oceania": 0]
 
+    
+    @IBOutlet weak var logoutButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -134,6 +137,32 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         return countryAmount
+    }
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        
+        do {
+            try firebaseAuth.signOut()
+            
+        } catch let signOutError as NSError {
+            
+            self.showAlert(title: "Oops!", message: "\(signOutError)")
+            
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+
+        AppDelegate.shared.window?.updateRoot(
+            to: loginViewController,
+            animation: crossDissolve,
+            completion: nil
+        )
+        
     }
     
 }

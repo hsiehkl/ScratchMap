@@ -31,7 +31,7 @@ func crossDissolve(from: UIViewController?, to: UIViewController, completion: Cr
     toView.addSubview(fromView)
     
     UIView.animate(
-        withDuration: 0.8,
+        withDuration: 0.6,
         animations: {
             
             fromView.layer.opacity = 0.0
