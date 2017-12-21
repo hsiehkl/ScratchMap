@@ -43,16 +43,6 @@ class LoginViewController: UIViewController {
                 
                 if let firebaseError = error {
                     
-//                    let alertController = UIAlertController(
-//                        title: "Oops!",
-//                        message: "\(firebaseError.localizedDescription)",
-//                        preferredStyle: UIAlertControllerStyle.alert
-//                    )
-//
-//                    alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//
-//                    self.present(alertController, animated: true, completion: nil)
-                    
                     self.showAlert(title: "Oops!", message: "\(firebaseError.localizedDescription)", handler: nil)
                     
                     print(firebaseError.localizedDescription)
@@ -68,14 +58,6 @@ class LoginViewController: UIViewController {
                     animation: crossDissolve,
                     completion: nil
                 )
-                
-//                let window = UIWindow(frame: UIScreen.main.bounds)
-//
-//                AppDelegate.shared.window?.rootViewController = tabBarController
-//
-//                window.makeKeyAndVisible()
-//
-//                self.window = window
 
                 print("login success")
             })

@@ -13,16 +13,13 @@ import PocketSVG
 protocol DataModelDelegate: class {
     
     func didReciveCountryData(visitedCountries: [Country])
-//    func didRenderPaths(paths: [SVGBezierPath])
     
 }
 
 class DataModel {
     
     weak var delegate: DataModelDelegate?
-    
-//    var paths = [SVGBezierPath]()
-//
+
     var visitedCountries = [Country]()
     
     func requestData() {
@@ -32,10 +29,6 @@ class DataModel {
         let paths = SVGBezierPath.pathsFromSVG(at: url)
         
         visitedCountries = []
-        
-//        self.paths = paths
-        
-//        self.delegate?.didRenderPaths(paths: paths)
         
         let user = Auth.auth().currentUser
         guard let userId = user?.uid else {
@@ -76,18 +69,11 @@ class DataModel {
                         
                         self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
                         
-                        //                        print(self.visitedCountries.count)
-                        
                     }
-                    
-                    
                 }
-                
             }
             
             self.delegate?.didReciveCountryData(visitedCountries: self.visitedCountries)
         })
-        
     }
-    
 }

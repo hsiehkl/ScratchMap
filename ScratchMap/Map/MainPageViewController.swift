@@ -31,8 +31,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
 //        fetchVisitedCountries()
         tapRecognizerSetup()
 //        setupNavigationButton()
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,7 +111,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             toItem: view,
             attribute: .top,
             multiplier: 1.0,
-            constant: 20.0
+            constant: 0.0
         )
 
         let trailing = NSLayoutConstraint(
@@ -335,7 +333,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         layer.fillColor = UIColor.red.cgColor
         
         // Default Settings
-        let strokeWidth = CGFloat(0.5)
+        let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.blue.cgColor
         
         layer.lineWidth = strokeWidth
@@ -351,7 +349,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         layer.path = path.cgPath
         layer.fillColor = UIColor.gray.cgColor
         
-        let strokeWidth = CGFloat(0.5)
+        let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.white.cgColor
         
         layer.lineWidth = strokeWidth
@@ -401,6 +399,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         achievementViewController.visitedCountries = self.visitedCountries
         
         self.navigationController?.pushViewController(achievementViewController, animated: true)
+        
+    }
+    
+    func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
         
     }
 

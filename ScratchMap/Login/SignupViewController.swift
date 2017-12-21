@@ -56,16 +56,6 @@ class SignupViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                 if let firebaseError = error {
                     
-//                    let alertController = UIAlertController(
-//                        title: "Oops!",
-//                        message: "\(firebaseError.localizedDescription)",
-//                        preferredStyle: UIAlertControllerStyle.alert
-//                    )
-//
-//                    alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//
-//                    self.present(alertController, animated: true, completion: nil)
-                    
                     self.showAlert(title: "Opps!", message: "\(firebaseError.localizedDescription)", handler: nil)
                     
                     print(firebaseError.localizedDescription)

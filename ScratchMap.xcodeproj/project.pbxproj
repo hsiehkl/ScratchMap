@@ -99,9 +99,8 @@
 		6B30F2F11FE3B1380048F310 /* ScratchMap */ = {
 			isa = PBXGroup;
 			children = (
-				6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */,
-				6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */,
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
+				6BF502C71FEBBD4E00E013E2 /* Extension */,
 				6BE7641A1FE3D47100B3708B /* Model */,
 				6BEF0E991FE8A3C300EED739 /* Login */,
 				6BE764191FE3D45200B3708B /* Map */,
@@ -162,6 +161,15 @@
 				6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */,
 			);
 			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		6BF502C71FEBBD4E00E013E2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */,
+				6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		6E2FF2D3F701F9BDEFD0942C /* Pods */ = {
@@ -465,7 +473,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KPB352JQU2;
 				INFOPLIST_FILE = ScratchMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HsinTing-Hsieh.ScratchMap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -480,7 +490,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KPB352JQU2;
 				INFOPLIST_FILE = ScratchMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "HsinTing-Hsieh.ScratchMap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
