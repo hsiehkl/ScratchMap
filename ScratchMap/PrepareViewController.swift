@@ -26,10 +26,15 @@ class PrepareViewController: UIViewController, ScratchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scratchView = ScratchView(frame: CGRect(x:20, y:80, width:241, height:106), countryImage: #imageLiteral(resourceName: "Europe"), maskImage: #imageLiteral(resourceName: "Asia"))
+        self.view.backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: self.view.bounds, andColors:[
+            UIColor(red: 3.0 / 255.0, green: 63.0 / 255.0, blue: 122.0 / 255.0, alpha: 1.0),
+            UIColor(red: 4.0 / 255.0, green: 107.0 / 255.0, blue: 149.0 / 255.0, alpha: 1.0)
+            ])
         
-        scratchView.delegate = self
-        self.view.addSubview(scratchView)
+//        let scratchView = ScratchView(frame: CGRect(x:20, y:80, width:241, height:106), countryImage: #imageLiteral(resourceName: "Europe"), maskImage: #imageLiteral(resourceName: "Asia"))
+        
+//        scratchView.delegate = self
+//        self.view.addSubview(scratchView)
         
     }
 
