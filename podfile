@@ -13,5 +13,6 @@ target 'ScratchMap' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'IQKeyboardManagerSwift'
-
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  
 end

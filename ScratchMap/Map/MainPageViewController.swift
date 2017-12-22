@@ -9,6 +9,7 @@
 import UIKit
 import PocketSVG
 import Firebase
+import ChameleonFramework
 
 class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelDelegate {
     
