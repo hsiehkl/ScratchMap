@@ -32,6 +32,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Achievement_______Page")
+        
         dataModel.delegate = self
         setupCollectionViewCells()
 //        classified()

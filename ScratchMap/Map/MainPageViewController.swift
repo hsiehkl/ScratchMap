@@ -23,6 +23,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Main____Page")
+        
         dataModel.delegate = self
         dataModel.requestData()
         

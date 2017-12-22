@@ -104,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
+				6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */,
 				6BD9DF561FEBF0DF00A2FE0D /* Scratch */,
 				6BF502C71FEBBD4E00E013E2 /* Extension */,
 				6BE7641A1FE3D47100B3708B /* Model */,
@@ -143,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */,
-				6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
