@@ -79,7 +79,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             
 //        scrollView.contentSize = CGSize(width: 1100, height: 680)
         
-        scrollView.backgroundColor = UIColor.yellow
+//        scrollView.backgroundColor = UIColor.yellow
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -93,8 +93,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         // zoom setting
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 3.0
+        scrollView.minimumZoomScale = 0.5
+        scrollView.maximumZoomScale = 4.0
         
         // scrollView constraints
         let leading = NSLayoutConstraint(
@@ -166,16 +166,16 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
 //
 //    }
 
-//    //4.讓圖片置中, 每次縮放之後會被呼叫
-//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//        let imageViewSize =  mapContainerView.frame.size
-//        let scrollViewSize = scrollView.bounds.size
-//
-//        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
-//        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
-//
-//        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
-//    }
+    //4.讓圖片置中, 每次縮放之後會被呼叫
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let imageViewSize =  mapContainerView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+
+        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+
+        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+    }
 
     func tapRecognizerSetup() {
         
@@ -333,11 +333,28 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         // Create a layer for each path
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-        layer.fillColor = UIColor.red.cgColor
+//        let bounds = self.calculatePictureBounds(rect: path.cgPath.boundingBox)
+        var pictureSizeTest = CGSize.zero
+        let rect = path.cgPath.boundingBox
+        let maxX = rect.minX + rect.width
+        let maxY = rect.minY + rect.height
+        
+        pictureSizeTest.width = pictureSizeTest.width > maxX ? pictureSizeTest.width: maxX
+        pictureSizeTest.height = pictureSizeTest.height > maxY ? pictureSizeTest.height : maxY
+        
+        let fillColor = 
+            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: pictureSizeTest.width, height: pictureSizeTest.height), andColors:[
+//                FlatGreen(), FlatGreenDark()
+            UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
+
+            UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
+//                        UIColor(red: 69.0 / 255.0, green: 230.0 / 255.0, blue: 136.0 / 255.0, alpha: 1.0),
+                        ])
+        layer.fillColor = fillColor.cgColor
         
         // Default Settings
-        let strokeWidth = CGFloat(0.3)
-        let strokeColor = UIColor.blue.cgColor
+        let strokeWidth = CGFloat(0.5)
+        let strokeColor = UIColor.black.cgColor
         
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor
@@ -352,7 +369,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         layer.path = path.cgPath
         layer.fillColor = UIColor.gray.cgColor
         
-        let strokeWidth = CGFloat(0.3)
+        let strokeWidth = CGFloat(0.5)
         let strokeColor = UIColor.white.cgColor
         
         layer.lineWidth = strokeWidth

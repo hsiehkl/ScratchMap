@@ -196,13 +196,22 @@
                     <view key="view" contentMode="scaleToFill" id="3Nv-EK-Wvk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfJ-tF-zGy">
+                                <rect key="frame" x="164" y="594" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="aby-kc-79v" eventType="touchUpInside" id="BZb-Sv-Wt6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cBt-vl-jN1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GN-dV-dS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2330" y="89"/>
+            <point key="canvasLocation" x="108" y="-208"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -300,6 +309,14 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutTapped:" destination="bIV-yf-Cyf" eventType="touchUpInside" id="Qwi-Gn-qeW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAt-fR-V4N">
+                                <rect key="frame" x="147" y="44" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ScratchTest"/>
+                                <connections>
+                                    <segue destination="aby-kc-79v" kind="show" id="Zyx-iz-Bdu"/>
                                 </connections>
                             </button>
                         </subviews>

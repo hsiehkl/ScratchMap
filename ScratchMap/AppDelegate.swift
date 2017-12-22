@@ -68,13 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if Auth.auth().currentUser != nil {
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//            let prepareViewController = storyboard.instantiateViewController(withIdentifier: "prepareViewController") as! PrepareViewController
 
-            let prepareViewController = storyboard.instantiateViewController(withIdentifier: "prepareViewController") as! PrepareViewController
+            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
 
-//            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
-
-            return prepareViewController
+            return tabBarController
 
         } else {
 
