@@ -35,7 +35,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         print("Achievement_______Page")
         
         dataModel.delegate = self
-        setupCollectionViewCells()
+//        setupCollectionViewCells()
 //        classified()
 
         // Do any additional setup after loading the view.
@@ -46,6 +46,61 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         dataModel.requestData()
         
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        super.viewWillLayoutSubviews()
+        
+        let screenWidth = UIScreen.main.bounds.width - 20
+        let screenHeight = UIScreen.main.bounds.height
+        
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+            
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
+            
+            print("ScreenWidth1~~~ \(screenWidth)")
+            print("ScreenHeight1~~~ \(screenHeight)")
+            
+            let padding: CGFloat = 10
+            let itemWidth = screenWidth/3 - padding
+            let itemHeight = (screenHeight)/2 + (padding * 3)
+            
+            print("\(itemWidth),\(itemHeight)")
+            
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            layout.minimumLineSpacing = 10
+            layout.minimumInteritemSpacing = 10
+            
+            collectionView.collectionViewLayout = layout
+        
+        
+        } else {
+            
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
+            
+            print("ScreenWidth2~~~ \(screenWidth)")
+            print("ScreenHeight2~~~ \(screenHeight)")
+            
+            let padding: CGFloat = 5
+            let itemWidth = screenWidth/2 - padding
+            let itemHeight = screenHeight/3 + padding
+            
+            print("\(itemWidth),\(itemHeight)")
+            
+            
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            layout.minimumLineSpacing = 10
+            layout.minimumInteritemSpacing = 10
+            
+            collectionView.collectionViewLayout = layout
+        }
+        
+        layout.invalidateLayout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +137,10 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             return cell
         
     }
+    
+//    func viewWillLayoutSubviews() {
+//
+//    }
     
     func setupCollectionViewCells() {
         

@@ -19,7 +19,8 @@ class ScratchView: UIView {
     
     var scratchMask: ScratchMask!
     
-    var countryImageView: UIImageView!
+//    var countryImageView: UIImageView!
+    var countryUIView: UIView!
     
     weak var delegate: ScratchViewDelegate? {
         
@@ -30,15 +31,19 @@ class ScratchView: UIView {
         }
     }
     
-    public init(frame: CGRect, countryImage: UIImage, maskImage: UIImage, scratchWidth: CGFloat = 15, scrachType: CGLineCap = .square) {
-        
+//    public init(frame: CGRect, countryImage: UIImage, maskImage: UIImage, scratchWidth: CGFloat = 15, scrachType: CGLineCap = .square) {
+    
+    public init(frame: CGRect, countryView: UIView, maskImage: UIImage, scratchWidth: CGFloat = 15, scrachType: CGLineCap = .square) {
+    
         super.init(frame: frame)
         
         let childFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         
-        countryImageView = UIImageView(frame: childFrame)
-        countryImageView.image = countryImage
-        self.addSubview(countryImageView)
+//        countryImageView = UIImageView(frame: childFrame)
+        countryUIView = UIView(frame: childFrame)
+//        countryImageView.image = countryImage
+//        self.addSubview(countryImageView)
+        self.addSubview(countryUIView)
         
         scratchMask = ScratchMask(frame: childFrame)
         scratchMask.image = maskImage
@@ -51,6 +56,4 @@ class ScratchView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1500F02DD1A01EC08A669C44 /* Pods_ScratchMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */; };
+		6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0CFE991FEE2CF400E3EA29 /* tw.svg */; };
 		6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F21FE3B1380048F310 /* AppDelegate.swift */; };
 		6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */; };
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScratchMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190F489B4A4572194CA8222D /* Pods-ScratchMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.debug.xcconfig"; sourceTree = "<group>"; };
+		6B0CFE991FEE2CF400E3EA29 /* tw.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tw.svg; sourceTree = "<group>"; };
 		6B30F2EF1FE3B1380048F310 /* ScratchMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScratchMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B30F2F21FE3B1380048F310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				6B9D41ED1FECEE6400450CDF /* gray.jpg */,
 				6B9D41EB1FECED4300450CDF /* tw.png */,
 				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
+				6B0CFE991FEE2CF400E3EA29 /* tw.svg */,
 			);
 			path = ScratchMap;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6B9D41EC1FECED4300450CDF /* tw.png in Resources */,
 				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
+				6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

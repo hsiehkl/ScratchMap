@@ -11,12 +11,21 @@ import Firebase
 import PocketSVG
 
 class PrepareViewController: UIViewController, ScratchViewDelegate {
+    @IBOutlet weak var label: UILabel!
+    
+    var countryUIView = UIView()
+//    var maskView = UIView()
+    
     func scratchBegan(point: CGPoint) {
         print("开始刮奖：\(point)")
     }
     
     func scratchMoved(progress: Float) {
         print("当前进度：\(progress)")
+
+        let percent = String(format: "%.1f", progress * 100)
+        label.text = "Scratch: \(percent)%"
+
     }
     
     func scratchEnded(point: CGPoint) {
@@ -27,14 +36,50 @@ class PrepareViewController: UIViewController, ScratchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-//        self.view.backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: self.view.bounds, andColors:[
-//            UIColor(red: 91.0 / 255.0, green: 211.0 / 255.0, blue: 232.0 / 255.0, alpha: 1.0),
-////            UIColor(red: 69.0 / 255.0, green: 230.0 / 255.0, blue: 136.0 / 255.0, alpha: 1.0),
-//             UIColor(red: 233.0 / 255.0, green: 251.0 / 255.0, blue: 163.0 / 255.0, alpha: 1.0)
-//            ])
+        self.view.addSubview(countryUIView)
+//        self.view.addSubview(maskView)
         
-        let scratchView = ScratchView(frame: CGRect(x:50, y:150, width:241, height:280), countryImage: #imageLiteral(resourceName: "tw.png"), maskImage: #imageLiteral(resourceName: "gray.jpg"))
+        let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
+        
+//        let urltw = Bundle.main.url(forResource: "tw", withExtension: "svg")!
+        
+//        let pathstw = SVGBezierPath.pathsFromSVG(at: urltw)
+        
+//        for path in pathstw {
+//
+//            let layer = CAShapeLayer()
+//            layer.path = path.cgPath
+//            layer.fillColor = UIColor.gray.cgColor
+//
+//            let strokeWidth = CGFloat(0.5)
+//            let strokeColor = UIColor.white.cgColor
+//
+//            layer.lineWidth = strokeWidth
+//            layer.strokeColor = strokeColor
+//
+//            self.maskView.layer.addSublayer(layer)
+//        }
+        
+        let paths = SVGBezierPath.pathsFromSVG(at: url)
+        
+        for path in paths {
+            
+            let layer = CAShapeLayer()
+            layer.path = path.cgPath
+            layer.fillColor = UIColor.gray.cgColor
+            
+            let strokeWidth = CGFloat(0.5)
+            let strokeColor = UIColor.white.cgColor
+            
+            layer.lineWidth = strokeWidth
+            layer.strokeColor = strokeColor
+            
+            self.countryUIView.layer.addSublayer(layer)
+        }
+        
+        let scratchView = ScratchView(frame: UIScreen.main.bounds, countryView: countryUIView, maskImage: UIImage(named:"tw.png")!)
+        
+//        let scratchView = ScratchView(frame: UIScreen.main.bounds, countryView: countryUIView, maskImage: maskView)
         
         scratchView.delegate = self
         self.view.addSubview(scratchView)

@@ -16,7 +16,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     private let dataModel = DataModel()
     
     private let scrollView = UIScrollView()
-    private let mapContainerView = UIImageView()
+    private let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
     var visitedCountries = [Country]()
     var pictureSize = CGSize.zero
@@ -155,9 +155,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
 //        scrollView.minimumZoomScale = minScale
 //
 //        scrollView.zoomScale = minScale
-    
+//    
 //    }
-    
+//    
 //    //3. 呼叫
 //    override func viewWillLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
@@ -168,6 +168,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
 
     //4.讓圖片置中, 每次縮放之後會被呼叫
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        
         let imageViewSize =  mapContainerView.frame.size
         let scrollViewSize = scrollView.bounds.size
 
