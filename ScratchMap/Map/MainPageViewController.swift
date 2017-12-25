@@ -16,9 +16,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     private let dataModel = DataModel()
     
     private let scrollView = UIScrollView()
-//    private let mapContainerView = UIView()
-    private let mapContainerView = UIImageView()
-    let mapContainerView2 = UIImageView()
+    private let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
     var visitedCountries = [Country]()
     var pictureSize = CGSize.zero
@@ -33,7 +31,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         svgWorldMapSetup()
         scrollViewSetUp()
-//        fetchVisitedCountries()
         tapRecognizerSetup()
 //        setupNavigationButton()
     }
@@ -78,10 +75,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         // setup scrollView
         
          scrollView.contentSize = CGSize(width: self.pictureSize.width + 20, height: self.pictureSize.height)
-            
-//        scrollView.contentSize = CGSize(width: 1100, height: 680)
-        
-//        scrollView.backgroundColor = UIColor.yellow
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -195,8 +188,33 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         let tapLocation: CGPoint = tapRecognizer.location(in: self.mapContainerView)
         
-        self.colorSelectedCountry(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+//        self.colorSelectedCountry(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+        self.showCountryInfo(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+    }
+    
+    func showCountryInfo(tapLocation: CGPoint) {
         
+        for path in paths {
+            
+            guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+            
+            guard
+                let countryName = counrtyInfo["title"],
+                let countryId = counrtyInfo["id"]
+                
+                else {
+                    
+                    let error = CountryInfoError.notFound
+                    
+                    print(error)
+                    
+                    return
+            }
+            
+            if path.contains(tapLocation) {
+                print("\(countryName)")
+            }
+        }
     }
 
     private func colorSelectedCountry(tapLocation: CGPoint) {
@@ -252,7 +270,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             if visitedCountry.id == id {
                 
                 colorNonSelectedCountry(path: visitedCountry.path)
-
                 
                 guard
                     let index = visitedCountries.index(of: visitedCountry)
@@ -279,58 +296,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         return true
     }
-    
-//    func fetchVisitedCountries() {
-//
-//        let user = Auth.auth().currentUser
-//        guard let userId = user?.uid else {
-//            // need to handle
-//            return
-//        }
-//
-//        let ref = Database.database().reference()
-//
-//        ref.child("users").child(userId).child("visitedCountries").observeSingleEvent(of: .value, with: { (snapshot) in
-//
-////            ref.keepSynced(true)
-//
-//            guard let dataValue = snapshot.value as? [String: String] else { return }
-//
-//            for contryKey in dataValue.keys {
-//
-//                for path in self.paths {
-//
-//                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
-//
-//                    guard
-//                        let countryName = counrtyInfo["title"],
-//                        let countryId = counrtyInfo["id"]
-//
-//                        else {
-//
-//                            let error = CountryInfoError.notFound
-//
-//                            print(error)
-//
-//                            return
-//                    }
-//
-//                    if contryKey == countryId {
-//
-//                        self.colorSelectedCountry(path: path)
-//
-//                        self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
-//
-////                        print(self.visitedCountries.count)
-//
-//                    }
-//                }
-//
-//            }
-//        })
-//
-//    }
-    
+
     func colorSelectedCountry(path: SVGBezierPath) {
         
         // Create a layer for each path
@@ -346,13 +312,12 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         pictureSizeTest.height = pictureSizeTest.height > maxY ? pictureSizeTest.height : maxY
         
         let fillColor = 
-            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: pictureSizeTest.width, height: pictureSizeTest.height), andColors:[
-//                FlatGreen(), FlatGreenDark()
-            UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
+            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: pictureSizeTest.width, height: pictureSizeTest.height), andColors:
+                [
+                    UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
 
-            UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
-//                        UIColor(red: 69.0 / 255.0, green: 230.0 / 255.0, blue: 136.0 / 255.0, alpha: 1.0),
-                        ])
+                    UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
+                ])
         layer.fillColor = fillColor.cgColor
         
         // Default Settings
@@ -370,21 +335,20 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
+        
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 3)
+//        layer.shadowOpacity = 1
+        
         layer.fillColor = UIColor.gray.cgColor
-//
+
         let strokeWidth = CGFloat(0.5)
         let strokeColor = UIColor.white.cgColor
 
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor
         
-//        let imageLayer = CALayer()
-//        imageLayer.contents = UIImage(named: "tw")?.cgImage
-////        imageLayer.contentsGravity = kCAGravityCenter
-        
         self.mapContainerView.layer.addSublayer(layer)
-//        self.mapContainerView.layer.addSublayer(imageLayer)
-
         
     }
     

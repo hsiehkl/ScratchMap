@@ -23,9 +23,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     private let dataModel = DataModel()
     var visitedCountries = [Country]()
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
-    var counters = ["Europe": 0, "Asia": 0, "Africa": 0, "North America": 0, "South America": 0, "Oceania": 0]
+    var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
 
-    
     @IBOutlet weak var logoutButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -35,8 +34,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         print("Achievement_______Page")
         
         dataModel.delegate = self
-//        setupCollectionViewCells()
-//        classified()
 
         // Do any additional setup after loading the view.
     }
@@ -129,41 +126,21 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
             let key = continents[indexPath.row]
         
-            if let progress = counters[key] {
+            if let progress = countries[key]?.count {
 
             cell.progressLabel.text = "\(progress)/\(countryCounts[indexPath.row])"
             }
         
             return cell
-        
     }
     
-//    func viewWillLayoutSubviews() {
-//
+//    func <#name#>(<#parameters#>) -> <#return type#> {
+//        <#function body#>
 //    }
-    
-    func setupCollectionViewCells() {
-        
-        let screenWidth = UIScreen.main.bounds.width - 20
-        let screenHeight = UIScreen.main.bounds.height
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
-        
-        let padding: CGFloat = 5
-        let itemWidth = screenWidth/2 - padding
-        let itemHeight = screenHeight/3 - padding
-        
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        
-        collectionView.collectionViewLayout = layout
-        
-    }
     
     func classified() {
         
-        counters = ["Europe": 0, "Asia": 0, "Africa": 0, "North America": 0, "South America": 0, "Oceania": 0]
+        countries = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
 
         for visitedCountry in visitedCountries {
             
@@ -175,11 +152,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
                     
                     if contry == countryId {
                         
-                        guard var counter = counters[key] else { return }
-
-                        counter += 1
-
-                        counters[key] = counter
+                        countries[key]?.append(visitedCountry)
                     }
                 }
             }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1500F02DD1A01EC08A669C44 /* Pods_ScratchMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */; };
 		6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0CFE991FEE2CF400E3EA29 /* tw.svg */; };
+		6B26164E1FF0DDA400F4219D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */; };
+		6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2616541FF0F6A500F4219D /* VisitedType.swift */; };
 		6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F21FE3B1380048F310 /* AppDelegate.swift */; };
 		6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */; };
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScratchMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190F489B4A4572194CA8222D /* Pods-ScratchMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.debug.xcconfig"; sourceTree = "<group>"; };
 		6B0CFE991FEE2CF400E3EA29 /* tw.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tw.svg; sourceTree = "<group>"; };
+		6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		6B2616541FF0F6A500F4219D /* VisitedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedType.swift; sourceTree = "<group>"; };
 		6B30F2EF1FE3B1380048F310 /* ScratchMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScratchMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B30F2F21FE3B1380048F310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B2616531FF0EF8100F4219D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6B30F2E61FE3B1380048F310 = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +121,14 @@
 			isa = PBXGroup;
 			children = (
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
-				6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */,
-				6BD9DF561FEBF0DF00A2FE0D /* Scratch */,
 				6BF502C71FEBBD4E00E013E2 /* Extension */,
 				6BE7641A1FE3D47100B3708B /* Model */,
 				6BEF0E991FE8A3C300EED739 /* Login */,
 				6BE764191FE3D45200B3708B /* Map */,
 				6BC5743F1FE66295003C9C8C /* Achievement */,
+				6B2616531FF0EF8100F4219D /* New Group */,
 				6BF38FD01FE5743F001DB8A8 /* Tab Bar */,
+				6BD9DF561FEBF0DF00A2FE0D /* Scratch */,
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
@@ -143,6 +154,7 @@
 		6BD9DF561FEBF0DF00A2FE0D /* Scratch */ = {
 			isa = PBXGroup;
 			children = (
+				6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */,
 				6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */,
 				6BD9DF591FEC0B4B00A2FE0D /* ScratchView.swift */,
 			);
@@ -163,6 +175,7 @@
 				6BE7641B1FE3D49F00B3708B /* Country.swift */,
 				6BC574431FE693E5003C9C8C /* CountryList.swift */,
 				6BF502C31FEB957A00E013E2 /* DataModel.swift */,
+				6B2616541FF0F6A500F4219D /* VisitedType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 			children = (
 				6BA0F2161FE9259E00D0F971 /* UIWindowExtensions.swift */,
 				6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */,
+				6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -352,10 +366,12 @@
 			files = (
 				6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */,
 				6BD9DF581FEBF24300A2FE0D /* ScratchMask.swift in Sources */,
+				6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */,
 				6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */,
 				6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */,
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,
+				6B26164E1FF0DDA400F4219D /* UIViewExtension.swift in Sources */,
 				6BF502C41FEB957A00E013E2 /* DataModel.swift in Sources */,
 				6BA0F2171FE9259E00D0F971 /* UIWindowExtensions.swift in Sources */,
 				6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */,

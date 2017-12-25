@@ -213,18 +213,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-Eb-Kz5" customClass="ScratchView" customModule="ScratchMap" customModuleProvider="target">
+                                <rect key="frame" x="16" y="20" width="343" height="491"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KAv-Eb-Kz5" firstAttribute="top" secondItem="cBt-vl-jN1" secondAttribute="top" id="0yp-ej-Gnx"/>
                             <constraint firstItem="HmR-dF-B26" firstAttribute="top" secondItem="cBt-vl-jN1" secondAttribute="top" constant="499" id="K5I-sM-AUe"/>
+                            <constraint firstItem="HmR-dF-B26" firstAttribute="top" secondItem="KAv-Eb-Kz5" secondAttribute="bottom" constant="8" id="Ny6-Ic-Wac"/>
                             <constraint firstItem="PfJ-tF-zGy" firstAttribute="top" secondItem="HmR-dF-B26" secondAttribute="bottom" constant="37" id="OlX-PN-xom"/>
                             <constraint firstItem="PfJ-tF-zGy" firstAttribute="leading" secondItem="cBt-vl-jN1" secondAttribute="leading" constant="164" id="Qyf-2a-pzH"/>
+                            <constraint firstItem="KAv-Eb-Kz5" firstAttribute="leading" secondItem="cBt-vl-jN1" secondAttribute="leading" constant="16" id="Z17-kv-xiV"/>
                             <constraint firstItem="PfJ-tF-zGy" firstAttribute="centerX" secondItem="3Nv-EK-Wvk" secondAttribute="centerX" id="eqr-br-A9y"/>
                             <constraint firstItem="HmR-dF-B26" firstAttribute="centerX" secondItem="3Nv-EK-Wvk" secondAttribute="centerX" id="kzx-FF-RLV"/>
+                            <constraint firstItem="cBt-vl-jN1" firstAttribute="trailing" secondItem="KAv-Eb-Kz5" secondAttribute="trailing" constant="16" id="ptp-tc-61t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cBt-vl-jN1"/>
                     </view>
                     <connections>
+                        <outlet property="countryView" destination="KAv-Eb-Kz5" id="s9t-0V-BbG"/>
                         <outlet property="label" destination="HmR-dF-B26" id="tr7-gd-Bh1"/>
                     </connections>
                 </viewController>
