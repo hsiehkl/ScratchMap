@@ -27,6 +27,7 @@ PODS:
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.6)
+  - FlagKit (2.0.1)
   - GoogleToolboxForMac/DebugUtils (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - FlagKit
   - IQKeyboardManagerSwift
   - PocketSVG
   - SwiftLint
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 2a946ece8fbe3ce1fdeeb55324f273caade22df9
   FirebaseDatabase: 2e6e8e110b93b9a6e7aac71774c769a363035cb1
   FirebaseInstanceID: 24958382a1011bba5aaff37e334e7a650b9118f5
+  FlagKit: 75c64346179f254d1753bebdc5b1f9cbe7890748
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
@@ -82,6 +85,6 @@ SPEC CHECKSUMS:
   PocketSVG: 51c4d5cb9ae7623d4494f439f69747394bad5d67
   SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
 
-PODFILE CHECKSUM: 4d065ab74ff4b9fe53db892926e26cd4ce76a9b8
+PODFILE CHECKSUM: bbd323fe776f3fc1b79568b0f0384aa6a3204d4f
 
 COCOAPODS: 1.3.1

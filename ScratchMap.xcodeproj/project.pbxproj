@@ -11,6 +11,7 @@
 		6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0CFE991FEE2CF400E3EA29 /* tw.svg */; };
 		6B26164E1FF0DDA400F4219D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */; };
 		6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2616541FF0F6A500F4219D /* VisitedType.swift */; };
+		6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2616561FF1235200F4219D /* CountryInfoViewController.swift */; };
 		6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F21FE3B1380048F310 /* AppDelegate.swift */; };
 		6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */; };
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		6B0CFE991FEE2CF400E3EA29 /* tw.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tw.svg; sourceTree = "<group>"; };
 		6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6B2616541FF0F6A500F4219D /* VisitedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedType.swift; sourceTree = "<group>"; };
+		6B2616561FF1235200F4219D /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
 		6B30F2EF1FE3B1380048F310 /* ScratchMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScratchMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B30F2F21FE3B1380048F310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */,
+				6B2616561FF1235200F4219D /* CountryInfoViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FlagKit/FlagKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -330,6 +334,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlagKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -381,6 +386,7 @@
 				6BD9DF5A1FEC0B4B00A2FE0D /* ScratchView.swift in Sources */,
 				6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */,
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
+				6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */,
 				6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */,
 				6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */,
 			);

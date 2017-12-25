@@ -10,6 +10,7 @@ import UIKit
 import PocketSVG
 import Firebase
 import ChameleonFramework
+import FlagKit
 
 class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelDelegate {
     
@@ -20,7 +21,12 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     var paths = [SVGBezierPath]()
     var visitedCountries = [Country]()
     var pictureSize = CGSize.zero
-
+    var childViewHasAlreadyExisted = false
+    
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +38,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         svgWorldMapSetup()
         scrollViewSetUp()
         tapRecognizerSetup()
+//        setupCountryInfoView()
 //        setupNavigationButton()
     }
 
@@ -39,6 +46,25 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         super.didReceiveMemoryWarning()
         
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .allButUpsideDown //return the value as per the required orientation
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+//    override func viewWillDisappear(_ animated : Bool) {
+//        super.viewWillDisappear(animated)
+//        
+//        if (self.isMovingFromParentViewController) {
+//            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+//        }
+//    }
+//    
+//    func canRotate() -> Void {}
+
     
     func svgWorldMapSetup() {
         
@@ -67,7 +93,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         mapContainerView.frame = CGRect(
             x: scrollView.frame.minX + 10,
-            y: scrollView.frame.minY + 10,
+            y: scrollView.frame.minY + 30,
             width: self.pictureSize.width + 20,
             height: self.pictureSize.height
         )
@@ -194,6 +220,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     
     func showCountryInfo(tapLocation: CGPoint) {
         
+        var isTapInPath = false
+        
         for path in paths {
             
             guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
@@ -212,8 +240,41 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             }
             
             if path.contains(tapLocation) {
-                print("\(countryName)")
+                
+                isTapInPath = true
+                
+                if childViewHasAlreadyExisted {
+                    
+                    guard let countryInfoViewController = childViewControllers[0] as? CountryInfoViewController else { return }
+                    
+                    countryInfoViewController.countryName = countryName
+                    countryInfoViewController.countryId = countryId
+                    
+                } else {
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let popOverVC = storyboard.instantiateViewController(withIdentifier: "countryInfoViewController") as! CountryInfoViewController
+                    
+                    childViewHasAlreadyExisted = true
+                    popOverVC.countryId = countryId
+                    popOverVC.countryName = countryName
+                    
+                    self.addChildViewController(popOverVC)
+                    
+                    popOverVC.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 72)
+                    self.view.addSubview(popOverVC.view)
+                    popOverVC.didMove(toParentViewController: self)
+                    
+                }
             }
+        }
+        
+        if !isTapInPath && childViewHasAlreadyExisted {
+            
+            childViewHasAlreadyExisted = false
+            guard let countryInfoViewController = childViewControllers[0] as? CountryInfoViewController else { return }
+            countryInfoViewController.view.removeFromSuperview()
+            countryInfoViewController.removeFromParentViewController()
         }
     }
 
@@ -398,6 +459,4 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
         
     }
-
-    
 }

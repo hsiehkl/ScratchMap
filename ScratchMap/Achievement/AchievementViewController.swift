@@ -99,6 +99,10 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         layout.invalidateLayout()
     }
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        <#code#>
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
