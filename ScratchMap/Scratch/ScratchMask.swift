@@ -74,6 +74,7 @@ class ScratchMask: UIImageView {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
 
         image?.draw(in: self.bounds)
+        
 
         let path = CGMutablePath()
         path.move(to: fromPoint)

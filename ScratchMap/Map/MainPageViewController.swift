@@ -16,7 +16,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     private let dataModel = DataModel()
     
     private let scrollView = UIScrollView()
-    private let mapContainerView = UIView()
+//    private let mapContainerView = UIView()
+    private let mapContainerView = UIImageView()
+    let mapContainerView2 = UIImageView()
     var paths = [SVGBezierPath]()
     var visitedCountries = [Country]()
     var pictureSize = CGSize.zero
@@ -369,14 +371,20 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.fillColor = UIColor.gray.cgColor
-        
+//
         let strokeWidth = CGFloat(0.5)
         let strokeColor = UIColor.white.cgColor
-        
+
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor
         
+//        let imageLayer = CALayer()
+//        imageLayer.contents = UIImage(named: "tw")?.cgImage
+////        imageLayer.contentsGravity = kCAGravityCenter
+        
         self.mapContainerView.layer.addSublayer(layer)
+//        self.mapContainerView.layer.addSublayer(imageLayer)
+
         
     }
     

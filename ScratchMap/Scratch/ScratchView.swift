@@ -12,6 +12,7 @@ protocol ScratchViewDelegate: class {
     
     func scratchBegan(point: CGPoint)
     func scratchMoved(progress: Float)
+//    func scratchMoved()
     func scratchEnded(point: CGPoint)
 }
 
