@@ -32,15 +32,7 @@ class SignupViewController: UIViewController {
         if
             (emailTextField.text?.isEmpty)!
         {
-//            let alertController = UIAlertController(
-//                title: "Oops!",
-//                message: "Please fill in all blanks.",
-//                preferredStyle: UIAlertControllerStyle.alert
-//            )
-//
-//            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//
-//            self.present(alertController, animated: true, completion: nil)
+            
             self.showAlert(title: "Opps!", message: "Please fill in all blanks.", handler: nil)
             
             return

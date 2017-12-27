@@ -60,8 +60,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
             
-            print("ScreenWidth1~~~ \(screenWidth)")
-            print("ScreenHeight1~~~ \(screenHeight)")
+//            print("ScreenWidth1~~~ \(screenWidth)")
+//            print("ScreenHeight1~~~ \(screenHeight)")
             
             let padding: CGFloat = 10
             let itemWidth = screenWidth/3 - padding
@@ -80,14 +80,16 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
             
-            print("ScreenWidth2~~~ \(screenWidth)")
-            print("ScreenHeight2~~~ \(screenHeight)")
+//            print("ScreenWidth2~~~ \(screenWidth)")
+//            print("ScreenHeight2~~~ \(screenHeight)")
             
             let padding: CGFloat = 5
             let itemWidth = screenWidth/2 - padding
             let itemHeight = screenHeight/3 + padding
             
-            print("\(itemWidth),\(itemHeight)")
+
+            
+            print("here!\(itemWidth),\(itemHeight)")
             
             
             layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
@@ -99,10 +101,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         layout.invalidateLayout()
     }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        <#code#>
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -13,7 +13,6 @@ import PocketSVG
 protocol DataModelDelegate: class {
     
     func didReciveCountryData(visitedCountries: [Country])
-    
 }
 
 class DataModel {

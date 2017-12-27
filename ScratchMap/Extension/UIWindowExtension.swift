@@ -1,5 +1,5 @@
 //
-//  UIWindowExtensions.swift
+//  UIWindowExtension.swift
 //  ScratchMap
 //
 //  Created by Cheng-Shan Hsieh on 2017/12/19.

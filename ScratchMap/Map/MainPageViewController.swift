@@ -38,7 +38,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         svgWorldMapSetup()
         scrollViewSetUp()
         tapRecognizerSetup()
-//        setupCountryInfoView()
 //        setupNavigationButton()
     }
 
@@ -46,26 +45,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         super.didReceiveMemoryWarning()
         
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .allButUpsideDown //return the value as per the required orientation
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
-//    override func viewWillDisappear(_ animated : Bool) {
-//        super.viewWillDisappear(animated)
-//        
-//        if (self.isMovingFromParentViewController) {
-//            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-//        }
-//    }
-//    
-//    func canRotate() -> Void {}
 
-    
+
     func svgWorldMapSetup() {
         
         let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
@@ -114,7 +95,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         // zoom setting
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
-        scrollView.minimumZoomScale = 0.5
+        scrollView.minimumZoomScale = 0.4
         scrollView.maximumZoomScale = 4.0
         
         // scrollView constraints
@@ -249,6 +230,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
                     
                     countryInfoViewController.countryName = countryName
                     countryInfoViewController.countryId = countryId
+                    countryInfoViewController.countryPath = path
                     
                 } else {
                     
@@ -258,6 +240,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
                     childViewHasAlreadyExisted = true
                     popOverVC.countryId = countryId
                     popOverVC.countryName = countryName
+                    popOverVC.countryPath = path
                     
                     self.addChildViewController(popOverVC)
                     
@@ -431,8 +414,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             
             colorSelectedCountry(path: visitedCountry.path)
         }
-        
-        print("visitedCountries: \(self.visitedCountries[0].name, self.visitedCountries[1].name)")
     }
 
     
@@ -459,4 +440,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
         
     }
+    
+
+    
+    
 }
