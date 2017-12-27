@@ -16,10 +16,15 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var backToLoginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupButton()
+        setupTextField()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,4 +82,37 @@ class SignupViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // setup components
+    
+    private func setupTextField() {
+        
+        emailTextField.layer.cornerRadius = 8
+        userNameTextField.layer.cornerRadius = 8
+        passwordTextField.layer.cornerRadius = 8
+        
+        emailTextField.layer.shadowColor = UIColor.gray.cgColor
+        userNameTextField.layer.shadowColor = UIColor.gray.cgColor
+        passwordTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        emailTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        userNameTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        passwordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        
+        emailTextField.layer.shadowOpacity = 0.5
+        userNameTextField.layer.shadowOpacity = 0.5
+        passwordTextField.layer.shadowOpacity = 0.5
+        
+        emailTextField.layer.shadowRadius = 2.0
+        userNameTextField.layer.shadowRadius = 2.0
+        passwordTextField.layer.shadowRadius = 2.0
+        
+    }
+    
+    private func setupButton() {
+        
+        signupButton.layer.cornerRadius = 8
+        
+    }
+    
 }
