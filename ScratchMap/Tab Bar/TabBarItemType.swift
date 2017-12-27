@@ -48,15 +48,29 @@ extension TabBarItemType {
             
         case .map:
             
-            return #imageLiteral(resourceName: "maps-and-flags").withRenderingMode(.alwaysTemplate)
+            return #imageLiteral(resourceName: "non-map").withRenderingMode(.alwaysOriginal)
+
+        case .achievement:
+            
+            return #imageLiteral(resourceName: "non-achievement").withRenderingMode(.alwaysOriginal)
+        }
+    }
+    
+    var selectedImage: UIImage? {
+        
+        switch self {
+            
+        case .map:
+            
+            return #imageLiteral(resourceName: "tryMap").withRenderingMode(.alwaysOriginal)
             
         case .achievement:
             
-            return #imageLiteral(resourceName: "mapCheck").withRenderingMode(.alwaysTemplate)
-            
-            
+            return #imageLiteral(resourceName: "newSize").withRenderingMode(.alwaysOriginal)
         }
+        
     }
+
     
 }
 

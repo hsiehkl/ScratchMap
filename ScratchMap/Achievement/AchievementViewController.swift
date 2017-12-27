@@ -80,12 +80,9 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
             
-//            print("ScreenWidth2~~~ \(screenWidth)")
-//            print("ScreenHeight2~~~ \(screenHeight)")
-            
             let padding: CGFloat = 5
             let itemWidth = screenWidth/2 - padding
-            let itemHeight = screenHeight/3 + padding
+            let itemHeight = screenHeight/3
             
 
             
@@ -122,7 +119,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCollectionViewCell", for: indexPath) as! AchievementCollectionViewCell
             
             cell.continentLabel.text = continents[indexPath.row]
-            cell.continentImageView.image = UIImage(named: continents[indexPath.row])
+            cell.imageView.image = UIImage(named: "\(continents[indexPath.row])-1")
         
             let countryCounts = continentCountryCount()
         

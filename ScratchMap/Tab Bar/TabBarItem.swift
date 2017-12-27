@@ -25,8 +25,9 @@ class TabBarItem: UITabBarItem {
 
         self.title = itemType.title
 
-         self.image = itemType.image
-        // self.selectedImage = itemType.selectedImage
+        self.image = itemType.image
+        
+        self.selectedImage = itemType.selectedImage
     }
 
     required init?(coder aDecoder: NSCoder) {
