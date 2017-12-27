@@ -49,7 +49,7 @@ class ScratchViewController: UIViewController, ScratchViewDelegate {
             layer.lineWidth = strokeWidth
             layer.strokeColor = strokeColor
         
-            self.baseView.addSubview(<#T##view: UIView##UIView#>)
+//            self.baseView.addSubview(<#T##view: UIView##UIView#>)
             self.scratchableUIVIew.layer.addSublayer(layer)
         
 
@@ -86,22 +86,22 @@ class ScratchViewController: UIViewController, ScratchViewDelegate {
     }
 
     
-    func calculateScaleFactor() -> CGFloat {
-        
-        let boundingBoxAspectRatio = baseView.bounds.width/baseView.bounds.height
-        let viewAspectRatio = self.view.bounds.width/(self.view.bounds.height)
-        
-        let scaleFactor: CGFloat
-        if (boundingBoxAspectRatio > viewAspectRatio) {
-            // Width is limiting factor
-            scaleFactor = self.view.bounds.width/scrollView.contentSize.width
-        } else {
-            // Height is limiting factor
-            scaleFactor = (self.view.bounds.height - 110)/scrollView.contentSize.height
-        }
-        
-        return scaleFactor
-        
+//    func calculateScaleFactor() -> CGFloat {
+//
+//        let boundingBoxAspectRatio = baseView.bounds.width/baseView.bounds.height
+//        let viewAspectRatio = self.view.bounds.width/(self.view.bounds.height)
+//
+//        let scaleFactor: CGFloat
+//        if (boundingBoxAspectRatio > viewAspectRatio) {
+//            // Width is limiting factor
+//            scaleFactor = self.view.bounds.width/scrollView.contentSize.width
+//        } else {
+//            // Height is limiting factor
+//            scaleFactor = (self.view.bounds.height - 110)/scrollView.contentSize.height
+//        }
+    
+//        return scaleFactor
+    
         //        let scaleFactor = transformRatio()
         //
         //        var affineTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
@@ -111,7 +111,7 @@ class ScratchViewController: UIViewController, ScratchViewDelegate {
         //        let layer = CAShapeLayer()
         //        layer.path = transformedPath
         
-    }
+//    }
     
     func scratchBegan(point: CGPoint) {
         print("开始刮奖：\(point)")
