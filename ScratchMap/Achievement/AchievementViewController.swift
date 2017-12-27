@@ -78,11 +78,11 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         } else {
             
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
             
             let padding: CGFloat = 5
             let itemWidth = screenWidth/2 - padding
-            let itemHeight = screenHeight/3
+            let itemHeight = screenHeight/3 + padding
             
 
             

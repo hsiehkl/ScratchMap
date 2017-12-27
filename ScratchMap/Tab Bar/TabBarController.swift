@@ -34,6 +34,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         setUpTabBar()
+        setupBarItemFont()
 
     }
 
@@ -92,18 +93,13 @@ class TabBarController: UITabBarController {
         
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setupBarItemFont() {
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "ChalkboardSE-Regular", size: 12)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "ChalkboardSE-Regular", size: 12)!], for: .selected)
+        
     }
-    */
-
+    
 }
 
 

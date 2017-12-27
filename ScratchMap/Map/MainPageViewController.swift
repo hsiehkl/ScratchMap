@@ -95,7 +95,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         // zoom setting
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
-        scrollView.minimumZoomScale = 0.4
+        scrollView.minimumZoomScale = 0.3
         scrollView.maximumZoomScale = 4.0
         
         // scrollView constraints

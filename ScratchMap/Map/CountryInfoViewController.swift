@@ -54,58 +54,44 @@ class CountryInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dropShadow()
-        
         self.view.backgroundColor = UIColor.clear
+        dropShadow()
+        setupCountryInfoContents()
         
-        countryNameLabel.text = countryName
-
-        guard let flag = Flag(countryCode: countryId) else { return }
-
-        let styledImage = flag.image(style: .circle)
-        countryFlagImageView.image = styledImage
+        
 
     }
-    
-//    override func viewWillLayoutSubviews() {
-//
-//        super.viewWillLayoutSubviews()
-//
-//        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
-//
-//            countryInfoView.center.y = 25.0
-//
-//        } else {
-//
-//            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 70)
-//        }
-//    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
-            
-                        countryInfoView.center.y = 25.0
-            
-                    } else {
-            
-                        countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 70)
-                    }
-        
-    }
 
+        super.viewWillLayoutSubviews()
+
+        if UIDevice.current.orientation.isLandscape {
+            
+            print("Landscape")
+            
+//            countryFlagImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 50)
+
+        } else {
+
+            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 70)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func dropShadow() {
+
         countryInfoView.layer.shadowColor = UIColor.gray.cgColor
         countryInfoView.layer.shadowOpacity = 0.6
         countryInfoView.layer.shadowOffset = CGSize.zero
         countryInfoView.layer.shadowRadius = 5
         self.countryInfoView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        
     }
 
     @IBAction func showScratchableCountry(_ sender: Any) {
@@ -123,6 +109,27 @@ class CountryInfoViewController: UIViewController {
 //        self.view.addSubview(popOverVC.view)
         
 //        popOverVC.didMove(toParentViewController: self)
+    }
+    
+    func setupCountryInfoContents() {
+        
+        countryNameLabel.text = countryName
+        
+        guard let flag = Flag(countryCode: countryId) else { return }
+        
+        let styledImage = flag.image(style: .circle)
+        
+        countryFlagImageView.image = styledImage
+        
+        countryFlagImageView.layer.shadowColor = UIColor.gray.cgColor
+        
+        countryFlagImageView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        
+        countryFlagImageView.layer.shadowOpacity = 0.8
+        
+        countryFlagImageView.layer.shadowRadius = 2
+        
+        countryFlagImageView.layer.cornerRadius = countryFlagImageView.bounds.width / 2
     }
     
     

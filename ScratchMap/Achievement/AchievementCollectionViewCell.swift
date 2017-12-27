@@ -10,6 +10,8 @@ import UIKit
 
 class AchievementCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var baseView: UIView!
+    
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var continentLabel: UILabel!
     
@@ -29,6 +31,9 @@ class AchievementCollectionViewCell: UICollectionViewCell {
         imageView.layer.shadowOpacity = 0.5
 
         imageView.layer.shadowRadius = 2.0
+        
+        baseView.layer.cornerRadius = 10
+        
         
     }
 

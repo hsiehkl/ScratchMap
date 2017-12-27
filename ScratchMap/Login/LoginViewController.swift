@@ -69,7 +69,6 @@ class LoginViewController: UIViewController {
                 print("login success")
             })
             
-            
         } else {
             
         }
