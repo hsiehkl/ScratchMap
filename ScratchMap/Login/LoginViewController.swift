@@ -101,6 +101,10 @@ class LoginViewController: UIViewController {
 
     }
     
+    deinit {
+        print("login controller")
+    }
+    
     
     
 }

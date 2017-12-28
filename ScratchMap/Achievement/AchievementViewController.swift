@@ -25,6 +25,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
 
+    @IBOutlet weak var worldAchievementLabel: UILabel!
     @IBOutlet weak var logoutButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -121,21 +122,17 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             cell.continentLabel.text = continents[indexPath.row]
             cell.imageView.image = UIImage(named: "\(continents[indexPath.row])-1")
         
-            let countryCounts = continentCountryCount()
+            let continentCountryAmount = continentCountryCount()
         
             let key = continents[indexPath.row]
         
             if let progress = countries[key]?.count {
 
-            cell.progressLabel.text = "\(progress)/\(countryCounts[indexPath.row])"
+            cell.progressLabel.text = "\(progress)/\(continentCountryAmount[indexPath.row])"
             }
         
             return cell
     }
-    
-//    func <#name#>(<#parameters#>) -> <#return type#> {
-//        <#function body#>
-//    }
     
     func classified() {
         
@@ -160,16 +157,19 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func continentCountryCount() -> [Int] {
         
-        var countryAmount: [Int] = []
+        var continentCountryAmount: [Int] = []
         
         for contient in continents {
             
             if let value = countryIdClassifiedByContinents[contient] {
-                countryAmount.append(value.count)
+                continentCountryAmount.append(value.count)
             }
         }
         
-        return countryAmount
+        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
+        self.worldAchievementLabel.text = "\(visitedCountries.count)/\(totalCountryAmount)"
+        
+        return continentCountryAmount
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
@@ -196,6 +196,10 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             completion: nil
         )
         
+    }
+    
+    deinit {
+        print("ach~~~ controller")
     }
     
 }

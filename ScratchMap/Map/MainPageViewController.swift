@@ -441,7 +441,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
     }
     
-
+    deinit {
+        print("main page controller~~~~~~")
+    }
     
     
 }

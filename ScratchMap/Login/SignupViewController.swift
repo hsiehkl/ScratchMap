@@ -115,4 +115,8 @@ class SignupViewController: UIViewController {
         
     }
     
+    deinit {
+        print("sign up controller")
+    }
+    
 }

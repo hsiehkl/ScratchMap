@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1500F02DD1A01EC08A669C44 /* Pods_ScratchMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */; };
-		6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0CFE991FEE2CF400E3EA29 /* tw.svg */; };
 		6B26164E1FF0DDA400F4219D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */; };
 		6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2616541FF0F6A500F4219D /* VisitedType.swift */; };
 		6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2616561FF1235200F4219D /* CountryInfoViewController.swift */; };
 		6B278AB51FF200CA00B3DA4D /* SVGViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B278AB41FF200CA00B3DA4D /* SVGViewProvider.swift */; };
-		6B278AB71FF22BE900B3DA4D /* CountryAbbreviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B278AB61FF22BE900B3DA4D /* CountryAbbreviations.swift */; };
 		6B278AB91FF2329200B3DA4D /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B278AB81FF2329200B3DA4D /* AppDelegateExtension.swift */; };
 		6B278ABB1FF243EA00B3DA4D /* launchbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B278ABA1FF243EA00B3DA4D /* launchbg.jpg */; };
 		6B278ABD1FF24DCE00B3DA4D /* ScratchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B278ABC1FF24DCE00B3DA4D /* ScratchViewController.swift */; };
@@ -22,8 +20,8 @@
 		6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F61FE3B1380048F310 /* Main.storyboard */; };
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
-		6B9D41EC1FECED4300450CDF /* tw.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9D41EB1FECED4300450CDF /* tw.png */; };
-		6B9D41EE1FECEE6400450CDF /* gray.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B9D41ED1FECEE6400450CDF /* gray.jpg */; };
+		6B4842B31FF516B700F58FE2 /* ScratchCardMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */; };
+		6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */; };
 		6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */; };
 		6BA0F2171FE9259E00D0F971 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
@@ -46,12 +44,10 @@
 /* Begin PBXFileReference section */
 		01527EB948ED3B4B5FA32F0B /* Pods_ScratchMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScratchMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190F489B4A4572194CA8222D /* Pods-ScratchMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.debug.xcconfig"; sourceTree = "<group>"; };
-		6B0CFE991FEE2CF400E3EA29 /* tw.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tw.svg; sourceTree = "<group>"; };
 		6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6B2616541FF0F6A500F4219D /* VisitedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedType.swift; sourceTree = "<group>"; };
 		6B2616561FF1235200F4219D /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
 		6B278AB41FF200CA00B3DA4D /* SVGViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGViewProvider.swift; sourceTree = "<group>"; };
-		6B278AB61FF22BE900B3DA4D /* CountryAbbreviations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAbbreviations.swift; sourceTree = "<group>"; };
 		6B278AB81FF2329200B3DA4D /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		6B278ABA1FF243EA00B3DA4D /* launchbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchbg.jpg; sourceTree = "<group>"; };
 		6B278ABC1FF24DCE00B3DA4D /* ScratchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchViewController.swift; sourceTree = "<group>"; };
@@ -62,8 +58,8 @@
 		6B30F2F91FE3B1380048F310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B9D41EB1FECED4300450CDF /* tw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tw.png; sourceTree = "<group>"; };
-		6B9D41ED1FECEE6400450CDF /* gray.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gray.jpg; sourceTree = "<group>"; };
+		6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardMaskView.swift; sourceTree = "<group>"; };
+		6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardView.swift; sourceTree = "<group>"; };
 		6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareViewController.swift; sourceTree = "<group>"; };
 		6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
@@ -146,11 +142,8 @@
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
 				6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
-				6B9D41ED1FECEE6400450CDF /* gray.jpg */,
-				6B9D41EB1FECED4300450CDF /* tw.png */,
 				6B278ABA1FF243EA00B3DA4D /* launchbg.jpg */,
 				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
-				6B0CFE991FEE2CF400E3EA29 /* tw.svg */,
 			);
 			path = ScratchMap;
 			sourceTree = "<group>";
@@ -167,9 +160,12 @@
 		6BD9DF561FEBF0DF00A2FE0D /* Scratch */ = {
 			isa = PBXGroup;
 			children = (
+				6B278ABC1FF24DCE00B3DA4D /* ScratchViewController.swift */,
 				6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */,
 				6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */,
 				6BD9DF591FEC0B4B00A2FE0D /* ScratchView.swift */,
+				6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */,
+				6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */,
 			);
 			path = Scratch;
 			sourceTree = "<group>";
@@ -179,7 +175,6 @@
 			children = (
 				6B30F2F41FE3B1380048F310 /* MainPageViewController.swift */,
 				6B2616561FF1235200F4219D /* CountryInfoViewController.swift */,
-				6B278ABC1FF24DCE00B3DA4D /* ScratchViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -192,7 +187,6 @@
 				6BF502C31FEB957A00E013E2 /* DataModel.swift */,
 				6B2616541FF0F6A500F4219D /* VisitedType.swift */,
 				6B278AB41FF200CA00B3DA4D /* SVGViewProvider.swift */,
-				6B278AB61FF22BE900B3DA4D /* CountryAbbreviations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,14 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
-				6B9D41EE1FECEE6400450CDF /* gray.jpg in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6B278ABB1FF243EA00B3DA4D /* launchbg.jpg in Resources */,
-				6B9D41EC1FECED4300450CDF /* tw.png in Resources */,
 				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
-				6B0CFE9A1FEE2CF400E3EA29 /* tw.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,10 +377,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */,
+				6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */,
 				6BD9DF581FEBF24300A2FE0D /* ScratchMask.swift in Sources */,
 				6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */,
 				6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */,
-				6B278AB71FF22BE900B3DA4D /* CountryAbbreviations.swift in Sources */,
 				6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */,
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,
@@ -401,6 +392,7 @@
 				6B278AB51FF200CA00B3DA4D /* SVGViewProvider.swift in Sources */,
 				6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */,
 				6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */,
+				6B4842B31FF516B700F58FE2 /* ScratchCardMaskView.swift in Sources */,
 				6BD9DF5A1FEC0B4B00A2FE0D /* ScratchView.swift in Sources */,
 				6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */,
 				6B278AB91FF2329200B3DA4D /* AppDelegateExtension.swift in Sources */,
