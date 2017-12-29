@@ -406,7 +406,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     }
     
     // conform protocol
-    func didReciveCountryData(visitedCountries: [Country]) {
+    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
         
         self.visitedCountries = visitedCountries
         
@@ -415,7 +415,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             colorSelectedCountry(path: visitedCountry.path)
         }
     }
-
     
     // NavigationBar setup
     func setupNavigationButton() {

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
     
-    func didReciveCountryData(visitedCountries: [Country]) {
+    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
 
         self.visitedCountries = visitedCountries
 

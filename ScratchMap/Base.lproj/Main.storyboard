@@ -183,21 +183,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1p-D6-Sfz">
-                                <rect key="frame" x="16" y="54" width="343" height="537"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCY-Sm-I2B">
-                                <rect key="frame" x="16" y="54" width="343" height="537"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l1p-D6-Sfz" firstAttribute="leading" secondItem="RCY-Sm-I2B" secondAttribute="leading" id="911-Qw-P74"/>
-                            <constraint firstItem="RCY-Sm-I2B" firstAttribute="leading" secondItem="tNY-Ib-asE" secondAttribute="leading" constant="16" id="9ao-oe-gMs"/>
-                            <constraint firstItem="tNY-Ib-asE" firstAttribute="bottom" secondItem="RCY-Sm-I2B" secondAttribute="bottom" constant="76" id="HxB-pr-5UK"/>
-                            <constraint firstItem="RCY-Sm-I2B" firstAttribute="top" secondItem="tNY-Ib-asE" secondAttribute="top" constant="34" id="IsR-65-Ho3"/>
-                            <constraint firstItem="tNY-Ib-asE" firstAttribute="trailing" secondItem="RCY-Sm-I2B" secondAttribute="trailing" constant="16" id="L8T-Uh-UeU"/>
+                            <constraint firstItem="RCY-Sm-I2B" firstAttribute="leading" secondItem="tNY-Ib-asE" secondAttribute="leading" id="9ao-oe-gMs"/>
+                            <constraint firstItem="tNY-Ib-asE" firstAttribute="bottom" secondItem="RCY-Sm-I2B" secondAttribute="bottom" id="HxB-pr-5UK"/>
+                            <constraint firstItem="RCY-Sm-I2B" firstAttribute="top" secondItem="tNY-Ib-asE" secondAttribute="top" id="IsR-65-Ho3"/>
+                            <constraint firstItem="tNY-Ib-asE" firstAttribute="trailing" secondItem="RCY-Sm-I2B" secondAttribute="trailing" id="L8T-Uh-UeU"/>
                             <constraint firstItem="l1p-D6-Sfz" firstAttribute="width" secondItem="RCY-Sm-I2B" secondAttribute="width" id="alj-PK-f34"/>
                             <constraint firstItem="l1p-D6-Sfz" firstAttribute="height" secondItem="RCY-Sm-I2B" secondAttribute="height" id="cel-v1-a9X"/>
                             <constraint firstItem="l1p-D6-Sfz" firstAttribute="top" secondItem="RCY-Sm-I2B" secondAttribute="top" id="dmQ-HN-2WE"/>

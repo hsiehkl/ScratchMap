@@ -10,12 +10,6 @@ import Foundation
 
 enum VistedType {
     
-    case visted
-    
-    case lived
-    
-    case planed
-    
-    case cancled
+    case visted, lived, planed, cancled
     
 }

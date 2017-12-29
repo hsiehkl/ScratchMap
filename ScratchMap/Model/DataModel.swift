@@ -12,7 +12,7 @@ import PocketSVG
 
 protocol DataModelDelegate: class {
     
-    func didReciveCountryData(visitedCountries: [Country])
+    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country])
 }
 
 class DataModel {
@@ -70,7 +70,7 @@ class DataModel {
                 }
             }
             
-            self.delegate?.didReciveCountryData(visitedCountries: self.visitedCountries)
+            self.delegate?.didReciveCountryData(self, visitedCountries: self.visitedCountries)
         })
     }
 }
