@@ -105,7 +105,7 @@ class CountryInfoViewController: UIViewController {
         popOverVC.providesPresentationContextTransitionStyle = true
         popOverVC.definesPresentationContext = true
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-        popOverVC.view.backgroundColor = UIColor.clear
+        popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         self.present(popOverVC, animated: true, completion: nil)
         

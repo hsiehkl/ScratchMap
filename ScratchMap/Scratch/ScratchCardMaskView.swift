@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ScratchCardMaskView: UIView {
     
@@ -39,10 +40,13 @@ class ScratchCardMaskView: UIView {
     }
     
     @objc func panGestureRecongnizer(_ recognizer: UIPanGestureRecognizer) {
+        
         let location = recognizer.location(in: self)
 
         switch recognizer.state {
         case .began:
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            print("!!!!!!!!!boom!!!!!!!!")
             begainPath(at: location)
             
         case .changed:

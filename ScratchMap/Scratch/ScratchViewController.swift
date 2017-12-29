@@ -25,6 +25,8 @@ class ScratchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
         let scaleTransformedPath = transformPathScale(path: countryPath)
         let translateTransformedPath = transformPathTranslation(scaleTransformedPath: scaleTransformedPath)
         
@@ -39,7 +41,7 @@ class ScratchViewController: UIViewController {
 //            self.view.addSubview(scratchableUIVIew)
         
         setupScratchableView()
-        tapRecognizerSetup()
+//        tapRecognizerSetup()
         
     }
 
@@ -83,16 +85,16 @@ class ScratchViewController: UIViewController {
         
         let boundingBoxAspectRatio = pathBoundingBox.width/pathBoundingBox.height
         
-        let viewAspectRatio = mask.frame.width/mask.frame.height
+        let viewAspectRatio = (mask.frame.width-20)/(mask.frame.height-20)
 
         var scaleFactor: CGFloat = 1.0
         
         if (boundingBoxAspectRatio > viewAspectRatio) {
             // Width is limiting factor
-            scaleFactor = mask.frame.width/pathBoundingBox.width
+            scaleFactor = (mask.frame.width-20)/pathBoundingBox.width
         } else {
             // Height is limiting factor
-            scaleFactor = mask.frame.height/pathBoundingBox.height
+            scaleFactor = (mask.frame.height-20)/pathBoundingBox.height
         }
         
         var scaleTransform = CGAffineTransform.identity
