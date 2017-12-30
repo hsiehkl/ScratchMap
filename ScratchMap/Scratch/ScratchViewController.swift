@@ -9,36 +9,55 @@
 import UIKit
 import PocketSVG
 import AudioToolbox
+import ChameleonFramework
 
 class ScratchViewController: UIViewController {
 
     @IBOutlet weak var mask: UIView!
     @IBOutlet weak var wantToShowView: UIView!
-    var coverView = UIView()
-    var baseView = UIView()
+//    var coverView = UIView()
+//    var baseView = UIView()
     
     var scratchCardView: ScratchCardView?
     
     var countryPath = UIBezierPath()
 //    var pictureSize = CGSize.zero
+    let colorSet = ColorSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
+//        mask.frame = self.view.frame
+        
+        let coverColor1 = UIColor(hue: 256/360, saturation: 5/100, brightness: 92/100, alpha: 1)
+        let coverColor2 = UIColor(hue: 336/360, saturation: 19/100, brightness: 82/100, alpha: 1)
+        let coverColor3 = UIColor(hue: 350/360, saturation: 18/100, brightness: 70/100, alpha: 1)
+        
+        let coverColor4 = UIColor(hue: 38/360, saturation: 40/100, brightness: 52/100, alpha: 1)
+        let coverColor5 = UIColor(hue: 13/360, saturation: 46/100, brightness: 35/100, alpha: 1)
+        let coverColorMetal = UIColor(red: 148.0 / 255.0, green: 152.0 / 255.0, blue: 161.0 / 255.0, alpha: 1)
+        
+        let fillColor =
+            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: mask.frame.minX, y: mask.frame.minY, width: mask.frame.width, height: mask.frame.height), andColors:
+                [
+                   coverColor4, coverColor5
+                ])
+        let baseFillColor = UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: mask.frame.minX, y: mask.frame.minY, width: mask.frame.width, height: mask.frame.height), andColors:
+            
+                colorSet.baseColorSet2
+            )
+        
         let scaleTransformedPath = transformPathScale(path: countryPath)
+        
         let translateTransformedPath = transformPathTranslation(scaleTransformedPath: scaleTransformedPath)
         
-        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: UIColor.blue, parentView: baseView)
-        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: UIColor.gray, parentView: coverView)
+        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: baseFillColor, parentView: wantToShowView)
+        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: fillColor, parentView: mask)
         
-        self.wantToShowView.addSubview(baseView)
-        self.mask.addSubview(coverView)
-        
-        // can't scratch
-//            self.view.addSubview(baseView)
-//            self.view.addSubview(scratchableUIVIew)
+//        self.wantToShowView.addSubview(baseView)
+//        self.mask.addSubview(coverView)
         
         setupScratchableView()
 //        tapRecognizerSetup()
@@ -53,7 +72,7 @@ class ScratchViewController: UIViewController {
     public func setupScratchableView() {
         
         let screen = UIScreen.main.bounds
-        scratchCardView = ScratchCardView(frame: screen)
+        scratchCardView = ScratchCardView(frame: self.view.frame)
         scratchCardView!.setupWith(coverView: mask, contentView: wantToShowView)
         view.addSubview(scratchCardView!)
         
@@ -67,13 +86,13 @@ class ScratchViewController: UIViewController {
         layer.fillColor = continentColor.cgColor
         
         let strokeWidth = CGFloat(0.5)
-        let strokeColor = UIColor.white.cgColor
+        let strokeColor = UIColor(red: 212.0 / 255.0, green: 175.0 / 255.0, blue: 55.0 / 255.0, alpha: 1)
         
         layer.lineWidth = strokeWidth
-        layer.strokeColor = strokeColor
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0.0, height: 20.0)
+        layer.strokeColor = strokeColor.cgColor
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.7
+        layer.shadowOffset = CGSize(width: 0.0, height: 15.0)
         
         parentView.layer.addSublayer(layer)
         
@@ -85,16 +104,18 @@ class ScratchViewController: UIViewController {
         
         let boundingBoxAspectRatio = pathBoundingBox.width/pathBoundingBox.height
         
-        let viewAspectRatio = (mask.frame.width-20)/(mask.frame.height-20)
+        print("boundingBoxAspectRatio: \(pathBoundingBox.width), \(pathBoundingBox.height)")
+    
+        let viewAspectRatio = (self.view.frame.width-30)/(self.view.frame.height-200)
 
         var scaleFactor: CGFloat = 1.0
         
         if (boundingBoxAspectRatio > viewAspectRatio) {
             // Width is limiting factor
-            scaleFactor = (mask.frame.width-20)/pathBoundingBox.width
+            scaleFactor = (self.view.frame.width-30)/pathBoundingBox.width
         } else {
             // Height is limiting factor
-            scaleFactor = (mask.frame.height-20)/pathBoundingBox.height
+            scaleFactor = (self.view.frame.height-200)/pathBoundingBox.height
         }
         
         var scaleTransform = CGAffineTransform.identity
@@ -107,8 +128,6 @@ class ScratchViewController: UIViewController {
 //        let scaleRate = pathBoundingBox.size.applying(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
         
 //        print("scaleSize: \(scaleRate)")
-
-        print("平移\(scaleTransform)")
         
         guard let scaleTransformedPath = (path.cgPath).copy(using: &scaleTransform) else { return path.cgPath }
         
@@ -119,10 +138,13 @@ class ScratchViewController: UIViewController {
         
         let scaledPathBoundingBox = scaleTransformedPath.boundingBox
      
-        let maskCenterX = (mask.frame.maxX + mask.frame.minX)/2
-        let maskCenterY = (mask.frame.minY + mask.frame.maxY)/2
+//        let maskCenterX = (mask.frame.maxX + mask.frame.minX)/2
+//        let maskCenterY = (mask.frame.minY + mask.frame.maxY)/2
         
-        let centerOffset = CGSize(width: -(scaledPathBoundingBox.midX-maskCenterX), height: -(scaledPathBoundingBox.midY-maskCenterY))
+        let viewCenterX = view.center.x
+        let viewCenterY = view.center.y
+        
+        let centerOffset = CGSize(width: -(scaledPathBoundingBox.midX-viewCenterX), height: -(scaledPathBoundingBox.midY-viewCenterY))
         
         var translateTransform = CGAffineTransform.identity
         translateTransform = translateTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)

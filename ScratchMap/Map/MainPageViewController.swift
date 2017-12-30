@@ -30,6 +30,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(red: 246.0 / 255.0, green: 245.0 / 255.0, blue: 243.0 / 255.0, alpha: 1)
+        
         print("Main____Page")
         
         dataModel.delegate = self
@@ -201,7 +203,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     
     func showCountryInfo(tapLocation: CGPoint) {
         
-        var isTapInPath = false
+        var isTapInCountryPath = false
         
         for path in paths {
             
@@ -222,7 +224,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             
             if path.contains(tapLocation) {
                 
-                isTapInPath = true
+                isTapInCountryPath = true
                 
                 if childViewHasAlreadyExisted {
                     
@@ -235,24 +237,24 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
                 } else {
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let popOverVC = storyboard.instantiateViewController(withIdentifier: "countryInfoViewController") as! CountryInfoViewController
+                    let countryInfoViewController = storyboard.instantiateViewController(withIdentifier: "countryInfoViewController") as! CountryInfoViewController
                     
                     childViewHasAlreadyExisted = true
-                    popOverVC.countryId = countryId
-                    popOverVC.countryName = countryName
-                    popOverVC.countryPath = path
+                    countryInfoViewController.countryId = countryId
+                    countryInfoViewController.countryName = countryName
+                    countryInfoViewController.countryPath = path
                     
-                    self.addChildViewController(popOverVC)
+                    self.addChildViewController(countryInfoViewController)
                     
-                    popOverVC.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 72)
-                    self.view.addSubview(popOverVC.view)
-                    popOverVC.didMove(toParentViewController: self)
+                    countryInfoViewController.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 72)
+                    self.view.addSubview(countryInfoViewController.view)
+                    countryInfoViewController.didMove(toParentViewController: self)
                     
                 }
             }
         }
         
-        if !isTapInPath && childViewHasAlreadyExisted {
+        if !isTapInCountryPath && childViewHasAlreadyExisted {
             
             childViewHasAlreadyExisted = false
             guard let countryInfoViewController = childViewControllers[0] as? CountryInfoViewController else { return }

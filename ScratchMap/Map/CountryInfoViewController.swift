@@ -105,28 +105,11 @@ class CountryInfoViewController: UIViewController {
         popOverVC.providesPresentationContextTransitionStyle = true
         popOverVC.definesPresentationContext = true
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-        popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         self.present(popOverVC, animated: true, completion: nil)
         
-        
     }
-//    @IBAction func showScratchableCountry(_ sender: Any) {
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let popOverVC = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
-//        
-//        popOverVC.countryPath = self.countryPath
-//        
-//        popOverVC.view.frame = CGRect(x: 0.0, y: 70.0, width: self.view.frame.width, height: UIScreen.main.bounds.height - 70)
-//        
-//        self.present(popOverVC, animated: true, completion: nil)
-//
-//        
-////        self.view.addSubview(popOverVC.view)
-//        
-////        popOverVC.didMove(toParentViewController: self)
-//    }
     
     func setupCountryInfoContents() {
         
