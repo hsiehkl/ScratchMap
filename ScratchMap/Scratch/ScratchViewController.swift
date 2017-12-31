@@ -11,13 +11,20 @@ import PocketSVG
 import AudioToolbox
 import ChameleonFramework
 
+protocol ScratchViewControllerDelegate: class {
+    func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country)
+}
+
+
 class ScratchViewController: UIViewController {
 
+    @IBOutlet weak var scratchDoneButton: UIButton!
     @IBOutlet weak var mask: UIView!
     @IBOutlet weak var wantToShowView: UIView!
 //    var coverView = UIView()
 //    var baseView = UIView()
     
+    weak var delegate: ScratchViewControllerDelegate?
     var scratchCardView: ScratchCardView?
     
     var countryPath = UIBezierPath()
@@ -27,34 +34,27 @@ class ScratchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+//        mask.frame = CGRect(x: 0.0, y: 100.0, width: self.view.frame.width, height: self.view.frame.height)
+//        wantToShowView.frame = CGRect(x: 0.0, y: 100.0, width: self.view.frame.width, height: self.view.frame.height)
         
-//        mask.frame = self.view.frame
+        let maskFillColor = UIColor(gradientStyle: .leftToRight, withFrame: mask.frame, andColors:
+                
+                   colorSet.coverColorSet
+                
+                )
         
-        let coverColor1 = UIColor(hue: 256/360, saturation: 5/100, brightness: 92/100, alpha: 1)
-        let coverColor2 = UIColor(hue: 336/360, saturation: 19/100, brightness: 82/100, alpha: 1)
-        let coverColor3 = UIColor(hue: 350/360, saturation: 18/100, brightness: 70/100, alpha: 1)
-        
-        let coverColor4 = UIColor(hue: 38/360, saturation: 40/100, brightness: 52/100, alpha: 1)
-        let coverColor5 = UIColor(hue: 13/360, saturation: 46/100, brightness: 35/100, alpha: 1)
-        let coverColorMetal = UIColor(red: 148.0 / 255.0, green: 152.0 / 255.0, blue: 161.0 / 255.0, alpha: 1)
-        
-        let fillColor =
-            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: mask.frame.minX, y: mask.frame.minY, width: mask.frame.width, height: mask.frame.height), andColors:
-                [
-                   coverColor4, coverColor5
-                ])
-        let baseFillColor = UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: mask.frame.minX, y: mask.frame.minY, width: mask.frame.width, height: mask.frame.height), andColors:
+        let baseFillColor = UIColor(gradientStyle: .leftToRight, withFrame: wantToShowView.frame, andColors:
             
-                colorSet.baseColorSet2
-            )
+                colorSet.colorSetProvider()
+        )
         
         let scaleTransformedPath = transformPathScale(path: countryPath)
         
         let translateTransformedPath = transformPathTranslation(scaleTransformedPath: scaleTransformedPath)
         
         setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: baseFillColor, parentView: wantToShowView)
-        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: fillColor, parentView: mask)
+        
+        setupCountryLayerOnUIView(path: translateTransformedPath, continentColor: maskFillColor, parentView: mask)
         
 //        self.wantToShowView.addSubview(baseView)
 //        self.mask.addSubview(coverView)
@@ -72,10 +72,27 @@ class ScratchViewController: UIViewController {
     public func setupScratchableView() {
         
         let screen = UIScreen.main.bounds
+        print("screen: \(screen)")
         scratchCardView = ScratchCardView(frame: self.view.frame)
+        print("view: \(self.view.frame)")
         scratchCardView!.setupWith(coverView: mask, contentView: wantToShowView)
-        view.addSubview(scratchCardView!)
+        self.view.addSubview(scratchCardView!)
         
+//        let scratchDoneButton = UIButton()
+//        scratchDoneButton.frame = CGRect(x: 10.0, y: 75.0, width: 30.0, height: 30.0)
+//        scratchDoneButton.setImage(#imageLiteral(resourceName: "checkButton"), for: .normal)
+//        scratchDoneButton.backgroundColor = UIColor.clear
+//        scratchDoneButton.addTarget(self, action: #selector(scratchDone(sender:)), for: .touchUpInside)
+//        self.scratchCardView?.addSubview(scratchDoneButton)
+        scratchDoneButton.layer.cornerRadius = scratchDoneButton.frame.height/2
+        scratchDoneButton.layer.shadowColor = UIColor.white.cgColor
+        scratchDoneButton.layer.shadowRadius = scratchDoneButton.frame.height/2
+        scratchDoneButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+//        scratchDoneButton.layer.shadowOpacity = 0.3
+
+        scratchDoneButton.layer.backgroundColor = UIColor.white.cgColor
+        
+        self.scratchCardView?.addSubview(scratchDoneButton)
     }
     
     func setupCountryLayerOnUIView(path: CGPath, continentColor: UIColor, parentView: UIView) {
@@ -106,16 +123,16 @@ class ScratchViewController: UIViewController {
         
         print("boundingBoxAspectRatio: \(pathBoundingBox.width), \(pathBoundingBox.height)")
     
-        let viewAspectRatio = (self.view.frame.width-30)/(self.view.frame.height-200)
+        let viewAspectRatio = (self.view.frame.width-50)/(self.view.frame.height-250)
 
         var scaleFactor: CGFloat = 1.0
         
         if (boundingBoxAspectRatio > viewAspectRatio) {
             // Width is limiting factor
-            scaleFactor = (self.view.frame.width-30)/pathBoundingBox.width
+            scaleFactor = (self.view.frame.width-50)/pathBoundingBox.width
         } else {
             // Height is limiting factor
-            scaleFactor = (self.view.frame.height-200)/pathBoundingBox.height
+            scaleFactor = (self.view.frame.height-250)/pathBoundingBox.height
         }
         
         var scaleTransform = CGAffineTransform.identity
@@ -137,9 +154,6 @@ class ScratchViewController: UIViewController {
     func transformPathTranslation(scaleTransformedPath: CGPath)-> CGPath {
         
         let scaledPathBoundingBox = scaleTransformedPath.boundingBox
-     
-//        let maskCenterX = (mask.frame.maxX + mask.frame.minX)/2
-//        let maskCenterY = (mask.frame.minY + mask.frame.maxY)/2
         
         let viewCenterX = view.center.x
         let viewCenterY = view.center.y
@@ -173,7 +187,21 @@ class ScratchViewController: UIViewController {
         print("vibrate!!")
         
     }
-//
+    @IBAction func scratchDone(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @objc func scratchDone(sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("Scratchable View@@@@")
+    }
+    //
 //    func calculatePictureBounds(rect: CGRect) {
 //
 ////        var pictureSize = CGRect.

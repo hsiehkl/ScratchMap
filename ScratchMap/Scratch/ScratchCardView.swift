@@ -43,9 +43,9 @@ class ScratchCardView: UIView {
         self.contentMaskView.strokeWidth = 40.0
         
         // addsubviews
-        addSubViewFullScreen(self.coverView)
-        addSubViewFullScreen(self.contentView)
-        addSubViewFullScreen(self.contentMaskView)
+//        addSubViewFullScreen(self.coverView)
+//        addSubViewFullScreen(self.contentView)
+//        addSubViewFullScreen(self.contentMaskView)
         
         // set mask
         self.contentView.mask = self.contentMaskView
@@ -55,17 +55,17 @@ class ScratchCardView: UIView {
         
     }
     
-    private func addSubViewFullScreen(_ subView: UIView) {
-        
-        subView.translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(subView)
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[subView]-(0)-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subView": subView]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[subView]-(0)-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subView": subView]))
-        
-    }
+//    private func addSubViewFullScreen(_ subView: UIView) {
+//        
+//        subView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        addSubview(subView)
+//        
+//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[subView]-(0)-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subView": subView]))
+//        
+//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[subView]-(0)-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["subView": subView]))
+//        
+//    }
     
     private func setupGesture() {
         let panGesture = UIPanGestureRecognizer(target: contentMaskView, action: #selector(contentMaskView.panGestureRecongnizer(_:)))

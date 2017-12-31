@@ -84,10 +84,4 @@ class ScratchCardMaskView: UIView {
         currentPath = nil
         setNeedsDisplay()
     }
-    
-    
-    
-    
-    
-    
 }

@@ -10,6 +10,16 @@ import UIKit
 
 class ColorSet {
     
+    let coverColorSet = [
+//        UIColor(hue: 256/360, saturation: 5/100, brightness: 92/100, alpha: 1),
+//        UIColor(hue: 336/360, saturation: 19/100, brightness: 82/100, alpha: 1),
+//        UIColor(hue: 350/360, saturation: 18/100, brightness: 70/100, alpha: 1),
+        UIColor(red: 148.0 / 255.0, green: 152.0 / 255.0, blue: 161.0 / 255.0, alpha: 1),
+        UIColor(hue: 38/360, saturation: 40/100, brightness: 52/100, alpha: 1),
+        UIColor(hue: 13/360, saturation: 46/100, brightness: 35/100, alpha: 1)
+        
+    ]
+    
     let baseColorSet1 = [
         UIColor(red: 255.0 / 255.0, green: 146.0 / 255.0, blue: 139.0 / 255.0, alpha: 1),
         UIColor(red: 254.0 / 255.0, green: 195.0 / 255.0, blue: 166.0 / 255.0, alpha: 1),
@@ -34,11 +44,44 @@ class ColorSet {
         UIColor(red: 126.0 / 255.0, green: 232.0 / 255.0, blue: 250.0 / 255.0, alpha: 1)
     ]
     
-    let baseColor5 = [
+    let baseColorSet5 = [
         UIColor(red: 126.0 / 255.0, green: 232.0 / 255.0, blue: 250.0 / 255.0, alpha: 1),
         UIColor(red: 238.0 / 255.0, green: 192.0 / 255.0, blue: 198.0 / 255.0, alpha: 1),
         UIColor(red: 229.0 / 255.0, green: 240.0 / 255.0, blue: 138.0 / 255.0, alpha: 1)
     ]
+    
+    func colorSetProvider() -> [UIColor] {
+        
+        let colorSet = Int(arc4random_uniform(5) + 1)
+        
+        switch colorSet {
+            
+        case 1:
+            print("colorSet1")
+            return baseColorSet1
+            
+        case 2:
+            print("colorSet2")
+            return baseColorSet2
+            
+        case 3:
+            print("colorSet3")
+            return baseColorSet3
+            
+        case 4:
+            print("colorSet4")
+            return baseColorSet4
+            
+        case 5:
+            print("colorSet5")
+            return baseColorSet5
+            
+        default:
+            print("colorSet Default")
+            return baseColorSet4
+            
+        }
+    }
 
 //    let baseColor1 = UIColor(red: 255.0 / 255.0, green: 146.0 / 255.0, blue: 139.0 / 255.0, alpha: 1)
 //    let baseColor2 = UIColor(red: 254.0 / 255.0, green: 195.0 / 255.0, blue: 166.0 / 255.0, alpha: 1)
