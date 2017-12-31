@@ -18,15 +18,15 @@ class CountryInfoViewController: UIViewController {
     
     var countryPath = SVGBezierPath()
     
-    var countryName: String? {
+    var countryName: String = "" {
         
         didSet {
             
             if countryNameLabel != nil {
                 
-                if countryName?.range(of: "Democratic Republic") != nil {
+                if countryName.range(of: "Democratic Republic") != nil {
                     
-                    let abbCountryName = countryName?.replacingOccurrences(of: "Democratic Republic", with: "Dem. Rep.")
+                    let abbCountryName = countryName.replacingOccurrences(of: "Democratic Republic", with: "Dem. Rep.")
                     
                     countryNameLabel.text = abbCountryName
                     
@@ -58,8 +58,6 @@ class CountryInfoViewController: UIViewController {
         dropShadow()
         setupCountryInfoContents()
         
-        
-
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -100,12 +98,17 @@ class CountryInfoViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let popOverVC = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
         
-        popOverVC.countryPath = self.countryPath
+//        popOverVC.countryPath = self.countryPath
+        
+        let country = Country(name: countryName, id: countryId, path: countryPath)
+        popOverVC.country = country
         
         popOverVC.providesPresentationContextTransitionStyle = true
         popOverVC.definesPresentationContext = true
         popOverVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
         popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        popOverVC.delegate = parent as? MainPageViewController
         
         self.present(popOverVC, animated: true, completion: nil)
         

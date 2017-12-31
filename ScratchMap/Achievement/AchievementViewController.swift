@@ -199,7 +199,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     deinit {
-        print("ach~~~ controller")
+        print("achievement controller@@@@")
     }
     
 }

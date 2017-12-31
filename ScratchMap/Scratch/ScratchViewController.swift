@@ -13,11 +13,13 @@ import ChameleonFramework
 
 protocol ScratchViewControllerDelegate: class {
     func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country)
+    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country)
 }
 
 
 class ScratchViewController: UIViewController {
 
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var scratchDoneButton: UIButton!
     @IBOutlet weak var mask: UIView!
     @IBOutlet weak var wantToShowView: UIView!
@@ -27,7 +29,8 @@ class ScratchViewController: UIViewController {
     weak var delegate: ScratchViewControllerDelegate?
     var scratchCardView: ScratchCardView?
     
-    var countryPath = UIBezierPath()
+//    var countryPath = UIBezierPath()
+    var country: Country = Country(name: "", id: "", path: SVGBezierPath())
 //    var pictureSize = CGSize.zero
     let colorSet = ColorSet()
     
@@ -48,7 +51,7 @@ class ScratchViewController: UIViewController {
                 colorSet.colorSetProvider()
         )
         
-        let scaleTransformedPath = transformPathScale(path: countryPath)
+        let scaleTransformedPath = transformPathScale(path: country.path)
         
         let translateTransformedPath = transformPathTranslation(scaleTransformedPath: scaleTransformedPath)
         
@@ -77,21 +80,14 @@ class ScratchViewController: UIViewController {
         print("view: \(self.view.frame)")
         scratchCardView!.setupWith(coverView: mask, contentView: wantToShowView)
         self.view.addSubview(scratchCardView!)
-        
-//        let scratchDoneButton = UIButton()
-//        scratchDoneButton.frame = CGRect(x: 10.0, y: 75.0, width: 30.0, height: 30.0)
-//        scratchDoneButton.setImage(#imageLiteral(resourceName: "checkButton"), for: .normal)
-//        scratchDoneButton.backgroundColor = UIColor.clear
-//        scratchDoneButton.addTarget(self, action: #selector(scratchDone(sender:)), for: .touchUpInside)
-//        self.scratchCardView?.addSubview(scratchDoneButton)
+    
         scratchDoneButton.layer.cornerRadius = scratchDoneButton.frame.height/2
-        scratchDoneButton.layer.shadowColor = UIColor.white.cgColor
-        scratchDoneButton.layer.shadowRadius = scratchDoneButton.frame.height/2
-        scratchDoneButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-//        scratchDoneButton.layer.shadowOpacity = 0.3
-
         scratchDoneButton.layer.backgroundColor = UIColor.white.cgColor
         
+        cancelButton.layer.cornerRadius = cancelButton.frame.height/2
+        cancelButton.layer.backgroundColor = UIColor.white.cgColor
+        
+        self.scratchCardView?.addSubview(cancelButton)
         self.scratchCardView?.addSubview(scratchDoneButton)
     }
     
@@ -123,7 +119,7 @@ class ScratchViewController: UIViewController {
         
         print("boundingBoxAspectRatio: \(pathBoundingBox.width), \(pathBoundingBox.height)")
     
-        let viewAspectRatio = (self.view.frame.width-50)/(self.view.frame.height-250)
+        let viewAspectRatio = (self.view.frame.width-50)/(self.view.frame.height-300)
 
         var scaleFactor: CGFloat = 1.0
         
@@ -132,7 +128,7 @@ class ScratchViewController: UIViewController {
             scaleFactor = (self.view.frame.width-50)/pathBoundingBox.width
         } else {
             // Height is limiting factor
-            scaleFactor = (self.view.frame.height-250)/pathBoundingBox.height
+            scaleFactor = (self.view.frame.height-300)/pathBoundingBox.height
         }
         
         var scaleTransform = CGAffineTransform.identity
@@ -156,7 +152,7 @@ class ScratchViewController: UIViewController {
         let scaledPathBoundingBox = scaleTransformedPath.boundingBox
         
         let viewCenterX = view.center.x
-        let viewCenterY = view.center.y
+        let viewCenterY = view.center.y + 20
         
         let centerOffset = CGSize(width: -(scaledPathBoundingBox.midX-viewCenterX), height: -(scaledPathBoundingBox.midY-viewCenterY))
         
@@ -189,11 +185,24 @@ class ScratchViewController: UIViewController {
     }
     @IBAction func scratchDone(_ sender: Any) {
         
+        self.delegate?.didReciveScratchedCountry(self, scratchedCountry: country)
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func removeCountry(_ sender: Any) {
+        
+        self.delegate?.didRemoveCountry(self, scratchedCountry: country)
+        
         self.dismiss(animated: true, completion: nil)
         
     }
     
     @objc func scratchDone(sender: UIButton) {
+        
+//        guard let scratchedCountry = country else { return }
+       
         
         self.dismiss(animated: true, completion: nil)
     }

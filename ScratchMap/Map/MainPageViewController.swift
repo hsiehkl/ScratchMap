@@ -12,10 +12,10 @@ import Firebase
 import ChameleonFramework
 import FlagKit
 
-class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelDelegate {
+class MainPageViewController: UIViewController, UIScrollViewDelegate{
     
     private let dataModel = DataModel()
-    
+
     private let scrollView = UIScrollView()
     private let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
@@ -23,16 +23,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
     
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 246.0 / 255.0, green: 245.0 / 255.0, blue: 243.0 / 255.0, alpha: 1)
-        
-        print("Main____Page")
         
         dataModel.delegate = self
         dataModel.requestData()
@@ -63,8 +57,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
             
             colorNonSelectedCountry(path: path)
         }
-        
-        print("svgWorldMapSetup")
     }
     
     func scrollViewSetUp() {
@@ -83,7 +75,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         // setup scrollView
         
-         scrollView.contentSize = CGSize(width: self.pictureSize.width + 20, height: self.pictureSize.height)
+        scrollView.contentSize = CGSize(width: self.pictureSize.width + 20, height: self.pictureSize.height)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -197,7 +189,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         let tapLocation: CGPoint = tapRecognizer.location(in: self.mapContainerView)
         
-//        self.colorSelectedCountry(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+                                                                         
         self.showCountryInfo(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
     }
     
@@ -263,51 +255,88 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         }
     }
 
-    private func colorSelectedCountry(tapLocation: CGPoint) {
+//    private func colorSelectedCountry(tapLocation: CGPoint) {
+//
+//        for path in paths {
+//
+//            guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+//
+//            guard
+//                let countryName = counrtyInfo["title"],
+//                let countryId = counrtyInfo["id"]
+//
+//                else {
+//
+//                    let error = CountryInfoError.notFound
+//
+//                    print(error)
+//
+//                    return
+//            }
+//
+//        if path.contains(tapLocation) && countryHasNotBeingSelected(id: countryId) {
+//
+//            colorSelectedCountry(path: path)
+//
+//            let user = Auth.auth().currentUser
+//            guard let userId = user?.uid else {
+//                // need to handle
+//                return
+//            }
+//
+//            let ref = Database.database().reference()
+////            ref.keepSynced(true)
+//            let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(countryId)")
+//            let value = countryName
+//            userInfo.setValue(value)
+//
+//            self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
+//
+//            print("selected: \(visitedCountries.count)")
+//
+//            } else {
+//
+//                continue
+//            }
+//        }
+//    }
+    
+    private func colorSelectedCountry(country: Country) {
         
-        for path in paths {
+        for vistedCountry in visitedCountries {
             
-            guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
-            
-            guard
-                let countryName = counrtyInfo["title"],
-                let countryId = counrtyInfo["id"]
+            if vistedCountry.id == country.id {
                 
-                else {
-                    
-                    let error = CountryInfoError.notFound
-
-                    print(error)
-                    
-                    return
-            }
-            
-        if path.contains(tapLocation) && countryHasNotBeingSelected(id: countryId) {
-            
-            colorSelectedCountry(path: path)
-            
-            let user = Auth.auth().currentUser
-            guard let userId = user?.uid else {
-                // need to handle
-                return
-            }
-            
-            let ref = Database.database().reference()
-//            ref.keepSynced(true)
-            let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(countryId)")
-            let value = countryName
-            userInfo.setValue(value)
-
-            self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
-            
-            print("selected: \(visitedCountries.count)")
-            
-            } else {
-                
-                continue
             }
         }
+        
+            if countryHasNotBeingSelected(id: country.id) {
+                
+                colorThePath(path: country.path)
+                
+                let user = Auth.auth().currentUser
+                guard let userId = user?.uid else {
+                    // need to handle
+                    return
+                }
+                
+                let ref = Database.database().reference()
+                //            ref.keepSynced(true)
+                let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
+                let value = country.name
+                userInfo.setValue(value)
+                
+                self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
+                
+//                print("selected: \(visitedCountries.count)")
+                
+            } else {
+                
+//                continue
+//            }
+        }
     }
+
     
     func countryHasNotBeingSelected(id: String) -> Bool {
         
@@ -342,8 +371,42 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         
         return true
     }
+    
+    func removeCountry(id: String) {
+        
+        for visitedCountry in visitedCountries {
+            
+            if visitedCountry.id == id {
+                
+                colorNonSelectedCountry(path: visitedCountry.path)
+                
+                guard
+                    let index = visitedCountries.index(of: visitedCountry)
+                    else {
+                        break
+                }
+                
+                let user = Auth.auth().currentUser
+                guard let userId = user?.uid else {
+                    // need to handle
+                    return
+                }
+                
+                let ref = Database.database().reference()
+                ref.keepSynced(true)
+                let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
+                countryRef.removeValue()
+                
+                visitedCountries.remove(at: index)
+                
+//                return
+            }
+        }
+        
+//        return true
+    }
 
-    func colorSelectedCountry(path: SVGBezierPath) {
+    func colorThePath(path: SVGBezierPath) {
         
         // Create a layer for each path
         let layer = CAShapeLayer()
@@ -364,6 +427,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
 
                     UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
                 ])
+        
         layer.fillColor = fillColor.cgColor
         
         // Default Settings
@@ -382,13 +446,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 3)
-//        layer.shadowOpacity = 1
-        
         layer.fillColor = UIColor.gray.cgColor
 
-        let strokeWidth = CGFloat(0.5)
+        let strokeWidth = CGFloat(0.4)
         let strokeColor = UIColor.white.cgColor
 
         layer.lineWidth = strokeWidth
@@ -408,15 +468,15 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     }
     
     // conform protocol
-    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
-        
-        self.visitedCountries = visitedCountries
-        
-        for visitedCountry in visitedCountries {
-            
-            colorSelectedCountry(path: visitedCountry.path)
-        }
-    }
+//    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
+//
+//        self.visitedCountries = visitedCountries
+//
+//        for visitedCountry in visitedCountries {
+//
+//            colorThePath(path: visitedCountry.path)
+//        }
+//    }
     
     // NavigationBar setup
     func setupNavigationButton() {
@@ -443,8 +503,37 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate, DataModelD
     }
     
     deinit {
-        print("main page controller~~~~~~")
+        print("main page controller@@@@@")
     }
     
     
 }
+
+extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelegate{
+    
+    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
+        
+        self.visitedCountries = visitedCountries
+        
+        for visitedCountry in visitedCountries {
+        
+            colorThePath(path: visitedCountry.path)
+                    
+        }
+    }
+
+    func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
+
+        colorSelectedCountry(country: scratchedCountry)
+
+    }
+    
+    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
+        
+        removeCountry(id: scratchedCountry.id)
+        
+    }
+
+    
+}
+
