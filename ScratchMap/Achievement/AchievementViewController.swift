@@ -167,34 +167,55 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
-        self.worldAchievementLabel.text = "\(visitedCountries.count)/\(totalCountryAmount)"
+        self.worldAchievementLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
         
         return continentCountryAmount
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
         
-        let firebaseAuth = Auth.auth()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+//
+//        self.addChildViewController(accountViewController)
+//        
+//        accountViewController.view.frame = self.view.frame
+//        self.view.addSubview(accountViewController.view)
+//        accountViewController.didMove(toParentViewController: self)
         
-        do {
-            try firebaseAuth.signOut()
-            
-        } catch let signOutError as NSError {
-            
-            self.showAlert(title: "Oops!", message: "\(signOutError)")
-            
-            print ("Error signing out: %@", signOutError)
-        }
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+//        accountViewController.providesPresentationContextTransitionStyle = true
+//        accountViewController.definesPresentationContext = true
+//        accountViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+//        accountViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 
-        AppDelegate.shared.window?.updateRoot(
-            to: loginViewController,
-            animation: crossDissolve,
-            completion: nil
-        )
+        
+//        popOverVC.delegate = parent as? MainPageViewController
+        
+//        self.present(accountViewController, animated: true, completion: nil)
+        
+//        let firebaseAuth = Auth.auth()
+//
+//        do {
+//            try firebaseAuth.signOut()
+//
+//        } catch let signOutError as NSError {
+//
+//            self.showAlert(title: "Oops!", message: "\(signOutError)")
+//
+//            print ("Error signing out: %@", signOutError)
+//        }
+//
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+//
+//        AppDelegate.shared.window?.updateRoot(
+//            to: loginViewController,
+//            animation: crossDissolve,
+//            completion: nil
+//        )
+        
+        
         
     }
     
