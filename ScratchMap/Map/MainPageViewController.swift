@@ -19,7 +19,14 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     private let scrollView = UIScrollView()
     private let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
-    var visitedCountries = [Country]()
+    var visitedCountries = [Country]() {
+        didSet {
+            
+            for visitedCountry in visitedCountries {
+                print("\(visitedCountry.name)")
+            }
+        }
+    }
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
     
@@ -303,67 +310,59 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     
     private func colorSelectedCountry(country: Country) {
         
-        for vistedCountry in visitedCountries {
+        if countryHasNotBeingSelected(id: country.id) {
             
-            if vistedCountry.id == country.id {
-                
+            colorThePath(path: country.path)
+            
+            let user = Auth.auth().currentUser
+            guard let userId = user?.uid else {
+                // need to handle
+                return
             }
+            
+            let ref =  Database.database().reference()
+            let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
+            
+            let value = country.name
+            userInfo.setValue(value)
+            
+            self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
         }
         
-            if countryHasNotBeingSelected(id: country.id) {
-                
-                colorThePath(path: country.path)
-                
-                let user = Auth.auth().currentUser
-                guard let userId = user?.uid else {
-                    // need to handle
-                    return
-                }
-                
-                let ref = Database.database().reference()
-                //            ref.keepSynced(true)
-                let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
-                let value = country.name
-                userInfo.setValue(value)
-                
-                self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
-                
-//                print("selected: \(visitedCountries.count)")
-                
-            } else {
-                
-//                continue
-//            }
-        }
     }
+//
+//            if countryHasNotBeingSelected(id: country.id) {
+//
+//                colorThePath(path: country.path)
+//
+//                let user = Auth.auth().currentUser
+//                guard let userId = user?.uid else {
+//                    // need to handle
+//                    return
+//                }
+//
+//                let ref = Database.database().reference()
+//                //            ref.keepSynced(true)
+//                let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
+//                let value = country.name
+//                userInfo.setValue(value)
+//
+//                self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
+//
+////                print("selected: \(visitedCountries.count)")
+//
+//            } else {
+//
+////                continue
+////            }
+//        }
 
-    
+
     func countryHasNotBeingSelected(id: String) -> Bool {
         
         for visitedCountry in visitedCountries {
             
             if visitedCountry.id == id {
-                
-                colorNonSelectedCountry(path: visitedCountry.path)
-                
-                guard
-                    let index = visitedCountries.index(of: visitedCountry)
-                else {
-                    break
-                }
-                
-                let user = Auth.auth().currentUser
-                guard let userId = user?.uid else {
-                    // need to handle
-                    return false
-                }
-                
-                let ref = Database.database().reference()
-                ref.keepSynced(true)
-                let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
-                countryRef.removeValue()
-                
-                visitedCountries.remove(at: index)
                 
                 return false
             }
@@ -372,7 +371,41 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         return true
     }
     
-    func removeCountry(id: String) {
+//    func countryHasNotBeingSelected(id: String) -> Bool {
+//
+//        for visitedCountry in visitedCountries {
+//
+//            if visitedCountry.id == id {
+//
+//                colorNonSelectedCountry(path: visitedCountry.path)
+//
+//                guard
+//                    let index = visitedCountries.index(of: visitedCountry)
+//                else {
+//                    break
+//                }
+//
+//                let user = Auth.auth().currentUser
+//                guard let userId = user?.uid else {
+//                    // need to handle
+//                    return false
+//                }
+//
+//                let ref = Database.database().reference()
+//                ref.keepSynced(true)
+//                let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
+//                countryRef.removeValue()
+//
+//                visitedCountries.remove(at: index)
+//
+//                return false
+//            }
+//        }
+//
+//        return true
+//    }
+    
+    func removeSelectedCountry(id: String) {
         
         for visitedCountry in visitedCountries {
             
@@ -478,25 +511,25 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
 //        }
 //    }
     
-    // NavigationBar setup
-    func setupNavigationButton() {
-        
-        let gotToAchievementButton = UIBarButtonItem(image: #imageLiteral(resourceName: "mapCheck"), style: .plain, target: self, action: #selector(gotToAchievement(sender:)))
-
-        self.navigationItem.rightBarButtonItem = gotToAchievementButton
-        
-    }
-    
-    @objc func gotToAchievement(sender: UIButton!) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
-        
-        achievementViewController.visitedCountries = self.visitedCountries
-        
-        self.navigationController?.pushViewController(achievementViewController, animated: true)
-        
-    }
+//    // NavigationBar setup
+//    func setupNavigationButton() {
+//
+//        let gotToAchievementButton = UIBarButtonItem(image: #imageLiteral(resourceName: "mapCheck"), style: .plain, target: self, action: #selector(gotToAchievement(sender:)))
+//
+//        self.navigationItem.rightBarButtonItem = gotToAchievementButton
+//
+//    }
+//
+//    @objc func gotToAchievement(sender: UIButton!) {
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
+//
+//        achievementViewController.visitedCountries = self.visitedCountries
+//
+//        self.navigationController?.pushViewController(achievementViewController, animated: true)
+//
+//    }
     
     func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
         
@@ -530,7 +563,7 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
     
     func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
         
-        removeCountry(id: scratchedCountry.id)
+        removeSelectedCountry(id: scratchedCountry.id)
         
     }
 

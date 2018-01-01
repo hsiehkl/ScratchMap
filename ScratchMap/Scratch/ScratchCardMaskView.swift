@@ -27,7 +27,6 @@ class ScratchCardMaskView: UIView {
     
     override func draw(_ rect: CGRect) {
         
-        print("Draw!!!!~~~~")
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(strokeColor.cgColor)
         context?.setLineWidth(strokeWidth)
