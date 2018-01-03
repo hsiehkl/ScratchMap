@@ -130,8 +130,12 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "worldHeader", for: indexPath) as! WorldCollectionReusableView
             
             let totalCountryAmount = continentCountryCount().reduce(0) { $0 + $1 }
+            
             headerView.worldProgressLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
-            headerView.progressBarView.progress = CGFloat(visitedCountries.count/totalCountryAmount)
+            
+            let progress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount)
+            headerView.progressBarView.progress = progress
+            print(" progreeeeeeee \(headerView.progressBarView.progress)")
             
             return headerView
         default:
@@ -238,6 +242,11 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         button.addTarget(self, action: #selector(pushSettingpage), for: .touchUpInside)
         let settingButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = settingButton
+        
+//        let barButton = UIBarButtonItem(image: UIImage(named: "menu-2"), style: .plain, target: self, action: #selector(pushSettingpage))
+//        barButton.image?.withRenderingMode(.alwaysOriginal)
+//        self.navigationItem.rightBarButtonItem = barButton
+        
     }
     
     @objc func pushSettingpage() {

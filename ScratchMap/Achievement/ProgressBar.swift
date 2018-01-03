@@ -8,11 +8,16 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class ProgressBarView: UIView {
     
-    var color: UIColor = UIColor.red
-//    var countryCount
+//    var color: UIColor = UIColor(red: 89/255.0, green: 131/255.0, blue: 146/255.0, alpha:1)
+//    var color: UIColor = UIColor(red: 255/255.0, green: 191/255.0, blue: 202/255.0, alpha:1)
+//    var color: UIColor = UIColor(red: 224/255.0, green: 122/255.0, blue: 95/255.0, alpha:1)
+    
+    var color: UIColor = FlatWatermelon()
+
     var progress: CGFloat = 0.0 {
         
         didSet {
@@ -46,6 +51,8 @@ class ProgressBarView: UIView {
         self.clipsToBounds = true
         
         let margin:CGFloat = 1
+        
+        print("progress \(progress)")
         
         var width = (self.frame.width - margin) * progress
         var height = (self.frame.height - margin)

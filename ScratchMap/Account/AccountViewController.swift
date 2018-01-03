@@ -13,11 +13,14 @@ import MessageUI
 
 class AccountViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet weak var userNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
 //        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setupNavigationBar()
+        self.navigationItem.title = "Setting"
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +46,8 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
             
             guard let userName = snapshot.value as? String else { return }
             
-            self.navigationItem.title = "Setting"
+            self.userNameLabel.text = "Hi! \(userName)"
+            
         })
     }
     
