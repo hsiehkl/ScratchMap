@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import MessageUI
 
 class AccountViewController: UIViewController, MFMailComposeViewControllerDelegate {
@@ -15,8 +16,8 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        setupNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,14 +33,21 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     
     func setupNavigationBar() {
         
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-        button.tintColor = UIColor.black
-//        button.addTarget(self, action: #selector(presentSettingpage), for: .touchUpInside)
-        let cancelButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = cancelButton
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference()
+        
+        ref.child("users").child(userId).child("userName").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            print("snapshot:: \(snapshot)")
+            
+            guard let userName = snapshot.value as? String else { return }
+            
+            self.navigationItem.title = "Setting"
+        })
     }
+    
+    
     
     @IBAction func logout(_ sender: Any) {
         
@@ -113,6 +121,25 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
                 default:
                     controller.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        
+        guard let achievementViewController = self.navigationController?.viewControllers[0] as? AchievementViewController else { print("fail here!!!!"); return }
+        
+        if let mainPageVC = achievementViewController.tabBarController?.viewControllers?[0] as? MainPageViewController {
+            
+            let imageView = mainPageVC.mapContainerView
+            
+            let image = UIImage.init(view: imageView)
+            
+            let imageToShare = [image]
+            
+            let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+            
+            self.present(activityViewController, animated: true, completion: nil)
+
         }
     }
     

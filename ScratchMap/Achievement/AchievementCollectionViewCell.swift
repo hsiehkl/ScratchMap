@@ -13,6 +13,7 @@ class AchievementCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView!
     
     @IBOutlet weak var progressLabel: UILabel!
+    
     @IBOutlet weak var continentLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,7 +23,7 @@ class AchievementCollectionViewCell: UICollectionViewCell {
         
         imageView.layer.cornerRadius = 20
         
-        self.imageView.clipsToBounds = true
+        imageView.clipsToBounds = true
  
         imageView.layer.shadowColor = UIColor.gray.cgColor
         

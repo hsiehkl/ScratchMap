@@ -15,11 +15,13 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     var visitedCountries = [Country]()
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
+    let progressBar = ProgressBarView()
 
     @IBOutlet weak var worldAchievementLabel: UILabel!
     @IBOutlet weak var logoutButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +33,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         catchMainPage()
 
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +58,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
             
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
-            
-//            print("ScreenWidth1~~~ \(screenWidth)")
-//            print("ScreenHeight1~~~ \(screenHeight)")
             
             let padding: CGFloat = 10
             let itemWidth = screenWidth/3 - padding
@@ -129,6 +128,11 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "worldHeader", for: indexPath) as! WorldCollectionReusableView
+            
+            let totalCountryAmount = continentCountryCount().reduce(0) { $0 + $1 }
+            headerView.worldProgressLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
+            headerView.progressBarView.progress = CGFloat(visitedCountries.count/totalCountryAmount)
+            
             return headerView
         default:
             assert(false, "Unxpected element kind")
@@ -167,95 +171,82 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
         
-//        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
-       // self.worldAchievementLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
-        
         return continentCountryAmount
     }
     
-    @IBAction func logoutTapped(_ sender: Any) {
-        
-     //   let settingView = UIView.load(nibName: "SettingView") as! SettingView
-        
-      //  settingView.frame = self.view.frame
-        
-      //  self.view.addSubview(settingView)
-        
-        
+//    @IBAction func logoutTapped(_ sender: Any) {
 //
-//        self.addChildViewController(accountViewController)
-//        
-//        accountViewController.view.frame = self.view.frame
-//        self.view.addSubview(accountViewController.view)
-//        accountViewController.didMove(toParentViewController: self)
-        
-//        accountViewController.providesPresentationContextTransitionStyle = true
-//        accountViewController.definesPresentationContext = true
-//        accountViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-//        accountViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-
-        
-//        popOverVC.delegate = parent as? MainPageViewController
-        
-//        self.present(accountViewController, animated: true, completion: nil)
-        
-//        let firebaseAuth = Auth.auth()
+//     //   let settingView = UIView.load(nibName: "SettingView") as! SettingView
 //
-//        do {
-//            try firebaseAuth.signOut()
+//      //  settingView.frame = self.view.frame
 //
-//        } catch let signOutError as NSError {
+//      //  self.view.addSubview(settingView)
 //
-//            self.showAlert(title: "Oops!", message: "\(signOutError)")
 //
-//            print ("Error signing out: %@", signOutError)
-//        }
+////
+////        self.addChildViewController(accountViewController)
+////
+////        accountViewController.view.frame = self.view.frame
+////        self.view.addSubview(accountViewController.view)
+////        accountViewController.didMove(toParentViewController: self)
 //
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
-        
-        let navigationController = UINavigationController(rootViewController: accountViewController)
+////        accountViewController.providesPresentationContextTransitionStyle = true
+////        accountViewController.definesPresentationContext = true
+////        accountViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+////        accountViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 //
-         self.present(navigationController, animated: true, completion: nil)
-//        AppDelegate.shared.window?.updateRoot(
-//            to: loginViewController,
-//            animation: crossDissolve,
-//            completion: nil
-//        )
-        
-    }
+//
+////        popOverVC.delegate = parent as? MainPageViewController
+//
+////        self.present(accountViewController, animated: true, completion: nil)
+//
+////        let firebaseAuth = Auth.auth()
+////
+////        do {
+////            try firebaseAuth.signOut()
+////
+////        } catch let signOutError as NSError {
+////
+////            self.showAlert(title: "Oops!", message: "\(signOutError)")
+////
+////            print ("Error signing out: %@", signOutError)
+////        }
+////
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+//
+//        let navigationController = UINavigationController(rootViewController: accountViewController)
+////
+//         self.present(navigationController, animated: true, completion: nil)
+////        AppDelegate.shared.window?.updateRoot(
+////            to: loginViewController,
+////            animation: crossDissolve,
+////            completion: nil
+////        )
+//
+//    }
     
     func setupNavigationBar() {
+        
+        self.navigationItem.title = "Statistics"
         
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "menu-2"), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         button.tintColor = UIColor.black
-        button.addTarget(self, action: #selector(presentSettingpage), for: .touchUpInside)
-        let cancelButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = cancelButton
+        button.addTarget(self, action: #selector(pushSettingpage), for: .touchUpInside)
+        let settingButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = settingButton
     }
     
-    @objc func presentSettingpage() {
+    @objc func pushSettingpage() {
         
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
         
-        let navigationController = UINavigationController(rootViewController: accountViewController)
-        //
-        
-        self.present(navigationController, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(accountViewController, animated: true)
-        
-    }
-    
-    func setupNavigationTitle() {
-        
-        let continentCountryAmount = self.continentCountryCount()
-        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
-        self.navigationItem.title = "World \(self.visitedCountries.count)/\(totalCountryAmount)"
+        self.navigationController?.pushViewController(accountViewController, animated: true)
         
     }
     

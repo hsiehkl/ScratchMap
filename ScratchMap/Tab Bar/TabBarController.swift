@@ -87,12 +87,16 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
             
-            let navigationController = UINavigationController(rootViewController: achievementViewController)
+            let achievementNavigationController = UINavigationController(rootViewController: achievementViewController)
             
-            navigationController.tabBarItem = TabBarItem(itemType: itemType)
+            let font = UIFont(name: "ChalkboardSE-Regular", size: 20)
+            let textAttributes = [NSAttributedStringKey.font: font]
+            achievementNavigationController.navigationBar.titleTextAttributes = textAttributes
+            
+            achievementNavigationController.tabBarItem = TabBarItem(itemType: itemType)
             
             
-            return navigationController
+            return achievementNavigationController
 
         }
         

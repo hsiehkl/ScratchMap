@@ -10,4 +10,6 @@ import UIKit
 
 class WorldCollectionReusableView: UICollectionReusableView {
         
+    @IBOutlet weak var worldProgressLabel: UILabel!
+    @IBOutlet weak var progressBarView: ProgressBarView!
 }

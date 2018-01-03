@@ -19,7 +19,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     private let dataModel = DataModel()
 
     private let scrollView = UIScrollView()
-    private let mapContainerView = UIView()
+    let mapContainerView = UIView()
     var paths = [SVGBezierPath]()
     var visitedCountries = [Country]() {
         didSet {
@@ -77,7 +77,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         mapContainerView.frame = CGRect(
             x: scrollView.frame.minX + 10,
-            y: scrollView.frame.minY + 30,
+            y: scrollView.frame.minY + 35,
             width: self.pictureSize.width + 20,
             height: self.pictureSize.height
         )
@@ -257,7 +257,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
                     
                     self.addChildViewController(countryInfoViewController)
                     
-                    countryInfoViewController.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 72)
+                    countryInfoViewController.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 70)
                     self.view.addSubview(countryInfoViewController.view)
                     countryInfoViewController.didMove(toParentViewController: self)
                     
