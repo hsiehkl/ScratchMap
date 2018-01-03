@@ -34,6 +34,12 @@
 		6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7641B1FE3D49F00B3708B /* Country.swift */; };
 		6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */; };
 		6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */; };
+		6BF2E71C1FFB1A200088B4BB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E71B1FFB1A200088B4BB /* UIImageExtension.swift */; };
+		6BF2E71E1FFB1E0A0088B4BB /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E71D1FFB1E0A0088B4BB /* UINibExtension.swift */; };
+		6BF2E7221FFB21CA0088B4BB /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF2E7211FFB21CA0088B4BB /* SettingView.xib */; };
+		6BF2E7241FFB21F20088B4BB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7231FFB21F20088B4BB /* SettingView.swift */; };
+		6BF2E7281FFB5EA80088B4BB /* WorldCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */; };
+		6BF2E72C1FFBE10B0088B4BB /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */; };
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
@@ -74,6 +80,12 @@
 		6BE7641B1FE3D49F00B3708B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		6BF2E71B1FFB1A200088B4BB /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		6BF2E71D1FFB1E0A0088B4BB /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
+		6BF2E7211FFB21CA0088B4BB /* SettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
+		6BF2E7231FFB21F20088B4BB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCollectionReusableView.swift; sourceTree = "<group>"; };
+		6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -108,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				6B23460A1FFA504800D7F62B /* AccountViewController.swift */,
+				6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -157,7 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */,
+				6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */,
 				6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */,
+				6BF2E7231FFB21F20088B4BB /* SettingView.swift */,
+				6BF2E7211FFB21CA0088B4BB /* SettingView.xib */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -222,7 +238,9 @@
 				6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */,
 				6B278AB81FF2329200B3DA4D /* AppDelegateExtension.swift */,
 				6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */,
+				6BF2E71D1FFB1E0A0088B4BB /* UINibExtension.swift */,
 				6B26164D1FF0DDA400F4219D /* UIViewExtension.swift */,
+				6BF2E71B1FFB1A200088B4BB /* UIImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -298,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF2E7221FFB21CA0088B4BB /* SettingView.xib in Resources */,
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
@@ -384,10 +403,12 @@
 			files = (
 				6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */,
 				6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */,
+				6BF2E71E1FFB1E0A0088B4BB /* UINibExtension.swift in Sources */,
 				6BD9DF581FEBF24300A2FE0D /* ScratchMask.swift in Sources */,
 				6B2616551FF0F6A500F4219D /* VisitedType.swift in Sources */,
 				6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */,
 				6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */,
+				6BF2E7281FFB5EA80088B4BB /* WorldCollectionReusableView.swift in Sources */,
 				6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */,
 				6B30F2F51FE3B1380048F310 /* MainPageViewController.swift in Sources */,
 				6B23460B1FFA504800D7F62B /* AccountViewController.swift in Sources */,
@@ -396,6 +417,7 @@
 				6BA0F2171FE9259E00D0F971 /* UIWindowExtension.swift in Sources */,
 				6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */,
 				6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */,
+				6BF2E7241FFB21F20088B4BB /* SettingView.swift in Sources */,
 				6B278AB51FF200CA00B3DA4D /* SVGViewProvider.swift in Sources */,
 				6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */,
 				6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */,
@@ -405,6 +427,8 @@
 				6B278AB91FF2329200B3DA4D /* AppDelegateExtension.swift in Sources */,
 				6B2251091FF81C53005776AD /* ColorSets.swift in Sources */,
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
+				6BF2E71C1FFB1A200088B4BB /* UIImageExtension.swift in Sources */,
+				6BF2E72C1FFBE10B0088B4BB /* EmailViewController.swift in Sources */,
 				6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */,
 				6B278ABD1FF24DCE00B3DA4D /* ScratchViewController.swift in Sources */,
 				6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */,

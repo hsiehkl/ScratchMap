@@ -85,12 +85,12 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
             
-//            let navigationController = UINavigationController(rootViewController: achievementViewController)
+            let navigationController = UINavigationController(rootViewController: achievementViewController)
             
-            achievementViewController.tabBarItem = TabBarItem(itemType: itemType)
+            navigationController.tabBarItem = TabBarItem(itemType: itemType)
             
             
-            return achievementViewController
+            return navigationController
 
         }
         

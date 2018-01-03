@@ -9,16 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
-    
-    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
-
-        self.visitedCountries = visitedCountries
-
-        self.classified()
-  
-        self.collectionView.reloadData()
-    }
+class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     private let dataModel = DataModel()
     var visitedCountries = [Country]()
@@ -35,6 +26,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         print("Achievement_______Page")
         
         dataModel.delegate = self
+        
+        setupNavigationBar()
 
         // Do any additional setup after loading the view.
     }
@@ -84,12 +77,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let padding: CGFloat = 5
             let itemWidth = screenWidth/2 - padding
             let itemHeight = screenHeight/3 + padding
-            
 
-            
-            print("here!\(itemWidth),\(itemHeight)")
-            
-            
             layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
             layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = 10
@@ -134,6 +122,17 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "worldHeader", for: indexPath) as! WorldCollectionReusableView
+            return headerView
+        default:
+            assert(false, "Unxpected element kind")
+        }
+    }
+    
     func classified() {
         
         countries = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
@@ -166,16 +165,21 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
         
-        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
-        self.worldAchievementLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
+//        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
+       // self.worldAchievementLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
         
         return continentCountryAmount
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+     //   let settingView = UIView.load(nibName: "SettingView") as! SettingView
+        
+      //  settingView.frame = self.view.frame
+        
+      //  self.view.addSubview(settingView)
+        
+        
 //
 //        self.addChildViewController(accountViewController)
 //        
@@ -205,17 +209,51 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 //            print ("Error signing out: %@", signOutError)
 //        }
 //
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+        
+        let navigationController = UINavigationController(rootViewController: accountViewController)
 //
-//        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
-//
+         self.present(navigationController, animated: true, completion: nil)
 //        AppDelegate.shared.window?.updateRoot(
 //            to: loginViewController,
 //            animation: crossDissolve,
 //            completion: nil
 //        )
         
+    }
+    
+    func setupNavigationBar() {
         
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "menu-2"), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        button.tintColor = UIColor.black
+        button.addTarget(self, action: #selector(presentSettingpage), for: .touchUpInside)
+        let cancelButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = cancelButton
+    }
+    
+    @objc func presentSettingpage() {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+        
+        let navigationController = UINavigationController(rootViewController: accountViewController)
+        //
+        
+        self.present(navigationController, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(accountViewController, animated: true)
+        
+    }
+    
+    func setupNavigationTitle() {
+        
+        let continentCountryAmount = self.continentCountryCount()
+        let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
+        self.navigationItem.title = "World \(self.visitedCountries.count)/\(totalCountryAmount)"
         
     }
     
@@ -223,4 +261,18 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         print("achievement controller@@@@")
     }
     
+}
+
+extension AchievementViewController: DataModelDelegate {
+    
+    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
+        
+        self.visitedCountries = visitedCountries
+        
+//        setupNavigationTitle()
+        
+        self.classified()
+        
+        self.collectionView.reloadData()
+    }
 }

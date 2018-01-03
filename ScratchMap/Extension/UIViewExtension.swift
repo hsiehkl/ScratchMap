@@ -8,18 +8,13 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIView {
     
-    convenience init(view: UIView) {
+    public class func load(nibName name: String, bundle: Bundle? = nil) -> UIView? {
         
-        UIGraphicsBeginImageContext(view.frame.size)
+        return UINib.load(nibName: name, bundle: bundle) as? UIView
         
-        view.layer.render(in:UIGraphicsGetCurrentContext()!)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        self.init(cgImage: image!.cgImage!)
     }
+    
+    
 }

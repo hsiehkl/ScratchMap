@@ -12,6 +12,10 @@ import Firebase
 import ChameleonFramework
 import FlagKit
 
+protocol MainPageVCDelegate {
+    func didReceiveImage(_ provider:MainPageViewController, image: UIImage)
+}
+
 class MainPageViewController: UIViewController, UIScrollViewDelegate{
     
     private let dataModel = DataModel()
@@ -183,12 +187,22 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
 
     func tapRecognizerSetup() {
         
-        let tapRecognizer = UITapGestureRecognizer(
+        let singleTapRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(self.tapLocationDetected(tapRecognizer:))
         )
         
-        self.view.addGestureRecognizer(tapRecognizer)
+        singleTapRecognizer.numberOfTapsRequired = 1
+        
+//        let doubleTapRecognizer = UITapGestureRecognizer(
+//            target: self,
+//            action: #selector(self.tapLocationDetected(tapRecognizer:))
+//        )
+//
+//        doubleTapRecognizer.numberOfTapsRequired = 2
+        
+        self.view.addGestureRecognizer(singleTapRecognizer)
+//        self.view.addGestureRecognizer(doubleTapRecognizer)
     }
     
     

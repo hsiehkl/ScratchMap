@@ -79,18 +79,15 @@ class LoginViewController: UIViewController {
     private func setupTextField() {
         
         emailTextField.layer.cornerRadius = 8
-        passwordTextField.layer.cornerRadius = 8
-        
         emailTextField.layer.shadowColor = UIColor.gray.cgColor
-        passwordTextField.layer.shadowColor = UIColor.gray.cgColor
-        
         emailTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        passwordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        
         emailTextField.layer.shadowOpacity = 0.5
-        passwordTextField.layer.shadowOpacity = 0.5
-        
         emailTextField.layer.shadowRadius = 2.0
+        
+        passwordTextField.layer.cornerRadius = 8
+        passwordTextField.layer.shadowColor = UIColor.gray.cgColor
+        passwordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        passwordTextField.layer.shadowOpacity = 0.5
         passwordTextField.layer.shadowRadius = 2.0
         
     }
