@@ -36,8 +36,6 @@
 		6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */; };
 		6BF2E71C1FFB1A200088B4BB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E71B1FFB1A200088B4BB /* UIImageExtension.swift */; };
 		6BF2E71E1FFB1E0A0088B4BB /* UINibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E71D1FFB1E0A0088B4BB /* UINibExtension.swift */; };
-		6BF2E7221FFB21CA0088B4BB /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF2E7211FFB21CA0088B4BB /* SettingView.xib */; };
-		6BF2E7241FFB21F20088B4BB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7231FFB21F20088B4BB /* SettingView.swift */; };
 		6BF2E7281FFB5EA80088B4BB /* WorldCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */; };
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
@@ -81,8 +79,6 @@
 		6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		6BF2E71B1FFB1A200088B4BB /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		6BF2E71D1FFB1E0A0088B4BB /* UINibExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtension.swift; sourceTree = "<group>"; };
-		6BF2E7211FFB21CA0088B4BB /* SettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
-		6BF2E7231FFB21F20088B4BB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCollectionReusableView.swift; sourceTree = "<group>"; };
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -169,8 +165,6 @@
 				6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */,
 				6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */,
 				6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */,
-				6BF2E7231FFB21F20088B4BB /* SettingView.swift */,
-				6BF2E7211FFB21CA0088B4BB /* SettingView.xib */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -313,7 +307,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF2E7221FFB21CA0088B4BB /* SettingView.xib in Resources */,
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
@@ -414,7 +407,6 @@
 				6BA0F2171FE9259E00D0F971 /* UIWindowExtension.swift in Sources */,
 				6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */,
 				6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */,
-				6BF2E7241FFB21F20088B4BB /* SettingView.swift in Sources */,
 				6B278AB51FF200CA00B3DA4D /* SVGViewProvider.swift in Sources */,
 				6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */,
 				6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */,

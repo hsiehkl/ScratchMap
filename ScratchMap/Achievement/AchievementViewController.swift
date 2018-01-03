@@ -28,6 +28,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         dataModel.delegate = self
         
         setupNavigationBar()
+        
+        catchMainPage()
 
         // Do any additional setup after loading the view.
     }
@@ -68,7 +70,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             layout.minimumInteritemSpacing = 10
             
             collectionView.collectionViewLayout = layout
-        
         
         } else {
             
@@ -255,6 +256,16 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         let totalCountryAmount = continentCountryAmount.reduce(0) { $0 + $1 }
         self.navigationItem.title = "World \(self.visitedCountries.count)/\(totalCountryAmount)"
         
+    }
+    
+    func catchMainPage() {
+        
+        if let mainPageVC = self.tabBarController?.viewControllers?[0] as? MainPageViewController {
+            
+            print("222222222222\(mainPageVC)")
+            
+            print("\(mainPageVC.visitedCountries)")
+        }
     }
     
     deinit {

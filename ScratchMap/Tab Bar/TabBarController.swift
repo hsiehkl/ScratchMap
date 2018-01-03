@@ -72,6 +72,8 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") as! MainPageViewController
             
+            print("1111111111111111\(mainPageViewController)")
+            
 //            let navigationController = UINavigationController(rootViewController: mainPageViewController)
             
             mainPageViewController.tabBarItem = TabBarItem(

@@ -12,11 +12,9 @@ import Firebase
 import ChameleonFramework
 import FlagKit
 
-protocol MainPageVCDelegate: class {
-    func didReceiveImage(_ provider:MainPageViewController, image: UIImage)
-}
-
 class MainPageViewController: UIViewController, UIScrollViewDelegate{
+    
+//    static let shared = MainPageViewController()
     
     private let dataModel = DataModel()
 
@@ -33,8 +31,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     }
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
-    
-    weak var delegate: MainPageVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -515,14 +511,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
-    
-    func produceMapImage() {
-        
-        let mapImage = UIImage.init(view: self.mapContainerView)
-        
-        self.delegate?.didReceiveImage(self, image: mapImage)
-    }
-    
+
     // conform protocol
 //    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
 //
