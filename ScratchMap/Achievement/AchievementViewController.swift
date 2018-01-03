@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
-    private let dataModel = DataModel()
+//    private let dataModel = DataModel()
     var visitedCountries = [Country]()
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
@@ -25,7 +25,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         print("Achievement_______Page")
         
-        dataModel.delegate = self
+//        dataModel.delegate = self
         
         setupNavigationBar()
         
@@ -37,7 +37,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        dataModel.requestData()
+//        dataModel.requestData()
+        catchMainPage()
         
     }
     
@@ -262,9 +263,11 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         if let mainPageVC = self.tabBarController?.viewControllers?[0] as? MainPageViewController {
             
-            print("222222222222\(mainPageVC)")
+            self.visitedCountries = mainPageVC.visitedCountries
             
-            print("\(mainPageVC.visitedCountries)")
+            self.classified()
+            
+            self.collectionView.reloadData()
         }
     }
     
@@ -274,16 +277,17 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     
 }
 
-extension AchievementViewController: DataModelDelegate {
-    
-    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
-        
-        self.visitedCountries = visitedCountries
-        
-//        setupNavigationTitle()
-        
-        self.classified()
-        
-        self.collectionView.reloadData()
-    }
-}
+//extension AchievementViewController: DataModelDelegate {
+//
+//    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
+//
+//        self.visitedCountries = visitedCountries
+//
+////        setupNavigationTitle()
+//
+//        self.classified()
+//
+//        self.collectionView.reloadData()
+//    }
+//}
+
