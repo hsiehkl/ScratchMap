@@ -90,7 +90,30 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        controller.dismiss(animated: true, completion: nil)
+        if error != nil {
+            
+            controller.showAlert(title: "Oops!", message: "Email has not been sent. Please try again", handler: { (UIAlertAction) -> Void in
+                controller.dismiss(animated: true, completion: nil)
+            })
+            
+        } else {
+            
+            switch result {
+                
+                case .sent:
+                    controller.showAlert(title: "Thanks!", message: "We will reply you as soon as possible!", handler: { (UIAlertAction) -> Void in
+                        controller.dismiss(animated: true, completion: nil)
+                })
+                
+                case .failed:
+                    controller.showAlert(title: "Oops!", message: "Email has not been sent. Please try again", handler: { (UIAlertAction) -> Void in
+                    controller.dismiss(animated: true, completion: nil)
+                })
+
+                default:
+                    controller.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     deinit {

@@ -39,7 +39,6 @@
 		6BF2E7221FFB21CA0088B4BB /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF2E7211FFB21CA0088B4BB /* SettingView.xib */; };
 		6BF2E7241FFB21F20088B4BB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7231FFB21F20088B4BB /* SettingView.swift */; };
 		6BF2E7281FFB5EA80088B4BB /* WorldCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */; };
-		6BF2E72C1FFBE10B0088B4BB /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */; };
 		6BF38FD21FE57472001DB8A8 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */; };
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
@@ -85,7 +84,6 @@
 		6BF2E7211FFB21CA0088B4BB /* SettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
 		6BF2E7231FFB21F20088B4BB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		6BF2E7271FFB5EA80088B4BB /* WorldCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCollectionReusableView.swift; sourceTree = "<group>"; };
-		6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		6BF38FD11FE57472001DB8A8 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				6B23460A1FFA504800D7F62B /* AccountViewController.swift */,
-				6BF2E72B1FFBE10B0088B4BB /* EmailViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 				6B2251091FF81C53005776AD /* ColorSets.swift in Sources */,
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
 				6BF2E71C1FFB1A200088B4BB /* UIImageExtension.swift in Sources */,
-				6BF2E72C1FFBE10B0088B4BB /* EmailViewController.swift in Sources */,
 				6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */,
 				6B278ABD1FF24DCE00B3DA4D /* ScratchViewController.swift in Sources */,
 				6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */,
