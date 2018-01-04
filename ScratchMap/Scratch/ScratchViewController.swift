@@ -119,13 +119,13 @@ class ScratchViewController: UIViewController {
         
         print("boundingBoxAspectRatio: \(pathBoundingBox.width), \(pathBoundingBox.height)")
     
-        let viewAspectRatio = (self.view.frame.width-50)/(self.view.frame.height-300)
+        let viewAspectRatio = (self.view.frame.width-60)/(self.view.frame.height-300)
 
         var scaleFactor: CGFloat = 1.0
         
         if (boundingBoxAspectRatio > viewAspectRatio) {
             // Width is limiting factor
-            scaleFactor = (self.view.frame.width-50)/pathBoundingBox.width
+            scaleFactor = (self.view.frame.width-60)/pathBoundingBox.width
         } else {
             // Height is limiting factor
             scaleFactor = (self.view.frame.height-300)/pathBoundingBox.height
@@ -183,6 +183,7 @@ class ScratchViewController: UIViewController {
         print("vibrate!!")
         
     }
+    
     @IBAction func scratchDone(_ sender: Any) {
         
         self.delegate?.didReciveScratchedCountry(self, scratchedCountry: country)

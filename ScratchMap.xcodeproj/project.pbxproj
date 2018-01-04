@@ -27,6 +27,7 @@
 		6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */; };
 		6BA0F2151FE90BF900D0F971 /* PrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */; };
 		6BA0F2171FE9259E00D0F971 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */; };
+		6BC002471FFE0A16005CED6C /* worldHighNew.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BC002461FFE0A16005CED6C /* worldHighNew.svg */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BD9DF581FEBF24300A2FE0D /* ScratchMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */; };
@@ -71,6 +72,7 @@
 		6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardView.swift; sourceTree = "<group>"; };
 		6BA0F2141FE90BF900D0F971 /* PrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareViewController.swift; sourceTree = "<group>"; };
 		6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
+		6BC002461FFE0A16005CED6C /* worldHighNew.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHighNew.svg; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchMask.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B278ABA1FF243EA00B3DA4D /* launchbg.jpg */,
 				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
+				6BC002461FFE0A16005CED6C /* worldHighNew.svg */,
 			);
 			path = ScratchMap;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
+				6BC002471FFE0A16005CED6C /* worldHighNew.svg in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6B278ABB1FF243EA00B3DA4D /* launchbg.jpg in Resources */,
 				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,

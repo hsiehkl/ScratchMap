@@ -10,17 +10,21 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import MessageUI
+import ChameleonFramework
 
 class AccountViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet weak var userNameView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
 //        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setupNavigationBar()
+        
         self.navigationItem.title = "Setting"
-
+        self.navigationItem.backBarButtonItem?.title = ""
+        userNameView.backgroundColor = FlatSkyBlue()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +35,10 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func dismissSettingView(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func UISetup() {
         
     }
     
@@ -55,29 +63,41 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     
     @IBAction func logout(_ sender: Any) {
         
-        let firebaseAuth = Auth.auth()
+        let alertController = UIAlertController(title: "Hey!", message: "You are going to logout.", preferredStyle: UIAlertControllerStyle.alert)
         
-        do {
-            try firebaseAuth.signOut()
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+            
+            let firebaseAuth = Auth.auth()
+            
+            do {
+                try firebaseAuth.signOut()
+                
+            } catch let signOutError as NSError {
+                
+                self.showAlert(title: "Oops!", message: "\(signOutError)")
+                
+                print ("Error signing out: %@", signOutError)
+            }
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            AppDelegate.shared.window?.updateRoot(
+                to: loginViewController,
+                animation: crossDissolve,
+                completion: nil
+            )
+            
+        }))
         
-        } catch let signOutError as NSError {
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-            self.showAlert(title: "Oops!", message: "\(signOutError)")
+        self.present(alertController, animated: true, completion: nil)
         
-            print ("Error signing out: %@", signOutError)
-        }
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        AppDelegate.shared.window?.updateRoot(
-            to: loginViewController,
-            animation: crossDissolve,
-            completion: nil
-        )
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: Any) {

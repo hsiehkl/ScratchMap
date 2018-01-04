@@ -108,17 +108,31 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCollectionViewCell", for: indexPath) as! AchievementCollectionViewCell
             
-            cell.continentLabel.text = continents[indexPath.row]
+        
             cell.imageView.image = UIImage(named: "\(continents[indexPath.row])-1")
         
             let continentCountryAmount = continentCountryCount()
         
             let key = continents[indexPath.row]
         
-            if let progress = countries[key]?.count {
+            if let progressAmount = countries[key]?.count {
 
-            cell.progressLabel.text = "\(progress)/\(continentCountryAmount[indexPath.row])"
+//            cell.progressLabel.text = "\(progress)/\(continentCountryAmount[indexPath.row])"
+                
+            cell.continentLabel.text = "\(continents[indexPath.row]) \(progressAmount)/\(continentCountryAmount[indexPath.row])"
+                
+            let progress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row])
+                
+                print("check: \(key)\(progress)!!!!")
+                
+            cell.continentProgressBarView.progress = progress
+                
+            let percentage = progress * 100
+            cell.continentPercentageLabel.text = "\(String(format: "%.0f", percentage))%"
+                
             }
+        
+            
         
             return cell
     }
@@ -135,7 +149,9 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
             let progress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount)
             headerView.progressBarView.progress = progress
-            print(" progreeeeeeee \(headerView.progressBarView.progress)")
+            let percentage = progress * 100
+            print(" progreeeeeeee \(String(format: "%.2f", percentage))")
+            headerView.worldPercentageLabel.text = "\(String(format: "%.0f", percentage))%"
             
             return headerView
         default:
@@ -237,12 +253,12 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "menu-2"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(pushSettingpage), for: .touchUpInside)
         let settingButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = settingButton
-        
+        self.navigationItem.backBarButtonItem?.title = ""
 //        let barButton = UIBarButtonItem(image: UIImage(named: "menu-2"), style: .plain, target: self, action: #selector(pushSettingpage))
 //        barButton.image?.withRenderingMode(.alwaysOriginal)
 //        self.navigationItem.rightBarButtonItem = barButton

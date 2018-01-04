@@ -50,11 +50,23 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         super.didReceiveMemoryWarning()
         
     }
+    
+    override func viewWillLayoutSubviews() {
+        
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+            
+            self.tabBarController?.tabBar.isHidden = true
+            
+        } else {
+            
+            self.tabBarController?.tabBar.isHidden = false
+        }
+    }
 
 
     func svgWorldMapSetup() {
         
-        let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
+        let url = Bundle.main.url(forResource: "worldHighNew", withExtension: "svg")!
         
         let paths = SVGBezierPath.pathsFromSVG(at: url)
         
@@ -77,7 +89,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         mapContainerView.frame = CGRect(
             x: scrollView.frame.minX + 10,
-            y: scrollView.frame.minY + 35,
+            y: scrollView.frame.minY + 30,
             width: self.pictureSize.width + 20,
             height: self.pictureSize.height
         )
@@ -98,7 +110,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         // zoom setting
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
-        scrollView.minimumZoomScale = 0.3
+        scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 4.0
         
         // scrollView constraints
@@ -476,7 +488,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         layer.fillColor = fillColor.cgColor
         
         // Default Settings
-        let strokeWidth = CGFloat(0.5)
+        let strokeWidth = CGFloat(0.4)
         let strokeColor = UIColor.black.cgColor
         
         layer.lineWidth = strokeWidth
@@ -493,7 +505,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         layer.fillColor = UIColor.gray.cgColor
 
-        let strokeWidth = CGFloat(0.4)
+        let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.white.cgColor
 
         layer.lineWidth = strokeWidth
