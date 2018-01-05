@@ -489,7 +489,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         // Default Settings
         let strokeWidth = CGFloat(0.4)
-        let strokeColor = UIColor.black.cgColor
+        let strokeColor = UIColor.white.cgColor
         
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor

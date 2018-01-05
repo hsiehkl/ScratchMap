@@ -135,6 +135,31 @@ class CountryInfoViewController: UIViewController {
         countryFlagImageView.layer.cornerRadius = countryFlagImageView.bounds.width / 2
     }
     
+    @IBAction func scratchButtonTapped(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let popOverVC = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
+        
+        //        popOverVC.countryPath = self.countryPath
+        
+        let country = Country(name: countryName, id: countryId, path: countryPath)
+        popOverVC.country = country
+        
+        popOverVC.providesPresentationContextTransitionStyle = true
+        popOverVC.definesPresentationContext = true
+        popOverVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+        popOverVC.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        popOverVC.delegate = parent as? MainPageViewController
+        
+        self.present(popOverVC, animated: true, completion: nil)
+        
+        
+    }
+    @IBAction func claenButtonTapped(_ sender: Any) {
+        
+        
+    }
     deinit {
         print("country view controller@@@@@")
     }
