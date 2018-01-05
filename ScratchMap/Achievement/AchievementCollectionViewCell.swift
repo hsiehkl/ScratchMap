@@ -16,6 +16,8 @@ class AchievementCollectionViewCell: UICollectionViewCell {
 //    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var continentPercentageLabel: UILabel!
     
+    @IBOutlet weak var continentProgressAmountLabel: UILabel!
+    
     @IBOutlet weak var continentLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!

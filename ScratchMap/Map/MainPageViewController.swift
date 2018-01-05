@@ -25,7 +25,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         didSet {
             
             for visitedCountry in visitedCountries {
-                print("\(visitedCountry.name)")
+                
             }
         }
     }
@@ -336,7 +336,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         if countryHasNotBeingSelected(id: country.id) {
             
-            colorThePath(path: country.path)
+            guard let continent = country.continent else { return }
+            
+            colorThePath(path: country.path, continent: continent)
             
             let user = Auth.auth().currentUser
             guard let userId = user?.uid else {
@@ -350,7 +352,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
             let value = country.name
             userInfo.setValue(value)
             
-            self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
+            self.visitedCountries.append(Country(name: country.name, id: country.id, continent: country.continent, path: country.path))
         }
         
     }
@@ -462,8 +464,46 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
 //        return true
     }
+    
+    func classifyContinent(continent: String)-> UIColor {
+        
+        switch continent {
+            
+        case Continent.europe.rawValue:
+            print("Europe!!!!")
+            return UIColor.flatOrange
+        case Continent.asia.rawValue:
+            print("Asia!!!!")
+            return UIColor.flatMint
+        case Continent.africa.rawValue:
+            print("Africa!!!")
+            return UIColor.flatWatermelon
+        case Continent.northAmerica.rawValue:
+            print("North America!!!!")
+            return UIColor.flatSand
+        case Continent.southAmerica.rawValue:
+            print("South America!!!")
+            return UIColor.flatTeal
+        case Continent.oceania.rawValue:
+            print("Oceania!!!!")
+            return UIColor.flatYellow
+            
+        case Continent.europeAndAsia.rawValue:
+            print("europeAndAsia!!!!")
+            return  UIColor.flatCoffee
+            
+        default:
+            print("not in any of continent: \(continent)")
+            return UIColor.gray
+            
+        }
+        
+        
+    }
 
-    func colorThePath(path: SVGBezierPath) {
+    func colorThePath(path: SVGBezierPath, continent: String) {
+        
+        let fillColor = classifyContinent(continent: continent)
         
         // Create a layer for each path
         let layer = CAShapeLayer()
@@ -474,22 +514,27 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         let maxX = rect.minX + rect.width
         let maxY = rect.minY + rect.height
         
-        pictureSizeTest.width = pictureSizeTest.width > maxX ? pictureSizeTest.width: maxX
-        pictureSizeTest.height = pictureSizeTest.height > maxY ? pictureSizeTest.height : maxY
+//        pictureSizeTest.width = pictureSizeTest.width > maxX ? pictureSizeTest.width: maxX
+//        pictureSizeTest.height = pictureSizeTest.height > maxY ? pictureSizeTest.height : maxY
         
-        let fillColor = 
-            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: pictureSizeTest.width, height: pictureSizeTest.height), andColors:
-                [
-                    UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
-
-                    UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
-                ])
+//        let fillColor =
+//            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: 0, y: 0, width: pictureSize.width, height: pictureSize.height), andColors:
+//                [
+////                    UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
+////
+////                    UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
+//
+//                    UIColor(red: 251.0 / 255.0, green: 255.0 / 255.0, blue: 185.0 / 255.0, alpha: 0.8),
+//                    UIColor(red: 253.0 / 255.0, green: 214.0 / 255.0, blue: 146.0 / 255.0, alpha: 0.8),
+//                    UIColor(red: 236.0 / 255.0, green: 115.0 / 255.0, blue: 87.0 / 255.0, alpha: 0.8),
+//                    UIColor(red: 117.0 / 255.0, green: 79.0 / 255.0, blue: 68.0 / 255.0, alpha: 0.8),
+//                ])
         
         layer.fillColor = fillColor.cgColor
         
         // Default Settings
         let strokeWidth = CGFloat(0.4)
-        let strokeColor = UIColor.white.cgColor
+        let strokeColor = UIColor.black.cgColor
         
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor
@@ -573,8 +618,10 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
         self.visitedCountries = visitedCountries
         
         for visitedCountry in visitedCountries {
+            
+            guard let continent = visitedCountry.continent else { return }
         
-            colorThePath(path: visitedCountry.path)
+            colorThePath(path: visitedCountry.path, continent: continent)
                     
         }
     }

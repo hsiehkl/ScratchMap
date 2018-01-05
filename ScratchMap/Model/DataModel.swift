@@ -23,7 +23,7 @@ class DataModel {
     
     func requestData() {
         
-        let url = Bundle.main.url(forResource: "worldHigh", withExtension: "svg")!
+        let url = Bundle.main.url(forResource: "worldHighNew", withExtension: "svg")!
         
         let paths = SVGBezierPath.pathsFromSVG(at: url)
         
@@ -47,12 +47,13 @@ class DataModel {
                 
                 for path in paths {
                     
-                    guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
+                    guard let countryInfo = path.svgAttributes as? [String: String] else { return }
                     
                     guard
-                        let countryName = counrtyInfo["title"],
-                        let countryId = counrtyInfo["id"]
-                        
+                        let countryName = countryInfo["title"],
+                        let countryId = countryInfo["id"],
+                        let continent = countryInfo["continent"]
+                    
                         else {
                             
                             let error = CountryInfoError.notFound
@@ -64,7 +65,7 @@ class DataModel {
                     
                     if contryKey == countryId {
                         
-                        self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
+                        self.visitedCountries.append(Country(name: countryName, id: countryId, continent: continent, path: path))
                         
                     }
                 }

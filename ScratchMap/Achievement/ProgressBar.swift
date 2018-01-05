@@ -16,7 +16,7 @@ class ProgressBarView: UIView {
 //    var color: UIColor = UIColor(red: 255/255.0, green: 191/255.0, blue: 202/255.0, alpha:1)
 //    var color: UIColor = UIColor(red: 224/255.0, green: 122/255.0, blue: 95/255.0, alpha:1)
     
-    var color: UIColor = FlatWatermelon()
+    var color: UIColor = FlatTeal()
 
     var progress: CGFloat = 0.0 {
         

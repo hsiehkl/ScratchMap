@@ -19,10 +19,13 @@ protocol ScratchViewControllerDelegate: class {
 
 class ScratchViewController: UIViewController {
 
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var scratchDoneButton: UIButton!
-    @IBOutlet weak var mask: UIView!
-    @IBOutlet weak var wantToShowView: UIView!
+//    @IBOutlet weak var cancelButton: UIButton!
+//    @IBOutlet weak var scratchDoneButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+//    @IBOutlet weak var mask: UIView!
+//    @IBOutlet weak var wantToShowView: UIView!
+    var mask = UIView()
+    var wantToShowView = UIView()
 //    var coverView = UIView()
 //    var baseView = UIView()
     
@@ -30,7 +33,7 @@ class ScratchViewController: UIViewController {
     var scratchCardView: ScratchCardView?
     
 //    var countryPath = UIBezierPath()
-    var country: Country = Country(name: "", id: "", path: SVGBezierPath())
+    var country: Country = Country(name: "", id: "", continent: "", path: SVGBezierPath())
 //    var pictureSize = CGSize.zero
     let colorSet = ColorSet()
     
@@ -39,6 +42,11 @@ class ScratchViewController: UIViewController {
         
 //        mask.frame = CGRect(x: 0.0, y: 100.0, width: self.view.frame.width, height: self.view.frame.height)
 //        wantToShowView.frame = CGRect(x: 0.0, y: 100.0, width: self.view.frame.width, height: self.view.frame.height)
+        
+        mask.frame = self.view.frame
+        wantToShowView.frame = self.view.frame
+        
+        print("ScratchViewController: \(self.view.frame)")
         
         let maskFillColor = UIColor(gradientStyle: .leftToRight, withFrame: mask.frame, andColors:
                 
@@ -66,6 +74,20 @@ class ScratchViewController: UIViewController {
 //        tapRecognizerSetup()
         
     }
+    
+    override func viewWillLayoutSubviews() {
+
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+
+
+        } else {
+
+            self.tabBarController?.tabBar.isHidden = false
+        }
+    }
+
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,18 +99,29 @@ class ScratchViewController: UIViewController {
         let screen = UIScreen.main.bounds
         print("screen: \(screen)")
         scratchCardView = ScratchCardView(frame: self.view.frame)
-        print("view: \(self.view.frame)")
+        
+        print("scratchCardView: \(self.view.frame)")
+        print("Mask: \(mask.frame)")
+        print("wantToShowView: \(wantToShowView)")
         scratchCardView!.setupWith(coverView: mask, contentView: wantToShowView)
         self.view.addSubview(scratchCardView!)
     
-        scratchDoneButton.layer.cornerRadius = scratchDoneButton.frame.height/2
-        scratchDoneButton.layer.backgroundColor = UIColor.white.cgColor
+//        scratchDoneButton.layer.cornerRadius = scratchDoneButton.frame.height/2
+//        scratchDoneButton.layer.backgroundColor = UIColor.white.cgColor
+//
+//        cancelButton.layer.cornerRadius = cancelButton.frame.height/2
+//        cancelButton.layer.backgroundColor = UIColor.white.cgColor
         
-        cancelButton.layer.cornerRadius = cancelButton.frame.height/2
-        cancelButton.layer.backgroundColor = UIColor.white.cgColor
+//        self.scratchCardView?.addSubview(cancelButton)
+//        self.scratchCardView?.addSubview(scratchDoneButton)
         
-        self.scratchCardView?.addSubview(cancelButton)
-        self.scratchCardView?.addSubview(scratchDoneButton)
+        doneButton.layer.cornerRadius = 10
+        doneButton.layer.shadowColor = UIColor.black.cgColor
+        doneButton.layer.shadowRadius = 10
+        doneButton.layer.shadowOpacity = 0.8
+        doneButton.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.scratchCardView?.addSubview(doneButton)
+            
     }
     
     func setupCountryLayerOnUIView(path: CGPath, continentColor: UIColor, parentView: UIView) {
@@ -118,18 +151,38 @@ class ScratchViewController: UIViewController {
         let boundingBoxAspectRatio = pathBoundingBox.width/pathBoundingBox.height
         
         print("boundingBoxAspectRatio: \(pathBoundingBox.width), \(pathBoundingBox.height)")
-    
-        let viewAspectRatio = (self.view.frame.width-60)/(self.view.frame.height-300)
-
+        
+        var viewAspectRatio: CGFloat = 1
+        
         var scaleFactor: CGFloat = 1.0
         
-        if (boundingBoxAspectRatio > viewAspectRatio) {
-            // Width is limiting factor
-            scaleFactor = (self.view.frame.width-60)/pathBoundingBox.width
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+            
+            viewAspectRatio = (self.view.frame.width-400)/(self.view.frame.height-100)
+            
+            if (boundingBoxAspectRatio > viewAspectRatio) {
+                // Width is limiting factor
+                scaleFactor = (self.view.frame.width-400)/pathBoundingBox.width
+            } else {
+                // Height is limiting factor
+                scaleFactor = (self.view.frame.height-100)/pathBoundingBox.height
+            }
+            
         } else {
-            // Height is limiting factor
-            scaleFactor = (self.view.frame.height-300)/pathBoundingBox.height
+            
+            viewAspectRatio = (self.view.frame.width-60)/(self.view.frame.height-300)
+            
+            if (boundingBoxAspectRatio > viewAspectRatio) {
+                // Width is limiting factor
+                scaleFactor = (self.view.frame.width-60)/pathBoundingBox.width
+            } else {
+                // Height is limiting factor
+                scaleFactor = (self.view.frame.height-300)/pathBoundingBox.height
+            }
         }
+
+        print("viewAspectRatio: \(viewAspectRatio)")
+        print("scaleFactor: \(scaleFactor)")
         
         var scaleTransform = CGAffineTransform.identity
         
@@ -151,15 +204,17 @@ class ScratchViewController: UIViewController {
         
         let scaledPathBoundingBox = scaleTransformedPath.boundingBox
         
+        let shiftUpConstance = self.view.frame.height * 0.05
+        
         let viewCenterX = view.center.x
-        let viewCenterY = view.center.y + 20
+        let viewCenterY = view.center.y - shiftUpConstance
         
         let centerOffset = CGSize(width: -(scaledPathBoundingBox.midX-viewCenterX), height: -(scaledPathBoundingBox.midY-viewCenterY))
         
         var translateTransform = CGAffineTransform.identity
         translateTransform = translateTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)
         
-        print("translattrnasform: \(translateTransform)")
+//        print("translattrnasform: \(translateTransform)")
         guard let translateTransformedPath = (scaleTransformedPath).copy(using: &translateTransform) else { return scaleTransformedPath }
         
         return translateTransformedPath
@@ -180,7 +235,7 @@ class ScratchViewController: UIViewController {
         
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         
-        print("vibrate!!")
+//        print("vibrate!!")
         
     }
     
@@ -208,6 +263,12 @@ class ScratchViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        
+        self.delegate?.didReciveScratchedCountry(self, scratchedCountry: country)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     deinit {
         print("Scratchable View@@@@")
     }

@@ -8,6 +8,26 @@
 
 import Foundation
 
+enum Continent: String {
+    
+    typealias RawValue = String
+    
+    case europe = "Europe"
+    
+    case asia = "Asia"
+    
+    case africa = "Africa"
+    
+    case northAmerica = "North America"
+    
+    case southAmerica = "South America"
+    
+    case oceania = "Oceania"
+    
+    case europeAndAsia = "Europe and Asia"
+    
+}
+
 let countryIdClassifiedByContinents = [
     
     "Europe": ["AL", "AD", "AM", "AT", "AX", "AZ", "BY", "BE", "BA", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FO", "FR", "GE", "GE", "GI", "DE", "GR", "HU", "IM","IS", "IE", "JE", "IT", "XK", "LV", "LI", "LT", "LU", "MK", "MT", "MD", "MC", "ME", "NL", "NO", "PL", "PT", "RO", "RU", "SM", "RS", "SK", "SJ", "SI", "ES", "SE", "CH", "TR", "UA", "GB", "VA"],

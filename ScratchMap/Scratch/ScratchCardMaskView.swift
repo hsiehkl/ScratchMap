@@ -66,9 +66,9 @@ class ScratchCardMaskView: UIView {
     public func begainPath(at point: CGPoint) {
         
         currentPath = CGMutablePath()
+        print("change frme: \(point)")
         currentPath?.move(to: point)
         setNeedsDisplay()
-        
     }
     
     public func addLine(to point: CGPoint) {

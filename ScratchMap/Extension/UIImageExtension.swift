@@ -12,7 +12,7 @@ extension UIImage {
     
     convenience init(view: UIView) {
         
-        UIGraphicsBeginImageContext(view.frame.size)
+        UIGraphicsBeginImageContext(view.bounds.size)
         
         view.layer.render(in:UIGraphicsGetCurrentContext()!)
         

@@ -25,6 +25,8 @@ struct Country {
     
     let id: String
     
+    let continent: String?
+    
     let path: SVGBezierPath
     
 }
@@ -37,7 +39,8 @@ extension Country: Equatable {
             
             lhs.id == rhs.id &&
             lhs.name == rhs.name &&
-            lhs.path == rhs.path
+            lhs.path == rhs.path &&
+            lhs.continent == rhs.continent
         
     }
 }

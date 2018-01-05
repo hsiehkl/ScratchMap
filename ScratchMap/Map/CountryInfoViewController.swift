@@ -18,6 +18,8 @@ class CountryInfoViewController: UIViewController {
     
     var countryPath = SVGBezierPath()
     
+    var continent: String = ""
+    
     var countryName: String = "" {
         
         didSet {
@@ -54,28 +56,42 @@ class CountryInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("CountryInfoViewController: \(self.view.frame)")
+        
         self.view.backgroundColor = UIColor.clear
         dropShadow()
         setupCountryInfoContents()
         
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-
-        super.viewWillLayoutSubviews()
-
-        if UIDevice.current.orientation.isLandscape {
+    override func viewWillLayoutSubviews() {
+        
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
             
-            print("Landscape")
+            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 60)
             
-//            countryFlagImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 50)
-
         } else {
-
-            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 70)
+            
         }
     }
+
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//
+//        super.viewWillLayoutSubviews()
+//
+//        if UIDevice.current.orientation.isLandscape {
+//            
+//            print("Landscape")
+//            
+////            countryFlagImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//            
+//
+//        } else {
+//
+//            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 70)
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -100,7 +116,7 @@ class CountryInfoViewController: UIViewController {
         
 //        popOverVC.countryPath = self.countryPath
         
-        let country = Country(name: countryName, id: countryId, path: countryPath)
+        let country = Country(name: countryName, id: countryId, continent: continent, path: countryPath)
         popOverVC.country = country
         
         popOverVC.providesPresentationContextTransitionStyle = true
@@ -142,7 +158,7 @@ class CountryInfoViewController: UIViewController {
         
         //        popOverVC.countryPath = self.countryPath
         
-        let country = Country(name: countryName, id: countryId, path: countryPath)
+        let country = Country(name: countryName, id: countryId, continent: continent, path: countryPath)
         popOverVC.country = country
         
         popOverVC.providesPresentationContextTransitionStyle = true
@@ -154,12 +170,15 @@ class CountryInfoViewController: UIViewController {
         
         self.present(popOverVC, animated: true, completion: nil)
         
-        
     }
     @IBAction func claenButtonTapped(_ sender: Any) {
         
+        if let mainPageVC = self.parent as? MainPageViewController {
         
+            mainPageVC.removeSelectedCountry(id: countryId)
+        }
     }
+        
     deinit {
         print("country view controller@@@@@")
     }

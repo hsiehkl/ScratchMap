@@ -116,25 +116,39 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let key = continents[indexPath.row]
         
             if let progressAmount = countries[key]?.count {
-
-//            cell.progressLabel.text = "\(progress)/\(continentCountryAmount[indexPath.row])"
                 
-            cell.continentLabel.text = "\(continents[indexPath.row]) \(progressAmount)/\(continentCountryAmount[indexPath.row])"
+            cell.continentLabel.text = "\(continents[indexPath.row])"
                 
             let progress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row])
                 
                 print("check: \(key)\(progress)!!!!")
+            let fakeProgress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row]) * 2
                 
-            cell.continentProgressBarView.progress = progress
+            cell.continentProgressBarView.progress = fakeProgress
                 
             let percentage = progress * 100
+            cell.continentProgressAmountLabel.text = "\(progressAmount)/\(continentCountryAmount[indexPath.row])"
             cell.continentPercentageLabel.text = "\(String(format: "%.0f", percentage))%"
                 
             }
         
-            
-        
             return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCollectionViewCell", for: indexPath) as! AchievementCollectionViewCell
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let popOverVC = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let continentDetailViewController = storyboard.instantiateViewController(withIdentifier: "continentDetailViewController") as! ContinentDetailViewController
+        
+        guard let visitedCountriesInContinent = countries[(continents[indexPath.row])] else { return }
+        
+        continentDetailViewController.visitedCountries = visitedCountriesInContinent
+        
+        self.navigationController?.pushViewController(continentDetailViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -148,7 +162,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             headerView.worldProgressLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
             
             let progress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount)
-            headerView.progressBarView.progress = progress
+            let fakeProgress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount) * 2
+            headerView.progressBarView.progress = fakeProgress
             let percentage = progress * 100
             print(" progreeeeeeee \(String(format: "%.2f", percentage))")
             headerView.worldPercentageLabel.text = "\(String(format: "%.0f", percentage))%"
@@ -193,59 +208,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         return continentCountryAmount
     }
-    
-//    @IBAction func logoutTapped(_ sender: Any) {
-//
-//     //   let settingView = UIView.load(nibName: "SettingView") as! SettingView
-//
-//      //  settingView.frame = self.view.frame
-//
-//      //  self.view.addSubview(settingView)
-//
-//
-////
-////        self.addChildViewController(accountViewController)
-////
-////        accountViewController.view.frame = self.view.frame
-////        self.view.addSubview(accountViewController.view)
-////        accountViewController.didMove(toParentViewController: self)
-//
-////        accountViewController.providesPresentationContextTransitionStyle = true
-////        accountViewController.definesPresentationContext = true
-////        accountViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-////        accountViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-//
-//
-////        popOverVC.delegate = parent as? MainPageViewController
-//
-////        self.present(accountViewController, animated: true, completion: nil)
-//
-////        let firebaseAuth = Auth.auth()
-////
-////        do {
-////            try firebaseAuth.signOut()
-////
-////        } catch let signOutError as NSError {
-////
-////            self.showAlert(title: "Oops!", message: "\(signOutError)")
-////
-////            print ("Error signing out: %@", signOutError)
-////        }
-////
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
-//
-//        let navigationController = UINavigationController(rootViewController: accountViewController)
-////
-//         self.present(navigationController, animated: true, completion: nil)
-////        AppDelegate.shared.window?.updateRoot(
-////            to: loginViewController,
-////            animation: crossDissolve,
-////            completion: nil
-////        )
-//
-//    }
     
     func setupNavigationBar() {
         

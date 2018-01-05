@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import MessageUI
 import ChameleonFramework
+import Crashlytics
 
 class AccountViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
@@ -96,7 +97,6 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
-        
         
     }
     
