@@ -32,7 +32,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         setupNavigationBar()
         
         catchMainPage()
-
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
     }
     
@@ -80,7 +81,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             let itemHeight = screenHeight/3 + padding
 
             layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-            layout.minimumLineSpacing = 10
+            layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 10
             
             collectionView.collectionViewLayout = layout
@@ -159,7 +160,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
             let totalCountryAmount = continentCountryCount().reduce(0) { $0 + $1 }
             
-            headerView.worldProgressLabel.text = "World \(visitedCountries.count)/\(totalCountryAmount)"
+            headerView.worldProgressLabel.text = "\(visitedCountries.count)/\(totalCountryAmount)"
             
             let progress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount)
             let fakeProgress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount) * 2
@@ -219,12 +220,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(pushSettingpage), for: .touchUpInside)
         let settingButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = settingButton
-        self.navigationItem.backBarButtonItem?.title = ""
-//        let barButton = UIBarButtonItem(image: UIImage(named: "menu-2"), style: .plain, target: self, action: #selector(pushSettingpage))
-//        barButton.image?.withRenderingMode(.alwaysOriginal)
-//        self.navigationItem.rightBarButtonItem = barButton
-        
+        self.navigationItem.leftBarButtonItem = settingButton
     }
     
     @objc func pushSettingpage() {

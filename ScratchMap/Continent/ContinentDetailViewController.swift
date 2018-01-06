@@ -17,7 +17,10 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.navigationItem.title = "Collection"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +48,10 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         cell.countryFlagImage.image = styledImage
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 
 

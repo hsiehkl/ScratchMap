@@ -88,8 +88,14 @@ class TabBarController: UITabBarController {
             let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
             
             let achievementNavigationController = UINavigationController(rootViewController: achievementViewController)
+//            achievementNavigationController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//            achievementNavigationController.navigationBar.layer.shadowColor = UIColor.gray.cgColor
+//            achievementNavigationController.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
+////            achievementNavigationController.navigationBar.layer.shadowRadius = 4.0
+//            achievementNavigationController.navigationBar.layer.shadowOpacity = 0.6
+//            achievementNavigationController.navigationBar.layer.masksToBounds = false
             
-            let font = UIFont(name: "ChalkboardSE-Regular", size: 20)
+            let font = UIFont(name: "Avenir-Light", size: 20)
             let textAttributes = [NSAttributedStringKey.font: font]
             achievementNavigationController.navigationBar.titleTextAttributes = textAttributes
             
@@ -104,8 +110,8 @@ class TabBarController: UITabBarController {
     
     func setupBarItemFont() {
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "ChalkboardSE-Regular", size: 12)!], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "ChalkboardSE-Regular", size: 12)!], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 12)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 12)!], for: .selected)
         
     }
     

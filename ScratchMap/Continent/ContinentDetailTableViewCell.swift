@@ -10,6 +10,7 @@ import UIKit
 
 class ContinentDetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backView: UIView!
     
     @IBOutlet weak var countryFlagImage: UIImageView!
     
@@ -17,7 +18,19 @@ class ContinentDetailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        backView.layer.cornerRadius = 10
+        
+        countryFlagImage.layer.shadowColor = UIColor.gray.cgColor
+        
+        countryFlagImage.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        
+        countryFlagImage.layer.shadowOpacity = 0.8
+        
+        countryFlagImage.layer.shadowRadius = 2
+        
+        countryFlagImage.layer.cornerRadius = countryFlagImage.bounds.width / 2
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

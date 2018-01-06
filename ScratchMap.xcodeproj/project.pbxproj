@@ -34,7 +34,6 @@
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BD9DF581FEBF24300A2FE0D /* ScratchMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */; };
 		6BD9DF5A1FEC0B4B00A2FE0D /* ScratchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9DF591FEC0B4B00A2FE0D /* ScratchView.swift */; };
-		6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6BE764171FE3BF2100B3708B /* worldHigh.svg */; };
 		6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7641B1FE3D49F00B3708B /* Country.swift */; };
 		6BEF0E9B1FE8A3F900EED739 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */; };
 		6BEF0E9D1FE8B85B00EED739 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */; };
@@ -81,7 +80,6 @@
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BD9DF571FEBF24300A2FE0D /* ScratchMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchMask.swift; sourceTree = "<group>"; };
 		6BD9DF591FEC0B4B00A2FE0D /* ScratchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchView.swift; sourceTree = "<group>"; };
-		6BE764171FE3BF2100B3708B /* worldHigh.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = worldHigh.svg; sourceTree = "<group>"; };
 		6BE7641B1FE3D49F00B3708B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		6BEF0E9A1FE8A3F900EED739 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6BEF0E9C1FE8B85B00EED739 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B278ABA1FF243EA00B3DA4D /* launchbg.jpg */,
 				6B1B7CE71FFFE5C800E5208B /* worldHighNew.svg */,
-				6BE764171FE3BF2100B3708B /* worldHigh.svg */,
 			);
 			path = ScratchMap;
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 				6B1B7CE81FFFE5C800E5208B /* worldHighNew.svg in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6B278ABB1FF243EA00B3DA4D /* launchbg.jpg in Resources */,
-				6BE764181FE3BF2100B3708B /* worldHigh.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,8 +24,8 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
         setupNavigationBar()
         
         self.navigationItem.title = "Setting"
-        self.navigationItem.backBarButtonItem?.title = ""
-        userNameView.backgroundColor = FlatSkyBlue()
+
+//        userNameView.backgroundColor = FlatSkyBlue()
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +111,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
             let composeViewController = MFMailComposeViewController()
             composeViewController.mailComposeDelegate = self
             
-            composeViewController.setToRecipients(["st4465@gmail.com"])
+            composeViewController.setToRecipients(["iosscratchmapapp@gmail.com"])
             composeViewController.setSubject("Map Feedback")
             composeViewController.setMessageBody("Hello!", isHTML: false)
             

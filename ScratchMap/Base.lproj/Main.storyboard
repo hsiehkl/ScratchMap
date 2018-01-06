@@ -12,9 +12,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+            <string>Avenir-Light</string>
+            <string>Avenir-Medium</string>
+        </array>
         <array key="ChalkboardSE.ttc">
             <string>ChalkboardSE-Bold</string>
-            <string>ChalkboardSE-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -36,7 +40,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Yjl-M9-wmK"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sx8-0f-kgK">
@@ -45,7 +49,7 @@
                                     <constraint firstAttribute="height" constant="40" id="cmU-kn-Lh3"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="381-Pf-nLD">
@@ -54,7 +58,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="n5G-lP-3gH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -68,9 +72,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="L83-Cz-Psz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <state key="normal" title="Create account">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="createAccountAction:" destination="Miz-7p-0fh" eventType="touchUpInside" id="AJ3-od-Jxy"/>
@@ -130,16 +134,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxN-a0-61I">
-                                        <rect key="frame" x="60" y="14.5" width="195" height="63"/>
+                                        <rect key="frame" x="60" y="18.5" width="200" height="63"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="63" id="35d-2X-Kzw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkButton" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-Mm-gi6">
-                                        <rect key="frame" x="280" y="27.5" width="25" height="25"/>
+                                        <rect key="frame" x="275" y="27.5" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="E7w-tH-P6J"/>
                                             <constraint firstAttribute="width" constant="25" id="bea-bi-iwp"/>
@@ -153,13 +157,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scratch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sh-xA-MDO">
-                                        <rect key="frame" x="269.5" y="53.5" width="47.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                                        <rect key="frame" x="262" y="53.5" width="52.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Aj-iB-1fK">
-                                        <rect key="frame" x="275" y="28" width="35" height="47"/>
+                                        <rect key="frame" x="270" y="28" width="35" height="47"/>
                                         <connections>
                                             <action selector="scratchButtonTapped:" destination="vTH-yk-rYn" eventType="touchUpInside" id="k6p-Rq-ldP"/>
                                         </connections>
@@ -181,23 +185,23 @@
                                     <constraint firstItem="4Aj-iB-1fK" firstAttribute="leading" secondItem="hGW-Mm-gi6" secondAttribute="leading" constant="-5" id="EER-M9-i7I"/>
                                     <constraint firstItem="1Sh-xA-MDO" firstAttribute="centerX" secondItem="hGW-Mm-gi6" secondAttribute="centerX" id="FBQ-wX-bqx"/>
                                     <constraint firstItem="fjM-pX-3EU" firstAttribute="top" secondItem="A6X-kq-vZL" secondAttribute="top" id="Fbc-Ny-QD5"/>
-                                    <constraint firstItem="A6X-kq-vZL" firstAttribute="leading" secondItem="hGW-Mm-gi6" secondAttribute="trailing" constant="25" id="HZt-TN-vNh"/>
+                                    <constraint firstItem="A6X-kq-vZL" firstAttribute="leading" secondItem="hGW-Mm-gi6" secondAttribute="trailing" constant="30" id="HZt-TN-vNh"/>
                                     <constraint firstItem="4Aj-iB-1fK" firstAttribute="trailing" secondItem="hGW-Mm-gi6" secondAttribute="trailing" constant="5" id="Ij9-79-RCs"/>
                                     <constraint firstAttribute="bottom" secondItem="fjM-pX-3EU" secondAttribute="bottom" constant="5" id="NNF-0j-7dJ"/>
                                     <constraint firstItem="fjM-pX-3EU" firstAttribute="trailing" secondItem="A6X-kq-vZL" secondAttribute="trailing" constant="5" id="Ris-jZ-3Fl"/>
                                     <constraint firstItem="uGq-Hk-nkh" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" constant="10" id="Yql-bG-h1z"/>
-                                    <constraint firstItem="JxN-a0-61I" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" multiplier="0.9" constant="10" id="c19-Gx-YHK"/>
+                                    <constraint firstItem="JxN-a0-61I" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" constant="10" id="c19-Gx-YHK"/>
                                     <constraint firstAttribute="trailing" secondItem="A6X-kq-vZL" secondAttribute="trailing" constant="20" id="fVw-yC-Fyu"/>
                                     <constraint firstItem="hGW-Mm-gi6" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" id="fjb-MO-212"/>
                                     <constraint firstItem="uGq-Hk-nkh" firstAttribute="leading" secondItem="a8p-Zl-EHZ" secondAttribute="leading" constant="15" id="hg0-Ff-IkP"/>
-                                    <constraint firstItem="4Aj-iB-1fK" firstAttribute="leading" secondItem="JxN-a0-61I" secondAttribute="trailing" constant="20" id="jfe-u4-uWV"/>
+                                    <constraint firstItem="4Aj-iB-1fK" firstAttribute="leading" secondItem="JxN-a0-61I" secondAttribute="trailing" constant="10" id="jfe-u4-uWV"/>
                                     <constraint firstAttribute="bottom" secondItem="4Aj-iB-1fK" secondAttribute="bottom" constant="5" id="wia-nS-kSh"/>
                                     <constraint firstAttribute="height" constant="80" id="x44-oF-inB"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clean" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4P-fb-lQe">
-                                <rect key="frame" x="326" y="53.5" width="34" height="20"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
+                                <rect key="frame" x="322.5" y="53.5" width="41.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -231,13 +235,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8Y-6J-ZsC">
-                                <rect key="frame" x="147" y="596" width="80" height="45"/>
+                                <rect key="frame" x="147" y="561.5" width="80" height="45"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.86250535102739723" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="7MK-z9-1ef"/>
                                     <constraint firstAttribute="height" constant="45" id="MHX-KJ-2iM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                 <color key="tintColor" red="0.49769571419999997" green="0.74332118030000005" blue="0.82748872039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -248,7 +252,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U8Y-6J-ZsC" firstAttribute="centerX" secondItem="tNY-Ib-asE" secondAttribute="centerX" id="8l2-qO-qzB"/>
-                            <constraint firstItem="U8Y-6J-ZsC" firstAttribute="centerY" secondItem="tNY-Ib-asE" secondAttribute="centerY" multiplier="1.8" id="XUO-PR-WVB"/>
+                            <constraint firstItem="U8Y-6J-ZsC" firstAttribute="centerY" secondItem="tNY-Ib-asE" secondAttribute="centerY" multiplier="1.7" id="XUO-PR-WVB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tNY-Ib-asE"/>
                     </view>
@@ -277,7 +281,7 @@
                                     <constraint firstAttribute="height" constant="38" id="Sdg-M8-oYe"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-Ci-o93">
@@ -286,7 +290,7 @@
                                     <constraint firstAttribute="height" constant="38" id="KRO-vb-8zE"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baV-el-Z6H">
@@ -295,7 +299,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="YhZ-8v-iRr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -310,7 +314,7 @@
                                     <constraint firstAttribute="height" constant="38" id="Egp-ee-cdT"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eZ-fn-Yct">
@@ -319,9 +323,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NSx-4y-SJ8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Back to login">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="backToLoginAction:" destination="G8f-ji-SHq" eventType="touchUpInside" id="VN2-a3-qNg"/>
@@ -415,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GN-dV-dS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1511" y="602"/>
+            <point key="canvasLocation" x="-1426" y="529"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -464,14 +468,14 @@
                                                             <rect key="frame" x="11.5" y="174.5" width="116" height="12"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6Q-HR-qFy">
-                                                                    <rect key="frame" x="81.5" y="0.0" width="29" height="12"/>
-                                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="12"/>
+                                                                    <rect key="frame" x="80" y="0.0" width="30.5" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9i-ja-9Fh">
-                                                                    <rect key="frame" x="43.5" y="0.0" width="29" height="12"/>
-                                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="12"/>
+                                                                    <rect key="frame" x="43" y="0.0" width="30.5" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -497,8 +501,8 @@
                                                     <rect key="frame" x="19.5" y="30.5" width="116" height="143"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-W6-YGg">
-                                                    <rect key="frame" x="16" y="2.5" width="123" height="24.5"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="3.5" width="123" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -537,9 +541,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cf-A9-XC5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="World 100/255" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKX-Es-Ylv">
-                                                    <rect key="frame" x="127" y="13.5" width="151" height="31.5"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="World" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKX-Es-Ylv">
+                                                    <rect key="frame" x="137.5" y="19.5" width="49" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -561,23 +565,31 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world" translatesAutoresizingMaskIntoConstraints="NO" id="9OD-TF-Yu5">
-                                                    <rect key="frame" x="89" y="18.5" width="30" height="30"/>
+                                                    <rect key="frame" x="99.5" y="17" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="9OD-TF-Yu5" secondAttribute="height" multiplier="1:1" id="F1Q-sH-nXX"/>
                                                         <constraint firstAttribute="height" constant="30" id="l45-o9-eFM"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="155/250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfa-vv-bTo">
+                                                    <rect key="frame" x="191.5" y="19.5" width="67.5" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.94509803920000002" green="0.9449555838" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="6eC-Mh-I2G" firstAttribute="width" secondItem="5cf-A9-XC5" secondAttribute="width" multiplier="0.55" id="0qE-3Y-J5F"/>
                                                 <constraint firstItem="6eC-Mh-I2G" firstAttribute="height" secondItem="5cf-A9-XC5" secondAttribute="height" multiplier="0.17" id="2lq-Fq-f4a"/>
-                                                <constraint firstItem="IKX-Es-Ylv" firstAttribute="centerY" secondItem="5cf-A9-XC5" secondAttribute="centerY" multiplier="0.65" id="6GO-an-S8H"/>
+                                                <constraint firstItem="IKX-Es-Ylv" firstAttribute="centerY" secondItem="5cf-A9-XC5" secondAttribute="centerY" multiplier="0.7" id="6GO-an-S8H"/>
                                                 <constraint firstItem="6eC-Mh-I2G" firstAttribute="centerY" secondItem="5cf-A9-XC5" secondAttribute="centerY" multiplier="1.45" id="Aja-fl-iaR"/>
+                                                <constraint firstItem="Xfa-vv-bTo" firstAttribute="centerX" secondItem="5cf-A9-XC5" secondAttribute="centerX" multiplier="1.2" id="M3z-nz-Xco"/>
+                                                <constraint firstItem="Xfa-vv-bTo" firstAttribute="centerY" secondItem="IKX-Es-Ylv" secondAttribute="centerY" id="Rel-aX-4aO"/>
+                                                <constraint firstItem="Xfa-vv-bTo" firstAttribute="leading" secondItem="IKX-Es-Ylv" secondAttribute="trailing" constant="5" id="abv-KS-Zlr"/>
                                                 <constraint firstItem="6eC-Mh-I2G" firstAttribute="centerX" secondItem="5cf-A9-XC5" secondAttribute="centerX" id="eBJ-Fg-eue"/>
                                                 <constraint firstItem="IKX-Es-Ylv" firstAttribute="leading" secondItem="9OD-TF-Yu5" secondAttribute="trailing" constant="8" id="iQB-qE-70z"/>
-                                                <constraint firstItem="IKX-Es-Ylv" firstAttribute="centerX" secondItem="5cf-A9-XC5" secondAttribute="centerX" constant="15" id="lcg-0R-Jh1"/>
-                                                <constraint firstItem="9OD-TF-Yu5" firstAttribute="centerY" secondItem="IKX-Es-Ylv" secondAttribute="centerY" constant="4" id="oe1-lW-SPt"/>
+                                                <constraint firstItem="9OD-TF-Yu5" firstAttribute="centerY" secondItem="IKX-Es-Ylv" secondAttribute="centerY" id="oe1-lW-SPt"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -591,7 +603,7 @@
                                     <connections>
                                         <outlet property="progressBarView" destination="6eC-Mh-I2G" id="aD3-5p-mL1"/>
                                         <outlet property="worldPercentageLabel" destination="ECK-iu-ZYK" id="Emb-sl-JQO"/>
-                                        <outlet property="worldProgressLabel" destination="IKX-Es-Ylv" id="wop-VS-MwX"/>
+                                        <outlet property="worldProgressLabel" destination="Xfa-vv-bTo" id="B4Y-5Q-Bli"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -625,48 +637,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="cFd-pt-pZf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8vN-cL-VmL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="-5" width="375" height="672"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="continentDetailTableViewCell" rowHeight="49" id="7nz-MP-6GP" customClass="ContinentDetailTableViewCell" customModule="ScratchMap" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="49"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="continentDetailTableViewCell" rowHeight="100" id="7nz-MP-6GP" customClass="ContinentDetailTableViewCell" customModule="ScratchMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7nz-MP-6GP" id="XP9-PO-d5p">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-3" translatesAutoresizingMaskIntoConstraints="NO" id="dJQ-Cc-oNW">
-                                                    <rect key="frame" x="15" y="5" width="45" height="39"/>
+                                                <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHL-QL-H7o">
+                                                    <rect key="frame" x="19.5" y="7.5" width="337.5" height="84.5"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWP-WS-ykZ">
+                                                            <rect key="frame" x="15" y="29" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="JbB-vK-UOG"/>
+                                                                <constraint firstAttribute="width" constant="25" id="uxN-xM-4Ap"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.99295986727409558" green="0.98951806013882304" blue="0.97919263873300533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="39" id="1OC-Ae-txF"/>
-                                                        <constraint firstAttribute="width" constant="45" id="tEn-I4-gw5"/>
+                                                        <constraint firstItem="pWP-WS-ykZ" firstAttribute="leading" secondItem="YHL-QL-H7o" secondAttribute="leading" constant="15" id="Rzb-kf-5L7"/>
+                                                        <constraint firstItem="pWP-WS-ykZ" firstAttribute="centerY" secondItem="YHL-QL-H7o" secondAttribute="centerY" id="cMs-2s-uQu"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWP-WS-ykZ">
-                                                    <rect key="frame" x="28" y="9" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="6Pd-JL-abr"/>
-                                                        <constraint firstAttribute="height" constant="20" id="JbB-vK-UOG"/>
-                                                    </constraints>
-                                                </imageView>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-xs-qJO">
-                                                    <rect key="frame" x="80" y="14" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="74.5" y="37.5" width="44" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="YHL-QL-H7o" firstAttribute="width" secondItem="XP9-PO-d5p" secondAttribute="width" multiplier="0.9" id="1fa-KX-b2N"/>
+                                                <constraint firstItem="lcW-xs-qJO" firstAttribute="leading" secondItem="pWP-WS-ykZ" secondAttribute="trailing" constant="15" id="BsS-qI-F2N"/>
+                                                <constraint firstItem="YHL-QL-H7o" firstAttribute="centerY" secondItem="XP9-PO-d5p" secondAttribute="centerY" id="D2k-5s-7DW"/>
                                                 <constraint firstItem="lcW-xs-qJO" firstAttribute="centerY" secondItem="XP9-PO-d5p" secondAttribute="centerY" id="EhZ-WK-4F5"/>
-                                                <constraint firstItem="dJQ-Cc-oNW" firstAttribute="top" secondItem="XP9-PO-d5p" secondAttribute="top" constant="5" id="FZS-aa-w41"/>
-                                                <constraint firstItem="lcW-xs-qJO" firstAttribute="leading" secondItem="dJQ-Cc-oNW" secondAttribute="trailing" constant="20" id="H0Y-GO-N9h"/>
-                                                <constraint firstItem="pWP-WS-ykZ" firstAttribute="leading" secondItem="XP9-PO-d5p" secondAttribute="leading" constant="28" id="HSL-tK-8Yh"/>
-                                                <constraint firstItem="dJQ-Cc-oNW" firstAttribute="leading" secondItem="XP9-PO-d5p" secondAttribute="leading" constant="15" id="bJf-Ck-wLg"/>
-                                                <constraint firstItem="pWP-WS-ykZ" firstAttribute="top" secondItem="XP9-PO-d5p" secondAttribute="top" constant="9" id="cSm-fq-qpH"/>
+                                                <constraint firstItem="YHL-QL-H7o" firstAttribute="height" secondItem="XP9-PO-d5p" secondAttribute="height" multiplier="0.85" id="Huh-rJ-d9o"/>
+                                                <constraint firstItem="YHL-QL-H7o" firstAttribute="centerX" secondItem="XP9-PO-d5p" secondAttribute="centerX" id="l6Y-Y7-tcu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="backView" destination="YHL-QL-H7o" id="tSW-7R-ZNR"/>
                                             <outlet property="countryFlagImage" destination="pWP-WS-ykZ" id="KqE-SV-CmC"/>
                                             <outlet property="countryNameLabel" destination="lcW-xs-qJO" id="30Z-cb-D7l"/>
                                         </connections>
@@ -680,10 +701,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Len-D6-99K" firstAttribute="top" secondItem="cFd-pt-pZf" secondAttribute="top" id="DiY-FA-OeC"/>
                             <constraint firstItem="8vN-cL-VmL" firstAttribute="leading" secondItem="Len-D6-99K" secondAttribute="leading" id="E6t-pt-8Fa"/>
+                            <constraint firstItem="cFd-pt-pZf" firstAttribute="leading" secondItem="Len-D6-99K" secondAttribute="leading" id="Gk7-Hx-PN2"/>
+                            <constraint firstItem="Len-D6-99K" firstAttribute="top" secondItem="8vN-cL-VmL" secondAttribute="top" constant="25" id="MFt-UO-Mhs"/>
                             <constraint firstItem="8vN-cL-VmL" firstAttribute="trailing" secondItem="Len-D6-99K" secondAttribute="trailing" id="Nmd-51-8Vn"/>
                             <constraint firstItem="8vN-cL-VmL" firstAttribute="bottom" secondItem="Len-D6-99K" secondAttribute="bottom" id="QG9-gG-Ym8"/>
-                            <constraint firstItem="8vN-cL-VmL" firstAttribute="top" secondItem="zwG-Hb-tUW" secondAttribute="top" id="eMW-Te-6Jx"/>
+                            <constraint firstItem="cFd-pt-pZf" firstAttribute="width" secondItem="Len-D6-99K" secondAttribute="width" id="b2H-uu-WZw"/>
+                            <constraint firstItem="cFd-pt-pZf" firstAttribute="height" secondItem="Len-D6-99K" secondAttribute="height" id="mPj-8L-G3u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Len-D6-99K"/>
                     </view>
@@ -710,13 +735,13 @@
                                         <rect key="frame" x="-0.5" y="-40" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi! " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1S-FO-1kz">
-                                                <rect key="frame" x="22" y="10" width="331.5" height="31.5"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="22"/>
+                                                <rect key="frame" x="22" y="10" width="331.5" height="30.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.62228691579999995" green="0.77784937620000005" blue="0.89807057379999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.60116738089429933" green="0.82943571464118637" blue="0.81389209906296667" alpha="0.89466502568493156" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="z1S-FO-1kz" firstAttribute="centerY" secondItem="mBw-Ao-l3q" secondAttribute="centerY" id="SKs-m5-iDL"/>
                                             <constraint firstItem="z1S-FO-1kz" firstAttribute="centerX" secondItem="mBw-Ao-l3q" secondAttribute="centerX" id="UhM-zh-T65"/>
@@ -734,11 +759,11 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your map" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahi-Ws-ft8">
-                                                <rect key="frame" x="50" y="-2" width="122" height="50"/>
+                                                <rect key="frame" x="50" y="0.0" width="118.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9iJ-2D-yD6"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -750,6 +775,7 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tU-hu-02t">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <connections>
                                                     <action selector="shareButtonTapped:" destination="h5Q-vg-FIP" eventType="touchUpInside" id="212-Py-x7l"/>
                                                 </connections>
@@ -765,7 +791,7 @@
                                             <constraint firstItem="lRa-xM-5eT" firstAttribute="centerY" secondItem="Ti9-B4-78S" secondAttribute="centerY" id="SQE-av-Dh1"/>
                                             <constraint firstItem="lRa-xM-5eT" firstAttribute="height" secondItem="Ti9-B4-78S" secondAttribute="height" multiplier="0.4" id="SdX-yy-rTF"/>
                                             <constraint firstItem="xjl-tB-GFf" firstAttribute="height" secondItem="Ti9-B4-78S" secondAttribute="height" multiplier="0.3" id="TsC-We-myk"/>
-                                            <constraint firstItem="Ahi-Ws-ft8" firstAttribute="centerY" secondItem="lRa-xM-5eT" secondAttribute="centerY" constant="-2" id="WrV-PY-RPN"/>
+                                            <constraint firstItem="Ahi-Ws-ft8" firstAttribute="centerY" secondItem="lRa-xM-5eT" secondAttribute="centerY" id="WrV-PY-RPN"/>
                                             <constraint firstItem="lRa-xM-5eT" firstAttribute="leading" secondItem="Ti9-B4-78S" secondAttribute="leading" constant="20" id="YPF-XD-t5g"/>
                                             <constraint firstItem="3tU-hu-02t" firstAttribute="width" secondItem="Ti9-B4-78S" secondAttribute="width" id="hg5-3z-mc5"/>
                                             <constraint firstItem="Ahi-Ws-ft8" firstAttribute="leading" secondItem="lRa-xM-5eT" secondAttribute="trailing" constant="10" id="hpL-Fa-9gb"/>
@@ -787,8 +813,8 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback? Contact us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1b-gE-8Cj">
-                                                <rect key="frame" x="50" y="10.5" width="165" height="25"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                <rect key="frame" x="50" y="13.5" width="168" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -808,7 +834,7 @@
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96078431369999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="pDg-Dr-eyA" firstAttribute="centerY" secondItem="2fP-55-HfF" secondAttribute="centerY" id="1mF-3S-8zi"/>
-                                            <constraint firstItem="W1b-gE-8Cj" firstAttribute="centerY" secondItem="VzW-dl-whe" secondAttribute="centerY" constant="-2" id="A0X-oJ-rkS"/>
+                                            <constraint firstItem="W1b-gE-8Cj" firstAttribute="centerY" secondItem="VzW-dl-whe" secondAttribute="centerY" id="A0X-oJ-rkS"/>
                                             <constraint firstItem="pDg-Dr-eyA" firstAttribute="height" secondItem="2fP-55-HfF" secondAttribute="height" multiplier="0.3" id="DN5-9l-uU0"/>
                                             <constraint firstItem="2OV-1P-fdc" firstAttribute="width" secondItem="2fP-55-HfF" secondAttribute="width" id="RyE-HV-E1q"/>
                                             <constraint firstAttribute="height" constant="50" id="Vcc-du-D6F"/>
@@ -833,8 +859,8 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH8-WY-tU6">
-                                                <rect key="frame" x="50" y="10.5" width="57.5" height="25"/>
-                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                <rect key="frame" x="50" y="13.5" width="59" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -866,7 +892,7 @@
                                             <constraint firstItem="LDo-9P-b1t" firstAttribute="centerY" secondItem="2Cm-Vo-IhS" secondAttribute="centerY" id="are-mZ-KXz"/>
                                             <constraint firstItem="jBe-e7-KKR" firstAttribute="height" secondItem="2Cm-Vo-IhS" secondAttribute="height" multiplier="0.38" id="cig-2P-z9L"/>
                                             <constraint firstItem="PL6-S6-Tip" firstAttribute="centerX" secondItem="2Cm-Vo-IhS" secondAttribute="centerX" id="egX-mr-PBk"/>
-                                            <constraint firstItem="tH8-WY-tU6" firstAttribute="centerY" secondItem="jBe-e7-KKR" secondAttribute="centerY" constant="-2" id="stw-ze-qbi"/>
+                                            <constraint firstItem="tH8-WY-tU6" firstAttribute="centerY" secondItem="jBe-e7-KKR" secondAttribute="centerY" id="stw-ze-qbi"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0e-UD-4VJ">
@@ -928,16 +954,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3n-V9-xEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-674" y="574"/>
+            <point key="canvasLocation" x="-674" y="530"/>
         </scene>
     </scenes>
     <resources>
         <image name="LOGINbg" width="1125" height="2001"/>
+        <image name="backgroundLight" width="960" height="1708"/>
         <image name="cancel" width="32" height="32"/>
         <image name="checkButton" width="32" height="32"/>
         <image name="envelope" width="64" height="64"/>
         <image name="logout-4" width="64" height="64"/>
-        <image name="placeholder-3" width="64" height="64"/>
         <image name="right-arrow" width="64" height="64"/>
         <image name="share-2" width="64" height="64"/>
         <image name="world" width="512" height="512"/>

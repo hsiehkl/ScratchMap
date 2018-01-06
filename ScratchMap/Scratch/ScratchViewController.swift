@@ -48,15 +48,12 @@ class ScratchViewController: UIViewController {
         
         print("ScratchViewController: \(self.view.frame)")
         
-        let maskFillColor = UIColor(gradientStyle: .leftToRight, withFrame: mask.frame, andColors:
-                
-                   colorSet.coverColorSet
-                
-                )
+        let maskFillColor = UIColor.gray
+        
+        guard let continent = country.continent else { return }
         
         let baseFillColor = UIColor(gradientStyle: .leftToRight, withFrame: wantToShowView.frame, andColors:
-            
-                colorSet.colorSetProvider()
+                colorSet.colorProvider(continent: continent)
         )
         
         let scaleTransformedPath = transformPathScale(path: country.path)
@@ -132,7 +129,7 @@ class ScratchViewController: UIViewController {
         layer.fillColor = continentColor.cgColor
         
         let strokeWidth = CGFloat(0.5)
-        let strokeColor = UIColor(red: 212.0 / 255.0, green: 175.0 / 255.0, blue: 55.0 / 255.0, alpha: 1)
+        let strokeColor = UIColor.white
         
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor.cgColor
@@ -186,7 +183,7 @@ class ScratchViewController: UIViewController {
         
         var scaleTransform = CGAffineTransform.identity
         
-        scaleTransform = scaleTransform.scaledBy(x: scaleFactor, y: scaleFactor)
+        scaleTransform = scaleTransform.scaledBy(x: scaleFactor * 0.8, y: scaleFactor * 0.8)
         //        scaleTransform.translatedBy(x: -pathBounding.minX, y: -pathBounding.minY)
         
         print("縮放\(scaleTransform)")
