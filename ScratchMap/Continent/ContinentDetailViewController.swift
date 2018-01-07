@@ -19,7 +19,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.navigationItem.title = "Collection"
+        self.navigationItem.title = NSLocalizedString("Collection", comment: "")
 
     }
 

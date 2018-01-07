@@ -1,0 +1,72 @@
+/* Class = "UILabel"; text = "Scratch"; ObjectID = "1Sh-xA-MDO"; */
+"1Sh-xA-MDO.text" = "刮開";
+
+/* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "2eZ-fn-Yct"; */
+"2eZ-fn-Yct.normalTitle" = "回登入頁";
+
+/* Class = "UIButton"; normalTitle = "Create account"; ObjectID = "9PH-Tv-YLD"; */
+"9PH-Tv-YLD.normalTitle" = "建立新帳號";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "381-Pf-nLD"; */
+"381-Pf-nLD.normalTitle" = "登入";
+
+/* Class = "UILabel"; text = "Share your map"; ObjectID = "Ahi-Ws-ft8"; */
+"Ahi-Ws-ft8.text" = "分享地圖";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ECK-iu-ZYK"; */
+"ECK-iu-ZYK.text" = "Label";
+
+/* Class = "UILabel"; text = "World"; ObjectID = "IKX-Es-Ylv"; */
+"IKX-Es-Ylv.text" = "世界";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JxN-a0-61I"; */
+"JxN-a0-61I.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Nke-W6-YGg"; */
+"Nke-W6-YGg.text" = "Label";
+
+/* Class = "UILabel"; text = "Clean"; ObjectID = "O4P-fb-lQe"; */
+"O4P-fb-lQe.text" = "清除";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "U8Y-6J-ZsC"; */
+"U8Y-6J-ZsC.normalTitle" = "完成";
+
+/* Class = "UILabel"; text = "Feedback? Contact us"; ObjectID = "W1b-gE-8Cj"; */
+"W1b-gE-8Cj.text" = "反饋？聯絡我們";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "X9i-ja-9Fh"; */
+"X9i-ja-9Fh.text" = "Label";
+
+/* Class = "UILabel"; text = "155/250"; ObjectID = "Xfa-vv-bTo"; */
+"Xfa-vv-bTo.text" = "155/250";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Y4F-Ci-o93"; */
+"Y4F-Ci-o93.placeholder" = "密碼";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "baV-el-Z6H"; */
+"baV-el-Z6H.normalTitle" = "註冊";
+
+/* Class = "UITextField"; placeholder = "User Name"; ObjectID = "i5t-en-Ayh"; */
+"i5t-en-Ayh.placeholder" = "用戶名稱";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lcW-xs-qJO"; */
+"lcW-xs-qJO.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "sx8-0f-kgK"; */
+"sx8-0f-kgK.placeholder" = "密碼";
+
+/* Class = "UILabel"; text = "Log out"; ObjectID = "tH8-WY-tU6"; */
+"tH8-WY-tU6.text" = "登出";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "w6Q-HR-qFy"; */
+"w6Q-HR-qFy.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "xSm-WJ-pDN"; */
+"xSm-WJ-pDN.placeholder" = "信箱";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "yoe-YW-KkY"; */
+"yoe-YW-KkY.placeholder" = "信箱";
+
+/* Class = "UILabel"; text = "Hi! "; ObjectID = "z1S-FO-1kz"; */
+"z1S-FO-1kz.text" = "Hi! ";
+

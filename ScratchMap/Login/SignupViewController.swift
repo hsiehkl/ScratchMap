@@ -33,7 +33,7 @@ class SignupViewController: UIViewController {
             (emailTextField.text?.isEmpty)!
         {
 
-            self.showAlert(title: "Opps!", message: "Please fill in all blanks.", handler: nil)
+            self.showAlert(title: "Opps!", message: NSLocalizedString("Please fill in all blanks.", comment: ""), handler: nil)
 
             return
         }

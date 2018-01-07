@@ -42,7 +42,6 @@ class ProgressBarView: UIView {
 
         let progress = self.progress
 
-        print("why no corner~~~ \(self.frame.height/2)")
         self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true
 

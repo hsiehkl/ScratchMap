@@ -27,11 +27,11 @@ extension TabBarItemType {
 
         case .map:
 
-            return "Map"
+            return NSLocalizedString("Map", comment: "")
 
         case .achievement:
 
-            return "Achievement"
+            return NSLocalizedString("Achievement", comment: "")
         }
 
     }

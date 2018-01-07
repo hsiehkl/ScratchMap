@@ -12,8 +12,13 @@ import FirebaseAuth
 class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var visitedCountries = [Country]()
+    
+    let continentsForLabel = [NSLocalizedString("Europe", comment: ""), NSLocalizedString("Asia", comment: ""), NSLocalizedString("Africa", comment: ""), NSLocalizedString("North America", comment: ""), NSLocalizedString("South America", comment: ""), NSLocalizedString("Oceania", comment: "")]
+    
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
+    
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
+    
     let progressBar = ProgressBarView()
 
     @IBOutlet weak var worldAchievementLabel: UILabel!
@@ -28,6 +33,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         catchMainPage()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.black
 
     }
 
@@ -105,7 +112,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
             if let progressAmount = countries[key]?.count {
 
-            cell.continentLabel.text = "\(continents[indexPath.row])"
+            cell.continentLabel.text = "\(continentsForLabel[indexPath.row])"
 
             let progress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row])
 
@@ -137,6 +144,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         switch kind {
+            
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "worldHeader", for: indexPath) as! WorldCollectionReusableView
 
@@ -152,6 +160,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             headerView.worldPercentageLabel.text = "\(String(format: "%.0f", percentage))%"
 
             return headerView
+            
         default:
             assert(false, "Unxpected element kind")
         }
@@ -194,7 +203,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
     func setupNavigationBar() {
 
-        self.navigationItem.title = "Statistics"
+        self.navigationItem.title = NSLocalizedString("Statistics", comment: "")
 
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "menu-2"), for: .normal)

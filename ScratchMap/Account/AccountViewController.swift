@@ -22,7 +22,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
         setupNavigationBar()
 
-        self.navigationItem.title = "Setting"
+        self.navigationItem.title = NSLocalizedString("Setting", comment: "")
 
     }
 
@@ -49,7 +49,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
     @IBAction func logout(_ sender: Any) {
 
-        let alertController = UIAlertController(title: "Hey!", message: "You are going to logout.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Hey!", message: NSLocalizedString("You are going to logout.", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
 
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
 
@@ -79,7 +79,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
         }))
 
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
 
         self.present(alertController, animated: true, completion: nil)
 
@@ -89,7 +89,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
         if !MFMailComposeViewController.canSendMail() {
 
-            self.showAlert(title: "Oops!", message: "Mail services currently are not available.")
+            self.showAlert(title: "Oops!", message: NSLocalizedString("Mail services currently are not available.", comment: ""))
 
         } else {
 
@@ -109,7 +109,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
         if error != nil {
 
-            controller.showAlert(title: "Oops!", message: "Email has not been sent. Please try again", handler: { (_) -> Void in
+            controller.showAlert(title: "Oops!", message: NSLocalizedString("Email has not been sent. Please try again", comment: ""), handler: { (_) -> Void in
                 controller.dismiss(animated: true, completion: nil)
             })
 
@@ -118,12 +118,12 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
             switch result {
 
                 case .sent:
-                    controller.showAlert(title: "Thanks!", message: "We will reply you as soon as possible!", handler: { (_) -> Void in
+                    controller.showAlert(title: "Thanks!", message: NSLocalizedString("We will reply you as soon as possible!", comment: ""), handler: { (_) -> Void in
                         controller.dismiss(animated: true, completion: nil)
                 })
 
                 case .failed:
-                    controller.showAlert(title: "Oops!", message: "Email has not been sent. Please try again", handler: { (_) -> Void in
+                    controller.showAlert(title: "Oops!", message: NSLocalizedString("Email has not been sent. Please try again", comment: ""), handler: { (_) -> Void in
                     controller.dismiss(animated: true, completion: nil)
                 })
 
