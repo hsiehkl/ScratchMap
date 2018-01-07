@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class AchievementViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
-//    private let dataModel = DataModel()
     var visitedCountries = [Country]()
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
@@ -21,13 +20,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var logoutButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Achievement_______Page")
-        
-//        dataModel.delegate = self
         
         setupNavigationBar()
         
@@ -40,7 +34,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-//        dataModel.requestData()
         catchMainPage()
         
     }
@@ -89,11 +82,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         layout.invalidateLayout()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -137,11 +125,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCollectionViewCell", for: indexPath) as! AchievementCollectionViewCell
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let popOverVC = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let continentDetailViewController = storyboard.instantiateViewController(withIdentifier: "continentDetailViewController") as! ContinentDetailViewController
         
@@ -216,7 +200,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "menu-2"), for: .normal)
-//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(pushSettingpage), for: .touchUpInside)
         let settingButton = UIBarButtonItem(customView: button)
@@ -250,18 +233,4 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 }
-
-//extension AchievementViewController: DataModelDelegate {
-//
-//    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
-//
-//        self.visitedCountries = visitedCountries
-//
-////        setupNavigationTitle()
-//
-//        self.classified()
-//
-//        self.collectionView.reloadData()
-//    }
-//}
 

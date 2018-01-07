@@ -14,8 +14,6 @@ import FlagKit
 
 class MainPageViewController: UIViewController, UIScrollViewDelegate{
     
-//    static let shared = MainPageViewController()
-    
     private let dataModel = DataModel()
 
     private let scrollView = UIScrollView()
@@ -37,7 +35,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         svgWorldMapSetup()
         scrollViewSetUp()
         tapRecognizerSetup()
-//        setupNavigationButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,8 +66,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         for path in paths {
             
             self.calculatePictureBounds(rect: path.cgPath.boundingBox)
-//            guard let countryInfo = path.svgAttributes as? [String: String] else { return }
-//            guard let continent = countryInfo["continent"] else { return }
             
             colorNonSelectedCountry(path: path)
         }
@@ -200,15 +195,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         singleTapRecognizer.numberOfTapsRequired = 1
         
-//        let doubleTapRecognizer = UITapGestureRecognizer(
-//            target: self,
-//            action: #selector(self.tapLocationDetected(tapRecognizer:))
-//        )
-//
-//        doubleTapRecognizer.numberOfTapsRequired = 2
-        
         self.view.addGestureRecognizer(singleTapRecognizer)
-//        self.view.addGestureRecognizer(doubleTapRecognizer)
     }
     
     
@@ -284,52 +271,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
             countryInfoViewController.removeFromParentViewController()
         }
     }
-
-//    private func colorSelectedCountry(tapLocation: CGPoint) {
-//
-//        for path in paths {
-//
-//            guard let counrtyInfo = path.svgAttributes as? [String: String] else { return }
-//
-//            guard
-//                let countryName = counrtyInfo["title"],
-//                let countryId = counrtyInfo["id"]
-//
-//                else {
-//
-//                    let error = CountryInfoError.notFound
-//
-//                    print(error)
-//
-//                    return
-//            }
-//
-//        if path.contains(tapLocation) && countryHasNotBeingSelected(id: countryId) {
-//
-//            colorSelectedCountry(path: path)
-//
-//            let user = Auth.auth().currentUser
-//            guard let userId = user?.uid else {
-//                // need to handle
-//                return
-//            }
-//
-//            let ref = Database.database().reference()
-////            ref.keepSynced(true)
-//            let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(countryId)")
-//            let value = countryName
-//            userInfo.setValue(value)
-//
-//            self.visitedCountries.append(Country(name: countryName, id: countryId, path: path))
-//
-//            print("selected: \(visitedCountries.count)")
-//
-//            } else {
-//
-//                continue
-//            }
-//        }
-//    }
     
     private func colorSelectedCountry(country: Country) {
         
@@ -353,36 +294,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
             
             self.visitedCountries.append(Country(name: country.name, id: country.id, continent: country.continent, path: country.path))
         }
-        
     }
-//
-//            if countryHasNotBeingSelected(id: country.id) {
-//
-//                colorThePath(path: country.path)
-//
-//                let user = Auth.auth().currentUser
-//                guard let userId = user?.uid else {
-//                    // need to handle
-//                    return
-//                }
-//
-//                let ref = Database.database().reference()
-//                //            ref.keepSynced(true)
-//                let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
-//                let value = country.name
-//                userInfo.setValue(value)
-//
-//                self.visitedCountries.append(Country(name: country.name, id: country.id, path: country.path))
-//
-////                print("selected: \(visitedCountries.count)")
-//
-//            } else {
-//
-////                continue
-////            }
-//        }
-
-
+    
     func countryHasNotBeingSelected(id: String) -> Bool {
         
         for visitedCountry in visitedCountries {
@@ -395,40 +308,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         
         return true
     }
-    
-//    func countryHasNotBeingSelected(id: String) -> Bool {
-//
-//        for visitedCountry in visitedCountries {
-//
-//            if visitedCountry.id == id {
-//
-//                colorNonSelectedCountry(path: visitedCountry.path)
-//
-//                guard
-//                    let index = visitedCountries.index(of: visitedCountry)
-//                else {
-//                    break
-//                }
-//
-//                let user = Auth.auth().currentUser
-//                guard let userId = user?.uid else {
-//                    // need to handle
-//                    return false
-//                }
-//
-//                let ref = Database.database().reference()
-//                ref.keepSynced(true)
-//                let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
-//                countryRef.removeValue()
-//
-//                visitedCountries.remove(at: index)
-//
-//                return false
-//            }
-//        }
-//
-//        return true
-//    }
     
     func removeSelectedCountry(id: String) {
         
@@ -456,12 +335,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
                 countryRef.removeValue()
                 
                 visitedCountries.remove(at: index)
-                
-//                return
+
             }
         }
-        
-//        return true
     }
     
     func classifyContinent(continent: String)-> [UIColor] {
@@ -477,27 +353,16 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
         // Create a layer for each path
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-//        let bounds = self.calculatePictureBounds(rect: path.cgPath.boundingBox)
-        var pictureSizeTest = CGSize.zero
+        
         let rect = path.cgPath.boundingBox
         let maxX = rect.minX + rect.width
         let maxY = rect.minY + rect.height
-        
-//        pictureSizeTest.width = pictureSizeTest.width > maxX ? pictureSizeTest.width: maxX
-//        pictureSizeTest.height = pictureSizeTest.height > maxY ? pictureSizeTest.height : maxY
         
         let fillColor =
             UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: maxX, height: maxY), andColors:
                     
                     classifyContinent(continent: continent)
-                    
-//                    UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
-//                    UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
-
-//                    UIColor(red: 251.0 / 255.0, green: 255.0 / 255.0, blue: 185.0 / 255.0, alpha: 0.8),
-//                    UIColor(red: 253.0 / 255.0, green: 214.0 / 255.0, blue: 146.0 / 255.0, alpha: 0.8),
-//                    UIColor(red: 236.0 / 255.0, green: 115.0 / 255.0, blue: 87.0 / 255.0, alpha: 0.8),
-//                    UIColor(red: 117.0 / 255.0, green: 79.0 / 255.0, blue: 68.0 / 255.0, alpha: 0.8),
+                
                 )
         
         layer.fillColor = fillColor.cgColor
@@ -516,33 +381,11 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     func colorNonSelectedCountry(path: SVGBezierPath) {
         
         let layer = CAShapeLayer()
-//        layer.path = path.cgPath
         
         layer.path = path.cgPath
-        //        let bounds = self.calculatePictureBounds(rect: path.cgPath.boundingBox)
-        var pictureSizeTest = CGSize.zero
-        let rect = path.cgPath.boundingBox
-        let maxX = rect.minX + rect.width
-        let maxY = rect.minY + rect.height
         
         layer.fillColor = UIColor.gray.cgColor
         
-//        let fillColor =
-//            UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: maxX, height: maxY), andColors:
-//
-//                classifyContinent(continent: continent)
-//
-//                //                    UIColor(red: 71.0 / 255.0, green: 226.0 / 255.0, blue: 122.0 / 255.0, alpha: 0.7),
-//                //                    UIColor(red: 232.0 / 255.0, green: 254.0 / 255.0, blue: 151.0 / 255.0, alpha: 0.8)
-//
-//                //                    UIColor(red: 251.0 / 255.0, green: 255.0 / 255.0, blue: 185.0 / 255.0, alpha: 0.8),
-//                //                    UIColor(red: 253.0 / 255.0, green: 214.0 / 255.0, blue: 146.0 / 255.0, alpha: 0.8),
-//                //                    UIColor(red: 236.0 / 255.0, green: 115.0 / 255.0, blue: 87.0 / 255.0, alpha: 0.8),
-//                //                    UIColor(red: 117.0 / 255.0, green: 79.0 / 255.0, blue: 68.0 / 255.0, alpha: 0.8),
-//        )
-        
-//        layer.fillColor = fillColor.cgColor
-
         let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.white.cgColor
 
@@ -563,36 +406,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     }
 
     // conform protocol
-//    func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
-//
-//        self.visitedCountries = visitedCountries
-//
-//        for visitedCountry in visitedCountries {
-//
-//            colorThePath(path: visitedCountry.path)
-//        }
-//    }
-    
-//    // NavigationBar setup
-//    func setupNavigationButton() {
-//
-//        let gotToAchievementButton = UIBarButtonItem(image: #imageLiteral(resourceName: "mapCheck"), style: .plain, target: self, action: #selector(gotToAchievement(sender:)))
-//
-//        self.navigationItem.rightBarButtonItem = gotToAchievementButton
-//
-//    }
-//
-//    @objc func gotToAchievement(sender: UIButton!) {
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
-//
-//        achievementViewController.visitedCountries = self.visitedCountries
-//
-//        self.navigationController?.pushViewController(achievementViewController, animated: true)
-//
-//    }
-    
+
     func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
         
     }
@@ -600,7 +414,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate{
     deinit {
         print("main page controller@@@@@")
     }
-    
     
 }
 

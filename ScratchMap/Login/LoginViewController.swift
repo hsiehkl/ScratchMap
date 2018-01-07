@@ -27,10 +27,6 @@ class LoginViewController: UIViewController {
         setupButton()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
     
     @IBAction func createAccountAction(_ sender: Any) {
         

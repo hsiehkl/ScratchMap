@@ -49,7 +49,7 @@ class ScratchCardMaskView: UIView {
             begainPath(at: location)
             
         case .changed:
-//            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
             addLine(to: location)
             
         default:
@@ -66,7 +66,6 @@ class ScratchCardMaskView: UIView {
     public func begainPath(at point: CGPoint) {
         
         currentPath = CGMutablePath()
-        print("change frme: \(point)")
         currentPath?.move(to: point)
         setNeedsDisplay()
     }

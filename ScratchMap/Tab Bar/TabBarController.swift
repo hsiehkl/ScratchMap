@@ -37,11 +37,6 @@ class TabBarController: UITabBarController {
         setupBarItemFont()
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
     
     // MARK: Set Up
     
@@ -72,10 +67,6 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") as! MainPageViewController
             
-            print("1111111111111111\(mainPageViewController)")
-            
-//            let navigationController = UINavigationController(rootViewController: mainPageViewController)
-            
             mainPageViewController.tabBarItem = TabBarItem(
                 itemType: itemType
             )
@@ -88,19 +79,12 @@ class TabBarController: UITabBarController {
             let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") as! AchievementViewController
             
             let achievementNavigationController = UINavigationController(rootViewController: achievementViewController)
-//            achievementNavigationController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//            achievementNavigationController.navigationBar.layer.shadowColor = UIColor.gray.cgColor
-//            achievementNavigationController.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 0.5)
-////            achievementNavigationController.navigationBar.layer.shadowRadius = 4.0
-//            achievementNavigationController.navigationBar.layer.shadowOpacity = 0.6
-//            achievementNavigationController.navigationBar.layer.masksToBounds = false
-            
+
             let font = UIFont(name: "Avenir-Light", size: 20)
             let textAttributes = [NSAttributedStringKey.font: font]
             achievementNavigationController.navigationBar.titleTextAttributes = textAttributes
             
             achievementNavigationController.tabBarItem = TabBarItem(itemType: itemType)
-            
             
             return achievementNavigationController
 

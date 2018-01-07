@@ -238,11 +238,11 @@
                                 <rect key="frame" x="147" y="561.5" width="80" height="45"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.86250535102739723" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="7MK-z9-1ef"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="7MK-z9-1ef"/>
                                     <constraint firstAttribute="height" constant="45" id="MHX-KJ-2iM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                                <color key="tintColor" red="0.49769571419999997" green="0.74332118030000005" blue="0.82748872039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.49769571423530579" green="0.74332118034362793" blue="0.82748872041702271" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneButtonTapped:" destination="jv1-39-4eP" eventType="touchUpInside" id="jtQ-D9-NIh"/>
@@ -368,58 +368,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixf-S8-NHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2458.4000000000001" y="216.34182908545728"/>
-        </scene>
-        <!--Prepare View Controller-->
-        <scene sceneID="8Ts-gG-K9e">
-            <objects>
-                <viewController storyboardIdentifier="prepareViewController" id="aby-kc-79v" customClass="PrepareViewController" customModule="ScratchMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Nv-EK-Wvk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfJ-tF-zGy">
-                                <rect key="frame" x="164" y="594" width="46" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="dismiss:" destination="aby-kc-79v" eventType="touchUpInside" id="BZb-Sv-Wt6"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmR-dF-B26">
-                                <rect key="frame" x="140.5" y="519" width="94" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="qJJ-o9-YUK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-Eb-Kz5" customClass="ScratchView" customModule="ScratchMap" customModuleProvider="target">
-                                <rect key="frame" x="16" y="20" width="343" height="491"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="KAv-Eb-Kz5" firstAttribute="top" secondItem="cBt-vl-jN1" secondAttribute="top" id="0yp-ej-Gnx"/>
-                            <constraint firstItem="HmR-dF-B26" firstAttribute="top" secondItem="cBt-vl-jN1" secondAttribute="top" constant="499" id="K5I-sM-AUe"/>
-                            <constraint firstItem="HmR-dF-B26" firstAttribute="top" secondItem="KAv-Eb-Kz5" secondAttribute="bottom" constant="8" id="Ny6-Ic-Wac"/>
-                            <constraint firstItem="PfJ-tF-zGy" firstAttribute="top" secondItem="HmR-dF-B26" secondAttribute="bottom" constant="37" id="OlX-PN-xom"/>
-                            <constraint firstItem="PfJ-tF-zGy" firstAttribute="leading" secondItem="cBt-vl-jN1" secondAttribute="leading" constant="164" id="Qyf-2a-pzH"/>
-                            <constraint firstItem="KAv-Eb-Kz5" firstAttribute="leading" secondItem="cBt-vl-jN1" secondAttribute="leading" constant="16" id="Z17-kv-xiV"/>
-                            <constraint firstItem="PfJ-tF-zGy" firstAttribute="centerX" secondItem="3Nv-EK-Wvk" secondAttribute="centerX" id="eqr-br-A9y"/>
-                            <constraint firstItem="HmR-dF-B26" firstAttribute="centerX" secondItem="3Nv-EK-Wvk" secondAttribute="centerX" id="kzx-FF-RLV"/>
-                            <constraint firstItem="cBt-vl-jN1" firstAttribute="trailing" secondItem="KAv-Eb-Kz5" secondAttribute="trailing" constant="16" id="ptp-tc-61t"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cBt-vl-jN1"/>
-                    </view>
-                    <connections>
-                        <outlet property="countryView" destination="KAv-Eb-Kz5" id="s9t-0V-BbG"/>
-                        <outlet property="label" destination="HmR-dF-B26" id="tr7-gd-Bh1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7GN-dV-dS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1426" y="529"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -718,7 +666,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MB-ln-0TD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216.80000000000001" y="-205.54722638680661"/>
+            <point key="canvasLocation" x="137" y="-208"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="kkC-7y-knJ">
@@ -741,7 +689,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.60116738089429933" green="0.82943571464118637" blue="0.81389209906296667" alpha="0.89466502568493156" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.60187417268753052" green="0.83180105686187744" blue="0.80394840240478516" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="z1S-FO-1kz" firstAttribute="centerY" secondItem="mBw-Ao-l3q" secondAttribute="centerY" id="SKs-m5-iDL"/>
                                             <constraint firstItem="z1S-FO-1kz" firstAttribute="centerX" secondItem="mBw-Ao-l3q" secondAttribute="centerX" id="UhM-zh-T65"/>
