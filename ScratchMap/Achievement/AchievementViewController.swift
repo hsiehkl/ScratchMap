@@ -163,6 +163,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             
         default:
             assert(false, "Unxpected element kind")
+            
+            return WorldCollectionReusableView()
         }
     }
 
