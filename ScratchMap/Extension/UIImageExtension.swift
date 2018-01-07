@@ -9,17 +9,17 @@
 import UIKit
 
 extension UIImage {
-    
+
     convenience init(view: UIView) {
-        
+
         UIGraphicsBeginImageContext(view.bounds.size)
-        
-        view.layer.render(in:UIGraphicsGetCurrentContext()!)
-        
+
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+
         let image = UIGraphicsGetImageFromCurrentImageContext()
-        
+
         UIGraphicsEndImageContext()
-        
+
         self.init(cgImage: image!.cgImage!)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 enum VistedType {
-    
+
     case visted, lived, planed, cancled
-    
+
 }

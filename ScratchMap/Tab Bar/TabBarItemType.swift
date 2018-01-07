@@ -10,68 +10,65 @@
 import UIKit
 
 enum TabBarItemType {
-    
+
     // MARK: Case
-    
+
     case map, achievement
-    
+
 }
 
 // MARK: - Title
 
 extension TabBarItemType {
-    
+
     var title: String {
-        
+
         switch self {
-            
+
         case .map:
-            
+
             return "Map"
-            
+
         case .achievement:
-            
+
             return "Achievement"
         }
-        
+
     }
-    
+
 }
 
 // MARK: - Image
 
 extension TabBarItemType {
-    
+
     var image: UIImage {
-        
+
         switch self {
-            
+
         case .map:
-            
+
             return #imageLiteral(resourceName: "non-map").withRenderingMode(.alwaysOriginal)
 
         case .achievement:
-            
+
             return #imageLiteral(resourceName: "non-achievement").withRenderingMode(.alwaysOriginal)
         }
     }
-    
+
     var selectedImage: UIImage? {
-        
+
         switch self {
-            
+
         case .map:
-            
+
             return #imageLiteral(resourceName: "tryMap").withRenderingMode(.alwaysOriginal)
-            
+
         case .achievement:
-            
+
             return #imageLiteral(resourceName: "newSize").withRenderingMode(.alwaysOriginal)
         }
-        
+
     }
 
-    
 }
-
-

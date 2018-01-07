@@ -16,28 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Setup Firebase
-        
+
         FirebaseApp.configure()
 //        Database().isPersistenceEnabled = true
-        
+
         // Setup TabBarController
-        
+
         let entryViewController = makeEntryController()
-        
+
         let window = UIWindow(frame: UIScreen.main.bounds)
 
         window.rootViewController = entryViewController
 
         window.makeKeyAndVisible()
-        
+
         self.window = window
-        
+
         // IQKeyboardManager
-        
+
         IQKeyboardManager.sharedManager().enable = true
-        
+
         return true
     }
 
@@ -62,24 +62,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        
+
         if let tabBarController = self.window?.rootViewController as? UITabBarController {
-            
+
             if tabBarController.selectedViewController is MainPageViewController {
-                
+
                 return UIInterfaceOrientationMask.all
-                
+
             } else {
-                
+
                 return UIInterfaceOrientationMask.portrait
             }
         }
-        
+
         return UIInterfaceOrientationMask.portrait
     }
-    
+
     func makeEntryController() -> UIViewController {
 
         if Auth.auth().currentUser != nil {
@@ -99,6 +99,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
-
 }
-

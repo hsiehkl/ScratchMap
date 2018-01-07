@@ -430,6 +430,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
+                                                                <constraint firstItem="w6Q-HR-qFy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yeT-IH-dbl" secondAttribute="leading" constant="20" symbolic="YES" id="H0h-k0-R5o"/>
                                                                 <constraint firstItem="X9i-ja-9Fh" firstAttribute="height" secondItem="yeT-IH-dbl" secondAttribute="height" id="HHs-Py-JNV"/>
                                                                 <constraint firstItem="X9i-ja-9Fh" firstAttribute="centerX" secondItem="yeT-IH-dbl" secondAttribute="centerX" id="HOR-rV-MGS"/>
                                                                 <constraint firstItem="X9i-ja-9Fh" firstAttribute="centerY" secondItem="yeT-IH-dbl" secondAttribute="centerY" id="U0V-MP-n6s"/>
@@ -509,6 +510,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="ECK-iu-ZYK" secondAttribute="trailing" constant="10" id="3CV-eM-dZc"/>
                                                         <constraint firstAttribute="bottom" secondItem="ECK-iu-ZYK" secondAttribute="bottom" id="Vpd-ao-BFt"/>
+                                                        <constraint firstItem="ECK-iu-ZYK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6eC-Mh-I2G" secondAttribute="leading" constant="20" symbolic="YES" id="weq-ho-cd1"/>
                                                         <constraint firstItem="ECK-iu-ZYK" firstAttribute="top" secondItem="6eC-Mh-I2G" secondAttribute="top" id="yEV-bj-uDU"/>
                                                     </constraints>
                                                 </view>
@@ -629,6 +631,7 @@
                                                 <constraint firstItem="YHL-QL-H7o" firstAttribute="centerY" secondItem="XP9-PO-d5p" secondAttribute="centerY" id="D2k-5s-7DW"/>
                                                 <constraint firstItem="lcW-xs-qJO" firstAttribute="centerY" secondItem="XP9-PO-d5p" secondAttribute="centerY" id="EhZ-WK-4F5"/>
                                                 <constraint firstItem="YHL-QL-H7o" firstAttribute="height" secondItem="XP9-PO-d5p" secondAttribute="height" multiplier="0.85" id="Huh-rJ-d9o"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lcW-xs-qJO" secondAttribute="trailing" constant="20" symbolic="YES" id="iH3-Kt-B2F"/>
                                                 <constraint firstItem="YHL-QL-H7o" firstAttribute="centerX" secondItem="XP9-PO-d5p" secondAttribute="centerX" id="l6Y-Y7-tcu"/>
                                             </constraints>
                                         </tableViewCellContentView>

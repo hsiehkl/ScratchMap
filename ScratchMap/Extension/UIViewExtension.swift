@@ -9,12 +9,11 @@
 import UIKit
 
 public extension UIView {
-    
+
     public class func load(nibName name: String, bundle: Bundle? = nil) -> UIView? {
-        
+
         return UINib.load(nibName: name, bundle: bundle) as? UIView
-        
+
     }
-    
-    
+
 }

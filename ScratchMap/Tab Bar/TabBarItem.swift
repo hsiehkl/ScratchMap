@@ -26,7 +26,7 @@ class TabBarItem: UITabBarItem {
         self.title = itemType.title
 
         self.image = itemType.image
-        
+
         self.selectedImage = itemType.selectedImage
     }
 
@@ -37,4 +37,3 @@ class TabBarItem: UITabBarItem {
     }
 
 }
-

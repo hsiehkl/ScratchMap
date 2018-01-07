@@ -22,7 +22,7 @@ public class Flag: NSObject {
      Original unstyled flag image
      */
     public let originalImage: UIImage
-    
+
     /**
      Returns a flag if the country code is supported, otherwise it returns nil
      */
@@ -30,11 +30,11 @@ public class Flag: NSObject {
         guard let image = UIImage(named: countryCode, in: FlagKit.assetBundle, compatibleWith: nil) else {
             return nil
         }
-        
+
         self.countryCode = countryCode
         self.originalImage = image
     }
-    
+
     /**
      Returns a styled flag according to the provided style
      - parameter style: Desired flag style
@@ -61,7 +61,7 @@ public class Flag: NSObject {
      Original unstyled flag image
      */
     public let originalImage: NSImage
-    
+
     /**
      Returns a flag if the country code is supported, otherwise it returns nil
      */
@@ -69,7 +69,7 @@ public class Flag: NSObject {
         guard let image = FlagKit.assetBundle.image(forResource: countryCode) else {
             return nil
         }
-        
+
         self.countryCode = countryCode
         self.originalImage = image
     }
