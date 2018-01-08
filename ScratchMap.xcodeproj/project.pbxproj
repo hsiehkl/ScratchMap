@@ -150,8 +150,6 @@
 		6B30F2F11FE3B1380048F310 /* ScratchMap */ = {
 			isa = PBXGroup;
 			children = (
-				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
-				6BE37F862001FEA800AC7268 /* Localizable.strings */,
 				6B30F2F21FE3B1380048F310 /* AppDelegate.swift */,
 				6BF502C71FEBBD4E00E013E2 /* Extension */,
 				6BE7641A1FE3D47100B3708B /* Model */,
@@ -166,6 +164,8 @@
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
 				6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */,
+				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
+				6BE37F862001FEA800AC7268 /* Localizable.strings */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B1B7CE71FFFE5C800E5208B /* worldHighNew.svg */,
 			);

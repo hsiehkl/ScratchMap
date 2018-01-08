@@ -14,13 +14,15 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var orientation: UIInterfaceOrientation = .portrait
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Setup Firebase
 
         FirebaseApp.configure()
-//        Database().isPersistenceEnabled = true
+        Database().isPersistenceEnabled = true
 
         // Setup TabBarController
 

@@ -23,6 +23,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
+    var hasAlreadyFlip = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,19 +38,26 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         tapRecognizerSetup()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-
     override func viewWillLayoutSubviews() {
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
 
-            self.tabBarController?.tabBar.isHidden = true
+            if !hasAlreadyFlip {
+                
+                hasAlreadyFlip = true
+                print("bounds: \(view.bounds.size)")
+                print("frame: \(view.frame.size)")
+                updateMinZoomScaleForSize(view.bounds.size)
+                scrollViewDidZoom(scrollView)
+                self.tabBarController?.tabBar.isHidden = true
+                perform(#selector(flip), with: nil, afterDelay: 0)
+            }
 
         } else {
-
+            
+            hasAlreadyFlip = false
+            updateMinZoomScaleForSize(view.bounds.size)
+            scrollViewDidZoom(scrollView)
             self.tabBarController?.tabBar.isHidden = false
         }
     }
@@ -153,18 +161,18 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         return  mapContainerView
     }
 
-//    //3. 為了讓圖片縮小填滿且有Aspect Fit
-//    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-//        let widthScale = size.width /  mapContainerView.bounds.width
-//        let heightScale = size.height /  mapContainerView.bounds.height
+    //3. 為了讓圖片縮小填滿且有Aspect Fit
+    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+        let widthScale = size.width /  mapContainerView.bounds.width
+        let heightScale = size.height /  mapContainerView.bounds.height
+
+        let minScale = min(widthScale, heightScale)
+        scrollView.minimumZoomScale = minScale
+
+        scrollView.zoomScale = minScale
+    
+    }
 //
-//        let minScale = min(widthScale, heightScale)
-//        scrollView.minimumZoomScale = minScale
-//
-//        scrollView.zoomScale = minScale
-//    
-//    }
-//    
 //    //3. 呼叫
 //    override func viewWillLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
@@ -178,6 +186,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         let imageViewSize =  mapContainerView.frame.size
         let scrollViewSize = scrollView.bounds.size
+        
+        print("mapContainerView.frame.size\(mapContainerView.frame.size)")
+        print("scrollView.bounds.size \(scrollView.bounds.size)")
 
         let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
@@ -284,6 +295,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             }
 
             let ref =  Database.database().reference()
+            ref.keepSynced(true)
             let userInfo = ref.child("users").child(userId).child("visitedCountries").child("\(country.id)")
 
             let value = country.name
@@ -328,6 +340,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
                 let ref = Database.database().reference()
                 ref.keepSynced(true)
+                
                 let countryRef = ref.child("users").child(userId).child("visitedCountries").child("\(id)")
                 countryRef.removeValue()
 
@@ -400,6 +413,17 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
+    }
+    
+    @objc func flip() {
+        let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
+        
+        UIView.transition(with: mapContainerView, duration: 1.0, options: transitionOptions, animations: {
+        })
+        
+//        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
+//            self.secondView.isHidden = false
+//        })
     }
 
     // conform protocol

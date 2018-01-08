@@ -23,6 +23,12 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,6 +53,10 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    deinit {
+        print("ContinentDetailViewController@@@@@")
     }
 
 }

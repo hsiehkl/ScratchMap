@@ -30,7 +30,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
         setupNavigationBar()
 
-        catchMainPage()
+//        catchMainPage()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
@@ -139,6 +139,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         continentDetailViewController.visitedCountries = visitedCountriesInContinent
 
         self.navigationController?.pushViewController(continentDetailViewController, animated: true)
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -162,29 +163,45 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             return headerView
             
         default:
-            assert(false, "Unxpected element kind")
             
             return WorldCollectionReusableView()
         }
     }
 
     func classified() {
-
+        
         countries = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
-
+        
         for visitedCountry in visitedCountries {
-
-            let countryId = visitedCountry.id
-
-            for (key, value) in countryIdClassifiedByContinents {
-
-                for contry in value {
-
-                    if contry == countryId {
-
-                        countries[key]?.append(visitedCountry)
-                    }
-                }
+            
+            guard let continent = visitedCountry.continent else { continue }
+            
+            switch continent {
+                
+            case Continent.europe.rawValue:
+                countries[Continent.europe.rawValue]?.append(visitedCountry)
+            
+            case Continent.asia.rawValue:
+                countries[Continent.asia.rawValue]?.append(visitedCountry)
+                
+            case Continent.africa.rawValue:
+                countries[Continent.africa.rawValue]?.append(visitedCountry)
+                
+            case Continent.northAmerica.rawValue:
+                countries[Continent.northAmerica.rawValue]?.append(visitedCountry)
+                
+            case Continent.southAmerica.rawValue:
+                countries[Continent.southAmerica.rawValue]?.append(visitedCountry)
+                
+            case Continent.oceania.rawValue:
+                countries[Continent.oceania.rawValue]?.append(visitedCountry)
+                
+            case Continent.europeAndAsia.rawValue:
+                countries[Continent.europe.rawValue]?.append(visitedCountry)
+                countries[Continent.asia.rawValue]?.append(visitedCountry)
+                
+            default:
+                continue
             }
         }
     }

@@ -25,11 +25,11 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
         self.navigationItem.title = NSLocalizedString("Setting", comment: "")
 
     }
-
-    @IBAction func dismissSettingView(_ sender: Any) {
-
-        self.dismiss(animated: true, completion: nil)
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        self.navigationController?.popViewController(animated: true)
     }
 
     func setupNavigationBar() {
@@ -51,7 +51,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
         let alertController = UIAlertController(title: "Hey!", message: NSLocalizedString("You are going to logout.", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
 
-        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (_) in
 
             let firebaseAuth = Auth.auth()
 

@@ -169,7 +169,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjM-pX-3EU">
-                                        <rect key="frame" x="325" y="28" width="35" height="47"/>
+                                        <rect key="frame" x="323" y="28" width="37" height="47"/>
                                         <connections>
                                             <action selector="claenButtonTapped:" destination="vTH-yk-rYn" eventType="touchUpInside" id="wNr-fe-yTU"/>
                                         </connections>
@@ -180,7 +180,6 @@
                                     <constraint firstItem="4Aj-iB-1fK" firstAttribute="top" secondItem="A6X-kq-vZL" secondAttribute="top" id="0Wy-l0-1Zr"/>
                                     <constraint firstItem="1Sh-xA-MDO" firstAttribute="top" secondItem="hGW-Mm-gi6" secondAttribute="bottom" constant="1" id="6G5-5G-Muk"/>
                                     <constraint firstItem="JxN-a0-61I" firstAttribute="leading" secondItem="uGq-Hk-nkh" secondAttribute="trailing" constant="15" id="6ZR-0I-aRD"/>
-                                    <constraint firstItem="fjM-pX-3EU" firstAttribute="leading" secondItem="A6X-kq-vZL" secondAttribute="leading" constant="-5" id="7LE-Ca-cms"/>
                                     <constraint firstItem="A6X-kq-vZL" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" id="DOh-BY-N7T"/>
                                     <constraint firstItem="4Aj-iB-1fK" firstAttribute="leading" secondItem="hGW-Mm-gi6" secondAttribute="leading" constant="-5" id="EER-M9-i7I"/>
                                     <constraint firstItem="1Sh-xA-MDO" firstAttribute="centerX" secondItem="hGW-Mm-gi6" secondAttribute="centerX" id="FBQ-wX-bqx"/>
@@ -188,6 +187,7 @@
                                     <constraint firstItem="A6X-kq-vZL" firstAttribute="leading" secondItem="hGW-Mm-gi6" secondAttribute="trailing" constant="30" id="HZt-TN-vNh"/>
                                     <constraint firstItem="4Aj-iB-1fK" firstAttribute="trailing" secondItem="hGW-Mm-gi6" secondAttribute="trailing" constant="5" id="Ij9-79-RCs"/>
                                     <constraint firstAttribute="bottom" secondItem="fjM-pX-3EU" secondAttribute="bottom" constant="5" id="NNF-0j-7dJ"/>
+                                    <constraint firstItem="fjM-pX-3EU" firstAttribute="leading" secondItem="4Aj-iB-1fK" secondAttribute="trailing" constant="18" id="RN6-1r-8oe"/>
                                     <constraint firstItem="fjM-pX-3EU" firstAttribute="trailing" secondItem="A6X-kq-vZL" secondAttribute="trailing" constant="5" id="Ris-jZ-3Fl"/>
                                     <constraint firstItem="uGq-Hk-nkh" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" constant="10" id="Yql-bG-h1z"/>
                                     <constraint firstItem="JxN-a0-61I" firstAttribute="centerY" secondItem="a8p-Zl-EHZ" secondAttribute="centerY" constant="10" id="c19-Gx-YHK"/>
@@ -217,9 +217,15 @@
                         <viewLayoutGuide key="safeArea" id="rsZ-bY-Cbf"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButtonImageView" destination="A6X-kq-vZL" id="JEr-RF-IYf"/>
+                        <outlet property="checkButtonImageView" destination="hGW-Mm-gi6" id="QIa-Ke-f4r"/>
+                        <outlet property="cleanButton" destination="fjM-pX-3EU" id="dxu-8A-6dz"/>
+                        <outlet property="cleanLabel" destination="O4P-fb-lQe" id="axm-0P-Ias"/>
                         <outlet property="countryFlagImageView" destination="uGq-Hk-nkh" id="flY-pa-2ku"/>
                         <outlet property="countryInfoView" destination="a8p-Zl-EHZ" id="DeV-oW-QE0"/>
                         <outlet property="countryNameLabel" destination="JxN-a0-61I" id="qd9-7c-z23"/>
+                        <outlet property="scratchLabel" destination="1Sh-xA-MDO" id="atP-1q-zAt"/>
+                        <outlet property="showScratchableView" destination="4Aj-iB-1fK" id="s9R-qh-WdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qxt-CM-2t7" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,13 @@ import PocketSVG
 
 class CountryInfoViewController: UIViewController {
 
+    @IBOutlet weak var cancelButtonImageView: UIImageView!
+    @IBOutlet weak var scratchLabel: UILabel!
+    @IBOutlet weak var cleanLabel: UILabel!
+    @IBOutlet weak var checkButtonImageView: UIImageView!
+    
+    @IBOutlet weak var cleanButton: UIButton!
+    @IBOutlet weak var showScratchableView: UIButton!
     @IBOutlet weak var countryInfoView: UIView!
     @IBOutlet weak var countryNameLabel: UILabel!
     @IBOutlet weak var countryFlagImageView: UIImageView!
@@ -68,9 +75,11 @@ class CountryInfoViewController: UIViewController {
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
 
-            countryInfoView.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 60)
+            hideButtons(isTrue: true)
 
         } else {
+            
+            hideButtons(isTrue: false)
 
         }
     }
@@ -105,6 +114,18 @@ class CountryInfoViewController: UIViewController {
 
         countryFlagImageView.layer.cornerRadius = countryFlagImageView.bounds.width / 2
     }
+    
+    func hideButtons(isTrue: Bool) {
+        
+        checkButtonImageView.isHidden = isTrue
+        cancelButtonImageView.isHidden = isTrue
+        scratchLabel.isHidden = isTrue
+        cleanLabel.isHidden = isTrue
+        
+        showScratchableView.isEnabled = !isTrue
+        cleanButton.isEnabled = !isTrue
+        
+    }
 
     @IBAction func scratchButtonTapped(_ sender: Any) {
 
@@ -129,7 +150,9 @@ class CountryInfoViewController: UIViewController {
         if let mainPageVC = self.parent as? MainPageViewController {
 
             mainPageVC.removeSelectedCountry(id: countryId)
+            
         }
+        
     }
 
     deinit {
@@ -137,3 +160,4 @@ class CountryInfoViewController: UIViewController {
     }
 
 }
+
