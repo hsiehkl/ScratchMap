@@ -41,7 +41,7 @@
 		6BF38FD41FE5792D001DB8A8 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */; };
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
 		6BF502C41FEB957A00E013E2 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF502C31FEB957A00E013E2 /* DataModel.swift */; };
-		6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */; };
+		6BFB29532003649F00B30955 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFB29522003649F00B30955 /* GoogleService-Info.plist */; };
 		6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */; };
 		6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
@@ -86,7 +86,7 @@
 		6BF38FD31FE5792D001DB8A8 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6BF502C31FEB957A00E013E2 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BFB29522003649F00B30955 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
 		6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		F7F4123CBF31FF5FDDC9997A /* Pods-ScratchMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,9 +163,9 @@
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
-				6BFFCEAA1FEA018900DEF234 /* GoogleService-Info.plist */,
 				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
 				6BE37F862001FEA800AC7268 /* Localizable.strings */,
+				6BFB29522003649F00B30955 /* GoogleService-Info.plist */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B1B7CE71FFFE5C800E5208B /* worldHighNew.svg */,
 			);
@@ -322,9 +322,9 @@
 				6BE37F892001FF0F00AC7268 /* InfoPlist.strings in Resources */,
 				6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */,
 				6BE37F842001FEA800AC7268 /* Localizable.strings in Resources */,
-				6BFFCEAB1FEA018900DEF234 /* GoogleService-Info.plist in Resources */,
 				6B1B7CE81FFFE5C800E5208B /* worldHighNew.svg in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
+				6BFB29532003649F00B30955 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
