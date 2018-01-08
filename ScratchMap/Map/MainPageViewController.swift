@@ -23,7 +23,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
-    var hasAlreadyFlip = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,23 +40,11 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillLayoutSubviews() {
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
-
-            if !hasAlreadyFlip {
-                
-                hasAlreadyFlip = true
-                print("bounds: \(view.bounds.size)")
-                print("frame: \(view.frame.size)")
-                updateMinZoomScaleForSize(view.bounds.size)
-                scrollViewDidZoom(scrollView)
-                self.tabBarController?.tabBar.isHidden = true
-                perform(#selector(flip), with: nil, afterDelay: 0)
-            }
-
-        } else {
             
-            hasAlreadyFlip = false
-            updateMinZoomScaleForSize(view.bounds.size)
-            scrollViewDidZoom(scrollView)
+                self.tabBarController?.tabBar.isHidden = true
+            
+        } else {
+
             self.tabBarController?.tabBar.isHidden = false
         }
     }
