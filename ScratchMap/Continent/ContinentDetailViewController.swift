@@ -41,6 +41,8 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "continentDetailTableViewCell", for: indexPath) as! ContinentDetailTableViewCell
 
+        cell.isUserInteractionEnabled = false
+        
         guard let flag = Flag(countryCode: visitedCountries[indexPath.row].id) else { return cell }
 
         let styledImage = flag.image(style: .circle)
