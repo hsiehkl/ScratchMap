@@ -63,24 +63,29 @@ class CountryInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("CountryInfoViewController: \(self.view.frame)")
-
         self.view.backgroundColor = UIColor.clear
         dropShadow()
         setupCountryInfoContents()
 
     }
-
-    override func viewWillLayoutSubviews() {
+    
+    override func viewDidLayoutSubviews() {
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
 
             hideButtons(isTrue: true)
+            self.countryInfoView.frame = CGRect(x: 0, y: -20, width: self.view.frame.width, height: 80)
 
         } else {
-            
-            hideButtons(isTrue: false)
 
+            hideButtons(isTrue: false)
+        }
+    }
+    
+    func animate() {
+        UIView.animate(withDuration: 1) {
+            self.countryInfoView.frame = CGRect(x: 0, y: -20, width: self.countryInfoView.frame.width, height: self.countryInfoView.frame.height - 20
+            )
         }
     }
 

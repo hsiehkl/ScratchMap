@@ -36,12 +36,14 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         scrollViewSetUp()
         tapRecognizerSetup()
     }
+    
+    @objc func canRotate() -> Void {}
 
     override func viewWillLayoutSubviews() {
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
             
-                self.tabBarController?.tabBar.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
             
         } else {
 
@@ -173,9 +175,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         let imageViewSize =  mapContainerView.frame.size
         let scrollViewSize = scrollView.bounds.size
-        
-        print("mapContainerView.frame.size\(mapContainerView.frame.size)")
-        print("scrollView.bounds.size \(scrollView.bounds.size)")
 
         let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
@@ -250,7 +249,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
                     self.addChildViewController(countryInfoViewController)
 
-                    countryInfoViewController.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 70)
+                    countryInfoViewController.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 80)
+                    
                     self.view.addSubview(countryInfoViewController.view)
                     countryInfoViewController.didMove(toParentViewController: self)
 

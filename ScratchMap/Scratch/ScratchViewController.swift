@@ -66,10 +66,6 @@ class ScratchViewController: UIViewController {
 
         setupScratchableView()
         
-        self.view.autoresizesSubviews = true
-        self.mask.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.wantToShowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
     }
 
     override func viewWillLayoutSubviews() {

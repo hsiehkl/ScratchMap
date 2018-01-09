@@ -52,8 +52,6 @@ class ProgressBarView: UIView {
         var width = (self.frame.width - margin) * progress
         let height = (self.frame.height - margin)
 
-        print(width)
-
         if width < height {
             width = height
         }

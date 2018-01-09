@@ -50,9 +50,6 @@ class ScratchCardView: UIView {
         // set mask
         self.contentView.mask = self.contentMaskView
 
-        print("coverView: \(coverView.frame)")
-        print("contentView: \(contentView.frame)")
-
         // add gesture
         setupGesture()
 

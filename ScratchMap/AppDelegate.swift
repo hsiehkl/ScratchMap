@@ -65,21 +65,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+//    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+//
+//        if let tabBarController = self.window?.rootViewController as? UITabBarController {
+//
+//            if tabBarController.selectedViewController is MainPageViewController {
+//
+//                return UIInterfaceOrientationMask.all
+//
+//            } else {
+//
+//                return UIInterfaceOrientationMask.portrait
+//            }
+//        }
+//
+//        return UIInterfaceOrientationMask.portrait
+//    }
+    
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-
-        if let tabBarController = self.window?.rootViewController as? UITabBarController {
-
-            if tabBarController.selectedViewController is MainPageViewController {
-
-                return UIInterfaceOrientationMask.all
-
-            } else {
-
-                return UIInterfaceOrientationMask.portrait
+        if let rootViewController = self.topViewControllerWithRootViewController(rootViewController: window?.rootViewController) {
+            if (rootViewController.responds(to: Selector(("canRotate")))) {
+                // Unlock landscape view orientations for this view controller
+                return .allButUpsideDown;
             }
         }
-
-        return UIInterfaceOrientationMask.portrait
+        
+        // Only allow portrait (standard behaviour)
+        return .portrait;
+    }
+    
+    private func topViewControllerWithRootViewController(rootViewController: UIViewController!) -> UIViewController? {
+        if (rootViewController == nil) { return nil }
+        if (rootViewController is (UITabBarController)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UITabBarController).selectedViewController)
+        } else if (rootViewController is (UINavigationController)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UINavigationController).visibleViewController)
+        } else if (rootViewController.presentedViewController != nil) {
+            return topViewControllerWithRootViewController(rootViewController: rootViewController.presentedViewController)
+        }
+        return rootViewController
     }
 
     func makeEntryController() -> UIViewController {
