@@ -40,6 +40,7 @@ class CountryInfoViewController: UIViewController {
                     countryNameLabel.text = abbCountryName
 
                 } else {
+                    
                     countryNameLabel.text = countryName
                 }
             }
@@ -79,13 +80,6 @@ class CountryInfoViewController: UIViewController {
         } else {
 
             hideButtons(isTrue: false)
-        }
-    }
-    
-    func animate() {
-        UIView.animate(withDuration: 1) {
-            self.countryInfoView.frame = CGRect(x: 0, y: -20, width: self.countryInfoView.frame.width, height: self.countryInfoView.frame.height - 20
-            )
         }
     }
 
@@ -157,7 +151,6 @@ class CountryInfoViewController: UIViewController {
             mainPageVC.removeSelectedCountry(id: countryId)
             
         }
-        
     }
 
     deinit {

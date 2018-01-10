@@ -29,18 +29,6 @@ class ScratchViewController: UIViewController {
     var country: Country = Country(name: "", id: "", continent: "", path: SVGBezierPath())
 
     let colorSet = ColorSet()
-//
-//    private var _orientations = UIInterfaceOrientationMask.portrait
-//
-//    override var shouldAutorotate: Bool {
-//        return false
-//    }
-//
-//    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-//        get { return self._orientations }
-//        set { self._orientations = newValue }
-//    }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()

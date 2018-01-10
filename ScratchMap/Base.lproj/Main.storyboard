@@ -684,13 +684,25 @@
                     <view key="view" contentMode="scaleToFill" id="CS5-jS-ikA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLO-We-GUX">
+                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pLO-We-GUX" firstAttribute="centerX" secondItem="XmT-xf-JNx" secondAttribute="centerX" id="5iX-oN-5bM"/>
+                            <constraint firstItem="pLO-We-GUX" firstAttribute="top" secondItem="XmT-xf-JNx" secondAttribute="top" constant="39" id="Le1-ob-BoI"/>
+                            <constraint firstItem="pLO-We-GUX" firstAttribute="leading" secondItem="XmT-xf-JNx" secondAttribute="leading" id="Pl8-Ai-4bL"/>
+                            <constraint firstItem="XmT-xf-JNx" firstAttribute="bottom" secondItem="pLO-We-GUX" secondAttribute="bottom" id="UJA-uZ-jts"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XmT-xf-JNx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6w-KQ-Fu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="-208"/>
+            <point key="canvasLocation" x="924" y="-208.24587706146929"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="kkC-7y-knJ">

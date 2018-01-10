@@ -23,6 +23,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
     var pictureSize = CGSize.zero
     var childViewHasAlreadyExisted = false
+    
+    var tappedLayer: CAShapeLayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +163,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.zoomScale = minScale
     
     }
-//
+
 //    //3. 呼叫
 //    override func viewWillLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
@@ -199,6 +201,22 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         let tapLocation: CGPoint = tapRecognizer.location(in: self.mapContainerView)
 
         self.showCountryInfo(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
+        
+//        guard let sublayers = mapContainerView.layer.sublayers as? [CAShapeLayer] else { return }
+//
+//        self.tappedLayer.shadowColor = nil
+//        self.tappedLayer.shadowOffset = CGSize(width: 0, height: 0)
+//        self.tappedLayer.shadowOpacity = 0.0
+//
+//        for tappedLayer in sublayers{
+//            if let path = tappedLayer.path, path.contains(CGPoint(x: tapLocation.x, y: tapLocation.y)) {
+//                print(tappedLayer)
+////                self.tappedLayer = tappedLayer
+////                self.tappedLayer.shadowColor = UIColor.black.cgColor
+////                self.tappedLayer.shadowOffset = CGSize(width: 0, height: 2.0)
+////                self.tappedLayer.shadowOpacity = 0.7
+//            }
+//        }
     }
 
     func showCountryInfo(tapLocation: CGPoint) {
@@ -229,6 +247,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
                 if childViewHasAlreadyExisted {
 
+                    removeShadowLayer()
+                    addShadowOnTappedPath(path: path, continent: continent, id: countryId)
+
                     guard let countryInfoViewController = childViewControllers[0] as? CountryInfoViewController else { return }
 
                     countryInfoViewController.countryName = countryName
@@ -238,10 +259,13 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
                 } else {
 
+                    addShadowOnTappedPath(path: path, continent: continent, id: countryId)
+                    
+                    childViewHasAlreadyExisted = true
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let countryInfoViewController = storyboard.instantiateViewController(withIdentifier: "countryInfoViewController") as! CountryInfoViewController
 
-                    childViewHasAlreadyExisted = true
                     countryInfoViewController.countryId = countryId
                     countryInfoViewController.countryName = countryName
                     countryInfoViewController.countryPath = path
@@ -261,15 +285,78 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         if !isTapInCountryPath && childViewHasAlreadyExisted {
 
             childViewHasAlreadyExisted = false
+            
+            removeShadowLayer()
+            
             guard let countryInfoViewController = childViewControllers[0] as? CountryInfoViewController else { return }
             countryInfoViewController.view.removeFromSuperview()
             countryInfoViewController.removeFromParentViewController()
         }
     }
+    
+    func removeShadowLayer() {
+
+        guard
+            let tappedLayer = self.tappedLayer,
+            let index = mapContainerView.layer.sublayers?.index(of: tappedLayer)
+        else { return }
+        
+        mapContainerView.layer.sublayers?.remove(at: index)
+    }
+    
+    func addShadowOnTappedPath(path: SVGBezierPath, continent: String, id: String) {
+        
+        let tappedLayer = CAShapeLayer()
+        tappedLayer.path = path.cgPath
+        
+        tappedLayer.shadowColor = UIColor.black.cgColor
+        tappedLayer.shadowOffset = CGSize(width: 2.0, height: 3.0)
+        tappedLayer.shadowOpacity = 0.7
+        
+        let rect = path.cgPath.boundingBox
+        let maxX = rect.minX + rect.width
+        let maxY = rect.minY + rect.height
+        
+        let strokeWidth = CGFloat(0.4)
+        let strokeColor = UIColor.white.cgColor
+        
+        tappedLayer.lineWidth = strokeWidth
+        tappedLayer.strokeColor = strokeColor
+        
+        if countryHasNotBeenSelected(id: id) {
+            
+            let fillColor =
+                UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: maxX, height: maxY), andColors:
+                    
+                    [UIColor.gray, UIColor.gray]
+            )
+            
+            tappedLayer.fillColor = fillColor.cgColor
+            
+            self.tappedLayer = tappedLayer
+            
+            self.mapContainerView.layer.addSublayer(tappedLayer)
+            
+        } else {
+            
+            let fillColor =
+                UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: maxX, height: maxY), andColors:
+                    
+                    classifyContinent(continent: continent)
+            )
+            
+            tappedLayer.fillColor = fillColor.cgColor
+            
+            self.tappedLayer = tappedLayer
+            
+            self.mapContainerView.layer.addSublayer(tappedLayer)
+            
+        }
+    }
 
     private func colorSelectedCountry(country: Country) {
 
-        if countryHasNotBeingSelected(id: country.id) {
+        if countryHasNotBeenSelected(id: country.id) {
 
             guard let continent = country.continent else { return }
 
@@ -292,7 +379,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func countryHasNotBeingSelected(id: String) -> Bool {
+    func countryHasNotBeenSelected(id: String) -> Bool {
 
         for visitedCountry in visitedCountries {
 
@@ -342,12 +429,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         let colorSet = ColorSet()
 
         return colorSet.colorProvider(continent: continent)
-
     }
 
     func colorThePath(path: SVGBezierPath, continent: String) {
 
-        // Create a layer for each path
         let layer = CAShapeLayer()
         layer.path = path.cgPath
 
@@ -364,15 +449,13 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         layer.fillColor = fillColor.cgColor
 
-        // Default Settings
         let strokeWidth = CGFloat(0.4)
-        let strokeColor = UIColor.black.cgColor
+        let strokeColor = UIColor.white.cgColor
 
         layer.lineWidth = strokeWidth
         layer.strokeColor = strokeColor
 
         self.mapContainerView.layer.addSublayer(layer)
-
     }
 
     func colorNonSelectedCountry(path: SVGBezierPath) {
@@ -381,7 +464,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         layer.path = path.cgPath
 
-        layer.fillColor = UIColor.gray.cgColor
+        layer.fillColor = FlatGray().cgColor
 
         let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.white.cgColor
@@ -401,23 +484,10 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
-    
-    @objc func flip() {
-        let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
-        
-        UIView.transition(with: mapContainerView, duration: 1.0, options: transitionOptions, animations: {
-        })
-        
-//        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
-//            self.secondView.isHidden = false
-//        })
-    }
-
-    // conform protocol
-
-    func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
-
-    }
+//
+//    func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
+//
+//    }
 
     deinit {
         print("main page controller@@@@@")
@@ -451,5 +521,4 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
         removeSelectedCountry(id: scratchedCountry.id)
 
     }
-
 }
