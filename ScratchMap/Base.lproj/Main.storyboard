@@ -41,7 +41,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sx8-0f-kgK">
                                 <rect key="frame" x="47" y="276" width="286" height="40"/>
@@ -288,7 +288,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-Ci-o93">
                                 <rect key="frame" x="47" y="311.5" width="286" height="38"/>
@@ -677,28 +677,35 @@
             </objects>
             <point key="canvasLocation" x="137" y="-208"/>
         </scene>
-        <!--View Controller-->
+        <!--News Feed View Controller-->
         <scene sceneID="aVW-VJ-uLT">
             <objects>
-                <viewController id="Zvq-nr-PyN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newsFeedViewController" id="Zvq-nr-PyN" customClass="NewsFeedViewController" customModule="ScratchMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CS5-jS-ikA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLO-We-GUX">
-                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Zvq-nr-PyN" id="fEM-aI-or3"/>
+                                    <outlet property="delegate" destination="Zvq-nr-PyN" id="udV-82-iTf"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pLO-We-GUX" firstAttribute="centerX" secondItem="XmT-xf-JNx" secondAttribute="centerX" id="5iX-oN-5bM"/>
-                            <constraint firstItem="pLO-We-GUX" firstAttribute="top" secondItem="XmT-xf-JNx" secondAttribute="top" constant="39" id="Le1-ob-BoI"/>
+                            <constraint firstItem="pLO-We-GUX" firstAttribute="top" secondItem="XmT-xf-JNx" secondAttribute="top" id="Le1-ob-BoI"/>
                             <constraint firstItem="pLO-We-GUX" firstAttribute="leading" secondItem="XmT-xf-JNx" secondAttribute="leading" id="Pl8-Ai-4bL"/>
                             <constraint firstItem="XmT-xf-JNx" firstAttribute="bottom" secondItem="pLO-We-GUX" secondAttribute="bottom" id="UJA-uZ-jts"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XmT-xf-JNx"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="pLO-We-GUX" id="7Ru-br-O7X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6w-KQ-Fu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

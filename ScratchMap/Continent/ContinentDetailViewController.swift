@@ -26,7 +26,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,7 +41,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "continentDetailTableViewCell", for: indexPath) as! ContinentDetailTableViewCell
 
-        cell.isUserInteractionEnabled = false
+//        cell.isUserInteractionEnabled = false
         
         guard let flag = Flag(countryCode: visitedCountries[indexPath.row].id) else { return cell }
 
@@ -51,6 +51,16 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         cell.countryFlagImage.image = styledImage
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
+        
+        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
+
+        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

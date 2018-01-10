@@ -201,22 +201,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         let tapLocation: CGPoint = tapRecognizer.location(in: self.mapContainerView)
 
         self.showCountryInfo(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y))
-        
-//        guard let sublayers = mapContainerView.layer.sublayers as? [CAShapeLayer] else { return }
-//
-//        self.tappedLayer.shadowColor = nil
-//        self.tappedLayer.shadowOffset = CGSize(width: 0, height: 0)
-//        self.tappedLayer.shadowOpacity = 0.0
-//
-//        for tappedLayer in sublayers{
-//            if let path = tappedLayer.path, path.contains(CGPoint(x: tapLocation.x, y: tapLocation.y)) {
-//                print(tappedLayer)
-////                self.tappedLayer = tappedLayer
-////                self.tappedLayer.shadowColor = UIColor.black.cgColor
-////                self.tappedLayer.shadowOffset = CGSize(width: 0, height: 2.0)
-////                self.tappedLayer.shadowOpacity = 0.7
-//            }
-//        }
     }
 
     func showCountryInfo(tapLocation: CGPoint) {
@@ -515,13 +499,5 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
 
         removeShadowLayer()
         colorSelectedCountry(country: scratchedCountry)
-
     }
-
-//    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
-//
-//        removeShadowLayer()
-//        removeSelectedCountry(id: scratchedCountry.id)
-//
-//    }
 }

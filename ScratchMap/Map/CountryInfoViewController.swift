@@ -67,7 +67,6 @@ class CountryInfoViewController: UIViewController {
         self.view.backgroundColor = UIColor.clear
         dropShadow()
         setupCountryInfoContents()
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -123,7 +122,6 @@ class CountryInfoViewController: UIViewController {
         
         showScratchableView.isEnabled = !isTrue
         cleanButton.isEnabled = !isTrue
-        
     }
 
     @IBAction func scratchButtonTapped(_ sender: Any) {
@@ -134,9 +132,10 @@ class CountryInfoViewController: UIViewController {
         let country = Country(name: countryName, id: countryId, continent: continent, path: countryPath)
         cratchableViewController.country = country
 
-        cratchableViewController.providesPresentationContextTransitionStyle = true
-        cratchableViewController.definesPresentationContext = true
-        cratchableViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        cratchableViewController.providesPresentationContextTransitionStyle = true
+//        cratchableViewController.definesPresentationContext = true
+//        cratchableViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        cratchableViewController.modalPresentationStyle = .overFullScreen
         cratchableViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 
         cratchableViewController.delegate = parent as? MainPageViewController

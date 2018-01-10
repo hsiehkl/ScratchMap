@@ -12,8 +12,9 @@ import AudioToolbox
 import ChameleonFramework
 
 protocol ScratchViewControllerDelegate: class {
+    
     func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country)
-//    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country)
+    
 }
 
 class ScratchViewController: UIViewController {
