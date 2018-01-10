@@ -310,8 +310,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         tappedLayer.path = path.cgPath
         
         tappedLayer.shadowColor = UIColor.black.cgColor
-        tappedLayer.shadowOffset = CGSize(width: 2.0, height: 3.0)
+        tappedLayer.shadowOffset = CGSize(width: 0.0, height: 3.0)
         tappedLayer.shadowOpacity = 0.7
+        tappedLayer.shadowRadius = 8
         
         let rect = path.cgPath.boundingBox
         let maxX = rect.minX + rect.width
@@ -464,7 +465,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         layer.path = path.cgPath
 
-        layer.fillColor = FlatGray().cgColor
+        layer.fillColor = UIColor.gray.cgColor
 
         let strokeWidth = CGFloat(0.3)
         let strokeColor = UIColor.white.cgColor
@@ -512,13 +513,15 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
 
     func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
 
+        removeShadowLayer()
         colorSelectedCountry(country: scratchedCountry)
 
     }
 
-    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
-
-        removeSelectedCountry(id: scratchedCountry.id)
-
-    }
+//    func didRemoveCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
+//
+//        removeShadowLayer()
+//        removeSelectedCountry(id: scratchedCountry.id)
+//
+//    }
 }

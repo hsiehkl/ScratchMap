@@ -148,6 +148,7 @@ class CountryInfoViewController: UIViewController {
 
         if let mainPageVC = self.parent as? MainPageViewController {
 
+            mainPageVC.removeShadowLayer()
             mainPageVC.removeSelectedCountry(id: countryId)
             
         }
