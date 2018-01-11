@@ -10,7 +10,7 @@ import UIKit
 
 class NewsFeedViewController: UIViewController {
     
-    let posts: [Post] = [Post(title: "1", location: "Taipei, Taiwan", image: UIImage(named: "Europe-1")!, content: "good"), Post(title: "2", location: "Taoyuan, Taiwan", image: UIImage(named: "Asia-1")!, content: "soso")]
+    let posts: [Post] = [Post(title: "1", location: "@Taipei, Taiwan", image: UIImage(named: "Europe-1")!, content: "goodfasddsfsdfhdkjvsdoifjoisdjfoisajdfoiasdjfiosjdfoijdsfojdsoifjdisojfodisjfiosjdfoisjdfkxnckdsnifdnsfindinvidsnvifdnijsdfoasjdfkncvasdfsdafsdfsdfsadfasdfcdsfesdcdsfsadcvsdfsdfcdsfgdsvesrfesdvxfwesdfdsxfsdfxvfdsfsdnvifsdjfnvnndisnfisdjflknvsdnofjdsifjo"), Post(title: "2", location: "@Taoyuan, Taiwan", image: UIImage(named: "Asia-1")!, content: "soso")]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -38,15 +38,15 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.locationLabel.text = posts[indexPath.row].location
         cell.postTitleLabel.text = posts[indexPath.row].title
-        cell.imageView?.image =  posts[indexPath.row].image
+        cell.postImageView.image =  posts[indexPath.row].image
         cell.postTextField.text =  posts[indexPath.row].content
         
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 518
+//    }
 }
 

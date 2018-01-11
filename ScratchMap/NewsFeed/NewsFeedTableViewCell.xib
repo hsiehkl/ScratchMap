@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,54 +20,64 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-3e-k2L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best trip ever!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiH-qk-bno">
-                                <rect key="frame" x="10" y="9" width="119" height="23"/>
+                                <rect key="frame" x="15" y="14" width="119" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Nice, France" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8W-6N-ul7">
-                                <rect key="frame" x="205" y="14" width="100" height="18"/>
+                                <rect key="frame" x="205" y="19" width="100" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="8Qz-Wt-x1r"/>
-                            <constraint firstItem="oiH-qk-bno" firstAttribute="leading" secondItem="HQD-3e-k2L" secondAttribute="leading" constant="10" id="A3y-bn-Lvx"/>
+                            <constraint firstAttribute="height" constant="50" id="8Qz-Wt-x1r"/>
+                            <constraint firstItem="oiH-qk-bno" firstAttribute="leading" secondItem="HQD-3e-k2L" secondAttribute="leading" constant="15" id="A3y-bn-Lvx"/>
                             <constraint firstAttribute="trailing" secondItem="v8W-6N-ul7" secondAttribute="trailing" constant="15" id="HOg-MY-KId"/>
                             <constraint firstItem="v8W-6N-ul7" firstAttribute="bottom" secondItem="oiH-qk-bno" secondAttribute="bottom" id="PW8-2g-o0E"/>
                             <constraint firstItem="oiH-qk-bno" firstAttribute="centerY" secondItem="HQD-3e-k2L" secondAttribute="centerY" id="wYX-yA-Hf4"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uj0-cz-q2N">
-                        <rect key="frame" x="20" y="60" width="280" height="280"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uj0-cz-q2N">
+                        <rect key="frame" x="0.0" y="50" width="320" height="320"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Uj0-cz-q2N" secondAttribute="height" multiplier="1:1" id="kde-wV-R5c"/>
+                        </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pS-hv-1L4">
-                        <rect key="frame" x="0.0" y="360" width="320" height="162"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJ6-Jx-DEc">
+                        <rect key="frame" x="0.0" y="501.5" width="320" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="162" id="W7v-46-Na0"/>
+                            <constraint firstAttribute="height" constant="20" id="4qo-8U-3u9"/>
                         </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pS-hv-1L4">
+                        <rect key="frame" x="0.0" y="370" width="320" height="129.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Uj0-cz-q2N" secondAttribute="trailing" constant="20" id="24k-Et-xiI"/>
+                    <constraint firstItem="2pS-hv-1L4" firstAttribute="top" secondItem="Uj0-cz-q2N" secondAttribute="bottom" id="AaI-Vv-eaa"/>
                     <constraint firstItem="HQD-3e-k2L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KwH-zz-ZLC"/>
+                    <constraint firstAttribute="bottom" secondItem="AJ6-Jx-DEc" secondAttribute="bottom" priority="250" id="PQ2-un-YMU"/>
                     <constraint firstItem="2pS-hv-1L4" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="SW0-kh-SCe"/>
+                    <constraint firstItem="AJ6-Jx-DEc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="TIs-HX-rm4"/>
+                    <constraint firstItem="AJ6-Jx-DEc" firstAttribute="top" secondItem="2pS-hv-1L4" secondAttribute="bottom" constant="2" id="Vvn-3Z-ouR"/>
                     <constraint firstItem="HQD-3e-k2L" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="aLN-Zh-vSD"/>
-                    <constraint firstAttribute="bottom" secondItem="2pS-hv-1L4" secondAttribute="bottom" id="csU-mN-mhZ"/>
-                    <constraint firstItem="Uj0-cz-q2N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="iFk-8s-dLf"/>
+                    <constraint firstItem="Uj0-cz-q2N" firstAttribute="centerX" secondItem="HQD-3e-k2L" secondAttribute="centerX" id="fqB-5G-baS"/>
+                    <constraint firstItem="Uj0-cz-q2N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iFk-8s-dLf"/>
                     <constraint firstItem="HQD-3e-k2L" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="qAk-MY-V1w"/>
-                    <constraint firstItem="2pS-hv-1L4" firstAttribute="top" secondItem="Uj0-cz-q2N" secondAttribute="bottom" constant="20" id="rpd-zs-Bbv"/>
-                    <constraint firstItem="Uj0-cz-q2N" firstAttribute="top" secondItem="HQD-3e-k2L" secondAttribute="bottom" constant="20" id="tzP-Ir-otJ"/>
+                    <constraint firstItem="Uj0-cz-q2N" firstAttribute="top" secondItem="HQD-3e-k2L" secondAttribute="bottom" id="tzP-Ir-otJ"/>
                     <constraint firstItem="2pS-hv-1L4" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="uv0-yC-XPx"/>
+                    <constraint firstItem="AJ6-Jx-DEc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="yEQ-9k-dvD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

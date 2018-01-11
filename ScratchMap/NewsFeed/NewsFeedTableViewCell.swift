@@ -14,8 +14,11 @@ class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var postTitleLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postTextField: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        postImageView.layer.masksToBounds = true
 
     }
 
