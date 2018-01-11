@@ -30,8 +30,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
         setupNavigationBar()
 
-//        catchMainPage()
-
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.black

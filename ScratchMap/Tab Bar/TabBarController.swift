@@ -33,7 +33,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpTabBar()
+//        setUpTabBar()
         setupBarItemFont()
 
     }
@@ -47,12 +47,8 @@ class TabBarController: UITabBarController {
         tabBar.isTranslucent = false
 
         // Todo: palette
-        tabBar.tintColor = UIColor(
-            red: 53.0 / 255.0,
-            green: 184.0 / 255.0,
-            blue: 208 / 255.0,
-            alpha: 1.0
-        )
+        tabBar.barTintColor = UIColor(
+            red: 132.0 / 255.0, green: 191.0 / 255.0, blue: 230.0 / 255.0, alpha: 1)
 
     }
 

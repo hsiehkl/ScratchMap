@@ -19,14 +19,22 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.navigationItem.title = NSLocalizedString("Collection", comment: "")
-
+        setupNavigationBar()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setupNavigationBar() {
+        
+        self.navigationItem.title = NSLocalizedString("Collection", comment: "")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.black
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,7 +49,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "continentDetailTableViewCell", for: indexPath) as! ContinentDetailTableViewCell
 
-        cell.isUserInteractionEnabled = false
+//        cell.isUserInteractionEnabled = false
         
         guard let flag = Flag(countryCode: visitedCountries[indexPath.row].id) else { return cell }
 
@@ -55,10 +63,12 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
-//
-//        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
+
+        newsFeedViewController.navigationTitle = visitedCountries[indexPath.row].name
+        
+        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
 
         
     }

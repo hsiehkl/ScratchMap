@@ -18,13 +18,40 @@ class NewsFeedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        postImageView.layer.masksToBounds = true
+        setupPhotoImageView()
+        
+//        postImageView.layer.masksToBounds = true
 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func setupPhotoImageView() {
+        
+        self.postImageView.tintColor = UIColor.flatGray
+        
+        self.postImageView.contentMode = .center
+        
+//        self.postImageView.image = #imageLiteral(resourceName: "icon-photo").withRenderingMode(.alwaysTemplate)
+        
+//        self.postImageView.layer.cornerRadius = 8
+        
+//        self.postImageView.clipsToBounds = true
+        
+//        self.postImageView.layer.shadowOpacity = 1
+//        
+//        self.postImageView.layer.shadowOffset = CGSize.zero
+//        
+//        self.postImageView.layer.shadowRadius = 20
+//        
+//        self.postImageView.layer.shadowColor = UIColor.flatGray.cgColor
+//        
+//        self.postImageView.layer.masksToBounds = true
+//        
+//        self.postImageView.layer.shadowPath = UIBezierPath(rect: postImageView.bounds).cgPath
     }
     
 }

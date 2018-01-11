@@ -25,6 +25,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     var childViewHasAlreadyExisted = false
     
     var tappedLayer: CAShapeLayer?
+    var waterView: WaveView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         dataModel.delegate = self
         dataModel.requestData()
 
+        
         svgWorldMapSetup()
         scrollViewSetUp()
         tapRecognizerSetup()
@@ -469,11 +471,11 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
-//
+
 //    func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
 //
 //    }
-
+    
     deinit {
         print("main page controller@@@@@")
     }
