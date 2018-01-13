@@ -33,11 +33,11 @@ struct Post {
     
     let location: String
     
-    let image: UIImage
+//    let image: UIImage
     
     let content: String
     
-//    let imageUrl: String
+    let imageUrl: String
 }
 
 
