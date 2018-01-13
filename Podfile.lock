@@ -4,6 +4,7 @@ PODS:
     - ChameleonFramework/Default
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
+  - DatePickerDialog (2.0)
   - Fabric (1.7.2)
   - Firebase/Auth (4.6.0):
     - Firebase/Core
@@ -55,6 +56,7 @@ PODS:
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Crashlytics (~> 3.9.3)
+  - DatePickerDialog
   - Fabric (~> 1.7.2)
   - Firebase/Auth
   - Firebase/Core
@@ -76,6 +78,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Firebase: 27321a925aa85520618255a7c630859e0502ccbd
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
@@ -92,6 +95,6 @@ SPEC CHECKSUMS:
   PocketSVG: 51c4d5cb9ae7623d4494f439f69747394bad5d67
   SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
 
-PODFILE CHECKSUM: 698ea8d73fe8a2df039f536beec9f077d883f1d0
+PODFILE CHECKSUM: ea904a99aeb489a7f41f71c5fe129f78514c76e7
 
 COCOAPODS: 1.3.1
