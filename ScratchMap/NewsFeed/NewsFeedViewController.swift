@@ -23,8 +23,6 @@ class NewsFeedViewController: UIViewController {
         let nib = UINib(nibName: "NewsFeedTableViewCell", bundle: nil)
         
         self.tableView.register(nib, forCellReuseIdentifier: "newsFeedTableViewCell")
-
-        
     }
     
     func setupNavigationBar() {
@@ -46,11 +44,9 @@ class NewsFeedViewController: UIViewController {
         
         let publishViewController = PublishViewController(nibName: "PublishViewController", bundle: nil)
         
-        self.navigationController?.pushViewController(publishViewController, animated: true)
-        self.tabBarController
+        self.present(publishViewController, animated: true, completion: nil)
         
     }
-
 }
 
 extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {

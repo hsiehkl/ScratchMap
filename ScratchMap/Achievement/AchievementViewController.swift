@@ -19,7 +19,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
     
-    let progressBar = ProgressBarView()
+//    let progressBar = ProgressBarView()
 
     @IBOutlet weak var worldAchievementLabel: UILabel!
     @IBOutlet weak var logoutButtonOutlet: UIButton!

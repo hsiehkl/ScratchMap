@@ -15,4 +15,13 @@ class PublishViewController: UIViewController {
 
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        
+    }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
