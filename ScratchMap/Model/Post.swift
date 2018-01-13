@@ -19,6 +19,16 @@ enum PostValidateError: Error {
 
 struct Post {
     
+    struct Schema {
+        
+        public static let id = "id"
+        
+        public static let name = "name"
+        
+        public static let price = "price"
+        
+    }
+    
     let title: String
     
     let location: String
@@ -26,5 +36,8 @@ struct Post {
     let image: UIImage
     
     let content: String
+    
+//    let imageUrl: String
 }
+
 

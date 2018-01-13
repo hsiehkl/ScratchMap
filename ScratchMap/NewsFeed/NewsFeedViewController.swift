@@ -36,12 +36,6 @@ class NewsFeedViewController: UIViewController {
         
         let image = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         let addButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(publishPost))
-//        let button = UIButton(type: .system)
-//        button.setImage(#imageLiteral(resourceName: "icon_plus"), for: .normal)
-//        button.tintColor = UIColor.black
-//        button.addTarget(self, action: #selector(publishPost), for: .touchUpInside)
-//        let settingButton = UIBarButtonItem(customView: button)
-//        self.navigationItem.rightBarButtonItem = settingButton
         self.navigationItem.rightBarButtonItem = addButton
         self.tabBarController?.tabBar.isHidden = true
     }

@@ -13,9 +13,9 @@ import Firebase
 class PublishViewController: UIViewController {
 
     @IBOutlet weak var topVIew: UIView!
-    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
     override func viewDidLoad() {
@@ -37,13 +37,13 @@ class PublishViewController: UIViewController {
     }
     
     @IBAction func dateButtonTapped(_ sender: Any) {
-        DatePickerDialog().show("DatePicker", doneButtonTitle: NSLocalizedString("Done", comment: ""), cancelButtonTitle: NSLocalizedString("Cancel", comment: ""), datePickerMode: .date) {
+        
+        DatePickerDialog().show("Pick a day!", doneButtonTitle: NSLocalizedString("Done", comment: ""), cancelButtonTitle: NSLocalizedString("Cancel", comment: ""), datePickerMode: .date) {
             (date) -> Void in
             if let dt = date {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "MM/dd/yyyy"
                 self.dateLabel.text = formatter.string(from: dt)
-                //                self.textField.text = formatter.string(from: dt)
             }
         }
     }
@@ -72,30 +72,53 @@ class PublishViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: Any) {
         
         let user = Auth.auth().currentUser
+        
         guard let userId = user?.uid else {
             self.showAlert(title: "Oops", message: NSLocalizedString("Something went wrong. Please try again.", comment: "") )
             return
         }
         
-        let storageRef = firebase
+        let imageUid = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("\(imageUid).png")
         
-        let ref =  Database.database().reference()
-        ref.keepSynced(true)
-        let postReference = ref.child("users").child(userId).child("posts").childByAutoId()
+        guard let image = self.postImageView.image else {
+            showAlert(title: "Oops!", message: NSLocalizedString("Please upload an image.", comment: ""))
+            return
+        }
         
-        let value = ["title": self.titleTextField.text,
-                     "content": self.contentTextView.text,
-                     "date": dateLabel.text,
-                     "imageUrl":
-                     ]
+        if let uploadData = UIImagePNGRepresentation(image) {
+            
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                guard let postImageUrl = metadata?.downloadURL()?.absoluteString else { return }
+                
+                let ref =  Database.database().reference()
+//                ref.keepSynced(true)
+                
+                let postReference = ref.child("users").child(userId).child("posts").childByAutoId()
+                
+                let value = ["title": self.titleTextField.text,
+                             "content": self.contentTextView.text,
+                             "date": self.dateLabel.text,
+                             "imageUrl": postImageUrl] as [String: String?]
+                
+                postReference.setValue(value)
+            })
+        }
         
-        postReference.setValue(value)
+        self.dismiss(animated: true, completion: nil)
     }
     
     deinit {
         print("PublishViewController@@@@")
     }
 }
+
 
 extension PublishViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
