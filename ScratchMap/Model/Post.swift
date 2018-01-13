@@ -21,23 +21,27 @@ struct Post {
     
     struct Schema {
         
-        public static let id = "id"
+        public static let title = "title"
         
-        public static let name = "name"
+        public static let content = "content"
         
-        public static let price = "price"
+        public static let imageUrl = "imageUrl"
+        
+        public static let date = "date"
         
     }
     
     let title: String
     
-    let location: String
+//    let location: String?
     
 //    let image: UIImage
     
     let content: String
     
     let imageUrl: String
+    
+    let date: String
 }
 
 

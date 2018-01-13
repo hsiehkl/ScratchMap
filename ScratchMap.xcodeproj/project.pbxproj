@@ -36,6 +36,7 @@
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
 		6BCCB5562009B3CF0077AEA0 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCCB5552009B3CF0077AEA0 /* TextFieldExtension.swift */; };
+		6BCE545A200A52F2006C7DEE /* PostProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCE5459200A52F2006C7DEE /* PostProvider.swift */; };
 		6BE37F842001FEA800AC7268 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE37F862001FEA800AC7268 /* Localizable.strings */; };
 		6BE37F892001FF0F00AC7268 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */; };
 		6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE7641B1FE3D49F00B3708B /* Country.swift */; };
@@ -87,6 +88,7 @@
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		6BCCB5552009B3CF0077AEA0 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		6BCE5459200A52F2006C7DEE /* PostProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProvider.swift; sourceTree = "<group>"; };
 		6BE37F7B2001F39500AC7268 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		6BE37F7C2001F39600AC7268 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6BE37F852001FEA800AC7268 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				6BC574431FE693E5003C9C8C /* CountryList.swift */,
 				6B09B80C2006710B003FAD86 /* Post.swift */,
 				6BF502C31FEB957A00E013E2 /* DataModel.swift */,
+				6BCE5459200A52F2006C7DEE /* PostProvider.swift */,
 				6B2616541FF0F6A500F4219D /* VisitedType.swift */,
 				6B2251081FF81C53005776AD /* ColorSets.swift */,
 			);
@@ -496,6 +499,7 @@
 				6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */,
 				6B09B80720062EB9003FAD86 /* NewsFeedViewController.swift in Sources */,
 				6B09B80A200630D7003FAD86 /* NewsFeedTableViewCell.swift in Sources */,
+				6BCE545A200A52F2006C7DEE /* PostProvider.swift in Sources */,
 				6B09B80D2006710B003FAD86 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

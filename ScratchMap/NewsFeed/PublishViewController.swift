@@ -21,7 +21,7 @@ class PublishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dropShadow()
+        UIsetUp()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,9 +30,20 @@ class PublishViewController: UIViewController {
         
     }
     
-    func dropShadow() {
+    func UIsetUp() {
         topVIew.layer.borderWidth = 0.3
         topVIew.layer.borderColor = UIColor.gray.cgColor
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let result = formatter.string(from: date)
+        dateLabel.text = result
+        
+//        let date = Date()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+//        dateLabel.text = dateFormatter.string(from: date)
         
     }
     
@@ -41,9 +52,9 @@ class PublishViewController: UIViewController {
         DatePickerDialog().show("Pick a day!", doneButtonTitle: NSLocalizedString("Done", comment: ""), cancelButtonTitle: NSLocalizedString("Cancel", comment: ""), datePickerMode: .date) {
             (date) -> Void in
             if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd/yyyy"
-                self.dateLabel.text = formatter.string(from: dt)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                self.dateLabel.text = dateFormatter.string(from: dt)
             }
         }
     }

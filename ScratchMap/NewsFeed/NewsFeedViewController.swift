@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NewsFeedViewController: UIViewController {
     
     var navigationTitle = ""
     
-    let posts: [Post] = [Post(title: "Best trip ever", location: "@Taipei, Taiwan", image: UIImage(named: "Europe-1")!, content: "goodfasddsfsdfhdkjvsdoifjoisdjfoisajdfoiasdjfiosjdfoijdsfojdsoifjdisojfodisjfiosjdfoisjdfkxnckdsnifdnsfindinvidsnvifdnijsdfoasjdfkncvasdfsdafsdfsdfsadfasdfcdsfesdcdsfsadcvsdfsdfcdsfgdsvesrfesdvxfwesdfdsxfsdfxvfdsfsdnvifsdjfnvnndisnfisdjflknvsdnofjdsifjo"), Post(title: "I love Taoyuan", location: "@Taoyuan, Taiwan", image: UIImage(named: "Asia-1")!, content: "sosodfsadfsdfasdfasdfasdfsdfasdfdasfasdf")]
+    private let postProvider = PostProvider()
+    
+    var posts = [Post]()
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postProvider.requestData()
+        postProvider.delegate = self
         
         setupNavigationBar()
         let nib = UINib(nibName: "NewsFeedTableViewCell", bundle: nil)
@@ -60,12 +66,33 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsFeedTableViewCell", for: indexPath) as! NewsFeedTableViewCell
         
-        cell.locationLabel.text = posts[indexPath.row].location
+//        cell.locationLabel.text = posts[indexPath.row].location
         cell.postTitleLabel.text = posts[indexPath.row].title
-        cell.postImageView.image =  posts[indexPath.row].image
-        cell.postTextField.text =  posts[indexPath.row].content
+//        cell.postImageView.image =  posts[indexPath.row].image
+        cell.postTextField.text = posts[indexPath.row].content
+        cell.dateLabel.text = posts[indexPath.row].date
+        
+        if let imageURL = URL(string: self.posts[indexPath.row].imageUrl) {
+            
+            DispatchQueue.main.async {
+                cell.postImageView.sd_setImage(with: imageURL)
+            }
+        }
         
         return cell
     }
+}
+
+extension NewsFeedViewController: PostProviderDelegate {
+    
+    func didReceivePost(_ provider: PostProvider, posts: [Post]) {
+        
+        self.posts = posts
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 

@@ -248,7 +248,9 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
             self.classified()
 
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
 
