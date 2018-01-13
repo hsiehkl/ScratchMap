@@ -15,6 +15,10 @@ protocol DataModelDelegate: class {
     func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country])
 }
 
+//struct FirebaseRef {
+//    static let firebaseRef = Database.database().reference()
+//}
+
 class DataModel {
 
     weak var delegate: DataModelDelegate?

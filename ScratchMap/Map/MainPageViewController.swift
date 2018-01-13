@@ -25,7 +25,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     var childViewHasAlreadyExisted = false
     
     var tappedLayer: CAShapeLayer?
-    var waterView: WaveView?
     
     let backgroundView = UIImageView()
 
@@ -71,7 +70,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         backgroundView.image = backgroundImage
         backgroundView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
 //        backgroundView.center = self.view.center
-        self.scrollView.addSubview(backgroundView)
+        self.view.addSubview(backgroundView)
         
 //
         let paperPlane = UIImage(named: "image-2")
@@ -559,7 +558,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
             let user = Auth.auth().currentUser
             guard let userId = user?.uid else {
-                // need to handle
+                self.showAlert(title: "Oops", message: "Something went wrong. Please try again.")
                 return
             }
 

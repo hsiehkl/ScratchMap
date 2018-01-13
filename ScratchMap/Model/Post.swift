@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+enum PostValidateError: Error {
+    
+    // MARK: Case
+    
+    case missingValue
+    
+}
+
 struct Post {
     
     let title: String
@@ -19,3 +27,4 @@ struct Post {
     
     let content: String
 }
+

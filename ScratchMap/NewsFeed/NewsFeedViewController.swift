@@ -25,6 +25,11 @@ class NewsFeedViewController: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "newsFeedTableViewCell")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func setupNavigationBar() {
         
         self.navigationItem.title = navigationTitle
@@ -38,6 +43,7 @@ class NewsFeedViewController: UIViewController {
 //        let settingButton = UIBarButtonItem(customView: button)
 //        self.navigationItem.rightBarButtonItem = settingButton
         self.navigationItem.rightBarButtonItem = addButton
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func publishPost() {
