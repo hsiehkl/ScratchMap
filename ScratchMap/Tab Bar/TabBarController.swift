@@ -96,3 +96,18 @@ class TabBarController: UITabBarController {
     }
 
 }
+
+extension UITabBarController {
+    func hideTabBarAnimitaed(hide: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            
+            let translateTransform = CGAffineTransform.identity
+            
+            if hide {
+                self.tabBar.transform = translateTransform.translatedBy(x: 0, y: 50)
+            } else {
+                self.tabBar.transform = translateTransform
+            }
+        }
+    }
+}

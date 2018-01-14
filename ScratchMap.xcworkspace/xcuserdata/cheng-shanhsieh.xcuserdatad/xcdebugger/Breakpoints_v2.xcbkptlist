@@ -9,14 +9,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScratchMap/Map/MainPageViewController.swift"
-            timestampString = "537472236.441256"
+            filePath = "ScratchMap/Map/CountryInfoViewController.swift"
+            timestampString = "537605744.335779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
-            landmarkName = "scrollViewSetUp()"
-            landmarkType = "7">
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "countryName"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScratchMap.CountryInfoViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ScratchMap.CountryInfoViewController"
+                  moduleName = "ScratchMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cheng-shanhsieh/Desktop/project2/ScratchMap/ScratchMap/Map/CountryInfoViewController.swift"
+                  timestampString = "537605744.43314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "1506">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ScratchMap.CountryInfoViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ScratchMap.CountryInfoViewController&gt;"
+                  moduleName = "ScratchMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cheng-shanhsieh/Desktop/project2/ScratchMap/ScratchMap/Map/CountryInfoViewController.swift"
+                  timestampString = "537605744.43459"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "1393">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

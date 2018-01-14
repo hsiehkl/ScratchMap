@@ -20,12 +20,18 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         setupNavigationBar()
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+//        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
 //        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func setupNavigationBar() {
@@ -42,7 +48,12 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return visitedCountries.count
+        
+        if visitedCountries.count < 1 {
+            return 1
+        } else {
+            return visitedCountries.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,11 +62,15 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
 //        cell.isUserInteractionEnabled = false
         
+        print("indexPath:\(indexPath)")
+        
         guard let flag = Flag(countryCode: visitedCountries[indexPath.row].id) else { return cell }
 
         let styledImage = flag.image(style: .circle)
+        
+        let abbreviatedName = Abbreviation.abbreviation(countryName: visitedCountries[indexPath.row].name)
 
-        cell.countryNameLabel.text = visitedCountries[indexPath.row].name
+        cell.countryNameLabel.text = abbreviatedName
         cell.countryFlagImage.image = styledImage
 
         return cell

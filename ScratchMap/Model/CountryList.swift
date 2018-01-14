@@ -28,6 +28,25 @@ enum Continent: String {
 
 }
 
+//struct Continents {
+//    
+//    static let europe = "Europe"
+//    
+//    static let asia = "Asia"
+//    
+//    static let africa = "Africa"
+//    
+//    static let northAmerica = "North America"
+//    
+//    static let southAmerica = "South America"
+//    
+//    static let oceania = "Oceania"
+//    
+//    static let uropeAndAsia = "Europe and Asia"
+//    
+//    
+//}
+
 //extension Continent {
 //
 //    var continentKey: String {

@@ -25,9 +25,9 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
     var childViewHasAlreadyExisted = false
     
     var tappedLayer: CAShapeLayer?
-    var waterView: WaveView?
     
     let backgroundView = UIImageView()
+    var isLoadingData = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +37,17 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         dataModel.delegate = self
         dataModel.requestData()
 
-        
         svgWorldMapSetup()
         scrollViewSetUp()
         tapRecognizerSetup()
-        
 
     }
     
     @objc func canRotate() -> Void {}
 
     override func viewWillLayoutSubviews() {
+        
+        //        updateMinZoomScaleForSize(view.bounds.size)
 
         if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
             
@@ -58,172 +58,15 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             self.tabBarController?.tabBar.isHidden = false
         }
     }
-//
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//
-////        let newView = UIView()
-////        newView.backgroundColor = FlatBlack()
-////        UIApplication.shared.keyWindow?.bringSubview(toFront: newView)
-////        self.view.bringSubview(toFront: newView)
         
-        let backgroundImage = UIImage(named: "backgroundLight")
-        backgroundView.image = backgroundImage
-        backgroundView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
-//        backgroundView.center = self.view.center
-        self.scrollView.addSubview(backgroundView)
-        
-//
-        let paperPlane = UIImage(named: "image-2")
-        let paperPlaneView = UIImageView.init(image: paperPlane)
-        paperPlaneView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 60, height: 60)
-        
-        backgroundView.addSubview(paperPlaneView)
-        
-//        let circlePath = UIBezierPath(arcCenter: self.view.center, radius: 60, startAngle: 0, endAngle: .pi*2, clockwise: true)
-//        let animation = CAKeyframeAnimation(keyPath: "position")
-//        animation.duration = 2
-//        animation.rotationMode = kCAAnimationRotateAuto
-//        animation.repeatCount = MAXFLOAT
-//        animation.path = circlePath.cgPath
-//        paperPlaneView.layer.add(animation, forKey: "wave")
-//
-////        let line = UIView(frame: CGRect(x: -200, y: self.view.center.y, width: 150, height: 0.5))
-////        line.backgroundColor = UIColor.black
-////        self.scrollView.addSubview(line)
-////
-//        self.scrollView.addSubview(paperPlaneView)
-////
-//        func moveMapContainerView() {
-//
-//            UIView.animate(withDuration: 4.5, animations: {
-//                self.mapContainerView.center.x += 1250
-////                self.scrollView.transform = CGAffineTransform(scaleX: 2, y: 2)
-//                paperPlaneView.center.x += 1250
-////                line.center.x += 1500
-////                paperPlaneView.center.y += 50 * sin(paperPlaneView.center.x)
-////                paperPlaneView.center.x += paperPlaneView.frame.width/7
-//                let size = self.view.bounds.size
-//                let path: UIBezierPath = UIBezierPath()
-//                path.lineCapStyle = .round
-//                path.lineJoinStyle = .round
-//
-//                path.move(to: CGPoint(x: -1500, y: (size.height/2)))
-//                path.addLine(to: CGPoint(x: 0, y: (size.height/2)))
-//                path.addQuadCurve(to: CGPoint(x: size.width/3, y: (size.height/2)), controlPoint: CGPoint(x: size.width/6, y: size.height/3.2))
-//                path.addQuadCurve(to: CGPoint(x: (size.width/3 * 2), y: (size.height/2)), controlPoint: CGPoint(x: (size.width/2), y: (size.height/3 * 1.7)))
-//                path.addQuadCurve(to: CGPoint(x: (size.width), y: (size.height/2)), controlPoint: CGPoint(x: ((size.width/6 * 5)), y: (size.height/3.2)))
-//
-//
-//
-//                let animation = CAKeyframeAnimation(keyPath: "position")
-//
-//                animation.path = path.cgPath
-//                animation.rotationMode = kCAAnimationRotateAuto
-//                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-//                            animation.repeatCount = MAXFLOAT
-//                animation.duration = 3
-//                paperPlaneView.layer.add(animation, forKey: "wave")
-        
-        
-        let centerY = self.view.frame.height / 2  // find the vertical center
-        let steps = 130               // Divide the curve into steps
-        let stepX = self.view.frame.width / CGFloat(steps) // find the horizontal step distance
-        // Make a path
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: 0, y: centerY))
-        // Loop and draw steps in straingt line segments
-        for i in 0...steps {
-            let x = CGFloat(i) * stepX
-            let y = (sin(Double(i) * 0.1) * 40) + Double(centerY)
-            path.addLine(to: CGPoint(x: x, y: CGFloat(y)))
+        if isLoadingData {
+            loadingAnimation()
+        } else {
+            return
         }
-
-                        let animation = CAKeyframeAnimation(keyPath: "position")
-
-                        animation.path = path.cgPath
-                        animation.rotationMode = kCAAnimationRotateAuto
-                        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-                                    animation.repeatCount = MAXFLOAT
-                        animation.duration = 3
-                        paperPlaneView.layer.add(animation, forKey: "wave")
-        
-//        pathLayer.path = path.CGPath
-//        pathLayer.lineWidth = 3
-//        pathLayer.fillColor = UIColor.clearColor().CGColor
-//        pathLayer.strokeColor = UIColor.redColor().CGColor
-//        pathLayer.strokeStart = 0
-//        pathLayer.strokeEnd = 0 // <<
-//        let animation = CABasicAnimation(keyPath: "strokeEnd")
-//        animation.fromValue = 0
-//        animation.toValue = 1
-//        animation.duration = 3
-//        pathLayer.addAnimation(animation, forKey: "strokeEnd")
-//            }, completion: { (true) in
-//
-//            })
-//
-//
-////            let centerY = self.view.frame.height / 2  // find the vertical center
-////            let steps = 200          // Divide the curve into steps
-////            let stepX = self.view.frame.width / CGFloat(steps) // find the horizontal step distance
-////            // Make a path
-////            let path = UIBezierPath()
-////            // Start in the lower left corner
-////            path.move(to: CGPoint(x: 0, y: self.view.frame.height))
-////            // Draw a line up to the vertical center
-////            path.addLine(to: CGPoint(x: 0, y: centerY))
-////            // Loop and draw steps in straingt line segments
-////            for i in 0...steps {
-////                let x = CGFloat(i) * stepX
-////                let y = (sin(Double(i) * 0.1) * 40) + Double(centerY)
-////                path.addLine(to: CGPoint(x: x, y: CGFloat(y)))
-////            }
-////            // Draw down to the lower right
-////            path.addLine(to: CGPoint(x: self.view.frame.width, y: self.view.frame.height))
-////            // Close the path
-////            path.close()
-////            // Render the path
-////            let fillColor = UIColor.red
-////            fillColor.setFill()
-////            path.fill()
-////            let path = UIBezierPath()
-////            let size = self.view.bounds.size
-////            let path: UIBezierPath = UIBezierPath()
-////            path.lineCapStyle = .round
-////            path.lineJoinStyle = .round
-//////            path.move(to: CGPoint(x: size.width + 10, y: size.height))
-//////            path.addLine(to: CGPoint(x: size.width + 10, y: size.height - 70))
-//////            path.addQuadCurve(to: CGPoint(x: size.width/1.8, y: size.height - 70), controlPoint: CGPoint(x: size.width - 120, y: 200))
-//////            path.addArc(withCenter: CGPoint(x: size.width/1.9, y: size.height - 140), radius: 70, startAngle: CGFloat(0.5*M_PI), endAngle: CGFloat(2.5*M_PI), clockwise: true)
-//////            path.addCurve(to: CGPoint(x: 0, y: size.height - 100), controlPoint1: CGPoint(x: size.width/1.8 - 60, y: size.height - 60), controlPoint2: CGPoint(x: 150, y: size.height/2.3))
-//////            path.addLine(to: CGPoint(x: -100, y: size.height + 10))
-//////            path.move(to: (CGPoint(x: 16,y: 239)))
-//////            path.addCurve(to: CGPoint(x: 301, y: 239), controlPoint1: CGPoint(x: 136, y: 373), controlPoint2: CGPoint(x: 178, y: 110))
-////
-//////            path.move(to: CGPoint(x: -100, y: (size.height/2 - 30)))
-//////            path.addQuadCurve(to: CGPoint(x: size.width/2.7, y: (size.height/2 + 50)), controlPoint: CGPoint(x: size.width/2.2, y: size.height/2.5))
-//////            path.addQuadCurve(to: CGPoint(x: size.width/1.3, y: (size.height/2.3)), controlPoint: CGPoint(x: size.width/1.9, y: size.height/1.6))
-//////            path.addQuadCurve(to: CGPoint(x: size.width + 60, y: (size.height/2)), controlPoint: CGPoint(x: size.width, y: size.height/1.6))
-////
-////
-////            path.move(to: CGPoint(x: -1500, y: (size.height/2)))
-////            path.addLine(to: CGPoint(x: 0, y: (size.height/2)))
-////            path.addQuadCurve(to: CGPoint(x: size.width/3, y: (size.height/2)), controlPoint: CGPoint(x: size.width/6, y: size.height/3))
-////            path.addQuadCurve(to: CGPoint(x: (size.width/3 * 2), y: (size.height/2)), controlPoint: CGPoint(x: (size.width/2), y: (size.height/3 * 2)))
-////            path.addQuadCurve(to: CGPoint(x: (size.width), y: (size.height/2)), controlPoint: CGPoint(x: ((size.width/6 * 5)), y: (size.height/3)))
-////
-////
-////
-////            let animation = CAKeyframeAnimation(keyPath: "position")
-////
-////            animation.path = path.cgPath
-////            animation.rotationMode = kCAAnimationRotateAuto
-//////            animation.repeatCount = c
-////            animation.duration = 2.5
-////            paperPlaneView.layer.add(animation, forKey: "wave")
-//        }
-//        moveMapContainerView()
     }
 
 
@@ -256,13 +99,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             width: self.pictureSize.width + 30,
             height: self.pictureSize.height + 30
         )
-        
-//        mapContainerView.frame = CGRect(
-//            x: -1250,
-//            y: scrollView.frame.minY + 30,
-//            width: (self.pictureSize.width + 30),
-//            height: (self.pictureSize.height + 30)
-//        )
 
         // setup scrollView
 
@@ -280,8 +116,8 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         // zoom setting
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
-        scrollView.minimumZoomScale = 0.1
-        scrollView.maximumZoomScale = 4.0
+        scrollView.minimumZoomScale = 0.3
+        scrollView.maximumZoomScale = 6.0
 
         // scrollView constraints
         let leading = NSLayoutConstraint(
@@ -344,14 +180,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.zoomScale = minScale
     
     }
-
-//    //3. 呼叫
-//    override func viewWillLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//        updateMinZoomScaleForSize(view.bounds.size)
-//
-//    }
 
     //4.讓圖片置中, 每次縮放之後會被呼叫
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
@@ -679,10 +507,52 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         self.pictureSize.width = self.pictureSize.width > maxX ? self.pictureSize.width: maxX
         self.pictureSize.height = self.pictureSize.height > maxY ? self.pictureSize.height : maxY
     }
+    
+    func loadingAnimation() {
+        
+        self.tabBarController?.hideTabBarAnimitaed(hide: true)
+        
+        let backgroundImage = UIImage(named: "backgroundLight")
+        backgroundView.image = backgroundImage
+        backgroundView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
+        backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(backgroundView)
 
-//    func moceTextField(textField: UITextField, moveDistance: Int, up: Bool) {
-//
-//    }
+        let paperPlane = UIImage(named: "paperPlane")
+        let paperPlaneView = UIImageView.init(image: paperPlane)
+        paperPlaneView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 60, height: 60)
+
+        backgroundView.addSubview(paperPlaneView)
+        
+//        let circlePath = UIBezierPath(arcCenter: self.view.center, radius: 60, startAngle: 0, endAngle: .pi*2, clockwise: true)
+//        let animation = CAKeyframeAnimation(keyPath: "position")
+//        animation.duration = 2
+//        animation.rotationMode = kCAAnimationRotateAuto
+//        animation.repeatCount = MAXFLOAT
+//        animation.path = circlePath.cgPath
+//        paperPlaneView.layer.add(animation, forKey: "wave")
+        
+        let centerY = self.view.frame.height / 2.1  // find the vertical center
+        let steps = 130               // Divide the curve into steps
+        let stepX = self.view.frame.width / CGFloat(steps) // find the horizontal step distance
+        // Make a path
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0, y: centerY))
+        // Loop and draw steps in straingt line segments
+        for i in 0...steps {
+            let x = CGFloat(i) * stepX
+            let y = (sin(Double(i) * 0.1) * 40) + Double(centerY)
+            path.addLine(to: CGPoint(x: x, y: CGFloat(y)))
+        }
+        
+        let animation = CAKeyframeAnimation(keyPath: "position")
+        animation.path = path.cgPath
+        animation.rotationMode = kCAAnimationRotateAuto
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 2.8
+        paperPlaneView.layer.add(animation, forKey: "wave")
+    }
     
     deinit {
         print("main page controller@@@@@")
@@ -694,27 +564,30 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
 
     func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country]) {
 
-//        self.scrollView.addSubview(self.mapContainerView)
-        
-//        animation()
-        
-        self.visitedCountries = visitedCountries
-
         for visitedCountry in visitedCountries {
-
+            
+            self.visitedCountries = visitedCountries
+            
             guard let continent = visitedCountry.continent else { return }
-
-            colorThePath(path: visitedCountry.path, continent: continent)
-
-        }
-    }
-    
-    func animation() {
-        UIView.animate(withDuration: 2) {
-            self.backgroundView.alpha = 0
+            
+            self.colorThePath(path: visitedCountry.path, continent: continent)
+            
         }
         
-        backgroundView.removeFromSuperview()
+        self.scrollView.addSubview(self.mapContainerView)
+        
+        self.tabBarController?.hideTabBarAnimitaed(hide: false)
+        
+        self.isLoadingData = false
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.backgroundView.alpha = 0
+            
+        }) { (true) in
+            
+            self.backgroundView.removeFromSuperview()
+            
+        }
     }
 
     func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country) {

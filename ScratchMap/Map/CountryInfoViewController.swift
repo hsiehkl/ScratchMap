@@ -31,19 +31,23 @@ class CountryInfoViewController: UIViewController {
 
         didSet {
 
-            if countryNameLabel != nil {
+//            if countryNameLabel != nil {
+            
+                let abbreviatedResult = Abbreviation.abbreviation(countryName: countryName)
+                
+                countryNameLabel.text = abbreviatedResult
 
-                if countryName.range(of: "Democratic Republic") != nil {
-
-                    let abbCountryName = countryName.replacingOccurrences(of: "Democratic Republic", with: "Dem. Rep.")
-
-                    countryNameLabel.text = abbCountryName
-
-                } else {
-                    
-                    countryNameLabel.text = countryName
-                }
-            }
+//                if countryName.range(of: "Democratic Republic") != nil {
+//
+//                    let abbCountryName = countryName.replacingOccurrences(of: "Democratic Republic", with: "Dem. Rep.")
+//
+//                    countryNameLabel.text = abbCountryName
+//
+//                } else {
+//
+//                    countryNameLabel.text = countryName
+//                }
+//            }
         }
     }
 
