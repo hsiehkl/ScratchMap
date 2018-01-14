@@ -13,7 +13,7 @@ class WaveView: UIView {
     
     var waveSpeed: CGFloat = 0.6
     
-    var waveHeight: CGFloat = 5
+    var waveHeight: CGFloat = 8
     
     var realWaveColor: UIColor = UIColor.red {
         

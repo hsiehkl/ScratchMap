@@ -61,7 +61,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+
         if isLoadingData {
             loadingAnimation()
         } else {
@@ -467,7 +467,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             UIColor(gradientStyle: .leftToRight, withFrame: CGRect(x: rect.minX, y: rect.minY, width: maxX, height: maxY), andColors:
 
                     classifyContinent(continent: continent)
-
                 )
 
         layer.fillColor = fillColor.cgColor
@@ -586,7 +585,6 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
         }) { (true) in
             
             self.backgroundView.removeFromSuperview()
-            
         }
     }
 
@@ -594,6 +592,5 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
 
         removeShadowLayer()
         colorSelectedCountry(country: scratchedCountry)
-        
     }
 }
