@@ -171,8 +171,8 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         noDataLabel.textColor = UIColor.black
         noDataLabel.textAlignment = .center
 
-        let waterView = WaveView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 150), color: UIColor.white)
-        
+        let waterView = WaveView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 50), color: UIColor.white)
+
         waterView.backgroundColor = UIColor.clear
         
         waterView.addOverView(noDataLabel)
