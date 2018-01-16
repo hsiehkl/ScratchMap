@@ -29,7 +29,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
 
     func setupNavigationBar() {
@@ -127,7 +127,10 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
                     controller.dismiss(animated: true, completion: nil)
                 })
 
-                default:
+                case .saved:
+                    controller.dismiss(animated: true, completion: nil)
+                
+                case .cancelled:
                     controller.dismiss(animated: true, completion: nil)
             }
         }

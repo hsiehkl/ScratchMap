@@ -135,6 +135,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
         guard let visitedCountriesInContinent = countries[(continents[indexPath.row])] else { return }
 
         continentDetailViewController.visitedCountries = visitedCountriesInContinent
+        continentDetailViewController.continent = (continents[indexPath.row])
 
         self.navigationController?.pushViewController(continentDetailViewController, animated: true)
         
@@ -250,6 +251,9 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
             self.collectionView.reloadData()
         }
+        
+        
+        print("achieve! \(self.countries["Oceania"]?.last?.name)")
     }
 
     deinit {

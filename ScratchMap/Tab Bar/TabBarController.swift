@@ -91,8 +91,30 @@ class TabBarController: UITabBarController {
     func setupBarItemFont() {
 
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 12)!], for: .normal)
+        
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 12)!], for: .selected)
-
     }
+}
 
+extension UITabBarController {
+    
+    func hideTabBarAnimitaed(hide: Bool) {
+        
+        let translateTransform = CGAffineTransform.identity
+        
+        if hide {
+            
+            UIView.animate(withDuration: 0) {
+                
+                self.tabBar.transform = translateTransform.translatedBy(x: 0, y: 50)
+            }
+                
+        } else {
+                
+            UIView.animate(withDuration: 0.5) {
+                
+                self.tabBar.transform = translateTransform
+            }
+        }
+    }
 }

@@ -33,16 +33,7 @@ class CountryInfoViewController: UIViewController {
 
             if countryNameLabel != nil {
 
-                if countryName.range(of: "Democratic Republic") != nil {
-
-                    let abbCountryName = countryName.replacingOccurrences(of: "Democratic Republic", with: "Dem. Rep.")
-
-                    countryNameLabel.text = abbCountryName
-
-                } else {
-                    
-                    countryNameLabel.text = countryName
-                }
+                countryNameLabel.text = countryName
             }
         }
     }
