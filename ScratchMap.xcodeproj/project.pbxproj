@@ -29,6 +29,7 @@
 		6B30F2FA1FE3B1380048F310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2F91FE3B1380048F310 /* Assets.xcassets */; };
 		6B30F2FD1FE3B1380048F310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */; };
 		6B44E871200E04A0006C93D3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E870200E04A0006C93D3 /* Reachability.swift */; };
+		6B44E875200E0A29006C93D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */; };
 		6B4842B31FF516B700F58FE2 /* ScratchCardMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */; };
 		6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */; };
 		6BA008162007C15900E3211E /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA008142007C15900E3211E /* PublishViewController.swift */; };
@@ -51,7 +52,6 @@
 		6BF38FD81FE583CB001DB8A8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */; };
 		6BF502C41FEB957A00E013E2 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF502C31FEB957A00E013E2 /* DataModel.swift */; };
 		6BF864F3200703A1009EE676 /* WaveAnumation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF864F2200703A1009EE676 /* WaveAnumation.swift */; };
-		6BFB29532003649F00B30955 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFB29522003649F00B30955 /* GoogleService-Info.plist */; };
 		6BFFCEAE1FEA41A100DEF234 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */; };
 		6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +82,7 @@
 		6B30F2FC1FE3B1380048F310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B30F2FE1FE3B1380048F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B44E870200E04A0006C93D3 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardMaskView.swift; sourceTree = "<group>"; };
 		6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardView.swift; sourceTree = "<group>"; };
 		6BA008142007C15900E3211E /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		6BF38FD71FE583CB001DB8A8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6BF502C31FEB957A00E013E2 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		6BF864F2200703A1009EE676 /* WaveAnumation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnumation.swift; sourceTree = "<group>"; };
-		6BFB29522003649F00B30955 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BFFCEAD1FEA41A100DEF234 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
 		6BFFCEAF1FEAB05500DEF234 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		F7F4123CBF31FF5FDDC9997A /* Pods-ScratchMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScratchMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScratchMap/Pods-ScratchMap.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
 				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
+				6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */,
 				6BE37F862001FEA800AC7268 /* Localizable.strings */,
-				6BFB29522003649F00B30955 /* GoogleService-Info.plist */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B1B7CE71FFFE5C800E5208B /* worldHighNew.svg */,
 			);
@@ -371,9 +371,9 @@
 				6BD42136200B696200560687 /* RefreshView.xib in Resources */,
 				6BE37F842001FEA800AC7268 /* Localizable.strings in Resources */,
 				6B1B7CE81FFFE5C800E5208B /* worldHighNew.svg in Resources */,
+				6B44E875200E0A29006C93D3 /* GoogleService-Info.plist in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6B09B80B200630D7003FAD86 /* NewsFeedTableViewCell.xib in Resources */,
-				6BFB29532003649F00B30955 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
