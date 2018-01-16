@@ -21,12 +21,11 @@ class ProgressBarView: UIView {
         }
     }
 
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//        setup()
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        setup()
+    }
 
     // storyboard or xib
     required init?(coder aDecoder: NSCoder) {

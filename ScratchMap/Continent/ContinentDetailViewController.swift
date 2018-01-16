@@ -15,21 +15,13 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
     var visitedCountries = [Country]()
     var continent = ""
-//    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        refreshControl = UIRefreshControl()
-//        tableView.addSubview(refreshControl)
-//        refreshControl.tintColor = UIColor.clear
-//        refreshControl.addTarget(self, action: #selector(updateData), for: .valueChanged)
-//        loadCustomRefreshContens()
-        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         setupNavigationBar()
-//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-//        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,45 +31,6 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        
-//        self.navigationController?.popViewController(animated: true)
-    }
-    
-//    @objc func loadCustomRefreshContens(){
-//
-//        if let refreshView = UIView.load(nibName: "RefreshView") as? RefreshView {
-//
-//            refreshControl.addSubview(refreshView)
-//            refreshView.frame = refreshControl.bounds
-//
-//            UIView.animate(withDuration: 2, animations: {
-//                let circlePath = UIBezierPath(arcCenter: self.refreshControl.center, radius: 15, startAngle: 0, endAngle: .pi*2, clockwise: false)
-//                let animation = CAKeyframeAnimation(keyPath: "position")
-//                animation.duration = 1.5
-//                animation.rotationMode = kCAAnimationRotateAuto
-//                animation.repeatCount = MAXFLOAT
-//                animation.path = circlePath.cgPath
-//                refreshView.paperPlaneImageView.layer.add(animation, forKey: "wave")
-//            }, completion: { (true) in
-//                self.refreshControl.endRefreshing()
-//            })
-//        }
-//
-//        updateData()
-//
-//    }
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if refreshControl.isRefreshing {
-//            loadCustomRefreshContens()
-//        }
-
-
-//    }
-    
-    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -86,7 +39,6 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         
         self.navigationItem.title = NSLocalizedString("Collection", comment: "")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.black
         
     }
@@ -119,7 +71,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "continentDetailTableViewCell", for: indexPath) as! ContinentDetailTableViewCell
 
-//        cell.isUserInteractionEnabled = false
+        cell.isUserInteractionEnabled = false
         
         print("indexPath:\(indexPath)")
         
@@ -131,18 +83,6 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         cell.countryFlagImage.image = styledImage
 
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
-
-        newsFeedViewController.navigationTitle = visitedCountries[indexPath.row].name
-        
-        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
-
-        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -157,9 +97,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
             self.visitedCountries = newData
 
             self.tableView.reloadData()
-//            refreshControl.endRefreshing()
         }
-
     }
     
     func showNoDataInfo() {

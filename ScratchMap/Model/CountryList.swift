@@ -28,56 +28,6 @@ enum Continent: String {
 
 }
 
-//struct Continents {
-//    
-//    static let europe = "Europe"
-//    
-//    static let asia = "Asia"
-//    
-//    static let africa = "Africa"
-//    
-//    static let northAmerica = "North America"
-//    
-//    static let southAmerica = "South America"
-//    
-//    static let oceania = "Oceania"
-//    
-//    static let uropeAndAsia = "Europe and Asia"
-//    
-//    
-//}
-
-//extension Continent {
-//
-//    var continentKey: String {
-//
-//        switch self {
-//
-//        case .europe:
-//            return "Europe"
-//
-//        case .asia:
-//            return "Asia"
-//
-//        case .africa:
-//            return "Africa"
-//
-//        case .northAmerica:
-//            return "North America"
-//
-//        case .southAmerica:
-//            return "South America"
-//
-//        case .oceania:
-//            return "Oceania"
-//
-//        case .europeAndAsia:
-//            return "Europe and Asia"
-//
-//        }
-//    }
-//}
-
 let countryIdClassifiedByContinents = [
 
     "Europe": ["AL", "AD", "AM", "AT", "AX", "AZ", "BY", "BE", "BA", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FO", "FR", "GE", "GE", "GI", "DE", "GR", "HU", "IM", "IS", "IE", "JE", "IT", "XK", "LV", "LI", "LT", "LU", "MK", "MT", "MD", "MC", "ME", "NL", "NO", "PL", "PT", "RO", "RU", "SM", "RS", "SK", "SJ", "SI", "ES", "SE", "CH", "TR", "UA", "GB", "VA"],

@@ -198,7 +198,6 @@ class WaveView: UIView {
             
         }
         
-        
         offset += _waveSpeed
         
         let width = frame.width
@@ -244,37 +243,4 @@ class WaveView: UIView {
         self.maskWaveLayer.path = maskPath
         
     }
-    
-//    func loadingAnimation() {
-//        
-//        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-//        backgroundView.backgroundColor = UIColor(red: 127.0 / 255.0, green: 190.0 / 255.0, blue: 21.0 / 255.0, alpha: 1)
-//        
-//        let frame = CGRect(x: 0, y: -100, width: self.view.bounds.width, height: 100)
-//        waterView = WaveView(frame: frame, color: UIColor(red: 132.0 / 255.0, green: 191.0 / 255.0, blue: 230.0 / 255.0, alpha: 1))
-//        //        waterView!.addOverView(avatarView)
-//        waterView?.backgroundColor = UIColor.clear
-//        
-//        self.view.addSubview(backgroundView)
-//        //        backgroundView.addSubview(waterView!)
-//        self.view.addSubview(waterView!)
-//        
-//        waterView!.start()
-//        
-//        //        UIView.animate(withDuration: 5) {
-//        ////            self.waterView!.center.y += self.view.bounds.height
-//        //            backgroundView.center.y += self.view.bounds.height
-//        //            self.view.backgroundColor = UIColor.white
-//        //
-//        //        }
-//        
-//        UIView.animate(withDuration: 3, animations: {
-//            self.waterView!.center.y += (self.view.bounds.height)
-//            backgroundView.center.y += (self.view.bounds.height)
-//        }) { (true) in
-//            //            backgroundView.removeFromSuperview()
-//        }
-//    }
-
-    
 }

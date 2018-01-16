@@ -18,8 +18,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
-    
-//    let progressBar = ProgressBarView()
 
     @IBOutlet weak var worldAchievementLabel: UILabel!
     @IBOutlet weak var logoutButtonOutlet: UIButton!
@@ -114,8 +112,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
             let progress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row])
 
-//            let fakeProgress = CGFloat(progressAmount)/CGFloat(continentCountryAmount[indexPath.row]) * 2
-
             cell.continentProgressBarView.progress = progress
 
             let percentage = progress * 100
@@ -153,7 +149,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
             headerView.worldProgressLabel.text = "\(visitedCountries.count)/\(totalCountryAmount)"
 
             let progress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount)
-//            let fakeProgress = CGFloat(visitedCountries.count)/CGFloat(totalCountryAmount) * 2
             headerView.progressBarView.progress = progress
             let percentage = progress * 100
             print(" progreeeeeeee \(String(format: "%.2f", percentage))")
@@ -251,9 +246,6 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
             self.collectionView.reloadData()
         }
-        
-        
-        print("achieve! \(self.countries["Oceania"]?.last?.name)")
     }
 
     deinit {

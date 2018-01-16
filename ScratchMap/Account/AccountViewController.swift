@@ -25,12 +25,6 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
         self.navigationItem.title = NSLocalizedString("Setting", comment: "")
 
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        
-//        self.navigationController?.popViewController(animated: true)
-    }
 
     func setupNavigationBar() {
 

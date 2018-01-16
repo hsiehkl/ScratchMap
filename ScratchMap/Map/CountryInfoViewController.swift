@@ -123,9 +123,6 @@ class CountryInfoViewController: UIViewController {
         let country = Country(name: countryName, id: countryId, continent: continent, path: countryPath)
         cratchableViewController.country = country
 
-//        cratchableViewController.providesPresentationContextTransitionStyle = true
-//        cratchableViewController.definesPresentationContext = true
-//        cratchableViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         cratchableViewController.modalPresentationStyle = .overFullScreen
         cratchableViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 

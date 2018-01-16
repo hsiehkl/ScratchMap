@@ -235,35 +235,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
             }
 
             if path.contains(tapLocation) {
-//
-//                var mask = UIView()
-//                var wantToShowView = UIView()
-//                var scratchCardView: ScratchCardView?
-//
-//                mask.frame = self.view.frame
-//                wantToShowView.frame = self.view.frame
-//
-//                let layer = CAShapeLayer()
-//
-//                layer.path = path.cgPath
-//                layer.fillColor = FlatGray().cgColor
-//
-//                let strokeWidth = CGFloat(0.5)
-//                let strokeColor = UIColor.white
-//
-//                layer.lineWidth = strokeWidth
-//                layer.strokeColor = strokeColor.cgColor
-//                layer.shadowColor = UIColor.black.cgColor
-//                layer.shadowOpacity = 0.7
-//                layer.shadowOffset = CGSize(width: 0.0, height: 15.0)
-//
-//                wantToShowView.layer.addSublayer(layer)
-//
-//                scratchCardView = ScratchCardView(frame: self.view.frame)
-//
-//                scratchCardView!.setupWith(coverView: mask, contentView: wantToShowView)
-//                self.view.addSubview(scratchCardView!)
-//
 
                 isTapInCountryPath = true
 
@@ -522,14 +493,6 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         paperPlaneView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 60, height: 60)
 
         backgroundView.addSubview(paperPlaneView)
-        
-//        let circlePath = UIBezierPath(arcCenter: self.view.center, radius: 60, startAngle: 0, endAngle: .pi*2, clockwise: true)
-//        let animation = CAKeyframeAnimation(keyPath: "position")
-//        animation.duration = 2
-//        animation.rotationMode = kCAAnimationRotateAuto
-//        animation.repeatCount = MAXFLOAT
-//        animation.path = circlePath.cgPath
-//        paperPlaneView.layer.add(animation, forKey: "wave")
         
         let centerY = self.view.frame.height / 2.1  // find the vertical center
         let steps = 130               // Divide the curve into steps

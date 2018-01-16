@@ -34,7 +34,7 @@ class SignupViewController: UIViewController {
         {
 
             self.showAlert(title: "Opps!", message: NSLocalizedString("Please fill in all blanks.", comment: ""), handler: nil)
-
+            
             return
         }
 
@@ -68,6 +68,7 @@ class SignupViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
 
             })
+            
         } else {
 
         }
@@ -107,7 +108,6 @@ class SignupViewController: UIViewController {
     private func setupButton() {
 
         signupButton.layer.cornerRadius = 8
-
     }
 
     deinit {
