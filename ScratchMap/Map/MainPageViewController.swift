@@ -490,7 +490,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         let paperPlane = UIImage(named: "paperPlane")
         let paperPlaneView = UIImageView.init(image: paperPlane)
-        paperPlaneView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: 60, height: 60)
+        paperPlaneView.frame = CGRect(x: -50, y: self.view.center.y, width: 60, height: 60)
 
         backgroundView.addSubview(paperPlaneView)
         
@@ -514,6 +514,16 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         animation.repeatCount = MAXFLOAT
         animation.duration = 2.8
         paperPlaneView.layer.add(animation, forKey: "wave")
+        
+        if Reachability.isConnectedToNetwork() {
+            print("Internet connection OK")
+        
+        } else {
+            print("Internet connection FAILED")
+        
+            self.showAlert(title: "Oops!", message: NSLocalizedString("You are offline.", comment: ""))
+        }
+
     }
     
     deinit {
@@ -533,7 +543,6 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
             guard let continent = visitedCountry.continent else { return }
             
             self.colorThePath(path: visitedCountry.path, continent: continent)
-            
         }
         
         self.scrollView.addSubview(self.mapContainerView)

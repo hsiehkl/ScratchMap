@@ -38,7 +38,7 @@ class DataModel {
         let ref = Database.database().reference()
 
         ref.child("users").child(userId).child("visitedCountries").observeSingleEvent(of: .value, with: { (snapshot) in
-
+            
             ref.keepSynced(true)
 
             guard let dataValue = snapshot.value as? [String: String] else { return }
