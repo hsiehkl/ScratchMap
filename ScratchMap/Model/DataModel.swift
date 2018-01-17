@@ -13,6 +13,8 @@ import PocketSVG
 protocol DataModelDelegate: class {
 
     func didReciveCountryData(_ provider: DataModel, visitedCountries: [Country])
+    
+    func noDataAvaliable(_ provider: DataModel)
 }
 
 class DataModel {
@@ -40,6 +42,14 @@ class DataModel {
         ref.child("users").child(userId).child("visitedCountries").observeSingleEvent(of: .value, with: { (snapshot) in
             
             ref.keepSynced(true)
+            
+            print(snapshot)
+            
+            if !snapshot.exists() {
+                
+                self.delegate?.noDataAvaliable(self)
+                return
+            }
 
             guard let dataValue = snapshot.value as? [String: String] else { return }
 
