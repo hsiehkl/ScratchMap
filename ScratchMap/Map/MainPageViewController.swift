@@ -559,6 +559,23 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
             self.backgroundView.removeFromSuperview()
         }
     }
+    
+    func noDataAvaliable(_ provider: DataModel) {
+        
+        self.scrollView.addSubview(self.mapContainerView)
+        
+        self.tabBarController?.hideTabBarAnimitaed(hide: false)
+        
+        self.isLoadingData = false
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.backgroundView.alpha = 0
+            
+        }) { (true) in
+            
+            self.backgroundView.removeFromSuperview()
+        }
+    }
 
     func didReciveScratchedCountry(_ provider: ScratchViewController, scratchedCountry: Country) {
 
