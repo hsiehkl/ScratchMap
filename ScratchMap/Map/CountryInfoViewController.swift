@@ -131,6 +131,7 @@ class CountryInfoViewController: UIViewController {
         self.present(cratchableViewController, animated: true, completion: nil)
 
     }
+    
     @IBAction func claenButtonTapped(_ sender: Any) {
 
         if let mainPageVC = self.parent as? MainPageViewController {

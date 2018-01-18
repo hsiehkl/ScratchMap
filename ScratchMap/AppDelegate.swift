@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         Database().isPersistenceEnabled = true
+        let queue = DispatchQueue.global()
+        Database.database().callbackQueue = queue
 
         // Setup TabBarController
 

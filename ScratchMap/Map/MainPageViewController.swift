@@ -545,18 +545,21 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
             self.colorThePath(path: visitedCountry.path, continent: continent)
         }
         
-        self.scrollView.addSubview(self.mapContainerView)
+        DispatchQueue.main.async {
         
-        self.tabBarController?.hideTabBarAnimitaed(hide: false)
-        
-        self.isLoadingData = false
-        
-        UIView.animate(withDuration: 1.5, animations: {
-            self.backgroundView.alpha = 0
+            self.scrollView.addSubview(self.mapContainerView)
             
-        }) { (true) in
+            self.tabBarController?.hideTabBarAnimitaed(hide: false)
             
-            self.backgroundView.removeFromSuperview()
+            self.isLoadingData = false
+            
+            UIView.animate(withDuration: 1.5, animations: {
+                self.backgroundView.alpha = 0
+                
+            }) { (true) in
+                
+                self.backgroundView.removeFromSuperview()
+            }
         }
     }
     

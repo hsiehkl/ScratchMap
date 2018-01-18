@@ -15,7 +15,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
     @IBOutlet weak var backToLoginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
 

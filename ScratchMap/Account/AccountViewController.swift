@@ -25,7 +25,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
         self.navigationItem.title = NSLocalizedString("Setting", comment: "")
 
     }
-
+    
     func setupNavigationBar() {
 
         guard let userId = Auth.auth().currentUser?.uid else { return }
