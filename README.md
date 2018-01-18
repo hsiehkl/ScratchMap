@@ -7,16 +7,19 @@
     * Make your map distinguished.
   * Scratchable 
     * Color the country you have visited in interactive way.
-    
-<img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/mainPage.png" width = "350" alt="Shalk" align=center />    <img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/scratchPage.png" width = "350" alt="Shalk" align=center />
-
-
-
   * Achievement
     * The statistics of your explored rate.
     * List of visited counties classified by continent.
+  * Sharing
+    * Share your map with friends.
+  * Account
+   * Save your visited country on cloud.
+   
+# Screenshots 
     
-<img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/achievementPage.png" width = "350" alt="Shalk" align=center />    <img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/collectonPage.png" width = "350"  alt="Shalk" align=center />
+<img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/mainPage.png" width = "300" alt="World Map" align=center />        <img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/scratchPage.png" width = "300" alt="Scratchable Country" align=center /> 
+
+<img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/achievementPage.png" width = "300" alt="Achievement" align=center />        <img src="https://github.com/hsiehkl/ScratchMap/blob/Readme/Screenshot/collectonPage.png" width = "300"  alt="Collection" align=center />
 
 # Libraries
   * Firebase
