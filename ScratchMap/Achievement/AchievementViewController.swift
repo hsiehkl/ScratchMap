@@ -17,6 +17,8 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
     
     let continents = ["Europe", "Asia", "Africa", "North America", "South America", "Oceania"]
     
+//    let continents: [Continent.name] = [.europe, .africa, ]
+    
     var countries: [String: [Country]] = ["Europe": [], "Asia": [], "Africa": [], "North America": [], "South America": [], "Oceania": []]
 
     @IBOutlet weak var worldAchievementLabel: UILabel!

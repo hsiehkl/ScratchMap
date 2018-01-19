@@ -15,5 +15,4 @@ public extension UIView {
         return UINib.load(nibName: name, bundle: bundle) as? UIView
 
     }
-
 }

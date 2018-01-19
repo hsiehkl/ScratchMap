@@ -10,9 +10,7 @@ import UIKit
 
 typealias CrossDissolveCompletion = (Bool) -> Void
 
-// swiftlint:disable variable_name
 func crossDissolve(from: UIViewController?, to: UIViewController, completion: CrossDissolveCompletion?) {
-    // swiftlint:enable variable_name
 
     guard
         let from = from
@@ -21,7 +19,6 @@ func crossDissolve(from: UIViewController?, to: UIViewController, completion: Cr
             completion?(true)
 
             return
-
     }
 
     let fromView = from.view!
@@ -44,7 +41,6 @@ func crossDissolve(from: UIViewController?, to: UIViewController, completion: Cr
             completion?(isComplete)
     }
     )
-
 }
 
 extension UIWindow {

@@ -556,6 +556,7 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
             UIView.animate(withDuration: 1.5, animations: {
                 self.backgroundView.alpha = 0
                 
+                
             }) { (true) in
                 
                 self.backgroundView.removeFromSuperview()
