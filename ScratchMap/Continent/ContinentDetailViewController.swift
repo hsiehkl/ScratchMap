@@ -64,14 +64,13 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
             return visitedCountries.count
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "continentDetailTableViewCell", for: indexPath) as! ContinentDetailTableViewCell
 
-        cell.isUserInteractionEnabled = false
+//        cell.isUserInteractionEnabled = false
         
         print("indexPath:\(indexPath)")
         
@@ -86,7 +85,14 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
+        
+        newsFeedViewController.navigationTitle = visitedCountries[indexPath.row].name
+        
+        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
+
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
