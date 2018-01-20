@@ -117,7 +117,7 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.zoomScale = 0.5
         scrollView.minimumZoomScale = 0.3
-        scrollView.maximumZoomScale = 6.0
+        scrollView.maximumZoomScale = 10.0
 
         // scrollView constraints
         let leading = NSLayoutConstraint(

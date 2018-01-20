@@ -13,7 +13,7 @@ enum TabBarItemType {
 
     // MARK: Case
 
-    case map, achievement
+    case map, achievement //, post
 
 }
 
@@ -32,6 +32,11 @@ extension TabBarItemType {
         case .achievement:
 
             return NSLocalizedString("Achievement", comment: "")
+//
+//        case .post:
+//
+//            return NSLocalizedString("Post", comment: "")
+            
         }
 
     }
@@ -53,6 +58,9 @@ extension TabBarItemType {
         case .achievement:
 
             return #imageLiteral(resourceName: "non-achievement").withRenderingMode(.alwaysOriginal)
+//
+//        case .post:
+//            return #imageLiteral(resourceName: "post").withRenderingMode(.alwaysOriginal)
         }
     }
 
@@ -67,6 +75,10 @@ extension TabBarItemType {
         case .achievement:
 
             return #imageLiteral(resourceName: "newSize").withRenderingMode(.alwaysOriginal)
+//
+//        case .post:
+//
+//            return #imageLiteral(resourceName: "post").withRenderingMode(.alwaysOriginal)
         }
 
     }

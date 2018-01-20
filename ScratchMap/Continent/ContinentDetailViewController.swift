@@ -90,6 +90,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
         
         newsFeedViewController.navigationTitle = visitedCountries[indexPath.row].name
+        newsFeedViewController.country = visitedCountries[indexPath.row]
         
         self.navigationController?.pushViewController(newsFeedViewController, animated: true)
 

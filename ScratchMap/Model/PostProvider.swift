@@ -19,7 +19,7 @@ class PostProvider {
     
     var posts = [Post]()
     
-    func requestData() {
+    func requestData(countryId: String) {
         
         let user = Auth.auth().currentUser
         
@@ -30,11 +30,13 @@ class PostProvider {
         
         let ref = Database.database().reference()
         
-        ref.child("users").child(userId).child("posts").observe(.value) { (snapshot) in
+        ref.child("users").child(userId).child("posts").child(countryId).observe(.value) { (snapshot) in
             
             guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { return }
             
             print(dataValue)
+            
+            self.posts = []
             
             for data in dataValue {
                 
