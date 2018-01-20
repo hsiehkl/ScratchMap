@@ -116,7 +116,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
         let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         let font = UIFont(name: "Avenir-Medium", size: 18)
         noDataLabel.font = font
-        noDataLabel.text = "Next trip to \(continent)?"
+        noDataLabel.text = NSLocalizedString("Adventure awaits!", comment: "")
         noDataLabel.textColor = UIColor.black
         noDataLabel.textAlignment = .center
 
