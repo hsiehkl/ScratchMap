@@ -29,11 +29,13 @@ struct Post {
         
         public static let date = "date"
         
+        
+        
     }
     
     let title: String
     
-    //    let location: String?
+//    let location: String
     
     //    let image: UIImage
     

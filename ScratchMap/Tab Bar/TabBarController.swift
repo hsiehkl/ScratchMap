@@ -83,6 +83,17 @@ class TabBarController: UITabBarController {
             achievementNavigationController.tabBarItem = TabBarItem(itemType: itemType)
 
             return achievementNavigationController
+            
+        case .journey:
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
+            
+            let newsFeedNavigationController = UINavigationController(rootViewController: newsFeedViewController)
+            
+            newsFeedNavigationController.tabBarItem = TabBarItem(itemType: itemType)
+            
+            return newsFeedNavigationController
 
         }
 

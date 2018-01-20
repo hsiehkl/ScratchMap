@@ -105,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if Auth.auth().currentUser != nil {
 
-            let tabBarController = TabBarController(itemTypes: [.map, .achievement])
+            let tabBarController = TabBarController(itemTypes: [.map, .achievement, .journey])
 
             return tabBarController
 

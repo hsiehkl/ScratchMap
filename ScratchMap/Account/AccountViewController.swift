@@ -36,8 +36,9 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
             guard let userName = snapshot.value as? String else { return }
 
-            self.userNameLabel.text = "Hi! \(userName)"
-
+            DispatchQueue.main.async {
+                self.userNameLabel.text = "Hi! \(userName)"
+            }
         })
     }
 
