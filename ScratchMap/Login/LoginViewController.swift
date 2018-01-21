@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
                 }
 
                 let tabBarController = TabBarController(
-                    itemTypes: [ .map, .achievement ]
+                    itemTypes: [ .map, .achievement, .journey ]
                 )
 
                 AppDelegate.shared.window?.updateRoot(

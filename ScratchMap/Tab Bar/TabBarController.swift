@@ -55,6 +55,9 @@ class TabBarController: UITabBarController {
     // MARK: Prepare Item Type
 
     static func prepare(for itemType: TabBarItemType) -> UIViewController {
+        
+        let font = UIFont(name: "Avenir-Light", size: 20)
+        let textAttributes = [NSAttributedStringKey.font: font]
 
         switch itemType {
 
@@ -76,8 +79,6 @@ class TabBarController: UITabBarController {
 
             let achievementNavigationController = UINavigationController(rootViewController: achievementViewController)
 
-            let font = UIFont(name: "Avenir-Light", size: 20)
-            let textAttributes = [NSAttributedStringKey.font: font]
             achievementNavigationController.navigationBar.titleTextAttributes = textAttributes
 
             achievementNavigationController.tabBarItem = TabBarItem(itemType: itemType)
@@ -90,6 +91,8 @@ class TabBarController: UITabBarController {
             let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
             
             let newsFeedNavigationController = UINavigationController(rootViewController: newsFeedViewController)
+            
+            newsFeedNavigationController.navigationBar.titleTextAttributes = textAttributes
             
             newsFeedNavigationController.tabBarItem = TabBarItem(itemType: itemType)
             

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup Firebase
 
         FirebaseApp.configure()
-        Database().isPersistenceEnabled = true
+//        Database().isPersistenceEnabled = true
         let queue = DispatchQueue.global()
         Database.database().callbackQueue = queue
 
