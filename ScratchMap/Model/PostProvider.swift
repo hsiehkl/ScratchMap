@@ -52,6 +52,7 @@ class PostProvider {
                         guard let singlePost = postdetail as? [String: String] else { print("我錯了"); return }
                         
                         guard
+                            let location = singlePost[Post.Schema.location],
                             let content = singlePost[Post.Schema.content],
                             let title = singlePost[Post.Schema.title],
                             let imageUrl = singlePost[Post.Schema.imageUrl],
@@ -61,7 +62,7 @@ class PostProvider {
                                 return
                         }
                         
-                        self.allPosts.append(Post(title: title, content: content, imageUrl: imageUrl, date: date))
+                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
                     }
                 }
             }

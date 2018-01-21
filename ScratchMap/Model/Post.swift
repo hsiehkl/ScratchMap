@@ -29,15 +29,15 @@ struct Post {
         
         public static let date = "date"
         
+        public static let location = "location"
+        
         
         
     }
     
     let title: String
     
-//    let location: String
-    
-    //    let image: UIImage
+    let location: String
     
     let content: String
     
