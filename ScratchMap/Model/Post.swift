@@ -31,8 +31,6 @@ struct Post {
         
         public static let location = "location"
         
-        
-        
     }
     
     let title: String
@@ -44,4 +42,8 @@ struct Post {
     let imageUrl: String
     
     let date: String
+    
+    let postId: String
+    
+    let countryId: String
 }

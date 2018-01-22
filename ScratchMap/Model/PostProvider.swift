@@ -33,10 +33,6 @@ class PostProvider {
         
         ref.child("users").child(id).child("posts").observe(.value) { (snapshot) in
             
-            let dataDetail = snapshot.key
-            
-            print("key~~~ \(dataDetail)")
-            
             guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { print("dataValue"); return }
             
             
@@ -44,12 +40,13 @@ class PostProvider {
             
             for data in dataValue {
                 
+                let countryId = data.key
+                
                 if let post = data.value as? [String: Any] {
-                    print("2222post: \(post)")
                     
-                    for postdetail in post.values {
+                    for (key, value) in post {
                         
-                        guard let singlePost = postdetail as? [String: String] else { print("我錯了"); return }
+                        guard let singlePost = value as? [String: String] else { print("我錯了"); return }
                         
                         guard
                             let location = singlePost[Post.Schema.location],
@@ -57,13 +54,31 @@ class PostProvider {
                             let title = singlePost[Post.Schema.title],
                             let imageUrl = singlePost[Post.Schema.imageUrl],
                             let date = singlePost[Post.Schema.date]
-                            
-                            else {
-                                return
+                        
+                        else {
+                            return
                         }
                         
-                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
+                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date, postId: key, countryId: countryId))
                     }
+                    
+//                    for postdetail in post.values {
+//
+//                        guard let singlePost = postdetail as? [String: String] else { print("我錯了"); return }
+//
+//                        guard
+//                            let location = singlePost[Post.Schema.location],
+//                            let content = singlePost[Post.Schema.content],
+//                            let title = singlePost[Post.Schema.title],
+//                            let imageUrl = singlePost[Post.Schema.imageUrl],
+//                            let date = singlePost[Post.Schema.date]
+//
+//                            else {
+//                                return
+//                        }
+//
+//                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
+//                    }
                 }
             }
             self.delegate?.didReceivePost(self, posts: self.allPosts)
