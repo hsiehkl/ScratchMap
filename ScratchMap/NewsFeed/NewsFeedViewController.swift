@@ -110,13 +110,12 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.titleLabel.text = posts[indexPath.row].title
         cell.contentLabel.text = posts[indexPath.row].content
-        cell.dateLabel.text = posts[indexPath.row].date
+//        cell.dateLabel.text = posts[indexPath.row].date
         cell.locationLabel.text = "@\(posts[indexPath.row].location)"
-
         
-        print(self.view.bounds.size)
-        print("contentsizeeeeeee \(cell.contentView.bounds.size)")
-//        print("TextView: \(cell.textView.frame)")
+        let date = DateTranslator.translateIntoUploadDate(date: posts[indexPath.row].date)
+        cell.dateLabel.text = date
+        
         return cell
     }
     

@@ -31,13 +31,11 @@ class PostProvider {
         
         guard let id = userId else { return }
         
-//                ref.child("users").child(id).child("posts").queryOrdered(byChild: "date").observe(.value) { (snapshot) in
+                ref.child("users").child(id).child("posts").queryOrdered(byChild: "date").observe(.value) { (snapshot) in
         
 //                ref.child("users").child(id).child("posts").observe(.value) { (snapshot) in
         
-        ref.child("users").child(id).child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "North Korea").observe(.value) { (snapshot) in
-            
-            print("~~~~~~~\(snapshot)")
+//        ref.child("users").child(id).child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "North Korea").observe(.value) { (snapshot) in
         
                     guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { return }
         
@@ -65,6 +63,7 @@ class PostProvider {
                             self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
                         }
                     }
+                    self.allPosts.reverse()
                     self.delegate?.didReceivePost(self, posts: self.allPosts)
 //                    print("data is here \(self.countryPosts)")
                 }

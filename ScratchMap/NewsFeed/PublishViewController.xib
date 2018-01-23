@@ -114,16 +114,16 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhS-pT-eJD">
-                    <rect key="frame" x="270" y="82" width="90" height="36"/>
+                    <rect key="frame" x="270" y="82" width="95" height="36"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="90" id="F6t-nW-DXb"/>
+                        <constraint firstAttribute="width" constant="95" id="F6t-nW-DXb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzS-hJ-1r4">
-                    <rect key="frame" x="270" y="82" width="90" height="36"/>
+                    <rect key="frame" x="270" y="82" width="95" height="36"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                     <connections>
                         <action selector="dateButtonTapped:" destination="-1" eventType="touchUpInside" id="YeX-lD-vF0"/>
@@ -151,7 +151,7 @@
                 <constraint firstItem="sEh-Ty-IX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4v0-gt-NAi"/>
                 <constraint firstItem="MbE-5l-KQ0" firstAttribute="top" secondItem="1lv-Vd-eNP" secondAttribute="bottom" id="5ET-fD-bxo"/>
                 <constraint firstItem="sEh-Ty-IX3" firstAttribute="top" secondItem="S6y-lt-CVG" secondAttribute="bottom" id="5bP-6y-Fvl"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nhS-pT-eJD" secondAttribute="trailing" constant="15" id="5gR-g7-fBJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nhS-pT-eJD" secondAttribute="trailing" constant="10" id="5gR-g7-fBJ"/>
                 <constraint firstItem="APn-8f-1c0" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8XF-h2-Hk4"/>
                 <constraint firstItem="keW-LV-3y4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bc2-AW-oSG"/>
                 <constraint firstItem="S6y-lt-CVG" firstAttribute="centerX" secondItem="APn-8f-1c0" secondAttribute="centerX" id="DR6-TZ-7v0"/>

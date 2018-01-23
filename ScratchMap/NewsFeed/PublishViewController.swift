@@ -25,6 +25,7 @@ class PublishViewController: UIViewController {
     var country: Country!
     var visitedCountries = [Country]()
     var pickerView = UIPickerView()
+    var date = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +51,19 @@ class PublishViewController: UIViewController {
         postImageView.layer.masksToBounds = true
         
         let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        let result = formatter.string(from: date)
-        dateLabel.text = result
+        self.dateLabel.text = DateTranslator.translateIntoShowingDate(date: date)
+        self.date = DateTranslator.translateIntoUploadDate(date: date)
     }
     
     @IBAction func dateButtonTapped(_ sender: Any) {
         
         DatePickerDialog().show("Pick a day!", doneButtonTitle: NSLocalizedString("Done", comment: ""), cancelButtonTitle: NSLocalizedString("Cancel", comment: ""), datePickerMode: .date) {
             (date) -> Void in
+            
             if let dt = date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy"
-                self.dateLabel.text = dateFormatter.string(from: dt)
+                
+                self.date = DateTranslator.translateIntoUploadDate(date: dt)
+                self.dateLabel.text = DateTranslator.translateIntoShowingDate(date: dt)
             }
         }
     }
