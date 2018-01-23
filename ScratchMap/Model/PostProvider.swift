@@ -31,40 +31,61 @@ class PostProvider {
         
         guard let id = userId else { return }
         
-        ref.child("users").child(id).child("posts").observe(.value) { (snapshot) in
+//                ref.child("users").child(id).child("posts").queryOrdered(byChild: "date").observe(.value) { (snapshot) in
+        
+//                ref.child("users").child(id).child("posts").observe(.value) { (snapshot) in
+        
+        ref.child("users").child(id).child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "North Korea").observe(.value) { (snapshot) in
             
-            guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { print("dataValue"); return }
-            
-            
-            self.allPosts.removeAll()
-            
-            for data in dataValue {
-                
-                let countryId = data.key
-                
-                if let post = data.value as? [String: Any] {
-                    
-                    for (key, value) in post {
-                        
-                        guard let singlePost = value as? [String: String] else { print("我錯了"); return }
-                        
-                        guard
-                            let location = singlePost[Post.Schema.location],
-                            let content = singlePost[Post.Schema.content],
-                            let title = singlePost[Post.Schema.title],
-                            let imageUrl = singlePost[Post.Schema.imageUrl],
-                            let date = singlePost[Post.Schema.date]
-                        
-                        else {
-                            return
+            print("~~~~~~~\(snapshot)")
+        
+                    guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { return }
+        
+                    print(dataValue)
+        
+                    self.allPosts = []
+        
+                    for data in dataValue {
+        
+                        if let post = data.value as? [String: String] {
+        
+                            print("post: \(post)")
+        
+                            guard
+                                let location = post[Post.Schema.location],
+                                let content = post[Post.Schema.content],
+                                let title = post[Post.Schema.title],
+                                let imageUrl = post[Post.Schema.imageUrl],
+                                let date = post[Post.Schema.date]
+        
+                                else {
+                                    return
+                            }
+        
+                            self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
                         }
-                        
-                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date, postId: key, countryId: countryId))
                     }
-                    
-//                    for postdetail in post.values {
+                    self.delegate?.didReceivePost(self, posts: self.allPosts)
+//                    print("data is here \(self.countryPosts)")
+                }
+            }
+    
 //
-//                        guard let singlePost = postdetail as? [String: String] else { print("我錯了"); return }
+//        ref.child("users").child(id).child("posts").observe(.value) { (snapshot) in
+//
+//            guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { print("dataValue"); return }
+//
+//            self.allPosts.removeAll()
+//
+//            for data in dataValue {
+//
+//                let countryId = data.key
+//
+//                if let post = data.value as? [String: Any] {
+//
+//                    for (key, value) in post {
+//
+//                        guard let singlePost = value as? [String: String] else { print("我錯了"); return }
 //
 //                        guard
 //                            let location = singlePost[Post.Schema.location],
@@ -73,55 +94,20 @@ class PostProvider {
 //                            let imageUrl = singlePost[Post.Schema.imageUrl],
 //                            let date = singlePost[Post.Schema.date]
 //
-//                            else {
-//                                return
-//                        }
-//
-//                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date))
-//                    }
-                }
-            }
-            self.delegate?.didReceivePost(self, posts: self.allPosts)
-            print("self.allPosts.count33333 \(self.allPosts.count)")
-        }
-        
-    
-//    func requestData() {
-//
-//        guard let id = userId else { return }
-//
-//        ref.child("users").child(id).child("posts").observe(.childAdded) { (snapshot) in
-//
-//            guard let dataValue = snapshot.children.allObjects as? [DataSnapshot] else { return }
-//
-//            print(dataValue)
-//
-//            self.allPosts.removeAll()
-//
-//            for data in dataValue {
-//
-//                if let post = data.value as? [String: String] {
-//
-//                    print("post: \(post)")
-//
-//                    guard
-//                        let content = post[Post.Schema.content],
-//                        let title = post[Post.Schema.title],
-//                        let imageUrl = post[Post.Schema.imageUrl],
-//                        let date = post[Post.Schema.date]
-//
 //                        else {
 //                            return
-//                    }
+//                        }
 //
-//                    self.allPosts.append(Post(title: title, content: content, imageUrl: imageUrl, date: date))
+//                        self.allPosts.append(Post(title: title, location: location, content: content, imageUrl: imageUrl, date: date, postId: key, countryId: countryId))
+////                        self.allPosts.sort() { $0.date > $1.date }
+//                    }
 //                }
 //            }
 //            self.delegate?.didReceivePost(self, posts: self.allPosts)
-//            print("data is here \(self.allPosts)")
+//            print("self.allPosts.count33333 \(self.allPosts.count)")
 //        }
-    }
-    
+//    }
+
 //    func requestCountryData(countryId: String) {
 //
 //        guard let id = userId else { return }
@@ -158,3 +144,4 @@ class PostProvider {
 //        }
 //    }
 }
+

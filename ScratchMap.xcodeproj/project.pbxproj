@@ -30,6 +30,8 @@
 		6B44E875200E0A29006C93D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */; };
 		6B4842B31FF516B700F58FE2 /* ScratchCardMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */; };
 		6B4842B41FF516B700F58FE2 /* ScratchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */; };
+		6B5C20E220175CCD00081251 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C20E020175CCD00081251 /* JourneyTableViewCell.swift */; };
+		6B5C20E320175CCD00081251 /* JourneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C20E120175CCD00081251 /* JourneyTableViewCell.xib */; };
 		6BA0F2171FE9259E00D0F971 /* UIWindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */; };
 		6BC5743E1FE6628E003C9C8C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */; };
 		6BC574441FE693E5003C9C8C /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC574431FE693E5003C9C8C /* CountryList.swift */; };
@@ -84,6 +86,8 @@
 		6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4842B11FF516B700F58FE2 /* ScratchCardMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardMaskView.swift; sourceTree = "<group>"; };
 		6B4842B21FF516B700F58FE2 /* ScratchCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchCardView.swift; sourceTree = "<group>"; };
+		6B5C20E020175CCD00081251 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
+		6B5C20E120175CCD00081251 /* JourneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyTableViewCell.xib; sourceTree = "<group>"; };
 		6BA0F2161FE9259E00D0F971 /* UIWindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtension.swift; sourceTree = "<group>"; };
 		6BC5743D1FE6628E003C9C8C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		6BC574431FE693E5003C9C8C /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				6BD053A82016CE6200AA72E3 /* NewsFeedTableViewCell.swift */,
+				6B5C20E020175CCD00081251 /* JourneyTableViewCell.swift */,
+				6B5C20E120175CCD00081251 /* JourneyTableViewCell.xib */,
 				6BD053A42016CE6200AA72E3 /* NewsFeedTableViewCell.xib */,
 				6BD053A72016CE6200AA72E3 /* NewsFeedViewController.swift */,
 				6BD053A62016CE6200AA72E3 /* PublishViewController.swift */,
@@ -374,6 +380,7 @@
 				6BD42136200B696200560687 /* RefreshView.xib in Resources */,
 				6BE37F842001FEA800AC7268 /* Localizable.strings in Resources */,
 				6B1B7CE81FFFE5C800E5208B /* worldHighNew.svg in Resources */,
+				6B5C20E320175CCD00081251 /* JourneyTableViewCell.xib in Resources */,
 				6B44E875200E0A29006C93D3 /* GoogleService-Info.plist in Resources */,
 				6B30F2F81FE3B1380048F310 /* Main.storyboard in Resources */,
 				6BD053AA2016CE6200AA72E3 /* PublishViewController.xib in Resources */,
@@ -505,6 +512,7 @@
 				6BE7641C1FE3D49F00B3708B /* Country.swift in Sources */,
 				6BF2E71C1FFB1A200088B4BB /* UIImageExtension.swift in Sources */,
 				6B2616571FF1235200F4219D /* CountryInfoViewController.swift in Sources */,
+				6B5C20E220175CCD00081251 /* JourneyTableViewCell.swift in Sources */,
 				6B278ABD1FF24DCE00B3DA4D /* ScratchViewController.swift in Sources */,
 				6BFFCEB01FEAB05500DEF234 /* UIViewControllerExtension.swift in Sources */,
 				6B30F2F31FE3B1380048F310 /* AppDelegate.swift in Sources */,

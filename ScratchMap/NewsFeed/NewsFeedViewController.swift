@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import Firebase
+import FirebaseStorage
 
 class NewsFeedViewController: UIViewController {
     
@@ -27,9 +28,10 @@ class NewsFeedViewController: UIViewController {
         postProvider.delegate = self
         
         setupNavigationBar()
-        let nib = UINib(nibName: "NewsFeedTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "JourneyTableViewCell", bundle: nil)
         
-        self.tableView.register(nib, forCellReuseIdentifier: "newsFeedTableViewCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "journeyTableViewCell")
+        self.tableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "newsFeedTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,56 +97,62 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newsFeedTableViewCell", for: indexPath) as! NewsFeedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "journeyTableViewCell", for: indexPath) as! JourneyTableViewCell
         
         if let imageURL = URL(string: self.posts[indexPath.row].imageUrl) {
-            
+
             DispatchQueue.main.async {
                 cell.postImageView.sd_setImage(with: imageURL)
             }
         }
         
         cell.editingButton.addTarget(self, action: #selector(editPost(_:)), for: .touchUpInside)
-        
-        cell.postTitleLabel.text = posts[indexPath.row].title
-        cell.postTextField.text = posts[indexPath.row].content
+
+        cell.titleLabel.text = posts[indexPath.row].title
+        cell.contentLabel.text = posts[indexPath.row].content
         cell.dateLabel.text = posts[indexPath.row].date
         cell.locationLabel.text = "@\(posts[indexPath.row].location)"
 
         
         print(self.view.bounds.size)
         print("contentsizeeeeeee \(cell.contentView.bounds.size)")
+//        print("TextView: \(cell.textView.frame)")
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            
-            let alertController = UIAlertController(title: NSLocalizedString("Notice!", comment: ""), message: NSLocalizedString("This post will be deleted.", comment: ""), preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title:NSLocalizedString("Confirm", comment: ""), style: .default, handler: { (_) in
-                
-                let userId = Auth.auth().currentUser?.uid
-                
-                guard let id = userId else { return }
-                
-                let ref = Database.database().reference()
-
-                let postReference = ref.child("users").child(id).child("posts").child(self.posts[indexPath.row].countryId).child(self.posts[indexPath.row].postId)
-                postReference.removeValue()
-                
-                print("before!!\(self.posts.count)")
-                self.posts.remove(at: indexPath.row)
-                print("after!!\(self.posts.count)")
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }))
-            
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
+//    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        
+//        if editingStyle == .delete {
+//            
+//            let alertController = UIAlertController(title: NSLocalizedString("Notice!", comment: ""), message: NSLocalizedString("This post will be deleted.", comment: ""), preferredStyle: .alert)
+//            
+//            alertController.addAction(UIAlertAction(title:NSLocalizedString("Confirm", comment: ""), style: .default, handler: { (_) in
+//                
+//                let userId = Auth.auth().currentUser?.uid
+//                
+//                guard let id = userId else { return }
+//                
+//                let ref = Database.database().reference()
+//                
+//                let postReference = ref.child("users").child(id).child("posts").child(self.posts[indexPath.row].countryId).child(self.posts[indexPath.row].postId)
+//                postReference.removeValue()
+//                
+//                
+//                print("before!!\(self.posts.count)")
+//                self.posts.remove(at: indexPath.row)
+//                print("after!!\(self.posts.count)")
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//            }))
+//            
+//            alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+//            
+//            self.present(alertController, animated: true, completion: nil)
+//        }
+//    }
     
     func animation() {
         

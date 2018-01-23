@@ -128,7 +128,9 @@ class PublishViewController: UIViewController {
                 
                 print("post: \(self.country.id)")
                 
-                let postReference = ref.child("users").child(userId).child("posts").child("\(self.country.id)").childByAutoId()
+//                let postReference = ref.child("users").child(userId).child("posts").child("\(self.country.id)").childByAutoId()
+                
+                let postReference = ref.child("users").child(userId).child("posts").childByAutoId()
                 
                 let value = ["title": self.titleTextField.text,
                              "location": self.countryTextField.text,

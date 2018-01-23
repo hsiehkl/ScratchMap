@@ -21,16 +21,22 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         print("I tapped the button!")
     }
+    @IBAction func buttonAction(_ sender: Any) {
+        
+        print("Hello!")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.contentView.bringSubview(toFront: self.editingButton)
         
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
         
         button.backgroundColor = UIColor.black
         
         
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         setupPhotoImageView()
         self.contentView.addSubview(button)

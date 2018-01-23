@@ -43,7 +43,7 @@ struct Post {
     
     let date: String
     
-    let postId: String
+//    let postId: String
     
-    let countryId: String
+//    let countryId: String
 }
