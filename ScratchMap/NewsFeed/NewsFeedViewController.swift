@@ -113,7 +113,7 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
 //        cell.dateLabel.text = posts[indexPath.row].date
         cell.locationLabel.text = "@\(posts[indexPath.row].location)"
         
-        let date = DateTranslator.translateIntoUploadDate(date: posts[indexPath.row].date)
+        let date = DateConverter.convertDownloadDate(date: posts[indexPath.row].date)
         cell.dateLabel.text = date
         
         return cell

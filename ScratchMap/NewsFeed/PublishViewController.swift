@@ -51,8 +51,10 @@ class PublishViewController: UIViewController {
         postImageView.layer.masksToBounds = true
         
         let date = Date()
-        self.dateLabel.text = DateTranslator.translateIntoShowingDate(date: date)
-        self.date = DateTranslator.translateIntoUploadDate(date: date)
+        self.dateLabel.text = DateConverter.convertToShowingDate(date: date)
+        self.date = DateConverter.convertToUploadDate(date: date)
+        print("textLabel: \(self.dateLabel.text)")
+        print("uploadDate \(self.date)")
     }
     
     @IBAction func dateButtonTapped(_ sender: Any) {
@@ -62,8 +64,11 @@ class PublishViewController: UIViewController {
             
             if let dt = date {
                 
-                self.date = DateTranslator.translateIntoUploadDate(date: dt)
-                self.dateLabel.text = DateTranslator.translateIntoShowingDate(date: dt)
+                self.date = DateConverter.convertToUploadDate(date: dt)
+                self.dateLabel.text = DateConverter.convertToShowingDate(date: dt)
+                
+                print("textLabelshow: \(self.dateLabel.text)")
+                print("ShowingDate \(self.date)")
             }
         }
     }
@@ -135,7 +140,7 @@ class PublishViewController: UIViewController {
                 let value = ["title": self.titleTextField.text,
                              "location": self.countryTextField.text,
                              "content": self.contentTextView.text,
-                             "date": self.dateLabel.text,
+                             "date": self.date,
                              "imageUrl": postImageUrl] as [String: String?]
                 
                 postReference.setValue(value)
