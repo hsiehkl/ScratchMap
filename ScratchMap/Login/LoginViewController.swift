@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-        let signupViewController = storyboard.instantiateViewController(withIdentifier: "signupViewController") as! SignupViewController
+        let signupViewController = storyboard.instantiateViewController(withIdentifier: "signupViewController")
 
         self.present(signupViewController, animated: true, completion: nil)
 

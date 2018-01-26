@@ -16,7 +16,9 @@ import Crashlytics
 class AccountViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var userNameView: UIView!
+    
     @IBOutlet weak var userNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,7 +64,7 @@ class AccountViewController: UIViewController, MFMailComposeViewControllerDelega
 
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") //as! LoginViewController
 
             self.dismiss(animated: true, completion: nil)
 

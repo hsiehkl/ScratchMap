@@ -66,7 +66,5 @@ extension UIWindow {
             toViewController,
             completion
         )
-
     }
-
 }

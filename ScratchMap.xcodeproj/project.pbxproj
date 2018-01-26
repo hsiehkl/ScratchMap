@@ -161,9 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				6BD053A82016CE6200AA72E3 /* NewsFeedTableViewCell.swift */,
+				6BD053A42016CE6200AA72E3 /* NewsFeedTableViewCell.xib */,
 				6B5C20E020175CCD00081251 /* JourneyTableViewCell.swift */,
 				6B5C20E120175CCD00081251 /* JourneyTableViewCell.xib */,
-				6BD053A42016CE6200AA72E3 /* NewsFeedTableViewCell.xib */,
 				6BD053A72016CE6200AA72E3 /* NewsFeedViewController.swift */,
 				6BD053A62016CE6200AA72E3 /* PublishViewController.swift */,
 				6BD053A52016CE6200AA72E3 /* PublishViewController.xib */,
@@ -208,9 +208,9 @@
 				6B30F2F61FE3B1380048F310 /* Main.storyboard */,
 				6B30F2F91FE3B1380048F310 /* Assets.xcassets */,
 				6B30F2FB1FE3B1380048F310 /* LaunchScreen.storyboard */,
-				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
 				6B44E874200E0A29006C93D3 /* GoogleService-Info.plist */,
 				6BE37F862001FEA800AC7268 /* Localizable.strings */,
+				6BE37F8B2001FF0F00AC7268 /* InfoPlist.strings */,
 				6B30F2FE1FE3B1380048F310 /* Info.plist */,
 				6B1B7CE71FFFE5C800E5208B /* worldHighNew.svg */,
 			);

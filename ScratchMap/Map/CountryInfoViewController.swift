@@ -118,17 +118,17 @@ class CountryInfoViewController: UIViewController {
     @IBAction func scratchButtonTapped(_ sender: Any) {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let cratchableViewController = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
+        let scratchableViewController = storyboard.instantiateViewController(withIdentifier: "scratchableViewController") as! ScratchViewController
 
         let country = Country(name: countryName, id: countryId, continent: continent, path: countryPath)
-        cratchableViewController.country = country
+        scratchableViewController.country = country
 
-        cratchableViewController.modalPresentationStyle = .overFullScreen
-        cratchableViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        scratchableViewController.modalPresentationStyle = .overFullScreen
+        scratchableViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 
-        cratchableViewController.delegate = parent as? MainPageViewController
+        scratchableViewController.delegate = parent as? MainPageViewController
 
-        self.present(cratchableViewController, animated: true, completion: nil)
+        self.present(scratchableViewController, animated: true, completion: nil)
 
     }
     

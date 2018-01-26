@@ -566,18 +566,21 @@ extension MainPageViewController: ScratchViewControllerDelegate, DataModelDelega
     
     func noDataAvaliable(_ provider: DataModel) {
         
-        self.scrollView.addSubview(self.mapContainerView)
-        
-        self.tabBarController?.hideTabBarAnimitaed(hide: false)
-        
-        self.isLoadingData = false
-        
-        UIView.animate(withDuration: 1.5, animations: {
-            self.backgroundView.alpha = 0
+        DispatchQueue.main.async {
             
-        }) { (true) in
+            self.scrollView.addSubview(self.mapContainerView)
             
-            self.backgroundView.removeFromSuperview()
+            self.tabBarController?.hideTabBarAnimitaed(hide: false)
+            
+            self.isLoadingData = false
+            
+            UIView.animate(withDuration: 1.5, animations: {
+                self.backgroundView.alpha = 0
+                
+            }) { (true) in
+                
+                self.backgroundView.removeFromSuperview()
+            }
         }
     }
 

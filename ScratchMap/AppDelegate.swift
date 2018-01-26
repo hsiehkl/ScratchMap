@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") //as! LoginViewController
 
             return loginViewController
         }

@@ -11,9 +11,9 @@ import UIKit
 class AchievementCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var continentProgressBarView: ProgressBarView!
+    
     @IBOutlet weak var baseView: UIView!
 
-//    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var continentPercentageLabel: UILabel!
 
     @IBOutlet weak var continentProgressAmountLabel: UILabel!

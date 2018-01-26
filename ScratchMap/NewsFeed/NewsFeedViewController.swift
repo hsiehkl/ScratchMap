@@ -72,7 +72,7 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
         var numberOfSections = 0
         
         if posts.count > 0 {
-            
+
             tableView.backgroundView = nil
             
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
@@ -110,7 +110,6 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.titleLabel.text = posts[indexPath.row].title
         cell.contentLabel.text = posts[indexPath.row].content
-//        cell.dateLabel.text = posts[indexPath.row].date
         cell.locationLabel.text = "@\(posts[indexPath.row].location)"
         
         let date = DateConverter.convertDownloadDate(date: posts[indexPath.row].date)
@@ -122,7 +121,7 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-//    
+    
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 //        
 //        if editingStyle == .delete {
@@ -176,8 +175,9 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func editPost(_ sender: UIButton) {
+        
         print("here")
-        print("here")
+
         
         guard
             
@@ -208,11 +208,7 @@ extension NewsFeedViewController: PostProviderDelegate {
     
     func didReceivePost(_ provider: PostProvider, posts: [Post]) {
         
-        print("self.posts.count1111: \(self.posts.count)")
-//        self.posts.removeAll()
-        print("self.posts.count2222: \(self.posts.count)")
         self.posts = posts
-        print("self.posts.count2222: \(self.posts.count)")
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

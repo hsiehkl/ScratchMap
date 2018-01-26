@@ -14,6 +14,7 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
 
     var visitedCountries = [Country]()
+    
     var continent = ""
     
     override func viewDidLoad() {

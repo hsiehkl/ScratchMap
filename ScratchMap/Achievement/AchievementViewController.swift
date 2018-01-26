@@ -230,7 +230,7 @@ class AchievementViewController: UIViewController, UICollectionViewDelegate, UIC
 
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") as! AccountViewController
+        let accountViewController = storyboard.instantiateViewController(withIdentifier: "accountViewController") //as! AccountViewController
 
         self.navigationController?.pushViewController(accountViewController, animated: true)
 

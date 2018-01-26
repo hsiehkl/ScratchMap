@@ -53,8 +53,6 @@ class PublishViewController: UIViewController {
         let date = Date()
         self.dateLabel.text = DateConverter.convertToShowingDate(date: date)
         self.date = DateConverter.convertToUploadDate(date: date)
-        print("textLabel: \(self.dateLabel.text)")
-        print("uploadDate \(self.date)")
     }
     
     @IBAction func dateButtonTapped(_ sender: Any) {
@@ -66,9 +64,6 @@ class PublishViewController: UIViewController {
                 
                 self.date = DateConverter.convertToUploadDate(date: dt)
                 self.dateLabel.text = DateConverter.convertToShowingDate(date: dt)
-                
-                print("textLabelshow: \(self.dateLabel.text)")
-                print("ShowingDate \(self.date)")
             }
         }
     }
@@ -132,8 +127,6 @@ class PublishViewController: UIViewController {
 //                ref.keepSynced(true)
                 
                 print("post: \(self.country.id)")
-                
-//                let postReference = ref.child("users").child(userId).child("posts").child("\(self.country.id)").childByAutoId()
                 
                 let postReference = ref.child("users").child(userId).child("posts").childByAutoId()
                 
