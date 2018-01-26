@@ -43,7 +43,4 @@ struct Post {
     
     let date: String
     
-//    let postId: String
-    
-//    let countryId: String
 }

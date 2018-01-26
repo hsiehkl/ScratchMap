@@ -64,7 +64,7 @@ class TabBarController: UITabBarController {
         case .map:
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController") //as! MainPageViewController
+            let mainPageViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController")
 
             mainPageViewController.tabBarItem = TabBarItem(
                 itemType: itemType
@@ -75,7 +75,7 @@ class TabBarController: UITabBarController {
         case .achievement:
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController") //as! AchievementViewController
+            let achievementViewController = storyboard.instantiateViewController(withIdentifier: "achievementViewController")
 
             let achievementNavigationController = UINavigationController(rootViewController: achievementViewController)
 
@@ -88,7 +88,7 @@ class TabBarController: UITabBarController {
         case .journey:
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") //as! NewsFeedViewController
+            let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController")
             
             let newsFeedNavigationController = UINavigationController(rootViewController: newsFeedViewController)
             

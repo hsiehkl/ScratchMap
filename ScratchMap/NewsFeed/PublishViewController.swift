@@ -126,8 +126,6 @@ class PublishViewController: UIViewController {
                 let ref =  Database.database().reference()
 //                ref.keepSynced(true)
                 
-                print("post: \(self.country.id)")
-                
                 let postReference = ref.child("users").child(userId).child("posts").childByAutoId()
                 
                 let value = ["title": self.titleTextField.text,

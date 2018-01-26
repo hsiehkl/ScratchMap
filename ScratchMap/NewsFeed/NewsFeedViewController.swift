@@ -122,36 +122,6 @@ extension NewsFeedViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        
-//        if editingStyle == .delete {
-//            
-//            let alertController = UIAlertController(title: NSLocalizedString("Notice!", comment: ""), message: NSLocalizedString("This post will be deleted.", comment: ""), preferredStyle: .alert)
-//            
-//            alertController.addAction(UIAlertAction(title:NSLocalizedString("Confirm", comment: ""), style: .default, handler: { (_) in
-//                
-//                let userId = Auth.auth().currentUser?.uid
-//                
-//                guard let id = userId else { return }
-//                
-//                let ref = Database.database().reference()
-//                
-//                let postReference = ref.child("users").child(id).child("posts").child(self.posts[indexPath.row].countryId).child(self.posts[indexPath.row].postId)
-//                postReference.removeValue()
-//                
-//                
-//                print("before!!\(self.posts.count)")
-//                self.posts.remove(at: indexPath.row)
-//                print("after!!\(self.posts.count)")
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//            }))
-//            
-//            alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-//            
-//            self.present(alertController, animated: true, completion: nil)
-//        }
-//    }
-    
     func animation() {
         
         backgroundImageView.image = UIImage(named: "backgroundLight")

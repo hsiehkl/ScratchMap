@@ -84,18 +84,6 @@ class ContinentDetailViewController: UIViewController, UITableViewDataSource, UI
 
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: "newsFeedViewController") as! NewsFeedViewController
-//
-//        newsFeedViewController.navigationTitle = visitedCountries[indexPath.row].name
-////        newsFeedViewController.country = visitedCountries[indexPath.row]
-//
-//        self.navigationController?.pushViewController(newsFeedViewController, animated: true)
-//
-//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70

@@ -6,7 +6,6 @@
 //  Copyright © 2017年 HsinTing Hsieh. All rights reserved.
 //
 
-//import Foundation
 import UIKit
 
 enum TabBarItemType {

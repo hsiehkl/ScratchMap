@@ -494,12 +494,19 @@ class MainPageViewController: UIViewController, UIScrollViewDelegate {
 
         backgroundView.addSubview(paperPlaneView)
         
-        let centerY = self.view.frame.height / 2.1  // find the vertical center
-        let steps = 130               // Divide the curve into steps
-        let stepX = self.view.frame.width / CGFloat(steps) // find the horizontal step distance
+        // find the vertical center
+        let centerY = self.view.frame.height / 2.1
+        
+        // Divide the curve into steps
+        let steps = 130
+        
+        // find the horizontal step distance
+        let stepX = self.view.frame.width / CGFloat(steps)
+        
         // Make a path
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: centerY))
+        
         // Loop and draw steps in straingt line segments
         for i in 0...steps {
             let x = CGFloat(i) * stepX
